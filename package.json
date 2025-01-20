@@ -27,7 +27,7 @@
     "@angular/forms": "^18.1.0",
     "@angular/platform-browser": "^18.1.0",
     "@angular/platform-browser-dynamic": "^18.1.0",
-    "@angular/router": "^18.1.0",
+    "@angular/router": "^19.1.2",
     "animate.css": "^4.1.1",
     "glightbox": "^3.3.0",
     "ngx-owl-carousel-o": "^18.0.0",
