@@ -1,16 +1,15 @@
 import { Component, inject, model } from '@angular/core';
 import { PageScrollService } from 'ngx-page-scroll-core';
-import { DOCUMENT, NgClass, NgFor } from '@angular/common';
+import { DOCUMENT, NgClass } from '@angular/common';
 import { MenuSection } from './interfaces/menu-section';
 import { SCROLL_DELAY_MS } from './constants';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 @Component({
-  selector: 'app-header',
-  standalone: true,
-  imports: [NgClass, NgFor, AppIdDirective],
-  templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+    selector: 'app-header',
+    imports: [NgClass, AppIdDirective],
+    templateUrl: './header.component.html',
+    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
   sections = model<Map<string, MenuSection>>();

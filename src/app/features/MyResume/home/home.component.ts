@@ -9,12 +9,11 @@ import { FooterComponent } from '../layouts/footer/footer.component';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [HeaderComponent, CoverComponent, FooterComponent, ProfileComponent, AppIdDirective],
-  templateUrl: './home.component.html',
-  styles: ``,
-  encapsulation: ViewEncapsulation.None,
+    selector: 'app-home',
+    imports: [HeaderComponent, CoverComponent, FooterComponent, ProfileComponent, AppIdDirective],
+    templateUrl: './home.component.html',
+    styles: ``,
+    encapsulation: ViewEncapsulation.None
 })
 export class HomeComponent {
   activatedRoute = inject(ActivatedRoute);
