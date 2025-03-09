@@ -1,6 +1,4 @@
 import { Component, inject, model } from '@angular/core';
-import { HeaderComponent } from '../../../layouts/header/header.component';
-import { CoverComponent } from '../cover/cover.component';
 import { AboutComponent } from './components/about/about.component';
 import { FactComponent } from './components/fact/fact.component';
 import { SkillsComponent } from './components/skils/skills.component';
@@ -17,8 +15,6 @@ import { MenuSection } from '../../../layouts/header/interfaces/menu-section';
     selector: 'app-profile',
     imports: [
         NgIf,
-        HeaderComponent,
-        CoverComponent,
         AboutComponent,
         FactComponent,
         SkillsComponent,
