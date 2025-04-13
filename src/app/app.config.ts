@@ -16,9 +16,9 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withFetch(), withInterceptorsFromDi()),
+    provideAppInitializer(initializeApp),
     provideRouter(routes),
     provideAnimations(),
     importProvidersFrom(CarouselModule, NgxPageScrollModule),
-    provideAppInitializer(initializeApp),
   ],
 };
