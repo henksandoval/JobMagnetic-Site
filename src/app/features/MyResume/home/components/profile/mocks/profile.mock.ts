@@ -13,13 +13,6 @@ export const mockProfile: Profile = {
   birthday: '01/01/1990',
   contact: mockContact,
   about: mockAbout,
-  facts: {
-    Awards: 'awards',
-    description: 'description',
-    happyClients: 'happy',
-    hoursOfSupport: '10',
-    projects: 'project',
-  },
   skillSet: mockSkills,
   summary: mockSummary,
   testimonials: mockTestimonials,
