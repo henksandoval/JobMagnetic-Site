@@ -25,9 +25,8 @@ export class ProfileService {
   profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
 
   private loadProfile(userName: string): Observable<Profile> {
-    // const queryParams = { name: userName };
-    // const url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
-    const url = `stubs/data.${userName || 'max'}.json`;
+    const queryParams = { name: userName };
+    const url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
 
     return this.http.get<ProfileContract>(url.toString()).pipe(
       map(this.transformData.bind(this)),
