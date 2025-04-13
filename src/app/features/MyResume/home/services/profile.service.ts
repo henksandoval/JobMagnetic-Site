@@ -8,20 +8,28 @@ import { StateService } from '@core/services/state/state.service';
 import { UserPersonalData } from '../components/cover/interfaces/user-personal-data';
 import { SocialNetworkTypes } from '@core/constants/social-network-def';
 import { UserSocialNetwork } from '../components/cover/interfaces/user-social-network';
+import { ConfigService } from '@core/services/config/config.service';
+import { Config } from '@core/services/config/interfaces/config';
+import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
 import { PortFolio } from '../components/profile/components/portfolio/interfaces/portfolio';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
+  private readonly config: Config = inject(ConfigService).getConfig();
   private readonly http = inject(HttpService);
   private readonly stateService = inject(StateService);
+  private readonly urlBuilder = inject(UrlBuilderService);
 
   profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
 
   private loadProfile(userName: string): Observable<Profile> {
-    const url = `stubs/data.${userName || 'john'}.json`;
-    return this.http.get<ProfileContract>(url).pipe(
+    // const queryParams = { name: userName };
+    // const url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
+    const url = `stubs/data.${userName || 'max'}.json`;
+
+    return this.http.get<ProfileContract>(url.toString()).pipe(
       map(this.transformData.bind(this)),
       catchError((error) => {
         console.error(error);
