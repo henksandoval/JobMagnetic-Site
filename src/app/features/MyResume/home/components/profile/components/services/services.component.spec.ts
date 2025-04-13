@@ -20,11 +20,11 @@ describe(ServicesComponent.name, () => {
   });
 
   it('It should show overview in the view', () => {
-    expect(screen.getByTestId('overview')).toHaveTextContent(mockProfile.service.overview);
+    expect(screen.getByTestId('overview')).toHaveTextContent(mockProfile.service!.overview);
   });
 
   it('It should show the list of services', () => {
-    mockProfile.service.serviceDetails.forEach((serviceDetails: ServiceDetails, index: number) => {
+    mockProfile.service!.serviceDetails.forEach((serviceDetails: ServiceDetails, index: number) => {
       const id: string = (++index).toString().padStart(2, '0');
       expect(screen.getByTestId('name_' + id)).toHaveTextContent(serviceDetails.name);
       expect(screen.getByTestId('description_' + id)).toHaveTextContent(serviceDetails.description);
