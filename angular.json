@@ -40,7 +40,10 @@
                 "input": "src/assets"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "node_modules/aos/dist/aos.css",
+              "src/styles.scss"
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["src/assets/scss"]
             },
