@@ -47,14 +47,4 @@ describe(HomeComponent.name, () => {
     const stateService = fixture.point.injector.get(StateService);
     expect(stateService.userName.set).toHaveBeenCalledWith('testUser');
   });
-
-  it('should load scripts and styles', async () => {
-    const scripts = [
-      'js/main.js',
-    ];
-
-    scripts.forEach((src) => {
-      expect(document.body.innerHTML).toContain(src);
-    });
-  });
 });

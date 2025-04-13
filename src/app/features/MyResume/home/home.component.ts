@@ -26,8 +26,6 @@ export class HomeComponent implements AfterViewInit {
       const userName = params.get('username')!;
       this.stateService.userName.set(userName);
     });
-
-    this.loadScript('js/main.js');
   }
 
   ngAfterViewInit(): void {
@@ -37,19 +35,5 @@ export class HomeComponent implements AfterViewInit {
       once: true,
       mirror: false,
     });
-  }
-
-  private loadStyle(url: string): void {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = url;
-    document.head.appendChild(link);
-  }
-
-  private loadScript(src: string): void {
-    const script = document.createElement('script');
-    script.src = src;
-    script.async = true;
-    document.body.appendChild(script);
   }
 }

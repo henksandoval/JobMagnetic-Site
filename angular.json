@@ -51,7 +51,8 @@
               "includePaths": ["src/assets/scss"]
             },
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "src/assets/js/main.js"
             ]
           },
           "configurations": {
