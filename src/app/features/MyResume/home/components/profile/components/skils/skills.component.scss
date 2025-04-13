@@ -1,4 +1,4 @@
-@import '../../../../../../../../assets/scss/variables';
+@use './variables' as vars;
 
 .skills {
 	.progress {
@@ -12,8 +12,8 @@
 			text-transform: uppercase;
 			display: block;
 			font-weight: 600;
-			font-family: $font-family_3;
-			color: $heading-color;
+			font-family: vars.$font-family_3;
+			color: vars.$heading-color;
 			.val {
 				float: right;
 				font-style: normal;
@@ -27,7 +27,7 @@
 		width: 1px;
 		height: 10px;
 		transition: 0.9s;
-		background-color: $accent-color;
+		background-color: vars.$accent-color;
 	}
 }
 

@@ -1,4 +1,4 @@
-@import '../../../../../../../../assets/scss/variables';
+@use './variables' as vars;
 
 .resume {
 	.resume-title {
@@ -6,20 +6,20 @@
 		font-weight: 700;
 		margin-top: 20px;
 		margin-bottom: 20px;
-		color: $heading-color;
+		color: vars.$heading-color;
 	}
 	.resume-item {
 		padding: 0 0 20px 20px;
 		margin-top: -2px;
-		border-left: 2px solid $accent-color;
+		border-left: 2px solid vars.$accent-color;
 		position: relative;
 		h4 {
 			line-height: 18px;
 			font-size: 18px;
 			font-weight: 600;
 			text-transform: uppercase;
-			font-family: $font-family_3;
-			color: $accent-color;
+			font-family: vars.$font-family_3;
+			color: vars.$accent-color;
 			margin-bottom: 10px;
 		}
 		h5 {
@@ -48,7 +48,7 @@
 			left: -9px;
 			top: 0;
 			background: #fff;
-			border: 2px solid $accent-color;
+			border: 2px solid vars.$accent-color;
 		}
 	}
 }

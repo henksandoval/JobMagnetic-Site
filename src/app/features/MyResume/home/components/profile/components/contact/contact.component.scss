@@ -1,4 +1,4 @@
-@import '../../../../../../../../assets/scss/variables';
+@use './variables' as vars;
 
 .contact {
 	.info {
@@ -6,7 +6,7 @@
 		background: #fff;
 		i {
 			font-size: 20px;
-			color: $accent-color;
+			color: vars.$accent-color;
 			float: left;
 			width: 44px;
 			height: 44px;
@@ -22,20 +22,20 @@
 			font-size: 22px;
 			font-weight: 600;
 			margin-bottom: 5px;
-			color: $heading-color;
+			color: vars.$heading-color;
 		}
 		p {
 			padding: 0 0 0 60px;
 			margin-bottom: 0;
 			font-size: 14px;
-			color: $color_6;
+			color: vars.$color_6;
 		}
 		.email {
 			margin-top: 40px;
 			&:hover {
 				i {
-					background: $accent-color;
-					color: $color_4;
+					background: vars.$accent-color;
+					color: vars.$color_4;
 				}
 			}
 		}
@@ -43,16 +43,16 @@
 			margin-top: 40px;
 			&:hover {
 				i {
-					background: $accent-color;
-					color: $color_4;
+					background: vars.$accent-color;
+					color: vars.$color_4;
 				}
 			}
 		}
 		.address {
 			&:hover {
 				i {
-					background: $accent-color;
-					color: $color_4;
+					background: vars.$accent-color;
+					color: vars.$color_4;
 				}
 			}
 		}
@@ -65,7 +65,7 @@
 		}
 		.error-message {
 			display: none;
-			color: $color_4;
+			color: vars.$color_4;
 			background: #ed3c0d;
 			text-align: left;
 			padding: 15px;
@@ -80,7 +80,7 @@
 		}
 		.sent-message {
 			display: none;
-			color: $color_4;
+			color: vars.$color_4;
 			background: #18d26e;
 			text-align: center;
 			padding: 15px;
@@ -99,7 +99,7 @@
 				height: 24px;
 				margin: 0 10px -6px 0;
 				border: 3px solid #18d26e;
-				border-top-color: $border-top-color_2;
+				border-top-color: vars.$border-top-color_2;
 				animation: animate-loading 1s linear infinite;
 			}
 		}
@@ -121,10 +121,10 @@
 			height: 44px;
 		}
 		button[type="submit"] {
-			background: $accent-color;
+			background: vars.$accent-color;
 			border: 0;
 			padding: 10px 35px;
-			color: $color_4;
+			color: vars.$color_4;
 			transition: 0.4s;
 			border-radius: 50px;
 			&:hover {

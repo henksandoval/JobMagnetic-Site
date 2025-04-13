@@ -1,4 +1,4 @@
-@import 'variables';
+@use 'variables' as vars;
 
 @keyframes animate-preloader {
 	0% {
@@ -24,34 +24,34 @@
 	}
 }
 body {
-	font-family: $font-family_1;
-	color: $default-color;
+	font-family: vars.$font-family_1;
+	color: vars.$default-color;
 }
 a {
-	color: $accent-color;
+	color: vars.$accent-color;
 	text-decoration: none;
 	&:hover {
-		color: color-mix(in srgb, $accent-color, transparent 25%);
+		color: color-mix(in srgb, vars.$accent-color, transparent 25%);
 		text-decoration: none;
 	}
 }
 h1 {
-	font-family: $font-family_2;
+	font-family: vars.$font-family_2;
 }
 h2 {
-	font-family: $font-family_2;
+	font-family: vars.$font-family_2;
 }
 h3 {
-	font-family: $font-family_2;
+	font-family: vars.$font-family_2;
 }
 h4 {
-	font-family: $font-family_2;
+	font-family: vars.$font-family_2;
 }
 h5 {
-	font-family: $font-family_2;
+	font-family: vars.$font-family_2;
 }
 h6 {
-	font-family: $font-family_2;
+	font-family: vars.$font-family_2;
 }
 .back-to-top {
 	position: fixed;
@@ -60,19 +60,19 @@ h6 {
 	right: 15px;
 	bottom: 15px;
 	z-index: 996;
-	background: $accent-color;
+	background: vars.$accent-color;
 	width: 40px;
 	height: 40px;
 	border-radius: 50px;
 	transition: all 0.4s;
 	i {
 		font-size: 28px;
-		color: $color_4;
+		color: vars.$color_4;
 		line-height: 0;
 	}
 	&:hover {
 		background: #0678e3;
-		color: $color_4;
+		color: vars.$color_4;
 	}
 }
 .back-to-top.active {
@@ -93,9 +93,9 @@ h6 {
 		position: fixed;
 		top: calc(50% - 30px);
 		left: calc(50% - 30px);
-		border: 6px solid $accent-color;
-		border-top-color: $border-top-color_1;
-		border-bottom-color: $border-bottom-color_1;
+		border: 6px solid vars.$accent-color;
+		border-top-color: vars.$border-top-color_1;
+		border-bottom-color: vars.$border-bottom-color_1;
 		border-radius: 50%;
 		width: 60px;
 		height: 60px;
@@ -118,7 +118,7 @@ h6 {
 	border-radius: 50px;
 	padding: 5px;
 	i {
-		color: $heading-color;
+		color: vars.$heading-color;
 	}
 }
 .mobile-nav-active {
@@ -127,8 +127,8 @@ h6 {
 		left: 0;
 	}
 	.mobile-nav-toggle {
-		color: $color_4;
-		background-color: $accent-color;
+		color: vars.$color_4;
+		background-color: vars.$accent-color;
 	}
 }
 
@@ -146,7 +146,7 @@ section {
 		margin-bottom: 20px;
 		padding-bottom: 20px;
 		position: relative;
-		color: $heading-color;
+		color: vars.$heading-color;
 		&::before {
 			content: "";
 			position: absolute;
@@ -163,7 +163,7 @@ section {
 			display: block;
 			width: 40px;
 			height: 3px;
-			background: $accent-color;
+			background: vars.$accent-color;
 			bottom: 0;
 			left: calc(50% - 20px);
 		}

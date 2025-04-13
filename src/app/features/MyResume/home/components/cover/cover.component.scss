@@ -1,5 +1,5 @@
 $hero-bg-url: "https://bootstrapmade.com/content/demo/Kelly/assets/img/hero-bg.jpg";
-@import '../../../../../../assets/scss/variables';
+@use './variables' as vars;
 
 #hero {
 	width: 100%;
@@ -21,15 +21,15 @@ $hero-bg-url: "https://bootstrapmade.com/content/demo/Kelly/assets/img/hero-bg.j
 		font-size: 64px;
 		font-weight: 700;
 		line-height: 56px;
-		color: $heading-color;
+		color: vars.$heading-color;
 	}
 	p {
-		color: $heading-color;
+		color: vars.$heading-color;
 		margin: 15px 0 0 0;
 		font-size: 26px;
-		font-family: $font-family_3;
+		font-family: vars.$font-family_3;
     .blink {
-			color: $accent-color;
+			color: vars.$accent-color;
 			letter-spacing: 1px;
       animation: blink-animation 1s steps(1, end) infinite;
     }
@@ -48,12 +48,12 @@ $hero-bg-url: "https://bootstrapmade.com/content/demo/Kelly/assets/img/hero-bg.j
 		a {
 			font-size: 24px;
 			display: inline-block;
-			color: $heading-color;
+			color: vars.$heading-color;
 			line-height: 1;
 			margin-right: 20px;
 			transition: 0.3s;
 			&:hover {
-				color: $accent-color;
+				color: vars.$accent-color;
 			}
 		}
 	}
