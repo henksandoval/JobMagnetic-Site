@@ -1,6 +1,5 @@
 import { Component, inject, model } from '@angular/core';
 import { AboutComponent } from './components/about/about.component';
-import { FactComponent } from './components/fact/fact.component';
 import { SkillsComponent } from './components/skils/skills.component';
 import { SummaryComponent } from './components/summary/summary.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
@@ -16,7 +15,6 @@ import { MenuSection } from '../../../layouts/header/interfaces/menu-section';
     imports: [
         NgIf,
         AboutComponent,
-        FactComponent,
         SkillsComponent,
         SummaryComponent,
         PortfolioComponent,
