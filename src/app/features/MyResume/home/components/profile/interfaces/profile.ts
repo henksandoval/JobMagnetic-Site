@@ -12,11 +12,11 @@ export interface Profile {
   personalData: UserPersonalData;
   birthday?: string;
   contact?: Contact;
-  about: About;
+  about?: About;
   facts?: Facts;
   skillSet?: SkillSet;
-  summary: Summary;
-  testimonials: Testimonial[];
+  summary?: Summary;
+  testimonials?: Testimonial[];
   portfolio: PortFolio;
-  service: Service;
+  service?: Service;
 }

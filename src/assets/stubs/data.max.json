@@ -1,0 +1,34 @@
+{
+  "profileImageUrl": "https://bootstrapmade.com/content/demo/MyResume/assets/img/profile-img.jpg",
+  "firstName": "Max",
+  "lastName": "Payne",
+  "birthDate": "1990-04-01",
+  "middleName": null,
+  "secondLastName": null,
+  "personalData": {
+    "name": "Max Payne",
+    "professions": ["Developer", "Photographer", "Designer", "Freelancer"],
+    "socialNetworks": [
+      {
+        "name": "Twitter",
+        "url": "https://x.com/maxpayne"
+      },
+      {
+        "name": "Facebook",
+        "url": "https://facebook.com/maxpayne"
+      },
+      {
+        "name": "Instagram",
+        "url": "https://instagram.com/maxpayne"
+      },
+      {
+        "name": "Skype",
+        "url": "https://microsoft.com/maxpayne"
+      },
+      {
+        "name": "LinkedIn",
+        "url": "https://linkedin.com/maxpayne"
+      }
+    ]
+  }
+}
