@@ -2,7 +2,7 @@
 import { SocialNetworkTypes } from '@core/constants/social-network-def';
 
 export const mockPersonalData: UserPersonalData = {
-  name: 'Test Name',
+  name: 'Max Payne',
   professions: ['Developer', 'QA', 'DevOps'],
   socialNetworks: [
     { type: SocialNetworkTypes.Twitter, url: 'https://twitter.com/developer' },

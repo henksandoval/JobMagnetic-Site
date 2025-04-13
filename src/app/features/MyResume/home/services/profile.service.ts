@@ -72,8 +72,12 @@ export class ProfileService {
         return accumulator;
       }, [] as UserSocialNetwork[]);
 
+    const fullName = [data.firstName, data.middleName, data.lastName, data.secondLastName]
+      .filter(Boolean)
+      .join(' ');
+
     return {
-      name: `${data.firstName} ${data.middleName || ''} ${data.lastName} ${data.secondLastName || ''}`,
+      name: fullName,
       professions: data.personalData?.professions ?? [],
       socialNetworks: socialNetworks
     };

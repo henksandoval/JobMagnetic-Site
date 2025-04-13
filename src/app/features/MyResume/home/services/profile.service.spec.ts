@@ -1,18 +1,31 @@
 import { MockBuilder, MockInstance, ngMocks } from 'ng-mocks';
 import { ProfileService } from './profile.service';
 import { HttpService } from '@core/services/http/http.service';
+import { ConfigService } from '@core/services/config/config.service';
 import { of, throwError } from 'rxjs';
 import { mockProfile } from '../components/profile/mocks/profile.mock';
 import { mockProfileContract } from '../components/profile/mocks/profile-contract.mock';
+import { Config } from '@core/services/config/interfaces/config';
 
 describe(ProfileService.name, () => {
   MockInstance.scope('case');
 
   beforeEach(async () => {
+    const config: Config = {
+      apiUrl: 'https://api.example.com',
+      language: 'es',
+      theme: 'light',
+      enableLogs: false
+    };
+
     await MockBuilder(ProfileService).mock(HttpService);
+    await MockBuilder(ProfileService).mock(ConfigService);
 
     MockInstance(HttpService, (instance) => {
       jest.spyOn(instance, 'get').mockReturnValue(of(mockProfileContract));
+    });
+    MockInstance(ConfigService, (instance) => {
+      jest.spyOn(instance, 'getConfig').mockReturnValue(config);
     });
   });
 
