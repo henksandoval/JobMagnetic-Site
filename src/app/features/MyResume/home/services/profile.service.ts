@@ -49,7 +49,6 @@ export class ProfileService {
       service: data.service,
       birthday: data.birthday,
       contact: data.contact,
-      facts: data.facts,
       portfolio: data.portfolio ?? defaultPortfolio,
       skillSet: data.skillSet,
       summary: data.summary,

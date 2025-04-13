@@ -1,4 +1,3 @@
-import { Facts } from '../components/fact/interfaces/facts';
 import { SkillSet } from '../components/skils/interfaces/skills';
 import { Testimonial } from '../components/testimonials/interfaces/testimonial';
 import { PortFolio } from '../components/portfolio/interfaces/portfolio';
@@ -13,7 +12,6 @@ export interface Profile {
   birthday?: string;
   contact?: Contact;
   about?: About;
-  facts?: Facts;
   skillSet?: SkillSet;
   summary?: Summary;
   testimonials?: Testimonial[];

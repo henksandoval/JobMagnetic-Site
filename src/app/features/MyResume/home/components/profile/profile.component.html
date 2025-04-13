@@ -18,11 +18,6 @@
   } @placeholder {
     <div>loading...</div>
   }
-  @defer (on viewport; when sections()?.get('facts')?.isActive) {
-    <app-fact *ngIf="profile?.facts" [factSet]="profile!.facts" />
-  } @placeholder {
-    <div>loading...</div>
-  }
   @defer (on viewport; when sections()?.get('services')?.isActive) {
     <app-services *ngIf="profile?.service" [serviceSet]="profile!.service" />
   } @placeholder {
