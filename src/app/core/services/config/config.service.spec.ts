@@ -28,7 +28,9 @@ describe(ConfigService.name, () => {
     const retrievedConfig = service.getConfig();
 
     expect(retrievedConfig).toEqual(mockConfig);
+    expect(service.isConfigLoaded()).toEqual(true);
   });
+
 
   it('should return undefined if config is not set', () => {
     const retrievedConfig = service.getConfig();

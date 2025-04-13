@@ -5,13 +5,19 @@ import { Config } from './interfaces/config';
   providedIn: 'root',
 })
 export class ConfigService {
-  config!: Config;
+  private config!: Config;
+  private configLoaded = false;
 
   setConfig(config: Config) {
     this.config = config;
+    this.configLoaded = true;
   }
 
   getConfig() {
     return this.config;
+  }
+
+  isConfigLoaded() {
+    return this.configLoaded;
   }
 }
