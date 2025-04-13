@@ -1,4 +1,4 @@
-@import '../../../../../../../../assets/scss/variables';
+@use './variables' as vars;
 
 .services {
 	.icon-box {
@@ -37,7 +37,7 @@
 			font-size: 22px;
 
 			a {
-				color: $heading-color;
+				color: vars.$heading-color;
 				transition: ease-in-out 0.3s;
 			}
 		}
@@ -49,7 +49,7 @@
 		}
 
 		&:hover {
-			border-color: $border-color_1;
+			border-color: vars.$border-color_1;
 			box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.08);
 		}
 
