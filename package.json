@@ -6,7 +6,7 @@
     "start": "ng serve",
     "start:en": "ng serve --configuration=en",
     "start:es": "ng serve --configuration=es",
-    "build": "ng build",
+    "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration=development",
     "test": "jest",
     "test:coverage": "jest --coverage",
