@@ -12,10 +12,7 @@ describe(ProfileService.name, () => {
 
   beforeEach(async () => {
     const config: Config = {
-      apiUrl: 'https://api.example.com',
-      language: 'es',
-      theme: 'light',
-      enableLogs: false
+      apiUrl: 'https://api.example.com'
     };
 
     await MockBuilder(ProfileService).mock(HttpService);
