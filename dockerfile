@@ -14,7 +14,10 @@ WORKDIR /usr/share/nginx/html/
 COPY --from=build  /src/dist/my-site/browser .
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY start.sh /start.sh
+
+RUN chmod +x /start.sh
 
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+ENTRYPOINT ["/bin/sh", "/start.sh"]
