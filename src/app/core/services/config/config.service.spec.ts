@@ -18,10 +18,7 @@ describe(ConfigService.name, () => {
 
   it('should set and get config correctly', () => {
     const mockConfig: Config = {
-      apiUrl: 'https://example.com',
-      theme: 'dark',
-      enableLogs: false,
-      language: 'en'
+      apiUrl: 'https://example.com'
     };
 
     service.setConfig(mockConfig);

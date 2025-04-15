@@ -1,10 +1,7 @@
 import { z } from 'zod';
 
 const schema = z.object({
-  apiUrl: z.string(),
-  theme: z.string(),
-  language: z.string(),
-  enableLogs: z.boolean()
+  apiUrl: z.string()
 });
 
 export type Config = z.infer<typeof schema>;
