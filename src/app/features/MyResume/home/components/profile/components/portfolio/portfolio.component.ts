@@ -1,7 +1,6 @@
 import { NgClass } from '@angular/common';
 import { AfterViewInit, ChangeDetectionStrategy, Component, input } from '@angular/core';
 import GLightbox from 'glightbox';
-import { PortFolio } from './interfaces/portfolio';
 import { Gallery } from './interfaces/gallery';
 import { PortfolioOverview } from './interfaces/portfolio-overview';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
@@ -14,7 +13,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PortfolioComponent implements AfterViewInit {
-  portfolioSet = input.required<PortfolioOverview, PortFolio>({
+  portfolioSet = input.required<PortfolioOverview, Gallery[]>({
     transform: this.toPortfolioOverview.bind(this),
   });
 
@@ -26,10 +25,10 @@ export class PortfolioComponent implements AfterViewInit {
     return Array.from(new Set(webPages.map((webPage) => webPage.type)));
   }
 
-  toPortfolioOverview(portfolio: PortFolio): PortfolioOverview {
+  toPortfolioOverview(galleries: Gallery[]): PortfolioOverview {
     return {
-      pagesByType: this.groupWebPagesByType(portfolio.gallery),
-      sortedPages: this.sortWebPages(portfolio.gallery),
+      pagesByType: this.groupWebPagesByType(galleries),
+      sortedPages: this.sortWebPages(galleries),
     };
   }
 

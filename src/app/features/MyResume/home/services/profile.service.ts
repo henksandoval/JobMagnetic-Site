@@ -52,7 +52,7 @@ export class ProfileService {
       service: data.service,
       birthday: data.birthday,
       contact: data.contact,
-      portfolio: data.portfolio,
+      portfolioGallery: data.portfolioGallery,
       skillSet: data.skillSet,
       summary: data.summary,
       testimonials: data.testimonials,

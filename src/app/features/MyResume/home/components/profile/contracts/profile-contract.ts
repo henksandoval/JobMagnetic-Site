@@ -1,11 +1,11 @@
 ﻿import { SkillSet } from '../components/skils/interfaces/skills';
 import { Testimonial } from '../components/testimonials/interfaces/testimonial';
-import { PortFolio } from '../components/portfolio/interfaces/portfolio';
 import { Service } from '../components/services/interfaces/service';
 import { About } from '../components/about/interfaces/about';
 import { Contact } from '../components/contact/interfaces/contact';
 import { Summary } from '../components/summary/interfaces/summary';
 import { UserPersonalDataContract } from '../../cover/contracts/user-personal-data-contract';
+import { Gallery } from '../components/portfolio/interfaces/gallery';
 
 export interface ProfileContract {
   personalData: UserPersonalDataContract;
@@ -15,6 +15,6 @@ export interface ProfileContract {
   skillSet?: SkillSet;
   summary?: Summary;
   testimonials?: Testimonial[];
-  portfolio: PortFolio;
+  portfolioGallery: Gallery[];
   service?: Service;
 }

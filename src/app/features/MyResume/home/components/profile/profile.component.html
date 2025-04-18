@@ -9,7 +9,7 @@
     <div>loading...</div>
   }
   @defer (on viewport; when sections()?.get('portfolio')?.isActive) {
-    <app-portfolio *ngIf="profile?.portfolio" [portfolioSet]="profile!.portfolio" />
+    <app-portfolio *ngIf="profile?.portfolioGallery" [portfolioSet]="profile!.portfolioGallery" />
   } @placeholder {
     <div>loading...</div>
   }
