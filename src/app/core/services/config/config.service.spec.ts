@@ -18,6 +18,7 @@ describe(ConfigService.name, () => {
 
   it('should set and get config correctly', () => {
     const mockConfig: Config = {
+      useAPI: true,
       apiUrl: 'https://example.com'
     };
 

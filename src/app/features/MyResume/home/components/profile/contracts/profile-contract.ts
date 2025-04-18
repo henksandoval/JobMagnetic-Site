@@ -8,19 +8,13 @@ import { Summary } from '../components/summary/interfaces/summary';
 import { UserPersonalDataContract } from '../../cover/contracts/user-personal-data-contract';
 
 export interface ProfileContract {
-  profileImageUrl: string;
-  firstName: string;
-  lastName: string;
-  birthDate: string;
-  middleName?: string;
-  secondLastName?: string;
-  personalData?: UserPersonalDataContract;
+  personalData: UserPersonalDataContract;
   birthday?: string;
   contact?: Contact;
   about?: About;
   skillSet?: SkillSet;
   summary?: Summary;
   testimonials?: Testimonial[];
-  portfolio?: PortFolio;
+  portfolio: PortFolio;
   service?: Service;
 }

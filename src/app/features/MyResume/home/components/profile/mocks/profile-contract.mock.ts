@@ -9,12 +9,6 @@ import { mockContact } from '../components/contact/mocks/contact-profile.mock';
 import { mockPersonalDataContract } from '../../cover/mocks/personal-data-contract.mocks';
 
 export const mockProfileContract: ProfileContract = {
-  profileImageUrl: "https://bootstrapmade.com/content/demo/MyResume/assets/img/profile-img.jpg",
-  firstName: "Max",
-  lastName: "Payne",
-  birthDate: "1990-04-01",
-  middleName: '',
-  secondLastName: undefined,
   personalData: mockPersonalDataContract,
   birthday: '01/01/1990',
   contact: mockContact,
