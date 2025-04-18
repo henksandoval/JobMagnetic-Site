@@ -12,6 +12,7 @@ import { ConfigService } from '@core/services/config/config.service';
 import { Config } from '@core/services/config/interfaces/config';
 import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
 import { UserPersonalDataContract } from '../components/cover/contracts/user-personal-data-contract';
+import { SocialNetworkInfo } from '@core/interfaces/social-network-info';
 
 @Injectable({
   providedIn: 'root',
@@ -63,14 +64,20 @@ export class ProfileService {
       name: data.name,
       professions: data.professions,
       socialNetworks: data.socialNetworks.reduce((accumulator, network) => {
-        const validNetwork = SocialNetworkTypes[network.type.name as keyof typeof SocialNetworkTypes];
+        const validNetwork: SocialNetworkInfo = {
+          name: network.type,
+          icon: network.iconClass
+            ?? network.iconUrl
+            ?? SocialNetworkTypes[network.type as keyof typeof SocialNetworkTypes]?.icon
+            ?? ''
+        };
         if (validNetwork) {
           accumulator.push({
             type: validNetwork,
-            url: network.url,
+            url: network.value,
           });
         } else {
-          console.warn(`Unexpected social network name: ${network.type.name}`);
+          console.warn(`Unexpected social network name: ${network.type}`);
         }
         return accumulator;
       }, [] as UserSocialNetwork[]),
