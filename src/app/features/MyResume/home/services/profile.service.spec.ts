@@ -12,6 +12,7 @@ describe(ProfileService.name, () => {
 
   beforeEach(async () => {
     const config: Config = {
+      useAPI: true,
       apiUrl: 'https://api.example.com'
     };
 

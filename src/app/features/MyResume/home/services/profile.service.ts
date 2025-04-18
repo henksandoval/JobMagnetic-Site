@@ -11,7 +11,8 @@ import { UserSocialNetwork } from '../components/cover/interfaces/user-social-ne
 import { ConfigService } from '@core/services/config/config.service';
 import { Config } from '@core/services/config/interfaces/config';
 import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
-import { PortFolio } from '../components/profile/components/portfolio/interfaces/portfolio';
+import { UserPersonalDataContract } from '../components/cover/contracts/user-personal-data-contract';
+import { SocialNetworkInfo } from '@core/interfaces/social-network-info';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,13 @@ export class ProfileService {
 
   private loadProfile(userName: string): Observable<Profile> {
     const queryParams = { name: userName };
-    const url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
+    let url: string;
+
+    if (this.config.useAPI) {
+      url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
+    } else {
+      url = `stubs/data.${userName || 'john'}.json`;
+    }
 
     return this.http.get<ProfileContract>(url.toString()).pipe(
       map(this.transformData.bind(this)),
@@ -38,47 +45,42 @@ export class ProfileService {
   }
 
   transformData(data: ProfileContract): Profile {
-    const personalData: UserPersonalData = this.transformPersonaData(data);
-    const defaultPortfolio: PortFolio = {
-      gallery: []
-    };
-
+    const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
     return {
       personalData: personalData,
       about: data.about,
       service: data.service,
       birthday: data.birthday,
       contact: data.contact,
-      portfolio: data.portfolio ?? defaultPortfolio,
+      portfolio: data.portfolio,
       skillSet: data.skillSet,
       summary: data.summary,
       testimonials: data.testimonials,
     };
   }
 
-  transformPersonaData(data: ProfileContract): UserPersonalData {
-    const networks = data.personalData?.socialNetworks ?? [];
-    const socialNetworks: UserSocialNetwork[] = networks.reduce((accumulator, network) => {
-        const validNetwork = SocialNetworkTypes[network.name as keyof typeof SocialNetworkTypes];
+  transformPersonaData(data: UserPersonalDataContract): UserPersonalData {
+    return {
+      name: data.name,
+      professions: data.professions,
+      socialNetworks: data.socialNetworks.reduce((accumulator, network) => {
+        const validNetwork: SocialNetworkInfo = {
+          name: network.type,
+          icon: network.iconClass
+            ?? network.iconUrl
+            ?? SocialNetworkTypes[network.type as keyof typeof SocialNetworkTypes]?.icon
+            ?? ''
+        };
         if (validNetwork) {
           accumulator.push({
             type: validNetwork,
-            url: network.url,
+            url: network.value,
           });
         } else {
-          console.warn(`Unexpected social network name: ${network.name}`);
+          console.warn(`Unexpected social network name: ${network.type}`);
         }
         return accumulator;
-      }, [] as UserSocialNetwork[]);
-
-    const fullName = [data.firstName, data.middleName, data.lastName, data.secondLastName]
-      .filter(Boolean)
-      .join(' ');
-
-    return {
-      name: fullName,
-      professions: data.personalData?.professions ?? [],
-      socialNetworks: socialNetworks
+      }, [] as UserSocialNetwork[]),
     };
   }
 }

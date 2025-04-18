@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 const schema = z.object({
+  useAPI: z.boolean(),
   apiUrl: z.string()
 });
 

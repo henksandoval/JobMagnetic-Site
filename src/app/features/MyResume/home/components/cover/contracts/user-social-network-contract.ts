@@ -1,4 +1,6 @@
 ﻿export interface UserSocialNetworkContract {
-  name: string;
-  url: string;
+  type: string;
+  value: string;
+  iconClass?: string;
+  iconUrl?: string;
 }
