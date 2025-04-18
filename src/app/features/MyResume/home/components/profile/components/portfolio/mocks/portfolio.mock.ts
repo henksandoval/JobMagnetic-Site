@@ -1,5 +1,4 @@
 import { Gallery } from '../interfaces/gallery';
-import { PortFolio } from '../interfaces/portfolio';
 
 export const mockGallery: Gallery = {
   position: 1,
@@ -68,6 +67,4 @@ export const mockGallery7: Gallery = {
   type: 'Music',
 };
 
-export const mockPortfolio: PortFolio = {
-  gallery: [mockGallery, mockGallery2, mockGallery3, mockGallery4, mockGallery5, mockGallery6, mockGallery7],
-};
+export const mockPortfolio: Gallery[] = [mockGallery, mockGallery2, mockGallery3, mockGallery4, mockGallery5, mockGallery6, mockGallery7];

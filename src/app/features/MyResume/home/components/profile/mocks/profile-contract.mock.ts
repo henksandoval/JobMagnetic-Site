@@ -16,6 +16,6 @@ export const mockProfileContract: ProfileContract = {
   skillSet: mockSkills,
   summary: mockSummary,
   testimonials: mockTestimonials,
-  portfolio: mockPortfolio,
+  portfolioGallery: mockPortfolio,
   service: mockService,
 };

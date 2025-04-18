@@ -1,7 +1,12 @@
 {
   "personalData": {
     "name": "Brandon Paul Johnson",
-    "professions": ["Developer", "Photographer", "Designer", "Freelancer"],
+    "professions": [
+      "Developer",
+      "Photographer",
+      "Designer",
+      "Freelancer"
+    ],
     "socialNetworks": [
       {
         "name": "Twitter",
@@ -176,64 +181,62 @@
       ]
     }
   },
-  "portfolio": {
-    "gallery": [
-      {
-        "position": 1,
-        "title": "Aventuras Animales",
-        "description": "Cada fotografía captura momentos únicos y comportamientos fascinantes.",
-        "link": "https://waylet.es/",
-        "image": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg",
-        "type": "CAT"
-      },
-      {
-        "position": 2,
-        "title": "Horizontes Naturales",
-        "description": "Cada imagen captura la esencia de lugares únicos, desde montañas imponentes hasta costas tranquilas, invitándote a explorar la belleza del mundo",
-        "link": "https://biati-digital.github.io/glightbox/",
-        "image": "https://th.bing.com/th/id/OIP.iwFhHHKPOqAJUDO-iSov_wHaE8?rs=1&pid=ImgDetMain",
-        "type": "NATURE"
-      },
-      {
-        "position": 3,
-        "title": "Movil Truck",
-        "description": "Plataforma de transporte inteligente; solución tecnológica diseñada para abordar de manera eficiente el transporte de mercancías por carretera.",
-        "link": "https://moviltruck.com/",
-        "image": "https://moviltruck.com/wp-content/uploads/2023/11/Hero-1-.png",
-        "type": "WebPage"
-      },
-      {
-        "position": 4,
-        "title": "Aventuras Animales",
-        "description": "Cada fotografía captura momentos únicos y comportamientos fascinantes.",
-        "image": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg",
-        "type": "CAT"
-      },
-      {
-        "position": 5,
-        "title": "Aventuras Animales",
-        "description": "Cada fotografía captura momentos únicos y comportamientos fascinantes.",
-        "image": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg",
-        "type": "CAT"
-      },
-      {
-        "position": 7,
-        "title": "Red And Blue Parrot",
-        "description": "Hermosos y encantadores Guacamayas en ambiente natural.",
-        "image": "https://images.pexels.com/photos/1427447/pexels-photo-1427447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "video": "https://videos.pexels.com/video-files/17325162/17325162-uhd_1440_2560_30fps.mp4",
-        "type": "NATURE"
-      },
-      {
-        "position": 6,
-        "title": "Music",
-        "description": "Cada imagen captura la esencia de la musica, el sonido llega al alma dando una hermosa sensacion de relajacion",
-        "link": "",
-        "image": "https://i0.wp.com/www.nus.agency/wp-content/uploads/2023/03/musica-arte-scaled.jpg?ssl=1",
-        "type": "Music"
-      }
-    ]
-  },
+  "portfolioGallery": [
+    {
+      "position": 1,
+      "title": "Aventuras Animales",
+      "description": "Cada fotografía captura momentos únicos y comportamientos fascinantes.",
+      "link": "https://waylet.es/",
+      "image": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg",
+      "type": "CAT"
+    },
+    {
+      "position": 2,
+      "title": "Horizontes Naturales",
+      "description": "Cada imagen captura la esencia de lugares únicos, desde montañas imponentes hasta costas tranquilas, invitándote a explorar la belleza del mundo",
+      "link": "https://biati-digital.github.io/glightbox/",
+      "image": "https://th.bing.com/th/id/OIP.iwFhHHKPOqAJUDO-iSov_wHaE8?rs=1&pid=ImgDetMain",
+      "type": "NATURE"
+    },
+    {
+      "position": 3,
+      "title": "Movil Truck",
+      "description": "Plataforma de transporte inteligente; solución tecnológica diseñada para abordar de manera eficiente el transporte de mercancías por carretera.",
+      "link": "https://moviltruck.com/",
+      "image": "https://moviltruck.com/wp-content/uploads/2023/11/Hero-1-.png",
+      "type": "WebPage"
+    },
+    {
+      "position": 4,
+      "title": "Aventuras Animales",
+      "description": "Cada fotografía captura momentos únicos y comportamientos fascinantes.",
+      "image": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg",
+      "type": "CAT"
+    },
+    {
+      "position": 5,
+      "title": "Aventuras Animales",
+      "description": "Cada fotografía captura momentos únicos y comportamientos fascinantes.",
+      "image": "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg",
+      "type": "CAT"
+    },
+    {
+      "position": 7,
+      "title": "Red And Blue Parrot",
+      "description": "Hermosos y encantadores Guacamayas en ambiente natural.",
+      "image": "https://images.pexels.com/photos/1427447/pexels-photo-1427447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "video": "https://videos.pexels.com/video-files/17325162/17325162-uhd_1440_2560_30fps.mp4",
+      "type": "NATURE"
+    },
+    {
+      "position": 6,
+      "title": "Music",
+      "description": "Cada imagen captura la esencia de la musica, el sonido llega al alma dando una hermosa sensacion de relajacion",
+      "link": "",
+      "image": "https://i0.wp.com/www.nus.agency/wp-content/uploads/2023/03/musica-arte-scaled.jpg?ssl=1",
+      "type": "Music"
+    }
+  ],
   "service": {
     "title": "Services",
     "overview": "We focus on understanding your company's needs to create a website tailored to your clients. You also have the support of our specialists in programming, design, and digital marketing to guide you through the process and resolve any questions you may have.",
