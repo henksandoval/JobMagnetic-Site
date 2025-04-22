@@ -3,7 +3,6 @@ import { render, screen } from '@testing-library/angular';
 import { mockSummary } from './mocks/summary.mock';
 import { AcademicBackground } from './interfaces/academic-background';
 import { Position } from './interfaces/position';
-import '@testing-library/jest-dom';
 import '@angular/localize/init';
 
 const renderComponent = async () => {

@@ -1,7 +1,6 @@
 import '@angular/localize/init';
 import { render, screen } from '@testing-library/angular';
 import { AboutComponent } from './about.component';
-import '@testing-library/jest-dom';
 import { mockAbout } from './mocks/about.mock';
 
 const renderComponent = async () => {
