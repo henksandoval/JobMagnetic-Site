@@ -9,24 +9,58 @@
     ],
     "socialNetworks": [
       {
-        "name": "Twitter",
-        "url": "https://x.com/brandonjohnson"
+        "type": "Email",
+        "value": "brandon.johnson@example.com",
+        "iconClass": "bx bx-envelope",
+        "iconUrl": ""
       },
       {
-        "name": "Facebook",
-        "url": "https://facebook.com/brandonjohnson"
+        "type": "WhatsApp",
+        "value": "+1234567890",
+        "iconClass": "bx bxl-whatsapp",
+        "iconUrl": ""
       },
       {
-        "name": "Instagram",
-        "url": "https://instagram.com/brandonjohnson"
+        "type": "LinkedIn",
+        "value": "https://linkedin.com/in/brandonjohnson",
+        "iconClass": "bx bxl-linkedin",
+        "iconUrl": ""
       },
       {
-        "name": "Skype",
-        "url": "https://microsoft.com/brandonjohnson"
+        "type": "GitHub",
+        "value": "https://github.com/brandonjohnson",
+        "iconClass": "bx bxl-github",
+        "iconUrl": ""
       },
       {
-        "name": "LinkedIn",
-        "url": "https://linkedin.com/brandonjohnson"
+        "type": "Twitter",
+        "value": "https://twitter.com/brandonjohnson",
+        "iconClass": "bx bxl-twitter",
+        "iconUrl": ""
+      },
+      {
+        "type": "Website",
+        "value": "https://brandonjohnson.dev",
+        "iconClass": "bx bx-globe",
+        "iconUrl": ""
+      },
+      {
+        "type": "Instagram",
+        "value": "https://instagram.com/brandonjohnson",
+        "iconClass": "bx bxl-instagram",
+        "iconUrl": ""
+      },
+      {
+        "type": "Facebook",
+        "value": "https://facebook.com/brandonjohnson",
+        "iconClass": "bx bxl-facebook",
+        "iconUrl": ""
+      },
+      {
+        "type": "Mobile Phone",
+        "value": "+1234567890",
+        "iconClass": "bx bx-mobile",
+        "iconUrl": ""
       }
     ]
   },
