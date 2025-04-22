@@ -1,16 +1,13 @@
+@let personalData = profile$()?.personalData;
 <footer id="footer">
   <div class="container">
-    <h3>Brandon Johnson</h3>
-    <p>
-      Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi
-      placeat.
-    </p>
+    <h3 appId="footer_name">{{ personalData?.name }}</h3>
     <div class="social-links">
-      <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-      <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-      <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-      <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-      <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      @for (network of personalData?.socialNetworks; track $index) {
+        <a href="{{ network.url }}" [ngClass]="network.type.name" target="_blank" rel="noopener"
+        ><i [ngClass]="['bx', network.type.icon]"></i
+        ></a>
+      }
     </div>
     <div class="copyright">
       &copy; Copyright <strong><span>MyResume</span></strong

@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/angular';
 import { SkillsComponent } from './skills.component';
 import { SkillDetail } from './interfaces/skill-detail';
-import '@testing-library/jest-dom';
 import '@angular/localize/init';
 import { mockSkills } from './mocks/skills.mock';
 

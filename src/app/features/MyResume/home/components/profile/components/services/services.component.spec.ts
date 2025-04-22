@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/angular';
 import { ServicesComponent } from './services.component';
 import { mockProfile } from '../../mocks/profile.mock';
 import { ServiceDetails } from './interfaces/service-details';
-import '@testing-library/jest-dom';
 import '@angular/localize/init';
 import { mockService } from './mocks/service.mock';
 

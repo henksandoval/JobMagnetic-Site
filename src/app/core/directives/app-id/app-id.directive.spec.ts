@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/angular';
 import { AppIdDirective } from './app-id.directive';
-import '@testing-library/jest-dom';
 
 describe(AppIdDirective.name, () => {
   it('should set the id and appId attributes', async () => {
