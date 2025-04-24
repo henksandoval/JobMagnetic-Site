@@ -168,14 +168,7 @@
     "workExperience": "Professional Experience"
   },
   "summary": {
-    "about": "I am a software developer with experience in designing and developing web and backend applications. I am fluent in languages ​​such as Python, JavaScript and Java, and have a solid knowledge of using modern frameworks such as React and Node.js. I have experience managing SQL and NoSQL databases, and am proficient in using Git for version control. I have worked in agile environments, applying methodologies such as Scrum to optimize collaboration and project delivery. My communication and problem-solving skills allow me to work effectively in a team and quickly adapt to new technologies and challenges.",
-    "name": "Brandon Johnson",
     "introduction": "Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.",
-    "contactProfile": {
-      "direction": "Avenida de América, 30, Madrid - España",
-      "email": "johnson.brandon@gmail.com",
-      "phoneNumber": "+34641765233"
-    },
     "education": {
       "academicBackground": [
         {
@@ -272,7 +265,6 @@
     }
   ],
   "service": {
-    "title": "Services",
     "overview": "We focus on understanding your company's needs to create a website tailored to your clients. You also have the support of our specialists in programming, design, and digital marketing to guide you through the process and resolve any questions you may have.",
     "serviceDetails": [
       {
