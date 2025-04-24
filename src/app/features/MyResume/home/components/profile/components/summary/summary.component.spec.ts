@@ -4,6 +4,7 @@ import { mockSummary } from './mocks/summary.mock';
 import { AcademicBackground } from './interfaces/academic-background';
 import { Position } from './interfaces/position';
 import '@angular/localize/init';
+import '@testing-library/jest-dom';
 
 const renderComponent = async () => {
   await render(SummaryComponent, {
@@ -18,22 +19,8 @@ describe(SummaryComponent.name, () => {
     await renderComponent();
   });
 
-  it('should show the about', () => {
-    expect(screen.getByTestId('about')).toHaveTextContent(mockSummary.about);
-  });
-
-  it('should show the name', () => {
-    expect(screen.getByTestId('name')).toHaveTextContent(mockSummary.name);
-  });
-
   it('should show the introduction', () => {
     expect(screen.getByTestId('introduction')).toHaveTextContent(mockSummary.introduction);
-  });
-
-  it('should render contact list', () => {
-    expect(screen.getByTestId('direction')).toHaveTextContent(mockSummary.contactProfile.direction);
-    expect(screen.getByTestId('phoneNumber')).toHaveTextContent(mockSummary.contactProfile.phoneNumber);
-    expect(screen.getByTestId('email')).toHaveTextContent(mockSummary.contactProfile.email);
   });
 
   it('should get all the records about education.', () => {

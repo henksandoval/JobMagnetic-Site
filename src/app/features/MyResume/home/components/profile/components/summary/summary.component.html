@@ -5,24 +5,10 @@
     <div class="container" data-aos="fade-up">
       <div class="section-title">
         <h2 i18n="@@resume">Resume</h2>
-        <p appId="about">{{ summary.about }}</p>
+        <p appId="introduction">{{ summary.introduction }}</p>
       </div>
       <div class="row">
         <div class="col-6">
-          <h3 i18n="@@summary" class="resume-title">Summary</h3>
-          <div class="resume-item pb-0">
-            <h4 appId="name">{{ summary.name }}</h4>
-            <p>
-              <em appId="introduction">{{ summary.introduction }}</em>
-            </p>
-            @if (summary.contactProfile; as contact) {
-              <ul>
-                <li appId="direction">{{ contact.direction }}</li>
-                <li appId="email">{{ contact.email }}</li>
-                <li appId="phoneNumber">{{ contact.phoneNumber }}</li>
-              </ul>
-            }
-          </div>
           @if (summary.education; as education) {
             <h3 i18n="@@education" class="resume-title">Education</h3>
             @for (edu of education.academicBackground; track edu.experience) {
