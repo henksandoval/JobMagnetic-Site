@@ -14,4 +14,13 @@ describe(AdminComponent.name, () => {
   it('should display title', () => {
     expect(screen.getByTestId('header_title')).toHaveTextContent('Vista Early Adopter');
   });
+
+  it('should show welcome', () => {
+    expect(screen.getByTestId('welcome')).toHaveTextContent('Bienvenido a Early Adopter');
+  });
+
+  it('should show what is a view', () => {
+    expect(screen.getByTestId('view')).toHaveTextContent('¿Qué es una Vista Early Adopter?');
+  });
+
 });
