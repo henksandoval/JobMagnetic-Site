@@ -29,7 +29,9 @@
     "workExperience": "Work Experience",
     "services": "Services",
     "skills": "Skills",
-    "testimonials": "Testimonials",
+    "testimonials": "Testimonials"
+  },
+  "admin": {
     "title": "Early Adopter View",
     "title_what_is": "What is an Early Adopter View?",
     "desc_what_is": "It is a preliminary version of a product or feature designed for users who want to try new functionalities before their official release. These users are key to providing feedback and helping us improve.",
