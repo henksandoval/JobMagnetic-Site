@@ -4,7 +4,6 @@ import { mockSummary } from './mocks/summary.mock';
 import { AcademicBackground } from './interfaces/academic-background';
 import { Position } from './interfaces/position';
 import '@angular/localize/init';
-import '@testing-library/jest-dom';
 
 const renderComponent = async () => {
   await render(SummaryComponent, {
