@@ -29,7 +29,9 @@
     "workExperience": "Experiencia laboral",
     "services": "Servicios",
     "skills": "Habilidades",
-    "testimonials": "Testimonios",
+    "testimonials": "Testimonios"
+  },
+  "admin": {
     "title": "Vista Early Adopter",
     "title_what_is": "¿Qué es una Vista Early Adopter?",
     "desc_what_is": "Es una versión preliminar de un producto o funcionalidad diseñada para usuarios que desean probar nuevas características antes de su lanzamiento oficial. Estos usuarios son clave para darnos retroalimentación y ayudarnos a mejorar.",
