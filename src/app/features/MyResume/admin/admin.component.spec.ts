@@ -1,6 +1,6 @@
+import '@angular/localize/init';
 import { AdminComponent } from './admin.component';
 import { render, screen  } from '@testing-library/angular';
-import '@testing-library/jest-dom';
 
 describe(AdminComponent.name, () => {
   beforeEach(async () => {
