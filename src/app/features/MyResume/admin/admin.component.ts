@@ -1,14 +1,12 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
+import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 
 
 @Component({
   selector: 'app-admin',
-  imports: [AppIdDirective],
+  standalone: true,
+  imports: [RouterOutlet],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminComponent{
-
-}
+export class AdminComponent {}
