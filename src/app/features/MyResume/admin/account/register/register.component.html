@@ -1,0 +1,120 @@
+<header>
+  <h1>Registro Early Adopter - Wizard</h1>
+</header>
+
+<div class="container">
+  <!-- Paso 1: Datos Personales -->
+  <div class="wizard-step" [class.active]="currentStep === 0">
+    <h2>Paso 1: Datos Personales</h2>
+    <div class="form-group">
+      <label for="fullName">Nombre Completo:</label>
+      <input
+        id="fullName"
+        type="text"
+        [(ngModel)]="formData.fullName"
+        name="fullName"
+        placeholder="Ingresa tu nombre completo"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Correo Electrónico:</label>
+      <input
+        id="email"
+        type="email"
+        [(ngModel)]="formData.email"
+        name="email"
+        placeholder="Ingresa tu correo"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="phone">Teléfono:</label>
+      <input
+        id="phone"
+        type="text"
+        [(ngModel)]="formData.phone"
+        name="phone"
+        placeholder="Ingresa tu número de teléfono"
+      />
+    </div>
+  </div>
+
+  <!-- Paso 2: Información Sobre Ti -->
+  <div class="wizard-step" [class.active]="currentStep === 1">
+    <h2>Paso 2: Información Sobre Ti</h2>
+    <div class="form-group">
+      <label for="description">Descripción:</label>
+      <textarea
+        id="description"
+        [(ngModel)]="formData.description"
+        name="description"
+        placeholder="Describe quién eres"
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label for="birthday">Fecha de Nacimiento:</label>
+      <input
+        id="birthday"
+        type="date"
+        [(ngModel)]="formData.birthday"
+        name="birthday"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="city">Ciudad:</label>
+      <input
+        id="city"
+        type="text"
+        [(ngModel)]="formData.city"
+        name="city"
+        placeholder="¿Dónde resides?"
+      />
+    </div>
+  </div>
+
+  <!-- Paso 3: Testimonios -->
+  <div class="wizard-step" [class.active]="currentStep === 2">
+    <h2>Paso 3: Testimonios</h2>
+    <div class="form-group">
+      <label for="testimonialName">Nombre del Testimonio:</label>
+      <input
+        id="testimonialName"
+        type="text"
+        [(ngModel)]="formData.testimonialName"
+        name="testimonialName"
+        placeholder="Nombre del autor del testimonio"
+      />
+    </div>
+    <div class="form-group">
+      <label for="jobTitle">Título del Trabajo:</label>
+      <input
+        id="jobTitle"
+        type="text"
+        [(ngModel)]="formData.jobTitle"
+        name="jobTitle"
+        placeholder="Ejemplo: Desarrollador Web"
+      />
+    </div>
+    <div class="form-group">
+      <label for="testimonialText">Testimonio:</label>
+      <textarea
+        id="testimonialText"
+        [(ngModel)]="formData.testimonial"
+        name="testimonialText"
+        placeholder="Escribe el testimonio"
+      ></textarea>
+    </div>
+  </div>
+
+  <!-- Navegación del Wizard -->
+  <div class="wizard-nav">
+    <button type="button" (click)="prevStep()" [disabled]="currentStep === 0">
+      Anterior
+    </button>
+    <button type="button" (click)="nextStep()">
+      {{ currentStep === steps.length - 1 ? 'Finalizar' : 'Siguiente' }}
+    </button>
+  </div>
+</div>
