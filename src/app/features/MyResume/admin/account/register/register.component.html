@@ -3,118 +3,90 @@
 </header>
 
 <div class="container">
-  <!-- Paso 1: Datos Personales -->
-  <div class="wizard-step" [class.active]="currentStep === 0">
-    <h2>Paso 1: Datos Personales</h2>
-    <div class="form-group">
-      <label for="fullName">Nombre Completo:</label>
-      <input
-        id="fullName"
-        type="text"
-        [(ngModel)]="formData.fullName"
-        name="fullName"
-        placeholder="Ingresa tu nombre completo"
-        required
-      />
+  <form [formGroup]="personalDataForm">
+    <div class="wizard-step" [class.active]="currentStep === 0">
+      <h2>Paso 1: Datos Personales</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="firstName">Nombre:</label>
+            <input
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              placeholder="Nombre"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="middleName">Segundo nombre:</label>
+            <input
+              id="middleName"
+              type="text"
+              formControlName="middleName"
+              placeholder="Segundo nombre"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="lastName">Apellido:</label>
+            <input
+              id="lastName"
+              type="text"
+              formControlName="lastName"
+              placeholder="Apellido"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="secondLastName">Segundo Apellido:</label>
+            <input
+              id="secondLastName"
+              type="text"
+              formControlName="secondLastName"
+              placeholder="Segundo apellido"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="birthDate">fecha de nacimiento:</label>
+            <input
+              id="birthDate"
+              type="date"
+              formControlName="birthDate"
+              placeholder="Fecha de nacimiento"
+            />
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label for="profileImageUrl">imagen del perfil:</label>
+            <input
+              id="profileImageUrl"
+              type="text"
+              formControlName="profileImageUrl"
+              placeholder="URL de la imagen del perfil"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="email">Correo Electrónico:</label>
-      <input
-        id="email"
-        type="email"
-        [(ngModel)]="formData.email"
-        name="email"
-        placeholder="Ingresa tu correo"
-        required
-      />
+    <div class="wizard-nav">
+      <button
+        type="button"
+        (click)="savePersonalData()"
+        [disabled]="isSaving"
+        class="btn btn-primary"
+      >
+        Guardar
+        <span *ngIf="isSaving" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
     </div>
-    <div class="form-group">
-      <label for="phone">Teléfono:</label>
-      <input
-        id="phone"
-        type="text"
-        [(ngModel)]="formData.phone"
-        name="phone"
-        placeholder="Ingresa tu número de teléfono"
-      />
-    </div>
-  </div>
-
-  <!-- Paso 2: Información Sobre Ti -->
-  <div class="wizard-step" [class.active]="currentStep === 1">
-    <h2>Paso 2: Información Sobre Ti</h2>
-    <div class="form-group">
-      <label for="description">Descripción:</label>
-      <textarea
-        id="description"
-        [(ngModel)]="formData.description"
-        name="description"
-        placeholder="Describe quién eres"
-      ></textarea>
-    </div>
-    <div class="form-group">
-      <label for="birthday">Fecha de Nacimiento:</label>
-      <input
-        id="birthday"
-        type="date"
-        [(ngModel)]="formData.birthday"
-        name="birthday"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="city">Ciudad:</label>
-      <input
-        id="city"
-        type="text"
-        [(ngModel)]="formData.city"
-        name="city"
-        placeholder="¿Dónde resides?"
-      />
-    </div>
-  </div>
-
-  <!-- Paso 3: Testimonios -->
-  <div class="wizard-step" [class.active]="currentStep === 2">
-    <h2>Paso 3: Testimonios</h2>
-    <div class="form-group">
-      <label for="testimonialName">Nombre del Testimonio:</label>
-      <input
-        id="testimonialName"
-        type="text"
-        [(ngModel)]="formData.testimonialName"
-        name="testimonialName"
-        placeholder="Nombre del autor del testimonio"
-      />
-    </div>
-    <div class="form-group">
-      <label for="jobTitle">Título del Trabajo:</label>
-      <input
-        id="jobTitle"
-        type="text"
-        [(ngModel)]="formData.jobTitle"
-        name="jobTitle"
-        placeholder="Ejemplo: Desarrollador Web"
-      />
-    </div>
-    <div class="form-group">
-      <label for="testimonialText">Testimonio:</label>
-      <textarea
-        id="testimonialText"
-        [(ngModel)]="formData.testimonial"
-        name="testimonialText"
-        placeholder="Escribe el testimonio"
-      ></textarea>
-    </div>
-  </div>
-
-  <!-- Navegación del Wizard -->
-  <div class="wizard-nav">
-    <button type="button" (click)="prevStep()" [disabled]="currentStep === 0">
-      Anterior
-    </button>
-    <button type="button" (click)="nextStep()">
-      {{ currentStep === steps.length - 1 ? 'Finalizar' : 'Siguiente' }}
-    </button>
-  </div>
+  </form>
 </div>

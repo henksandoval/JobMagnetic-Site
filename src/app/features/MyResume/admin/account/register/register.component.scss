@@ -70,3 +70,10 @@ button:hover {
   background-color: #ccc;
   cursor: not-allowed;
 }
+
+.spinner-border {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
