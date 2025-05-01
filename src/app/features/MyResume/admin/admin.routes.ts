@@ -14,7 +14,6 @@ export const adminRoutes: Routes = [
         path: 'index', component: IndexComponent
       },
       { path: 'register', component: RegisterComponent
-
       }
     ],
   },
