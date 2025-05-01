@@ -13,6 +13,7 @@ import { Config } from '@core/services/config/interfaces/config';
 import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
 import { UserPersonalDataContract } from '../components/cover/contracts/user-personal-data-contract';
 import { SocialNetworkInfo } from '@core/interfaces/social-network-info';
+import { ApiEndpoints } from '../../../../api-endpoints';
 
 @Injectable({
   providedIn: 'root',
@@ -22,8 +23,18 @@ export class ProfileService {
   private readonly http = inject(HttpService);
   private readonly stateService = inject(StateService);
   private readonly urlBuilder = inject(UrlBuilderService);
+  private readonly apiBaseUrl = 'https://localhost:7109';
 
   profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
+
+  getEndpoints() {
+    return ApiEndpoints;
+  }
+
+  saveData<T>(Url: string, data: T): Observable<T> {
+    const url = `${this.apiBaseUrl}/${Url}`;
+    return this.http.post<T, T>(url, data);
+  }
 
   private loadProfile(userName: string): Observable<Profile> {
     const queryParams = { name: userName };
