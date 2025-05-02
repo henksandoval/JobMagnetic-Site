@@ -16,7 +16,7 @@
     "yourName": "Your Name",
     "yourEmail": "Your Email",
     "subject": "Subject",
-    "message": "Message",
+    "message": "Enter the message",
     "loading": "Loading",
     "sentMessage": "Your message has been sent. Thank you!",
     "sendMessage": "Send Message",
@@ -32,7 +32,7 @@
     "testimonials": "Testimonials"
   },
   "admin": {
-    "title": "Early Adopter View",
+    "header_title": "Early Adopter View",
     "title_what_is": "What is an Early Adopter View?",
     "desc_what_is": "It is a preliminary version of a product or feature designed for users who want to try new functionalities before their official release. These users are key to providing feedback and helping us improve.",
     "title_features": "Key Features",
@@ -43,5 +43,14 @@
     "title_help": "How can you help?",
     "desc_help": "As an Early Adopter, you will have the opportunity to test our developing features and provide your valuable feedback. Your participation is essential to help us build a better product.",
     "button_join": "I want to be an Early Adopter!"
+  },
+  "register": {
+    "firstName": "First Name",
+    "middleName": "Middle Name",
+    "lastName": "Last Name",
+    "secondLastName": "Second Last Name",
+    "birthDate": "Birth Date",
+    "profileImageUrl": "Profile picture URL",
+    "save": "Save"
   }
 }

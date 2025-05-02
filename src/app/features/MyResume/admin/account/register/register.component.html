@@ -1,0 +1,93 @@
+<header>
+  <h1>Registro Early Adopter - Wizard</h1>
+</header>
+
+<div class="container">
+  <form [formGroup]="personalDataForm">
+    <div class="wizard-step" [class.active]="currentStep === 0">
+      <h2>Paso 1: Datos Personales</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label appId="nombre" i18n="@@firstName" for="firstName">Nombre:</label>
+            <input
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              i18n-placeholder="@@firstName"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label appId="segundo nombre" i18n="@@middleName" for="middleName">Segundo nombre:</label>
+            <input
+              id="middleName"
+              type="text"
+              formControlName="middleName"
+              i18n-placeholder="@@middleName"
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label appId="apellido" i18n="@@lastName" for="lastName">Apellido:</label>
+            <input
+              id="lastName"
+              type="text"
+              formControlName="lastName"
+              i18n-placeholder="@@lastName"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label appId="segundo apellido" i18n="@@secondLastName" for="secondLastName">Segundo apellido:</label>
+            <input
+              id="secondLastName"
+              type="text"
+              formControlName="secondLastName"
+              i18n-placeholder="@@secondLastName"
+            />
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label appId="fecha de nacimiento" i18n="@@birthDate" for="birthDate">Fecha de nacimiento:</label>
+            <input
+              id="birthDate"
+              type="date"
+              formControlName="birthDate"
+              i18n-placeholder="@@birthDate"
+            />
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label appId="imagen del perfil" for="profileImageUrl" i18n="@@profileImageUrl">Imagen del perfil:</label>
+            <input
+              id="profileImageUrl"
+              type="text"
+              formControlName="profileImageUrl"
+              i18n-placeholder="@@profileImageUrl"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wizard-nav">
+      <button
+        type="button"
+        i18n="@@save"
+        (click)="savePersonalData()"
+        [disabled]="isSaving"
+        class="btn btn-primary"
+      >
+        Guardar
+        <span *ngIf="isSaving" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
+    </div>
+  </form>
+</div>

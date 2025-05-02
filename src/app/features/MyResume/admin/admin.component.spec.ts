@@ -1,34 +1,76 @@
+import { Component } from '@angular/core';
 import '@angular/localize/init';
 import { AdminComponent } from './admin.component';
-import { render, screen  } from '@testing-library/angular';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter, Router, RouterOutlet, Routes } from '@angular/router';
+import '@testing-library/jest-dom';
+import { By } from '@angular/platform-browser';
+import { IndexComponent } from './account/index/index.component';
 
-describe(AdminComponent.name, () => {
+@Component({
+  standalone: true,
+  template: '<p>Register Component</p>',
+})
+class MockRegisterComponent {}
+
+describe('AdminComponent (Standalone)', () => {
+  let fixture: ComponentFixture<AdminComponent>;
+  let router: Router;
+
+  const routes: Routes = [
+    {
+      path: '',
+      component: AdminComponent,
+      children: [
+        {
+          path: '', component: IndexComponent
+        },
+        { path: 'register', component: MockRegisterComponent
+        }
+      ],
+    },
+  ];
+
   beforeEach(async () => {
-    await render(AdminComponent);
+    await TestBed.configureTestingModule({
+      imports: [AdminComponent, IndexComponent], // Importar el componente standalone
+      providers: [provideRouter(routes)], // Proveer las rutas para las pruebas
+    }).compileComponents();
+
+    router = TestBed.inject(Router);
+    fixture = TestBed.createComponent(AdminComponent);
+    router.navigateByUrl(''); // Navegación inicial
+    fixture.detectChanges();
   });
 
   it('should create the component', () => {
-    expect(AdminComponent).toBeTruthy();
+    expect(fixture.componentInstance).toBeTruthy();
   });
 
-  it('should display title', () => {
-    expect(screen.getByTestId('header_title')).toHaveTextContent('Vista Early Adopter');
+  it('should have a <router-outlet>', () => {
+    const routerOutlet = fixture.debugElement.query(By.directive(RouterOutlet));
+    expect(routerOutlet).not.toBeNull(); // Verificar que el router-outlet exista
   });
 
-  it('should show what is a view', () => {
-    expect(screen.getByTestId('title_what_is')).toHaveTextContent('¿Qué es una Vista Early Adopter?');
+  it('should render IndexComponent on base route', async () => {
+    // Navegar a la ruta base ('')
+    await router.navigate(['']);
+    fixture.detectChanges();
+
+    // Verificar que el contenido del IndexComponent se renderiza
+    const content = fixture.nativeElement.textContent;
+    expect(content).toContain('¿Qué es una Vista Early Adopter?');
   });
 
-  it('It should show the key features', () => {
-    expect(screen.getByTestId('title_features')).toHaveTextContent('Características Clave');
-  });
+  it('should render child route on navigation', async () => {
+    // Navegar a la ruta hija "register"
+    await router.navigate(['register']);
+    fixture.detectChanges();
 
-  it('It should show how you can help us.', () => {
-    expect(screen.getByTestId('title_help')).toHaveTextContent('¿Cómo puedes ayudarnos?');
+    // Verificar que el contenido del componente hijo se renderiza
+    const content = fixture.nativeElement.textContent;
+    expect(content).toContain('Register Component'); // Verificar el contenido del componente hijo
   });
-
-  it('It should show the message I want to be an early adopter!', () => {
-    expect(screen.getByTestId('button_join')).toHaveTextContent('¡Quiero ser Early Adopter!');
-  });
-
 });
+
+
