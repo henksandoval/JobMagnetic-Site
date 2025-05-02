@@ -9,69 +9,69 @@
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label for="firstName">Nombre:</label>
+            <label appId="nombre" i18n="@@firstName" for="firstName">Nombre:</label>
             <input
               id="firstName"
               type="text"
               formControlName="firstName"
-              placeholder="Nombre"
+              i18n-placeholder="@@firstName"
               required
             />
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="middleName">Segundo nombre:</label>
+            <label appId="segundo nombre" i18n="@@middleName" for="middleName">Segundo nombre:</label>
             <input
               id="middleName"
               type="text"
               formControlName="middleName"
-              placeholder="Segundo nombre"
+              i18n-placeholder="@@middleName"
             />
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="lastName">Apellido:</label>
+            <label appId="apellido" i18n="@@lastName" for="lastName">Apellido:</label>
             <input
               id="lastName"
               type="text"
               formControlName="lastName"
-              placeholder="Apellido"
+              i18n-placeholder="@@lastName"
               required
             />
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label for="secondLastName">Segundo Apellido:</label>
+            <label appId="segundo apellido" i18n="@@secondLastName" for="secondLastName">Segundo apellido:</label>
             <input
               id="secondLastName"
               type="text"
               formControlName="secondLastName"
-              placeholder="Segundo apellido"
+              i18n-placeholder="@@secondLastName"
             />
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label for="birthDate">fecha de nacimiento:</label>
+            <label appId="fecha de nacimiento" i18n="@@birthDate" for="birthDate">Fecha de nacimiento:</label>
             <input
               id="birthDate"
               type="date"
               formControlName="birthDate"
-              placeholder="Fecha de nacimiento"
+              i18n-placeholder="@@birthDate"
             />
           </div>
         </div>
         <div class="col-md-8">
           <div class="form-group">
-            <label for="profileImageUrl">imagen del perfil:</label>
+            <label appId="imagen del perfil" for="profileImageUrl" i18n="@@profileImageUrl">Imagen del perfil:</label>
             <input
               id="profileImageUrl"
               type="text"
               formControlName="profileImageUrl"
-              placeholder="URL de la imagen del perfil"
+              i18n-placeholder="@@profileImageUrl"
             />
           </div>
         </div>
@@ -80,6 +80,7 @@
     <div class="wizard-nav">
       <button
         type="button"
+        i18n="@@save"
         (click)="savePersonalData()"
         [disabled]="isSaving"
         class="btn btn-primary"
