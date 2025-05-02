@@ -1,5 +1,5 @@
 /**
- * Template Name: MyResume
+ * Template Name: cv-viewer
  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
  * Updated: Mar 17 2024 with Bootstrap v5.3.3
  * Author: BootstrapMade.com
