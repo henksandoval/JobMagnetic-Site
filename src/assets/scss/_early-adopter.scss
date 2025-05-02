@@ -9,7 +9,6 @@ $color-4: #fff;
 $heading-color: #45505b;
 $color-9: #47aeff;
 
-// Estilos de Early Adopter
 body {
   font-family: $font-family-1;
   margin: 0;
@@ -19,7 +18,6 @@ body {
   line-height: 1.6;
 }
 
-/* Header */
 header {
   background: $accent-color;
   color: $color-4;
@@ -32,7 +30,6 @@ header h1 {
   font-family: $font-family-3;
 }
 
-/* Contenedor principal */
 .container {
   max-width: 800px;
   margin: 2rem auto;

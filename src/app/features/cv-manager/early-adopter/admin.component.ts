@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-early-adopter',
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './admin.component.html',

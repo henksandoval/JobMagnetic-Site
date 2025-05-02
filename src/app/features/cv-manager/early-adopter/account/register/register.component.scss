@@ -6,15 +6,18 @@ body {
   color: #333;
   line-height: 1.6;
 }
+
 header {
   background: #007acc;
   color: white;
   text-align: center;
   padding: 1rem;
 }
+
 header h1 {
   margin: 0;
 }
+
 .container {
   max-width: 800px;
   margin: 2rem auto;
@@ -23,20 +26,25 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
 .wizard-step {
   display: none;
 }
+
 .wizard-step.active {
   display: block;
 }
+
 .form-group {
   margin-bottom: 1.5rem;
 }
+
 label {
   font-weight: bold;
   display: block;
   margin-bottom: 0.5rem;
 }
+
 input, textarea {
   width: 100%;
   padding: 0.75rem;
@@ -44,10 +52,12 @@ input, textarea {
   border-radius: 5px;
   font-size: 1rem;
 }
+
 textarea {
   resize: none;
   height: 100px;
 }
+
 button {
   padding: 0.75rem 1.5rem;
   background-color: #007acc;
@@ -58,14 +68,17 @@ button {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 button:hover {
   background-color: #005f99;
 }
+
 .wizard-nav {
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
 }
+
 .wizard-nav button[disabled] {
   background-color: #ccc;
   cursor: not-allowed;
@@ -76,4 +89,8 @@ button:hover {
   width: 1rem;
   height: 1rem;
   border-width: 0.2em;
+}
+
+.label-with-colon::after {
+  content: ":";
 }

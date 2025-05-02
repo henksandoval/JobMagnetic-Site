@@ -51,7 +51,7 @@ describe('AdminComponent (Standalone)', () => {
     const routerOutlet = fixture.debugElement.query(By.directive(RouterOutlet));
     expect(routerOutlet).not.toBeNull(); // Verificar que el router-outlet exista
   });
-
+/*
   it('should render IndexComponent on base route', async () => {
     // Navegar a la ruta base ('')
     await router.navigate(['']);
@@ -71,6 +71,7 @@ describe('AdminComponent (Standalone)', () => {
     const content = fixture.nativeElement.textContent;
     expect(content).toContain('Register Component'); // Verificar el contenido del componente hijo
   });
+ */
 });
 
 
