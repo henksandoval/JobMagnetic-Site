@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../../home/services/profile.service';
+import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register',
-  standalone: true,
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule, AppIdDirective, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
