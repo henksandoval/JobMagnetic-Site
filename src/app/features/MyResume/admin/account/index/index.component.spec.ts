@@ -12,23 +12,22 @@ describe(IndexComponent.name, () => {
   });
 
   it('should display title', () => {
-    expect(screen.getByTestId('vista Early adopter')).toHaveTextContent('Vista Early Adopter');
+    expect(screen.getByTestId('headerTitle')).toHaveTextContent('Vista Early Adopter');
   });
 
   it('should show what is a view', () => {
-    expect(screen.getByTestId('qué es una vista early adopter')).toHaveTextContent('¿Qué es una Vista Early Adopter?');
+    expect(screen.getByTestId('titleWhatIs')).toHaveTextContent('¿Qué es una Vista Early Adopter?');
   });
 
   it('It should show the key features', () => {
-    expect(screen.getByTestId('características clave')).toHaveTextContent('Características Clave');
+    expect(screen.getByTestId('titleFeatures')).toHaveTextContent('Características Clave');
   });
 
   it('It should show how you can help us.', () => {
-    expect(screen.getByTestId('cómo puedes ayudarnos')).toHaveTextContent('¿Cómo puedes ayudarnos?');
+    expect(screen.getByTestId('titleHelp')).toHaveTextContent('¿Cómo puedes ayudarnos?');
   });
 
   it('It should show the message I want to be an early adopter!', () => {
-    expect(screen.getByTestId('quiero ser early adopter')).toHaveTextContent('¡Quiero ser Early Adopter!');
+    expect(screen.getByTestId('buttonJoin')).toHaveTextContent('¡Quiero ser Early Adopter!');
   });
-
 });
