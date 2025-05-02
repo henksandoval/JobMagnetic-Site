@@ -29,22 +29,20 @@
     "workExperience": "Experiencia laboral",
     "services": "Servicios",
     "skills": "Habilidades",
-    "testimonials": "Testimonios"
-  },
-  "admin": {
-    "header_title": "Vista Early Adopter",
-    "title_what_is": "¿Qué es una Vista Early Adopter?",
-    "desc_what_is": "Es una versión preliminar de un producto o funcionalidad diseñada para usuarios que desean probar nuevas características antes de su lanzamiento oficial. Estos usuarios son clave para darnos retroalimentación y ayudarnos a mejorar.",
-    "title_features": "Características Clave",
-    "features_access": "Acceso limitado a un grupo selecto de usuarios.",
-    "features_interface": "Interfaz experimental y en desarrollo.",
-    "features_feedback": "Retroalimentación activa para mejorar el producto.",
-    "features_purpose": "Propósito exploratorio para validar ideas.",
-    "title_help": "¿Cómo puedes ayudar?",
-    "desc_help": "Como Early Adopter, tendrás la oportunidad de probar nuestras funciones en desarrollo y darnos tus valiosos comentarios. Tu participación es fundamental para ayudarnos a construir un mejor producto.",
-    "button_join": "¡Quiero ser Early Adopter!"
-  },
-  "register": {
+    "testimonials": "Testimonios",
+
+    "headerTitle": "Vista Early Adopter",
+    "titleWhatIs": "¿Qué es una Vista Early Adopter?",
+    "descWhatIs": "Es una versión preliminar de un producto o funcionalidad diseñada para usuarios que desean probar nuevas características antes de su lanzamiento oficial. Estos usuarios son clave para darnos retroalimentación y ayudarnos a mejorar.",
+    "titleFeatures": "Características Clave",
+    "featuresAccess": "Acceso limitado a un grupo selecto de usuarios.",
+    "featuresInterface": "Interfaz experimental y en desarrollo.",
+    "featuresFeedback": "Retroalimentación activa para mejorar el producto.",
+    "featuresPurpose": "Propósito exploratorio para validar ideas.",
+    "titleHelp": "¿Cómo puedes ayudar?",
+    "descHelp": "Como Early Adopter, tendrás la oportunidad de probar nuestras funciones en desarrollo y darnos tus valiosos comentarios. Tu participación es fundamental para ayudarnos a construir un mejor producto.",
+    "buttonJoin": "¡Quiero ser Early Adopter!",
+
     "firstName": "Nombre",
     "middleName": "Segundo nombre",
     "lastName": "Apellido",
