@@ -32,7 +32,7 @@
     "testimonials": "Testimonios"
   },
   "admin": {
-    "title": "Vista Early Adopter",
+    "header_title": "Vista Early Adopter",
     "title_what_is": "¿Qué es una Vista Early Adopter?",
     "desc_what_is": "Es una versión preliminar de un producto o funcionalidad diseñada para usuarios que desean probar nuevas características antes de su lanzamiento oficial. Estos usuarios son clave para darnos retroalimentación y ayudarnos a mejorar.",
     "title_features": "Características Clave",
@@ -43,5 +43,14 @@
     "title_help": "¿Cómo puedes ayudar?",
     "desc_help": "Como Early Adopter, tendrás la oportunidad de probar nuestras funciones en desarrollo y darnos tus valiosos comentarios. Tu participación es fundamental para ayudarnos a construir un mejor producto.",
     "button_join": "¡Quiero ser Early Adopter!"
+  },
+  "register": {
+    "firstName": "Nombre",
+    "middleName": "Segundo nombre",
+    "lastName": "Apellido",
+    "secondLastName": "Segundo apellido",
+    "birthDate": "Fecha de nacimiento",
+    "profileImageUrl": "URL de la imagen del perfil",
+    "save": "Guardar"
   }
 }
