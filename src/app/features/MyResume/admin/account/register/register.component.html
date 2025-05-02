@@ -5,11 +5,11 @@
 <div class="container">
   <form [formGroup]="personalDataForm">
     <div class="wizard-step" [class.active]="currentStep === 0">
-      <h2>Paso 1: Datos Personales</h2>
+      <h2 i18n="@@personalData">Step 1: Personal Data</h2>
       <div class="row">
         <div class="col-md-6">
           <div class="form-group">
-            <label appId="nombre" i18n="@@firstName" for="firstName">Nombre:</label>
+            <label appId="nombre" i18n="@@firstName" for="firstName">First Name:</label>
             <input
               id="firstName"
               type="text"
@@ -21,7 +21,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label appId="segundo nombre" i18n="@@middleName" for="middleName">Segundo nombre:</label>
+            <label appId="segundo nombre" i18n="@@middleName" for="middleName">Middle Name:</label>
             <input
               id="middleName"
               type="text"
@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label appId="apellido" i18n="@@lastName" for="lastName">Apellido:</label>
+            <label appId="apellido" i18n="@@lastName" for="lastName">Last Name:</label>
             <input
               id="lastName"
               type="text"
@@ -44,7 +44,7 @@
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <label appId="segundo apellido" i18n="@@secondLastName" for="secondLastName">Segundo apellido:</label>
+            <label appId="segundo apellido" i18n="@@secondLastName" for="secondLastName">Second Last Name:</label>
             <input
               id="secondLastName"
               type="text"
@@ -55,7 +55,7 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label appId="fecha de nacimiento" i18n="@@birthDate" for="birthDate">Fecha de nacimiento:</label>
+            <label appId="fecha de nacimiento" i18n="@@birthDate" for="birthDate">Birth Date:</label>
             <input
               id="birthDate"
               type="date"
@@ -66,7 +66,7 @@
         </div>
         <div class="col-md-8">
           <div class="form-group">
-            <label appId="imagen del perfil" for="profileImageUrl" i18n="@@profileImageUrl">Imagen del perfil:</label>
+            <label appId="imagen del perfil" for="profileImageUrl" i18n="@@profileImageUrl">Profile picture URL:</label>
             <input
               id="profileImageUrl"
               type="text"
@@ -85,7 +85,7 @@
         [disabled]="isSaving"
         class="btn btn-primary"
       >
-        Guardar
+        Save
         <span *ngIf="isSaving" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
       </button>
     </div>
