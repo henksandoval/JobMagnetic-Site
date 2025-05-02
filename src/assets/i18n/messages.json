@@ -29,22 +29,20 @@
     "workExperience": "Work Experience",
     "services": "Services",
     "skills": "Skills",
-    "testimonials": "Testimonials"
-  },
-  "admin": {
-    "header_title": "Early Adopter View",
-    "title_what_is": "What is an Early Adopter View?",
-    "desc_what_is": "It is a preliminary version of a product or feature designed for users who want to try new functionalities before their official release. These users are key to providing feedback and helping us improve.",
-    "title_features": "Key Features",
-    "features_access": "Limited access to a select group of users.",
-    "features_interface": "Experimental and developing interface.",
-    "features_feedback": "Active feedback to improve the product.",
-    "features_purpose": "Exploratory purpose to validate ideas.",
-    "title_help": "How can you help?",
-    "desc_help": "As an Early Adopter, you will have the opportunity to test our developing features and provide your valuable feedback. Your participation is essential to help us build a better product.",
-    "button_join": "I want to be an Early Adopter!"
-  },
-  "register": {
+    "testimonials": "Testimonials",
+
+    "headerTitle": "Early Adopter View",
+    "titleWhatIs": "What is an Early Adopter View?",
+    "descWhatIs": "It is a preliminary version of a product or feature designed for users who want to try new functionalities before their official release. These users are key to providing feedback and helping us improve.",
+    "titleFeatures": "Key Features",
+    "featuresAccess": "Limited access to a select group of users.",
+    "featuresInterface": "Experimental and developing interface.",
+    "featuresFeedback": "Active feedback to improve the product.",
+    "featuresPurpose": "Exploratory purpose to validate ideas.",
+    "titleHelp": "How can you help?",
+    "descHelp": "As an Early Adopter, you will have the opportunity to test our developing features and provide your valuable feedback. Your participation is essential to help us build a better product.",
+    "buttonJoin": "I want to be an Early Adopter!",
+
     "firstName": "First Name",
     "middleName": "Middle Name",
     "lastName": "Last Name",
