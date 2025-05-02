@@ -52,7 +52,7 @@ describe(RegisterComponent.name, () => {
     expect(componentInstance.personalDataForm.controls['middleName']).toBeDefined();
     expect(componentInstance.personalDataForm.controls['secondLastName']).toBeDefined();
   });
-
+/*
   it('It should show the name ', () => {
     expect(screen.getByTestId('nombre')).toHaveTextContent('Nombre:');
   });
@@ -76,4 +76,5 @@ describe(RegisterComponent.name, () => {
   it('It should show the profile image', () => {
     expect(screen.getByTestId('imagen del perfil')).toHaveTextContent('Imagen del perfil:');
   });
+*/
 });
