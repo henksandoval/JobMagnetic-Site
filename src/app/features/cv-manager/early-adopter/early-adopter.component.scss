@@ -1,1 +1,65 @@
+$font-family-1: "Open Sans", sans-serif;
+$font-family-2: "Raleway", sans-serif;
+$font-family-3: "Poppins", sans-serif;
 
+$background-color-2: #fff;
+$default-color: #272829;
+$accent-color: #0563bb;
+$color-4: #fff;
+$heading-color: #45505b;
+$color-9: #47aeff;
+
+.early-adopter-layout {
+  font-family: $font-family-1;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color-2;
+  color: $default-color;
+  line-height: 1.6;
+
+  header {
+    background: $accent-color;
+    color: $color-4;
+    padding: 1rem 0;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-family: $font-family-3;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: $color-4;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .section {
+    margin-bottom: 1.5rem;
+  }
+
+  .section h2 {
+    color: $heading-color;
+    margin-bottom: 0.5rem;
+    font-family: $font-family-2;
+  }
+
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: $accent-color;
+    color: $color-4;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: $font-family-3;
+
+    &:hover {
+      background-color: $color-9;
+    }
+  }
+}
