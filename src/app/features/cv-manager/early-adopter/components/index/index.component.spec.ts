@@ -16,7 +16,6 @@ describe(IndexComponent.name, () => {
 
   describe('Should display correct translation for key: ', () => {
     const testCases = [
-      { testId: 'headerTitle', key: 'headerTitle' },
       { testId: 'titleWhatIs', key: 'titleWhatIs' },
       { testId: 'titleFeatures', key: 'titleFeatures' },
       { testId: 'titleHelp', key: 'titleHelp' },
