@@ -7,8 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register',
   imports: [FormsModule, ReactiveFormsModule, AppIdDirective, CommonModule],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  templateUrl: './register.component.html'
 })
 export class RegisterComponent implements OnInit {
   currentStep = 0;
