@@ -1,97 +1,104 @@
-<form [formGroup]="personalDataForm">
-  <h2 i18n="@@personalData" class="mb-4">Step 1: Personal Data</h2>
-  <div class="row g-3">
-    <div class="col-md-6">
-      <div class="mb-3">
-        <label appId="firstName" class="form-label label-with-colon" i18n="@@firstName" for="firstName">First Name</label>
-        <input
-          id="firstName"
-          type="text"
-          class="form-control"
-          formControlName="firstName"
-          i18n-placeholder="@@firstNamePlaceholder"
-          placeholder="Enter your first name"
-          required
-        />
+<div class="container my-4 p-4 bg-light rounded shadow">
+  <form [formGroup]="personalDataForm">
+    <h2 i18n="@@personalData" class="mb-4">Step 1: Personal Data</h2>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label appId="firstName" class="form-label label-with-colon" i18n="@@firstName" for="firstName">First
+            Name</label>
+          <input
+            id="firstName"
+            type="text"
+            class="form-control"
+            formControlName="firstName"
+            i18n-placeholder="@@firstNamePlaceholder"
+            placeholder="Enter your first name"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label appId="middleName" class="form-label label-with-colon" i18n="@@middleName" for="middleName">Middle
+            Name</label>
+          <input
+            id="middleName"
+            type="text"
+            class="form-control"
+            formControlName="middleName"
+            i18n-placeholder="@@middleNamePlaceholder"
+            placeholder="Enter your middle name"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label appId="lastName" class="form-label label-with-colon" i18n="@@lastName" for="lastName">Last Name</label>
+          <input
+            id="lastName"
+            type="text"
+            class="form-control"
+            formControlName="lastName"
+            i18n-placeholder="@@lastNamePlaceholder"
+            placeholder="Enter your last name"
+            required
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label appId="secondLastName" class="form-label label-with-colon" i18n="@@secondLastName"
+                 for="secondLastName">
+            Second Last Name
+          </label>
+          <input
+            id="secondLastName"
+            type="text"
+            class="form-control"
+            formControlName="secondLastName"
+            i18n-placeholder="@@secondLastNamePlaceholder"
+            placeholder="Enter your second last name"
+          />
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-3">
+          <label appId="birthDate" class="form-label label-with-colon" i18n="@@birthDate" for="birthDate">Birth
+            Date</label>
+          <input
+            id="birthDate"
+            type="date"
+            class="form-control"
+            formControlName="birthDate"
+          />
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="mb-3">
+          <label appId="profileImageUrl" for="profileImageUrl" class="form-label label-with-colon"
+                 i18n="@@profileImageUrl">Profile Picture URL</label>
+          <input
+            id="profileImageUrl"
+            type="text"
+            class="form-control"
+            formControlName="profileImageUrl"
+            i18n-placeholder="@@profileImageUrlPlaceholder"
+            placeholder="Enter your profile image URL"
+          />
+        </div>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="mb-3">
-        <label appId="middleName" class="form-label label-with-colon" i18n="@@middleName" for="middleName">Middle Name</label>
-        <input
-          id="middleName"
-          type="text"
-          class="form-control"
-          formControlName="middleName"
-          i18n-placeholder="@@middleNamePlaceholder"
-          placeholder="Enter your middle name"
-        />
-      </div>
+    <div class="d-flex justify-content-end mt-4">
+      <button
+        type="button"
+        i18n="@@save"
+        (click)="savePersonalData()"
+        [disabled]="isSaving"
+        class="btn btn-lg btn-primary"
+      >
+        Save
+        <span *ngIf="isSaving" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+      </button>
     </div>
-    <div class="col-md-6">
-      <div class="mb-3">
-        <label appId="lastName" class="form-label label-with-colon" i18n="@@lastName" for="lastName">Last Name</label>
-        <input
-          id="lastName"
-          type="text"
-          class="form-control"
-          formControlName="lastName"
-          i18n-placeholder="@@lastNamePlaceholder"
-          placeholder="Enter your last name"
-          required
-        />
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="mb-3">
-        <label appId="secondLastName" class="form-label label-with-colon" i18n="@@secondLastName" for="secondLastName">
-          Second Last Name
-        </label>
-        <input
-          id="secondLastName"
-          type="text"
-          class="form-control"
-          formControlName="secondLastName"
-          i18n-placeholder="@@secondLastNamePlaceholder"
-          placeholder="Enter your second last name"
-        />
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="mb-3">
-        <label appId="birthDate" class="form-label label-with-colon" i18n="@@birthDate" for="birthDate">Birth Date</label>
-        <input
-          id="birthDate"
-          type="date"
-          class="form-control"
-          formControlName="birthDate"
-        />
-      </div>
-    </div>
-    <div class="col-md-8">
-      <div class="mb-3">
-        <label appId="profileImageUrl" for="profileImageUrl" class="form-label label-with-colon" i18n="@@profileImageUrl">Profile Picture URL</label>
-        <input
-          id="profileImageUrl"
-          type="text"
-          class="form-control"
-          formControlName="profileImageUrl"
-          i18n-placeholder="@@profileImageUrlPlaceholder"
-          placeholder="Enter your profile image URL"
-        />
-      </div>
-    </div>
-  </div>
-  <div class="d-flex justify-content-end mt-4">
-    <button
-      type="button"
-      i18n="@@save"
-      (click)="savePersonalData()"
-      [disabled]="isSaving"
-      class="btn btn-primary"
-    >
-      Save
-      <span *ngIf="isSaving" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-    </button>
-  </div>
-</form>
+  </form>
+</div>
