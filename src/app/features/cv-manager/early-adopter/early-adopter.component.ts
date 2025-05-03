@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   selector: 'app-early-adopter',
   standalone: true,
   imports: [RouterOutlet],
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.scss',
+  templateUrl: './early-adopter.component.html',
+  styleUrl: './early-adopter.component.scss',
 })
-export class AdminComponent {}
+export class EarlyAdopterComponent {}

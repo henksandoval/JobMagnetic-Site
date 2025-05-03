@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import '@angular/localize/init';
-import { AdminComponent } from './admin.component';
+import { EarlyAdopterComponent } from './early-adopter.component';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter, Router, RouterOutlet, Routes } from '@angular/router';
 import '@testing-library/jest-dom';
 import { By } from '@angular/platform-browser';
-import { IndexComponent } from './account/index/index.component';
+import { IndexComponent } from './components/index/index.component';
 
 @Component({
   standalone: true,
@@ -13,14 +13,14 @@ import { IndexComponent } from './account/index/index.component';
 })
 class MockRegisterComponent {}
 
-describe('AdminComponent (Standalone)', () => {
-  let fixture: ComponentFixture<AdminComponent>;
+describe('EarlyAdopterComponent (Standalone)', () => {
+  let fixture: ComponentFixture<EarlyAdopterComponent>;
   let router: Router;
 
   const routes: Routes = [
     {
       path: '',
-      component: AdminComponent,
+      component: EarlyAdopterComponent,
       children: [
         {
           path: '', component: IndexComponent
@@ -33,12 +33,12 @@ describe('AdminComponent (Standalone)', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AdminComponent, IndexComponent], // Importar el componente standalone
+      imports: [EarlyAdopterComponent, IndexComponent], // Importar el componente standalone
       providers: [provideRouter(routes)], // Proveer las rutas para las pruebas
     }).compileComponents();
 
     router = TestBed.inject(Router);
-    fixture = TestBed.createComponent(AdminComponent);
+    fixture = TestBed.createComponent(EarlyAdopterComponent);
     router.navigateByUrl(''); // Navegación inicial
     fixture.detectChanges();
   });
