@@ -1,25 +1,16 @@
-$font-family-1: "Open Sans", sans-serif;
-$font-family-2: "Raleway", sans-serif;
-$font-family-3: "Poppins", sans-serif;
-
-$background-color-2: #fff;
-$default-color: #272829;
-$accent-color: #0563bb;
-$color-4: #fff;
-$heading-color: #45505b;
-$color-9: #47aeff;
+@use "variables" as vars;
 
 .early-adopter-layout {
-  font-family: $font-family-1;
+  font-family: vars.$font-family-1;
   margin: 0;
   padding: 0;
-  background-color: $background-color-2;
-  color: $default-color;
+  background-color: vars.$background-color-2;
+  color: vars.$font-color;
   line-height: 1.6;
 
   header {
-    background: $accent-color;
-    color: $color-4;
+    background: vars.$accent-color;
+    color: vars.$color_4;
     padding: 1rem 0;
     text-align: center;
   }
