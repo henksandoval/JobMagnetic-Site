@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileService } from '../../../../cv-viewer/home/services/profile.service';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
@@ -8,8 +8,7 @@ import { CommonModule } from '@angular/common';
   selector: 'app-register',
   imports: [FormsModule, ReactiveFormsModule, AppIdDirective, CommonModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrl: './register.component.scss'
 })
 export class RegisterComponent implements OnInit {
   currentStep = 0;
