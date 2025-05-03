@@ -1,13 +1,6 @@
 @use "sass:meta";
-@use "variables" as vars;
-
-@use "bootstrap/scss/bootstrap" as bs with (
-  $theme-colors: (
-    "primary": vars.$accent-color,
-  )
-);
+@use "custom_bootstrap" as bs;
 @use "ngx-owl-carousel-o/lib/styles/scss/owl.carousel" as owl;
-
 @use "app";
 
 @include meta.load-css("glightbox/dist/css/glightbox.min");
