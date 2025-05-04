@@ -1,8 +1,7 @@
 @use "sass:meta";
+@use "custom_bootstrap" as bs;
+@use "ngx-owl-carousel-o/lib/styles/scss/owl.carousel" as owl;
 @use "app";
 
 @include meta.load-css("glightbox/dist/css/glightbox.min");
 @include meta.load-css("boxicons/css/boxicons.min");
-@include meta.load-css("bootstrap/dist/css/bootstrap.min");
-@include meta.load-css('ngx-owl-carousel-o/lib/styles/scss/owl.carousel');
-@include meta.load-css('ngx-owl-carousel-o/lib/styles/scss/owl.theme.default');
