@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
 import { ProfileService } from '../../services/profile.service';
-import { ApiEndpoints } from '../../../../../api-endpoints';
+import { ApiEndpoints } from '@core/constants/api-endpoints';
 
 @Component({
   selector: 'app-register',
