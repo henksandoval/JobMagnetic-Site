@@ -4,7 +4,7 @@ import { render } from '@testing-library/angular';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
-import { ProfileService } from '../../../../cv-viewer/services/profile.service';
+import { ProfileService } from '../../services/profile.service';
 
 describe(RegisterComponent.name, () => {
   let mockProfileService: Partial<ProfileService>;

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileService } from '../../../../cv-viewer/services/profile.service';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
+import { ProfileService } from '../../services/profile.service';
 
 @Component({
   selector: 'app-register',

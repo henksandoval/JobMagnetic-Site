@@ -13,7 +13,6 @@ import { Config } from '@core/services/config/interfaces/config';
 import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
 import { UserPersonalDataContract } from '../my-resume/components/cover/contracts/user-personal-data-contract';
 import { SocialNetworkInfo } from '@core/interfaces/social-network-info';
-import { ApiEndpoints } from '../../../api-endpoints';
 
 @Injectable({
   providedIn: 'root',
@@ -27,15 +26,6 @@ export class ProfileService {
 
   profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
 
-  getEndpoints() {
-    return ApiEndpoints;
-  }
-
-  saveData<T>(Url: string, data: T): Observable<T> {
-    const url = `${this.apiBaseUrl}/${Url}`;
-    return this.http.post<T, T>(url, data);
-  }
-
   private loadProfile(userName: string): Observable<Profile> {
     const queryParams = { name: userName };
     let url: string;
@@ -46,7 +36,7 @@ export class ProfileService {
       url = `stubs/data.${userName || 'john'}.json`;
     }
 
-    return this.http.get<ProfileContract>(url.toString()).pipe(
+    return this.http.get<ProfileContract>(url).pipe(
       map(this.transformData.bind(this)),
       catchError((error) => {
         console.error(error);
