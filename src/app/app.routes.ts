@@ -13,6 +13,11 @@ export const routes: Routes = [
       import('./features/cv-viewer/cv-viewer.routes').then((m) => m.cvViewerRoutes),
   },
   {
+    path: '',
+    redirectTo: 'cv-viewer/my-resume',
+    pathMatch: 'full',
+  },
+  {
     path: '**',
     component: PageNotFoundComponent,
   },

@@ -8,8 +8,6 @@ import { mockProfileContract } from '../my-resume/components/profile/mocks/profi
 import { Config } from '@core/services/config/interfaces/config';
 
 describe(ProfileService.name, () => {
-  MockInstance.scope('case');
-
   beforeEach(async () => {
     const config: Config = {
       useAPI: true,

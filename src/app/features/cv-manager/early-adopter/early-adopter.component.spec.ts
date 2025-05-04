@@ -33,13 +33,13 @@ describe('EarlyAdopterComponent (Standalone)', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EarlyAdopterComponent, IndexComponent], // Importar el componente standalone
-      providers: [provideRouter(routes)], // Proveer las rutas para las pruebas
+      imports: [EarlyAdopterComponent, IndexComponent],
+      providers: [provideRouter(routes)],
     }).compileComponents();
 
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(EarlyAdopterComponent);
-    router.navigateByUrl(''); // Navegación inicial
+    router.navigateByUrl('');
     fixture.detectChanges();
   });
 
@@ -49,29 +49,8 @@ describe('EarlyAdopterComponent (Standalone)', () => {
 
   it('should have a <router-outlet>', () => {
     const routerOutlet = fixture.debugElement.query(By.directive(RouterOutlet));
-    expect(routerOutlet).not.toBeNull(); // Verificar que el router-outlet exista
+    expect(routerOutlet).not.toBeNull();
   });
-/*
-  it('should render IndexComponent on base route', async () => {
-    // Navegar a la ruta base ('')
-    await router.navigate(['']);
-    fixture.detectChanges();
-
-    // Verificar que el contenido del IndexComponent se renderiza
-    const content = fixture.nativeElement.textContent;
-    expect(content).toContain('¿Qué es una Vista Early Adopter?');
-  });
-
-  it('should render child route on navigation', async () => {
-    // Navegar a la ruta hija "register"
-    await router.navigate(['register']);
-    fixture.detectChanges();
-
-    // Verificar que el contenido del componente hijo se renderiza
-    const content = fixture.nativeElement.textContent;
-    expect(content).toContain('Register Component'); // Verificar el contenido del componente hijo
-  });
- */
 });
 
 
