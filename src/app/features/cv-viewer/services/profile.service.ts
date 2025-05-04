@@ -22,7 +22,6 @@ export class ProfileService {
   private readonly http = inject(HttpService);
   private readonly stateService = inject(StateService);
   private readonly urlBuilder = inject(UrlBuilderService);
-  private readonly apiBaseUrl = 'https://localhost:7109';
 
   profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
 

@@ -12,11 +12,6 @@ describe(RegisterComponent.name, () => {
 
   beforeEach(async () => {
     mockProfileService = {
-      getEndpoints: jest.fn().mockReturnValue({
-        profile: {
-          personalData: 'https://api.example.com/profile/personal-data',
-        },
-      }),
       saveData: jest.fn().mockReturnValue(of({ success: true })),
     };
 

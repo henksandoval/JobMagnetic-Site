@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
 import { ProfileService } from '../../services/profile.service';
+import { ApiEndpoints } from '../../../../../api-endpoints';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,6 @@ export class RegisterComponent implements OnInit {
   steps = [0, 1, 2];
   personalDataForm!: FormGroup;
   isSaving = false;
-  urlEndpoints: string | undefined;
 
   constructor(
     private fb: FormBuilder,
@@ -23,8 +23,8 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
-    this.urlEndpoints = this.profileService.getEndpoints().profile.personalData;
   }
+
   private initializeForm(): void {
     this.personalDataForm = this.fb.group({
       firstName: [''],
@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.isSaving = true;
-    const urlEndpoint = this.urlEndpoints;
+    const urlEndpoint = ApiEndpoints.profile.personalData;
     const personalData = this.personalDataForm.value;
     if (urlEndpoint != null) {
       this.profileService.saveData(urlEndpoint, personalData).subscribe(
