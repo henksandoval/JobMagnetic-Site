@@ -10,11 +10,6 @@ export const routes: Routes = [
   },
   ...myResumeRoutes,
   {
-    path: '',
-    redirectTo: 'my-resume/john',
-    pathMatch: 'full',
-  },
-  {
     path: '**',
     component: PageNotFoundComponent,
   },
