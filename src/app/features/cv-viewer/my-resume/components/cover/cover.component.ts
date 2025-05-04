@@ -1,5 +1,5 @@
 import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileService } from '../../../services/profile.service';
 import { NgClass } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 

@@ -1,6 +1,6 @@
 import { FooterComponent } from './footer.component';
 import { render, screen } from '@testing-library/angular';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileService } from '../../../services/profile.service';
 import { mockProfile } from '../../components/profile/mocks/profile.mock';
 
 const mockProfileService = {

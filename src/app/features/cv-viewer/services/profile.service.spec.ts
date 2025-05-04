@@ -3,8 +3,8 @@ import { ProfileService } from './profile.service';
 import { HttpService } from '@core/services/http/http.service';
 import { ConfigService } from '@core/services/config/config.service';
 import { of, throwError } from 'rxjs';
-import { mockProfile } from '../components/profile/mocks/profile.mock';
-import { mockProfileContract } from '../components/profile/mocks/profile-contract.mock';
+import { mockProfile } from '../my-resume/components/profile/mocks/profile.mock';
+import { mockProfileContract } from '../my-resume/components/profile/mocks/profile-contract.mock';
 import { Config } from '@core/services/config/interfaces/config';
 
 describe(ProfileService.name, () => {

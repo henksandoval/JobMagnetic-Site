@@ -1,6 +1,6 @@
 ﻿import { CoverComponent } from './cover.component';
 import { render } from '@testing-library/angular';
-import { ProfileService } from '../../services/profile.service';
+import { ProfileService } from '../../../services/profile.service';
 import { mockProfile } from '../profile/mocks/profile.mock';
 
 jest.useFakeTimers();

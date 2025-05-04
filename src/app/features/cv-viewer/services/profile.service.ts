@@ -1,19 +1,19 @@
 import { inject, Injectable, Signal } from '@angular/core';
 import { catchError, EMPTY, map, Observable } from 'rxjs';
-import { Profile } from '../components/profile/interfaces/profile';
-import { ProfileContract } from '../components/profile/contracts/profile-contract';
+import { Profile } from '../my-resume/components/profile/interfaces/profile';
+import { ProfileContract } from '../my-resume/components/profile/contracts/profile-contract';
 import { HttpService } from '@core/services/http/http.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { StateService } from '@core/services/state/state.service';
-import { UserPersonalData } from '../components/cover/interfaces/user-personal-data';
+import { UserPersonalData } from '../my-resume/components/cover/interfaces/user-personal-data';
 import { SocialNetworkTypes } from '@core/constants/social-network-def';
-import { UserSocialNetwork } from '../components/cover/interfaces/user-social-network';
+import { UserSocialNetwork } from '../my-resume/components/cover/interfaces/user-social-network';
 import { ConfigService } from '@core/services/config/config.service';
 import { Config } from '@core/services/config/interfaces/config';
 import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
-import { UserPersonalDataContract } from '../components/cover/contracts/user-personal-data-contract';
+import { UserPersonalDataContract } from '../my-resume/components/cover/contracts/user-personal-data-contract';
 import { SocialNetworkInfo } from '@core/interfaces/social-network-info';
-import { ApiEndpoints } from '../../../../api-endpoints';
+import { ApiEndpoints } from '../../../api-endpoints';
 
 @Injectable({
   providedIn: 'root',
