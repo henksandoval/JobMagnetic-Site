@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProfileService } from '../../../../cv-viewer/home/services/profile.service';
+import { ProfileService } from '../../../../cv-viewer/my-resume/services/profile.service';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
 

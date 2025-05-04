@@ -1,22 +1,22 @@
 import { AfterViewInit, Component, inject, signal, ViewEncapsulation } from '@angular/core';
-import { HeaderComponent } from '../layouts/header/header.component';
+import { HeaderComponent } from './layouts/header/header.component';
 import { CoverComponent } from './components/cover/cover.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { MENU_SECTIONS } from '../layouts/header/constants';
+import { MENU_SECTIONS } from './layouts/header/constants';
 import { ActivatedRoute } from '@angular/router';
 import { StateService } from '@core/services/state/state.service';
-import { FooterComponent } from '../layouts/footer/footer.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import AOS from 'aos';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-my-resume',
   imports: [HeaderComponent, CoverComponent, FooterComponent, ProfileComponent, AppIdDirective],
-  templateUrl: './home.component.html',
+  templateUrl: './my-resume.component.html',
   styles: ``,
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements AfterViewInit {
+export class MyResumeComponent implements AfterViewInit {
   activatedRoute = inject(ActivatedRoute);
   stateService = inject(StateService);
   sections = signal(MENU_SECTIONS);

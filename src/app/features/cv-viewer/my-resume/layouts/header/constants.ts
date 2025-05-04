@@ -3,7 +3,7 @@ import { MenuSection } from './interfaces/menu-section';
 export const SCROLL_DELAY_MS = 250;
 
 export const MENU_SECTIONS = new Map<string, MenuSection>([
-  ['hero', { target: 'hero', icon: 'bx-home', label: 'Home', isActive: true }],
+  ['hero', { target: 'hero', icon: 'bx-my-resume', label: 'Home', isActive: true }],
   ['about', { target: 'about', icon: 'bx-user', label: 'About', isActive: false }],
   ['resume', { target: 'summary', icon: 'bx-file-blank', label: 'Resume', isActive: false }],
   ['portfolio', { target: 'portfolio', icon: 'bx-book-content', label: 'Portfolio', isActive: false }],

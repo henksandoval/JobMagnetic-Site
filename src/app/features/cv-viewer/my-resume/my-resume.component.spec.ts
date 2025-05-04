@@ -1,19 +1,19 @@
-﻿import { HomeComponent } from './home.component';
+﻿import { MyResumeComponent } from './my-resume.component';
 import { MockBuilder, MockedComponentFixture, MockRender } from 'ng-mocks';
-import { HeaderComponent } from '../layouts/header/header.component';
+import { HeaderComponent } from './layouts/header/header.component';
 import { CoverComponent } from './components/cover/cover.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { FooterComponent } from '../layouts/footer/footer.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
 import { StateService } from '@core/services/state/state.service';
 
-describe(HomeComponent.name, () => {
-  let fixture: MockedComponentFixture<HomeComponent>;
+describe(MyResumeComponent.name, () => {
+  let fixture: MockedComponentFixture<MyResumeComponent>;
 
   beforeEach(() => {
-    return MockBuilder(HomeComponent)
+    return MockBuilder(MyResumeComponent)
       .mock(HeaderComponent)
       .mock(CoverComponent)
       .mock(ProfileComponent)
@@ -34,7 +34,7 @@ describe(HomeComponent.name, () => {
   });
 
   beforeEach(() => {
-    fixture = MockRender(HomeComponent);
+    fixture = MockRender(MyResumeComponent);
     jest.spyOn(document.head, 'appendChild');
     jest.spyOn(document.body, 'appendChild');
   });

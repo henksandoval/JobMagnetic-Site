@@ -1,7 +1,7 @@
 import { FooterComponent } from './footer.component';
 import { render, screen } from '@testing-library/angular';
-import { ProfileService } from '../../home/services/profile.service';
-import { mockProfile } from '../../home/components/profile/mocks/profile.mock';
+import { ProfileService } from '../../services/profile.service';
+import { mockProfile } from '../../components/profile/mocks/profile.mock';
 
 const mockProfileService = {
   profile$: jest.fn().mockReturnValue(mockProfile)

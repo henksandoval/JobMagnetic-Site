@@ -8,7 +8,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
 import { ContactComponent } from './components/contact/contact.component';
 import { ProfileService } from '../../services/profile.service';
 import { NgIf } from '@angular/common';
-import { MenuSection } from '../../../layouts/header/interfaces/menu-section';
+import { MenuSection } from '../../layouts/header/interfaces/menu-section';
 
 @Component({
     selector: 'app-profile',
