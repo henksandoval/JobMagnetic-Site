@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { ProfileComponent } from '../profile/profile.component';
 import { ProfileService } from '../../services/profile.service';
-import { AboutComponent } from '../about/about.component';
 import { NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
-  imports: [ProfileComponent, AboutComponent, NgIf, ReactiveFormsModule],
+  imports: [ProfileComponent, NgIf, ReactiveFormsModule],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {
