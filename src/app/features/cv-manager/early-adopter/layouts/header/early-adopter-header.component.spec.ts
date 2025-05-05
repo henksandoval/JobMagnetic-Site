@@ -1,4 +1,3 @@
-import '@angular/localize/init';
 import { EarlyAdopterHeaderComponent } from './early-adopter-header.component';
 import { loadTranslations } from '@angular/localize';
 import translations from '../../../../../../assets/i18n/messages.json';
