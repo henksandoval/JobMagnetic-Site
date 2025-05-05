@@ -1,4 +1,3 @@
-import '@angular/localize/init';
 import { loadTranslations } from '@angular/localize';
 import { render, screen  } from '@testing-library/angular';
 import { IndexComponent } from './index.component';
