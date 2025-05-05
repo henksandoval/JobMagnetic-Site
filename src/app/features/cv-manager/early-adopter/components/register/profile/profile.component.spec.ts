@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom';
 import '@angular/localize/init';
 import { render } from '@testing-library/angular';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ProfileService } from '../../../services/profile.service';
 import { ProfileComponent } from './profile.component';

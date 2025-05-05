@@ -24,14 +24,14 @@ export class HeaderComponent {
     setTimeout(() => this.scrollTo(section.target), SCROLL_DELAY_MS);
   }
 
+  scrollTo(target: string): void {
+    this.activeSectionId = target;
+    this.pageScrollService.scroll({ document: this.document, scrollTarget: `#${this.activeSectionId}` });
+  }
+
   private deactivateAllSections(): void {
     this.sections()?.forEach((section) => {
       section.isActive = false;
     });
-  }
-
-  scrollTo(target: string): void {
-    this.activeSectionId = target;
-    this.pageScrollService.scroll({ document: this.document, scrollTarget: `#${this.activeSectionId}` });
   }
 }

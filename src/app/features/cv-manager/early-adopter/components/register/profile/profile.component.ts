@@ -1,4 +1,4 @@
-import { inject, Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
@@ -11,24 +11,13 @@ import { NgIf } from '@angular/common';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent implements OnInit {
-  private readonly profileService: ProfileService = inject(ProfileService);
-  private readonly fb: FormBuilder = inject(FormBuilder);
   isSaving = false;
   personalDataForm!: FormGroup;
+  private readonly profileService: ProfileService = inject(ProfileService);
+  private readonly fb: FormBuilder = inject(FormBuilder);
 
   ngOnInit(): void {
     this.initializeForm();
-  }
-
-  private initializeForm(): void {
-    this.personalDataForm = this.fb.group({
-      firstName: [''],
-      lastName: [''],
-      profileImageUrl: [''],
-      birthDate: [''],
-      middleName: [''],
-      secondLastName: [''],
-    });
   }
 
   savePersonalData(): void {
@@ -51,5 +40,16 @@ export class ProfileComponent implements OnInit {
         }
       );
     }
+  }
+
+  private initializeForm(): void {
+    this.personalDataForm = this.fb.group({
+      firstName: [''],
+      lastName: [''],
+      profileImageUrl: [''],
+      birthDate: [''],
+      middleName: [''],
+      secondLastName: [''],
+    });
   }
 }

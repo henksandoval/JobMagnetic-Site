@@ -17,14 +17,6 @@ export class PortfolioComponent implements AfterViewInit {
     transform: this.toPortfolioOverview.bind(this),
   });
 
-  private sortWebPages(webPages: Gallery[]): Gallery[] {
-    return [...webPages].sort((a, b) => a.position - b.position);
-  }
-
-  private groupWebPagesByType(webPages: Gallery[]): string[] {
-    return Array.from(new Set(webPages.map((webPage) => webPage.type)));
-  }
-
   toPortfolioOverview(galleries: Gallery[]): PortfolioOverview {
     return {
       pagesByType: this.groupWebPagesByType(galleries),
@@ -34,6 +26,14 @@ export class PortfolioComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.initializeGLightbox();
+  }
+
+  private sortWebPages(webPages: Gallery[]): Gallery[] {
+    return [...webPages].sort((a, b) => a.position - b.position);
+  }
+
+  private groupWebPagesByType(webPages: Gallery[]): string[] {
+    return Array.from(new Set(webPages.map((webPage) => webPage.type)));
   }
 
   private initializeGLightbox(): void {

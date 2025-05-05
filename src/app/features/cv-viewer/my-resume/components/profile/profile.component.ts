@@ -25,7 +25,7 @@ import { MenuSection } from '../../layouts/header/interfaces/menu-section';
   templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
+  sections = model<Map<string, MenuSection>>();
   private readonly profileService: ProfileService = inject(ProfileService);
   profile$ = this.profileService.profile$;
-  sections = model<Map<string, MenuSection>>();
 }

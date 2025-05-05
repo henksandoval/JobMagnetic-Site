@@ -1,51 +1,51 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="personalDataForm">
-    <h2 i18n="@@personalData" class="mb-4">Step 1: Personal Data</h2>
+    <h2 class="mb-4" i18n="@@personalData">Step 1: Personal Data</h2>
     <div class="row g-3">
       <div class="col-md-6">
         <div class="mb-3">
-          <label appId="firstName" class="form-label label-with-colon" i18n="@@firstName" for="firstName"
+          <label appId="firstName" class="form-label label-with-colon" for="firstName" i18n="@@firstName"
             >First Name</label
           >
           <input
-            id="firstName"
-            type="text"
             class="form-control"
             formControlName="firstName"
             i18n-placeholder="@@firstNamePlaceholder"
+            id="firstName"
             placeholder="Enter your first name"
             required
+            type="text"
           />
         </div>
       </div>
       <div class="col-md-6">
         <div class="mb-3">
-          <label appId="middleName" class="form-label label-with-colon" i18n="@@middleName" for="middleName"
+          <label appId="middleName" class="form-label label-with-colon" for="middleName" i18n="@@middleName"
             >Middle Name</label
           >
           <input
-            id="middleName"
-            type="text"
             class="form-control"
             formControlName="middleName"
             i18n-placeholder="@@middleNamePlaceholder"
+            id="middleName"
             placeholder="Enter your middle name"
+            type="text"
           />
         </div>
       </div>
       <div class="col-md-6">
         <div class="mb-3">
-          <label appId="lastName" class="form-label label-with-colon" i18n="@@lastName" for="lastName"
+          <label appId="lastName" class="form-label label-with-colon" for="lastName" i18n="@@lastName"
             >Last Name</label
           >
           <input
-            id="lastName"
-            type="text"
             class="form-control"
             formControlName="lastName"
             i18n-placeholder="@@lastNamePlaceholder"
+            id="lastName"
             placeholder="Enter your last name"
             required
+            type="text"
           />
         </div>
       </div>
@@ -54,59 +54,59 @@
           <label
             appId="secondLastName"
             class="form-label label-with-colon"
-            i18n="@@secondLastName"
             for="secondLastName"
+            i18n="@@secondLastName"
           >
             Second Last Name
           </label>
           <input
-            id="secondLastName"
-            type="text"
             class="form-control"
             formControlName="secondLastName"
             i18n-placeholder="@@secondLastNamePlaceholder"
+            id="secondLastName"
             placeholder="Enter your second last name"
+            type="text"
           />
         </div>
       </div>
       <div class="col-md-4">
         <div class="mb-3">
-          <label appId="birthDate" class="form-label label-with-colon" i18n="@@birthDate" for="birthDate"
+          <label appId="birthDate" class="form-label label-with-colon" for="birthDate" i18n="@@birthDate"
             >Birth Date</label
           >
-          <input id="birthDate" type="date" class="form-control" formControlName="birthDate" />
+          <input class="form-control" formControlName="birthDate" id="birthDate" type="date" />
         </div>
       </div>
       <div class="col-md-8">
         <div class="mb-3">
           <label
             appId="profileImageUrl"
-            for="profileImageUrl"
             class="form-label label-with-colon"
+            for="profileImageUrl"
             i18n="@@profileImageUrl"
             >Profile Picture URL</label
           >
           <input
-            id="profileImageUrl"
-            type="text"
             class="form-control"
             formControlName="profileImageUrl"
             i18n-placeholder="@@profileImageUrlPlaceholder"
+            id="profileImageUrl"
             placeholder="Enter your profile image URL"
+            type="text"
           />
         </div>
       </div>
     </div>
     <div class="d-flex justify-content-end mt-4">
       <button
-        type="button"
-        i18n="@@save"
         (click)="savePersonalData()"
         [disabled]="isSaving"
         class="btn btn-lg btn-primary"
+        i18n="@@save"
+        type="button"
       >
         Save
-        <output *ngIf="isSaving" class="spinner-border" role="status" aria-hidden="true"></output>
+        <output *ngIf="isSaving" aria-hidden="true" class="spinner-border" role="status"></output>
       </button>
     </div>
   </form>

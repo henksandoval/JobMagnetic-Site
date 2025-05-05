@@ -2,35 +2,39 @@ $hero-bg-url: "https://bootstrapmade.com/content/demo/Kelly/assets/img/hero-bg.j
 @use './variables' as vars;
 
 #hero {
-	width: 100%;
-	height: 100vh;
-	background: url($hero-bg-url) top right no-repeat;
-	background-size: cover;
-	position: relative;
-	&:before {
-		content: "";
-		background: rgba(255, 255, 255, 0.8);
-		position: absolute;
-		bottom: 0;
-		top: 0;
-		left: 0;
-		right: 0;
-	}
-	h1 {
-		margin: 0;
-		font-size: 64px;
-		font-weight: 700;
-		line-height: 56px;
-		color: vars.$heading-color;
-	}
-	p {
-		color: vars.$heading-color;
-		margin: 15px 0 0 0;
-		font-size: 26px;
-		font-family: vars.$font-family_3;
+  width: 100%;
+  height: 100vh;
+  background: url($hero-bg-url) top right no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    content: "";
+    background: rgba(255, 255, 255, 0.8);
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 56px;
+    color: vars.$heading-color;
+  }
+
+  p {
+    color: vars.$heading-color;
+    margin: 15px 0 0 0;
+    font-size: 26px;
+    font-family: vars.$font-family_3;
+
     .blink {
-			color: vars.$accent-color;
-			letter-spacing: 1px;
+      color: vars.$accent-color;
+      letter-spacing: 1px;
       animation: blink-animation 1s steps(1, end) infinite;
     }
 
@@ -42,19 +46,22 @@ $hero-bg-url: "https://bootstrapmade.com/content/demo/Kelly/assets/img/hero-bg.j
         opacity: 0;
       }
     }
-	}
-	.social-links {
-		margin-top: 30px;
-		a {
-			font-size: 24px;
-			display: inline-block;
-			color: vars.$heading-color;
-			line-height: 1;
-			margin-right: 20px;
-			transition: 0.3s;
-			&:hover {
-				color: vars.$accent-color;
-			}
-		}
-	}
+  }
+
+  .social-links {
+    margin-top: 30px;
+
+    a {
+      font-size: 24px;
+      display: inline-block;
+      color: vars.$heading-color;
+      line-height: 1;
+      margin-right: 20px;
+      transition: 0.3s;
+
+      &:hover {
+        color: vars.$accent-color;
+      }
+    }
+  }
 }

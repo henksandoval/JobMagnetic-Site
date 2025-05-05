@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { Summary } from './interfaces/summary';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
+
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',

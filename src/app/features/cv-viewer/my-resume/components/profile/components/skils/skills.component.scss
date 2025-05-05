@@ -1,63 +1,67 @@
 @use './variables' as vars;
 
 .skills {
-	.progress {
-		height: 60px;
-		display: block;
-		background: none;
-		border-radius: 0;
-		.skill {
-			padding: 10px 0;
-			margin: 0;
-			text-transform: uppercase;
-			display: block;
-			font-weight: 600;
-			font-family: vars.$font-family_3;
-			color: vars.$heading-color;
-			.val {
-				float: right;
-				font-style: normal;
-			}
-		}
-	}
-	.progress-bar-wrap {
-		background: #f2f3f5;
-	}
-	.progress-bar {
-		width: 1px;
-		height: 10px;
-		transition: 0.9s;
-		background-color: vars.$accent-color;
-	}
+  .progress {
+    height: 60px;
+    display: block;
+    background: none;
+    border-radius: 0;
+
+    .skill {
+      padding: 10px 0;
+      margin: 0;
+      text-transform: uppercase;
+      display: block;
+      font-weight: 600;
+      font-family: vars.$font-family_3;
+      color: vars.$heading-color;
+
+      .val {
+        float: right;
+        font-style: normal;
+      }
+    }
+  }
+
+  .progress-bar-wrap {
+    background: #f2f3f5;
+  }
+
+  .progress-bar {
+    width: 1px;
+    height: 10px;
+    transition: 0.9s;
+    background-color: vars.$accent-color;
+  }
 }
 
 .skills_container {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .skill_item {
-	width: 12rem;
-	padding: 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	transition: all .3s;
-	border: 1px solid transparent;
+  width: 12rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s;
+  border: 1px solid transparent;
 }
 
 .skill_icon {
-	width: 8.5rem;
-	height: 8.5rem;
+  width: 8.5rem;
+  height: 8.5rem;
 }
 
 .skill_text {
-	color: #45505b;
-	font-size: 2rem;
-	letter-spacing: .05rem;
-	text-align: center;
-	position: relative;
+  color: #45505b;
+  font-size: 2rem;
+  letter-spacing: .05rem;
+  text-align: center;
+  position: relative;
 }
