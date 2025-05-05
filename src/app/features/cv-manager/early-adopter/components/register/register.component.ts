@@ -4,6 +4,8 @@ import { ProfileComponent } from './profile/profile.component';
 @Component({
   selector: 'app-register',
   imports: [ProfileComponent],
-  templateUrl: './register.component.html',
+  template: `
+    <app-profile></app-profile>
+  `,
 })
 export class RegisterComponent {}
