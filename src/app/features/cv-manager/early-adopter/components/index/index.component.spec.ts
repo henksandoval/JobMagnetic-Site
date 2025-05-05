@@ -1,5 +1,5 @@
 import { loadTranslations } from '@angular/localize';
-import { render, screen  } from '@testing-library/angular';
+import { render, screen } from '@testing-library/angular';
 import { IndexComponent } from './index.component';
 import translations from '../../../../../../assets/i18n/messages.json';
 
@@ -18,7 +18,7 @@ describe(IndexComponent.name, () => {
       { testId: 'titleWhatIs', key: 'titleWhatIs' },
       { testId: 'titleFeatures', key: 'titleFeatures' },
       { testId: 'titleHelp', key: 'titleHelp' },
-      { testId: 'buttonJoin', key: 'buttonJoin' }
+      { testId: 'buttonJoin', key: 'buttonJoin' },
     ];
 
     testCases.forEach(({ testId, key }) => {

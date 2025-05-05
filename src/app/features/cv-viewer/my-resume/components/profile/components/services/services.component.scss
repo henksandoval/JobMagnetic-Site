@@ -1,61 +1,61 @@
 @use './variables' as vars;
 
 .services {
-	.icon-box {
-		text-align: center;
-		transition: all ease-in-out 0.3s;
-		background: #fff;
-		box-shadow: 0 5px 90px 0 rgba(110, 123, 131, 0.05);
+  .icon-box {
+    text-align: center;
+    transition: all ease-in-out 0.3s;
+    background: #fff;
+    box-shadow: 0 5px 90px 0 rgba(110, 123, 131, 0.05);
 
-		.img-fluid {
-			margin: 0 auto;
-			max-width: 100%;
-			max-height: 80%;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			transition: ease-in-out 0.3s;
-			position: relative;
+    .img-fluid {
+      margin: 0 auto;
+      max-width: 100%;
+      max-height: 80%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: ease-in-out 0.3s;
+      position: relative;
 
-			i {
-				font-size: 50px;
-				transition: 0.5s;
-				position: relative;
-			}
+      i {
+        font-size: 50px;
+        transition: 0.5s;
+        position: relative;
+      }
 
-		}
+    }
 
-		.img-fluid img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-		}
+    .img-fluid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-		h4 {
-			font-weight: 600;
-			margin: 10px 0 15px 0;
-			font-size: 22px;
+    h4 {
+      font-weight: 600;
+      margin: 10px 0 15px 0;
+      font-size: 22px;
 
-			a {
-				color: vars.$heading-color;
-				transition: ease-in-out 0.3s;
-			}
-		}
+      a {
+        color: vars.$heading-color;
+        transition: ease-in-out 0.3s;
+      }
+    }
 
-		p {
-			line-height: 24px;
-			font-size: 14px;
-			margin-bottom: 0;
-		}
+    p {
+      line-height: 24px;
+      font-size: 14px;
+      margin-bottom: 0;
+    }
 
-		&:hover {
-			border-color: vars.$border-color_1;
-			box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.08);
-		}
+    &:hover {
+      border-color: vars.$border-color_1;
+      box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.08);
+    }
 
-	}
+  }
 
-	.fase {
-		gap: 80px;
-	}
+  .fase {
+    gap: 80px;
+  }
 }

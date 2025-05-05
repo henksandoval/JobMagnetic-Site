@@ -7,7 +7,7 @@ describe(ConfigService.name, () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ConfigService]
+      providers: [ConfigService],
     });
     service = TestBed.inject(ConfigService);
   });
@@ -19,7 +19,7 @@ describe(ConfigService.name, () => {
   it('should set and get config correctly', () => {
     const mockConfig: Config = {
       useAPI: true,
-      apiUrl: 'https://example.com'
+      apiUrl: 'https://example.com',
     };
 
     service.setConfig(mockConfig);
@@ -28,7 +28,6 @@ describe(ConfigService.name, () => {
     expect(retrievedConfig).toEqual(mockConfig);
     expect(service.isConfigLoaded()).toEqual(true);
   });
-
 
   it('should return undefined if config is not set', () => {
     const retrievedConfig = service.getConfig();

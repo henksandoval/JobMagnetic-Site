@@ -11,7 +11,7 @@ describe(ProfileService.name, () => {
   beforeEach(async () => {
     const config: Config = {
       useAPI: true,
-      apiUrl: 'https://api.example.com'
+      apiUrl: 'https://api.example.com',
     };
 
     await MockBuilder(ProfileService).mock(HttpService);

@@ -8,6 +8,6 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
     <header>
       <h1 appId="headerTitle" i18n="@@headerTitle">Early Adopter View</h1>
     </header>
-  `
+  `,
 })
 export class EarlyAdopterHeaderComponent {}

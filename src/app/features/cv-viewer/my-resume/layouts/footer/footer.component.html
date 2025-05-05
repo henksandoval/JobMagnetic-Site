@@ -5,7 +5,7 @@
     <div class="social-links">
       @for (network of personalData?.socialNetworks; track $index) {
         <a href="{{ network.url }}" [ngClass]="network.type.name" target="_blank" rel="noopener"
-        ><i [ngClass]="['bx', network.type.icon]"></i
+          ><i [ngClass]="['bx', network.type.icon]"></i
         ></a>
       }
     </div>

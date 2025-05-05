@@ -1,135 +1,156 @@
 @use './variables' as vars;
 
 .contact {
-	.info {
-		width: 100%;
-		background: #fff;
-		i {
-			font-size: 20px;
-			color: vars.$accent-color;
-			float: left;
-			width: 44px;
-			height: 44px;
-			background: #eef7ff;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			border-radius: 50px;
-			transition: all 0.3s ease-in-out;
-		}
-		h4 {
-			padding: 0 0 0 60px;
-			font-size: 22px;
-			font-weight: 600;
-			margin-bottom: 5px;
-			color: vars.$heading-color;
-		}
-		p {
-			padding: 0 0 0 60px;
-			margin-bottom: 0;
-			font-size: 14px;
-			color: vars.$color_6;
-		}
-		.email {
-			margin-top: 40px;
-			&:hover {
-				i {
-					background: vars.$accent-color;
-					color: vars.$color_4;
-				}
-			}
-		}
-		.phone {
-			margin-top: 40px;
-			&:hover {
-				i {
-					background: vars.$accent-color;
-					color: vars.$color_4;
-				}
-			}
-		}
-		.address {
-			&:hover {
-				i {
-					background: vars.$accent-color;
-					color: vars.$color_4;
-				}
-			}
-		}
-	}
-	.php-email-form {
-		width: 100%;
-		background: #fff;
-		.form-group {
-			padding-bottom: 8px;
-		}
-		.error-message {
-			display: none;
-			color: vars.$color_4;
-			background: #ed3c0d;
-			text-align: left;
-			padding: 15px;
-			font-weight: 600;
-			br {
-				+ {
-					br {
-						margin-top: 25px;
-					}
-				}
-			}
-		}
-		.sent-message {
-			display: none;
-			color: vars.$color_4;
-			background: #18d26e;
-			text-align: center;
-			padding: 15px;
-			font-weight: 600;
-		}
-		.loading {
-			display: none;
-			background: #fff;
-			text-align: center;
-			padding: 15px;
-			&:before {
-				content: "";
-				display: inline-block;
-				border-radius: 50%;
-				width: 24px;
-				height: 24px;
-				margin: 0 10px -6px 0;
-				border: 3px solid #18d26e;
-				border-top-color: vars.$border-top-color_2;
-				animation: animate-loading 1s linear infinite;
-			}
-		}
-		input {
-			border-radius: 4px;
-			box-shadow: none;
-			font-size: 14px;
-		}
-		textarea {
-			border-radius: 4px;
-			box-shadow: none;
-			font-size: 14px;
-			padding: 10px 12px;
-		}
-		input[type="text"] {
-			height: 44px;
-		}
-		input[type="email"] {
-			height: 44px;
-		}
-		button[type="submit"] {
-			background: vars.$accent-color;
-			border: 0;
-			padding: 10px 35px;
-			color: vars.$color_4;
-			transition: 0.4s;
-			border-radius: 50px;
-			&:hover {
-				background: #0678e3;
-			}
-		}
-	}
+  .info {
+    width: 100%;
+    background: #fff;
+
+    i {
+      font-size: 20px;
+      color: vars.$accent-color;
+      float: left;
+      width: 44px;
+      height: 44px;
+      background: #eef7ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    h4 {
+      padding: 0 0 0 60px;
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: vars.$heading-color;
+    }
+
+    p {
+      padding: 0 0 0 60px;
+      margin-bottom: 0;
+      font-size: 14px;
+      color: vars.$color_6;
+    }
+
+    .email {
+      margin-top: 40px;
+
+      &:hover {
+        i {
+          background: vars.$accent-color;
+          color: vars.$color_4;
+        }
+      }
+    }
+
+    .phone {
+      margin-top: 40px;
+
+      &:hover {
+        i {
+          background: vars.$accent-color;
+          color: vars.$color_4;
+        }
+      }
+    }
+
+    .address {
+      &:hover {
+        i {
+          background: vars.$accent-color;
+          color: vars.$color_4;
+        }
+      }
+    }
+  }
+
+  .php-email-form {
+    width: 100%;
+    background: #fff;
+
+    .form-group {
+      padding-bottom: 8px;
+    }
+
+    .error-message {
+      display: none;
+      color: vars.$color_4;
+      background: #ed3c0d;
+      text-align: left;
+      padding: 15px;
+      font-weight: 600;
+
+      br {
+        + {
+          br {
+            margin-top: 25px;
+          }
+        }
+      }
+    }
+
+    .sent-message {
+      display: none;
+      color: vars.$color_4;
+      background: #18d26e;
+      text-align: center;
+      padding: 15px;
+      font-weight: 600;
+    }
+
+    .loading {
+      display: none;
+      background: #fff;
+      text-align: center;
+      padding: 15px;
+
+      &:before {
+        content: "";
+        display: inline-block;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        margin: 0 10px -6px 0;
+        border: 3px solid #18d26e;
+        border-top-color: vars.$border-top-color_2;
+        animation: animate-loading 1s linear infinite;
+      }
+    }
+
+    input {
+      border-radius: 4px;
+      box-shadow: none;
+      font-size: 14px;
+    }
+
+    textarea {
+      border-radius: 4px;
+      box-shadow: none;
+      font-size: 14px;
+      padding: 10px 12px;
+    }
+
+    input[type="text"] {
+      height: 44px;
+    }
+
+    input[type="email"] {
+      height: 44px;
+    }
+
+    button[type="submit"] {
+      background: vars.$accent-color;
+      border: 0;
+      padding: 10px 35px;
+      color: vars.$color_4;
+      transition: 0.4s;
+      border-radius: 50px;
+
+      &:hover {
+        background: #0678e3;
+      }
+    }
+  }
 }

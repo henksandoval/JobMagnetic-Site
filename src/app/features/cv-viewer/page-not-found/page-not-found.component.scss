@@ -41,19 +41,24 @@ html {
 @keyframes gradient {
   0% {
     background-position: 0 0;
-  } /* Posición inicial del fondo */
+  }
+  /* Posición inicial del fondo */
   25% {
     background-position: 100% 50%;
-  } /* Desplazamiento del fondo */
+  }
+  /* Desplazamiento del fondo */
   50% {
     background-position: 50% 100%;
-  } /* Desplazamiento del fondo */
+  }
+  /* Desplazamiento del fondo */
   75% {
     background-position: 0 50%;
-  } /* Desplazamiento del fondo */
+  }
+  /* Desplazamiento del fondo */
   100% {
     background-position: 50% 0;
-  } /* Posición final del fondo */
+  }
+  /* Posición final del fondo */
 }
 
 /* Contenedor de los círculos */
@@ -106,10 +111,12 @@ html {
 @keyframes borderColorChange {
   0% {
     transform: rotate(0deg);
-  } /* Inicio de la rotación */
+  }
+  /* Inicio de la rotación */
   100% {
     transform: rotate(360deg);
-  } /* Rotación completa */
+  }
+  /* Rotación completa */
 }
 
 /* Animación para el círculo de la izquierda */
@@ -122,10 +129,12 @@ html {
   0%,
   100% {
     transform: translate(-60px, -20px);
-  } /* Mueve el círculo a la izquierda */
+  }
+  /* Mueve el círculo a la izquierda */
   50% {
     transform: translate(10px, 0px);
-  } /* Mueve el círculo hacia el centro */
+  }
+  /* Mueve el círculo hacia el centro */
 }
 
 /* Animación para el círculo de la derecha */
@@ -139,8 +148,10 @@ html {
   0%,
   100% {
     transform: translate(60px, -20px);
-  } /* Mueve el círculo a la derecha */
+  }
+  /* Mueve el círculo a la derecha */
   50% {
     transform: translate(-10px, 0px);
-  } /* Mueve el círculo hacia el centro */
+  }
+  /* Mueve el círculo hacia el centro */
 }

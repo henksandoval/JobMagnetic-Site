@@ -4,7 +4,7 @@ import { ProfileService } from '../../../services/profile.service';
 import { mockProfile } from '../../components/profile/mocks/profile.mock';
 
 const mockProfileService = {
-  profile$: jest.fn().mockReturnValue(mockProfile)
+  profile$: jest.fn().mockReturnValue(mockProfile),
 };
 
 describe(FooterComponent.name, () => {

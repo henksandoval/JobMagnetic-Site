@@ -25,25 +25,6 @@ export class ProfileService {
 
   profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
 
-  private loadProfile(userName: string): Observable<Profile> {
-    const queryParams = { name: userName };
-    let url: string;
-
-    if (this.config.useAPI) {
-      url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
-    } else {
-      url = `stubs/data.${userName || 'john'}.json`;
-    }
-
-    return this.http.get<ProfileContract>(url).pipe(
-      map(this.transformData.bind(this)),
-      catchError((error) => {
-        console.error(error);
-        return EMPTY;
-      })
-    );
-  }
-
   transformData(data: ProfileContract): Profile {
     const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
     return {
@@ -66,10 +47,11 @@ export class ProfileService {
       socialNetworks: data.socialNetworks.reduce((accumulator, network) => {
         const validNetwork: SocialNetworkInfo = {
           name: network.type,
-          icon: network.iconClass
-            ?? network.iconUrl
-            ?? SocialNetworkTypes[network.type as keyof typeof SocialNetworkTypes]?.icon
-            ?? ''
+          icon:
+            network.iconClass ??
+            network.iconUrl ??
+            SocialNetworkTypes[network.type as keyof typeof SocialNetworkTypes]?.icon ??
+            '',
         };
         if (validNetwork) {
           accumulator.push({
@@ -82,5 +64,24 @@ export class ProfileService {
         return accumulator;
       }, [] as UserSocialNetwork[]),
     };
+  }
+
+  private loadProfile(userName: string): Observable<Profile> {
+    const queryParams = { name: userName };
+    let url: string;
+
+    if (this.config.useAPI) {
+      url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
+    } else {
+      url = `stubs/data.${userName || 'john'}.json`;
+    }
+
+    return this.http.get<ProfileContract>(url).pipe(
+      map(this.transformData.bind(this)),
+      catchError((error) => {
+        console.error(error);
+        return EMPTY;
+      })
+    );
   }
 }

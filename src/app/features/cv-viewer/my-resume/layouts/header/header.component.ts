@@ -6,10 +6,10 @@ import { SCROLL_DELAY_MS } from './constants';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 @Component({
-    selector: 'app-header',
-    imports: [NgClass, AppIdDirective],
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+  selector: 'app-header',
+  imports: [NgClass, AppIdDirective],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   sections = model<Map<string, MenuSection>>();
@@ -24,14 +24,14 @@ export class HeaderComponent {
     setTimeout(() => this.scrollTo(section.target), SCROLL_DELAY_MS);
   }
 
+  scrollTo(target: string): void {
+    this.activeSectionId = target;
+    this.pageScrollService.scroll({ document: this.document, scrollTarget: `#${this.activeSectionId}` });
+  }
+
   private deactivateAllSections(): void {
     this.sections()?.forEach((section) => {
       section.isActive = false;
     });
-  }
-
-  scrollTo(target: string): void {
-    this.activeSectionId = target;
-    this.pageScrollService.scroll({ document: this.document, scrollTarget: `#${this.activeSectionId}` });
   }
 }

@@ -1,66 +1,78 @@
 @use './variables' as vars;
 
 .testimonials {
-	.section-header {
-		margin-bottom: 40px;
-	}
-	.testimonials-carousel {
-		overflow: hidden;
-	}
-	.testimonials-slider {
-		overflow: hidden;
-	}
-	.testimonial-item {
-		text-align: center;
-		.testimonial-img {
-			width: 120px;
-			border-radius: 50%;
-			border: 4px solid #fff;
-			margin: 0 auto;
-		}
-		h3 {
-			font-size: 20px;
-			font-weight: bold;
-			margin: 10px 0 5px 0;
-			color: vars.$color_15;
-		}
-		h4 {
-			font-size: 14px;
-			color: vars.$color_16;
-			margin: 0 0 15px 0;
-		}
-		.quote-icon-left {
-			color: vars.$color_17;
-			font-size: 26px;
-			display: inline-block;
-			left: -5px;
-			position: relative;
-		}
-		.quote-icon-right {
-			color: vars.$color_17;
-			font-size: 26px;
-			display: inline-block;
-			right: -5px;
-			position: relative;
-			top: 10px;
-		}
-		p {
-			font-style: italic;
-			margin: 0 auto 15px auto;
-		}
-	}
-	.swiper-pagination {
-		margin-top: 20px;
-		position: relative;
-		.swiper-pagination-bullet {
-			width: 12px;
-			height: 12px;
-			background-color: vars.$background-color_2;
-			opacity: 1;
-			border: 1px solid vars.$accent-color;
-		}
-		.swiper-pagination-bullet-active {
-			background-color: vars.$accent-color;
-		}
-	}
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .testimonials-carousel {
+    overflow: hidden;
+  }
+
+  .testimonials-slider {
+    overflow: hidden;
+  }
+
+  .testimonial-item {
+    text-align: center;
+
+    .testimonial-img {
+      width: 120px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      margin: 0 auto;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin: 10px 0 5px 0;
+      color: vars.$color_15;
+    }
+
+    h4 {
+      font-size: 14px;
+      color: vars.$color_16;
+      margin: 0 0 15px 0;
+    }
+
+    .quote-icon-left {
+      color: vars.$color_17;
+      font-size: 26px;
+      display: inline-block;
+      left: -5px;
+      position: relative;
+    }
+
+    .quote-icon-right {
+      color: vars.$color_17;
+      font-size: 26px;
+      display: inline-block;
+      right: -5px;
+      position: relative;
+      top: 10px;
+    }
+
+    p {
+      font-style: italic;
+      margin: 0 auto 15px auto;
+    }
+  }
+
+  .swiper-pagination {
+    margin-top: 20px;
+    position: relative;
+
+    .swiper-pagination-bullet {
+      width: 12px;
+      height: 12px;
+      background-color: vars.$background-color_2;
+      opacity: 1;
+      border: 1px solid vars.$accent-color;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: vars.$accent-color;
+    }
+  }
 }

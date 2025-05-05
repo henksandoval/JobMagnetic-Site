@@ -4,20 +4,20 @@ import { NgClass } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-cover',
-    imports: [NgClass],
-    templateUrl: './cover.component.html',
-    styleUrl: './cover.component.scss'
+  selector: 'app-cover',
+  imports: [NgClass],
+  templateUrl: './cover.component.html',
+  styleUrl: './cover.component.scss',
 })
 export class CoverComponent implements OnInit, OnDestroy {
+  professions$ = computed(() => this.profile$()?.personalData?.professions || []);
+  currentProfession$ = signal<string>('');
   private professionSubscription: Subscription | undefined;
   private typeProfessionSubscription: Subscription | undefined;
   private readonly profileService: ProfileService = inject(ProfileService);
+  profile$ = this.profileService.profile$;
   private professionIndex = 0;
   private charIndex = 0;
-  profile$ = this.profileService.profile$;
-  professions$ = computed(() => this.profile$()?.personalData?.professions || []);
-  currentProfession$ = signal<string>('');
 
   ngOnInit() {
     this.professionSubscription = interval(1000).subscribe(() => {

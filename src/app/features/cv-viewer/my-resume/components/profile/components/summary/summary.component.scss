@@ -1,54 +1,61 @@
 @use './variables' as vars;
 
 .resume {
-	.resume-title {
-		font-size: 26px;
-		font-weight: 700;
-		margin-top: 20px;
-		margin-bottom: 20px;
-		color: vars.$heading-color;
-	}
-	.resume-item {
-		padding: 0 0 20px 20px;
-		margin-top: -2px;
-		border-left: 2px solid vars.$accent-color;
-		position: relative;
-		h4 {
-			line-height: 18px;
-			font-size: 18px;
-			font-weight: 600;
-			text-transform: uppercase;
-			font-family: vars.$font-family_3;
-			color: vars.$accent-color;
-			margin-bottom: 10px;
-		}
-		h5 {
-			font-size: 16px;
-			background: #f7f8f9;
-			padding: 5px 15px;
-			display: inline-block;
-			font-weight: 600;
-			margin-bottom: 10px;
-		}
-		ul {
-			padding-left: 20px;
-			li {
-				padding-bottom: 10px;
-			}
-		}
-		&:last-child {
-			padding-bottom: 0;
-		}
-		&::before {
-			content: "";
-			position: absolute;
-			width: 16px;
-			height: 16px;
-			border-radius: 50px;
-			left: -9px;
-			top: 0;
-			background: #fff;
-			border: 2px solid vars.$accent-color;
-		}
-	}
+  .resume-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: vars.$heading-color;
+  }
+
+  .resume-item {
+    padding: 0 0 20px 20px;
+    margin-top: -2px;
+    border-left: 2px solid vars.$accent-color;
+    position: relative;
+
+    h4 {
+      line-height: 18px;
+      font-size: 18px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-family: vars.$font-family_3;
+      color: vars.$accent-color;
+      margin-bottom: 10px;
+    }
+
+    h5 {
+      font-size: 16px;
+      background: #f7f8f9;
+      padding: 5px 15px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+
+      li {
+        padding-bottom: 10px;
+      }
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      left: -9px;
+      top: 0;
+      background: #fff;
+      border: 2px solid vars.$accent-color;
+    }
+  }
 }

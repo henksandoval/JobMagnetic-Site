@@ -1,23 +1,18 @@
-import { render } from '@testing-library/angular';
+import { render, screen } from '@testing-library/angular';
 import { RegisterComponent } from './register.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ProfileService } from '../../services/profile.service';
 
 describe(RegisterComponent.name, () => {
-  let mockProfileService: Partial<ProfileService>;
   let componentInstance: RegisterComponent;
 
-  beforeEach(async () => {
-    mockProfileService = {
-      saveData: jest.fn().mockReturnValue(of({ success: true })),
-    };
+  const mockProfileService = {
+    saveProfile: jest.fn(() => of({})),
+  };
 
+  beforeEach(async () => {
     const { fixture } = await render(RegisterComponent, {
-      imports: [ReactiveFormsModule, FormsModule],
-      providers: [
-        { provide: ProfileService, useValue: mockProfileService },
-      ],
+      providers: [{ provide: ProfileService, useValue: mockProfileService }],
     });
 
     componentInstance = fixture.componentInstance;
@@ -27,19 +22,8 @@ describe(RegisterComponent.name, () => {
     expect(componentInstance).toBeTruthy();
   });
 
-  it('should call savePersonalData without errors', () => {
-    componentInstance.savePersonalData();
-    expect(mockProfileService.saveData).toHaveBeenCalled();
-  });
-
-  it('should initialize the form correctly', () => {
-    componentInstance.ngOnInit();
-    expect(componentInstance.personalDataForm).toBeDefined();
-    expect(componentInstance.personalDataForm.controls['firstName']).toBeDefined();
-    expect(componentInstance.personalDataForm.controls['lastName']).toBeDefined();
-    expect(componentInstance.personalDataForm.controls['profileImageUrl']).toBeDefined();
-    expect(componentInstance.personalDataForm.controls['birthDate']).toBeDefined();
-    expect(componentInstance.personalDataForm.controls['middleName']).toBeDefined();
-    expect(componentInstance.personalDataForm.controls['secondLastName']).toBeDefined();
+  it('should render the ProfileComponent with <app-profile>', () => {
+    const profileElement = screen.getByTestId('profile-component');
+    expect(profileElement).toBeTruthy();
   });
 });
