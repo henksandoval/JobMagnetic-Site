@@ -1,11 +1,21 @@
 import { render, screen } from '@testing-library/angular';
 import { RegisterComponent } from './register.component';
+import { of } from 'rxjs';
+import { ProfileService } from '../../services/profile.service';
 
 describe(RegisterComponent.name, () => {
   let componentInstance: RegisterComponent;
 
+  const mockProfileService = {
+    saveProfile: jest.fn(() => of({}))
+  };
+
   beforeEach(async () => {
-    const { fixture } = await render(RegisterComponent);
+    const { fixture } = await render(RegisterComponent, {
+      providers: [
+        { provide: ProfileService, useValue: mockProfileService },
+      ]
+    });
 
     componentInstance = fixture.componentInstance;
   });

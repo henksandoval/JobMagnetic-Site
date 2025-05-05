@@ -39,4 +39,9 @@ describe(ProfileComponent.name, () => {
     expect(componentInstance.personalDataForm.controls['middleName']).toBeDefined();
     expect(componentInstance.personalDataForm.controls['secondLastName']).toBeDefined();
   });
+
+  it('should call savePersonalData without errors', () => {
+    componentInstance.savePersonalData();
+    expect(mockProfileService.saveData).toHaveBeenCalled();
+  });
 });
