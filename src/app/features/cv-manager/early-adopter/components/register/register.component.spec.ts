@@ -7,14 +7,12 @@ describe(RegisterComponent.name, () => {
   let componentInstance: RegisterComponent;
 
   const mockProfileService = {
-    saveProfile: jest.fn(() => of({}))
+    saveProfile: jest.fn(() => of({})),
   };
 
   beforeEach(async () => {
     const { fixture } = await render(RegisterComponent, {
-      providers: [
-        { provide: ProfileService, useValue: mockProfileService },
-      ]
+      providers: [{ provide: ProfileService, useValue: mockProfileService }],
     });
 
     componentInstance = fixture.componentInstance;

@@ -5,7 +5,7 @@ export const myResumeRoutes: Routes = [
   {
     path: 'my-resume',
     redirectTo: 'my-resume/john',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'my-resume/:username',

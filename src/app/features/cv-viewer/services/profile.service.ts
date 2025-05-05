@@ -66,10 +66,11 @@ export class ProfileService {
       socialNetworks: data.socialNetworks.reduce((accumulator, network) => {
         const validNetwork: SocialNetworkInfo = {
           name: network.type,
-          icon: network.iconClass
-            ?? network.iconUrl
-            ?? SocialNetworkTypes[network.type as keyof typeof SocialNetworkTypes]?.icon
-            ?? ''
+          icon:
+            network.iconClass ??
+            network.iconUrl ??
+            SocialNetworkTypes[network.type as keyof typeof SocialNetworkTypes]?.icon ??
+            '',
         };
         if (validNetwork) {
           accumulator.push({

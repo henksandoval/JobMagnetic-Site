@@ -7,8 +7,8 @@ const jestConfig: Config = {
     'ts-jest': {
       tsconfig: '<rootDir>/tsconfig.spec.json',
       isolatedModules: true,
-      stringifyContentPathRegex: '\\.html$'
-    }
+      stringifyContentPathRegex: '\\.html$',
+    },
   },
   moduleNameMapper: {
     '^src/(.*)$': '<rootDir>/src/$1',

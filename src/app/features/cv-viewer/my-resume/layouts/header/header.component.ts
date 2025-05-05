@@ -6,10 +6,10 @@ import { SCROLL_DELAY_MS } from './constants';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 @Component({
-    selector: 'app-header',
-    imports: [NgClass, AppIdDirective],
-    templateUrl: './header.component.html',
-    styleUrl: './header.component.scss'
+  selector: 'app-header',
+  imports: [NgClass, AppIdDirective],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   sections = model<Map<string, MenuSection>>();

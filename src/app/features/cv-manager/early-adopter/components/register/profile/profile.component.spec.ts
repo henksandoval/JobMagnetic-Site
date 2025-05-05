@@ -17,9 +17,7 @@ describe(ProfileComponent.name, () => {
 
     const { fixture } = await render(ProfileComponent, {
       imports: [ReactiveFormsModule, FormsModule],
-      providers: [
-        { provide: ProfileService, useValue: mockProfileService },
-      ],
+      providers: [{ provide: ProfileService, useValue: mockProfileService }],
     });
 
     componentInstance = fixture.componentInstance;

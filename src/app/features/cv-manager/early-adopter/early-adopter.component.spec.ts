@@ -6,7 +6,7 @@ describe(EarlyAdopterComponent.name, () => {
   let componentInstance: EarlyAdopterComponent;
 
   beforeEach(async () => {
-    const { fixture } = await render(EarlyAdopterComponent, { providers: [ provideRouter([])] });
+    const { fixture } = await render(EarlyAdopterComponent, { providers: [provideRouter([])] });
 
     componentInstance = fixture.componentInstance;
   });

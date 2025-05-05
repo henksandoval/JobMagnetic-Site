@@ -67,4 +67,12 @@ export const mockGallery7: Gallery = {
   type: 'Music',
 };
 
-export const mockPortfolio: Gallery[] = [mockGallery, mockGallery2, mockGallery3, mockGallery4, mockGallery5, mockGallery6, mockGallery7];
+export const mockPortfolio: Gallery[] = [
+  mockGallery,
+  mockGallery2,
+  mockGallery3,
+  mockGallery4,
+  mockGallery5,
+  mockGallery6,
+  mockGallery7,
+];

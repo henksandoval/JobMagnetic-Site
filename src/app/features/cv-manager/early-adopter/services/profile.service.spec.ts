@@ -21,7 +21,7 @@ describe(ProfileService.name, () => {
 
   const mockConfig: Config = {
     useAPI: true,
-    apiUrl: 'https://api.example.com'
+    apiUrl: 'https://api.example.com',
   };
 
   beforeEach(() => {
@@ -29,8 +29,8 @@ describe(ProfileService.name, () => {
       providers: [
         ProfileService,
         { provide: HttpService, useClass: MockHttpService },
-        { provide: ConfigService, useClass: MockConfigService }
-      ]
+        { provide: ConfigService, useClass: MockConfigService },
+      ],
     });
 
     service = TestBed.inject(ProfileService);

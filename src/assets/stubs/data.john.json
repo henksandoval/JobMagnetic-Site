@@ -1,12 +1,7 @@
 {
   "personalData": {
     "name": "Brandon Paul Johnson",
-    "professions": [
-      "Developer",
-      "Photographer",
-      "Designer",
-      "Freelancer"
-    ],
+    "professions": ["Developer", "Photographer", "Designer", "Freelancer"],
     "socialNetworks": [
       {
         "type": "Email",

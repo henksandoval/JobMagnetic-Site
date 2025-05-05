@@ -4,10 +4,10 @@ import { NgClass } from '@angular/common';
 import { interval, Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-cover',
-    imports: [NgClass],
-    templateUrl: './cover.component.html',
-    styleUrl: './cover.component.scss'
+  selector: 'app-cover',
+  imports: [NgClass],
+  templateUrl: './cover.component.html',
+  styleUrl: './cover.component.scss',
 })
 export class CoverComponent implements OnInit, OnDestroy {
   private professionSubscription: Subscription | undefined;

@@ -11,18 +11,18 @@ import { NgIf } from '@angular/common';
 import { MenuSection } from '../../layouts/header/interfaces/menu-section';
 
 @Component({
-    selector: 'app-profile',
-    imports: [
-        NgIf,
-        AboutComponent,
-        SkillsComponent,
-        SummaryComponent,
-        PortfolioComponent,
-        ServicesComponent,
-        TestimonialsComponent,
-        ContactComponent,
-    ],
-    templateUrl: './profile.component.html'
+  selector: 'app-profile',
+  imports: [
+    NgIf,
+    AboutComponent,
+    SkillsComponent,
+    SummaryComponent,
+    PortfolioComponent,
+    ServicesComponent,
+    TestimonialsComponent,
+    ContactComponent,
+  ],
+  templateUrl: './profile.component.html',
 })
 export class ProfileComponent {
   private readonly profileService: ProfileService = inject(ProfileService);
