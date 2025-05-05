@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/angular';
 import { TestimonialsComponent } from './testimonials.component';
 import { Testimonial } from './interfaces/testimonial';
-import '@angular/localize/init';
 import { mockTestimonials } from './mocks/testimonials.mocks';
 
 const renderComponent = async () => {

@@ -1,4 +1,3 @@
-import '@angular/localize/init';
 import { render, screen } from '@testing-library/angular';
 import { AboutComponent } from './about.component';
 import { mockAbout } from './mocks/about.mock';

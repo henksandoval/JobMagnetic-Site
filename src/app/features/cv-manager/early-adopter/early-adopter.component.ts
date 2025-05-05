@@ -5,7 +5,12 @@ import { EarlyAdopterHeaderComponent } from './layouts/header/early-adopter-head
 @Component({
   selector: 'app-early-adopter',
   imports: [RouterOutlet, EarlyAdopterHeaderComponent],
-  templateUrl: './early-adopter.component.html',
+  template: `
+    <div class="early-adopter-layout">
+      <app-early-adopter-header></app-early-adopter-header>
+      <router-outlet></router-outlet>
+    </div>
+  `,
   styleUrl: './early-adopter.component.scss',
   encapsulation: ViewEncapsulation.None,
 })

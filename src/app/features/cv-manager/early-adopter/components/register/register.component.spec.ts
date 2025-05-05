@@ -1,5 +1,3 @@
-import '@testing-library/jest-dom';
-import '@angular/localize/init';
 import { render } from '@testing-library/angular';
 import { RegisterComponent } from './register.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';

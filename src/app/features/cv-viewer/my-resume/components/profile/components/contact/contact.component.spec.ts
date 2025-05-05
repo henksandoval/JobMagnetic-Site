@@ -1,4 +1,3 @@
-import '@angular/localize/init';
 import { render, screen } from '@testing-library/angular';
 import { ContactComponent } from './contact.component';
 import { mockContact } from './mocks/contact-profile.mock';
