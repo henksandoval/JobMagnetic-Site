@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ProfileComponent } from '../profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ProfileService } from '../../services/profile.service';
 import { NgIf } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
