@@ -35,9 +35,7 @@
       </div>
       <div class="col-md-6">
         <div class="mb-3">
-          <label appId="lastName" class="form-label label-with-colon" for="lastName" i18n="@@lastName"
-            >Last Name</label
-          >
+          <label appId="lastName" class="form-label label-with-colon" for="lastName" i18n="@@lastName">Last Name</label>
           <input
             class="form-control"
             formControlName="lastName"
@@ -56,9 +54,7 @@
             class="form-label label-with-colon"
             for="secondLastName"
             i18n="@@secondLastName"
-          >
-            Second Last Name
-          </label>
+          >Second Last Name</label>
           <input
             class="form-control"
             formControlName="secondLastName"
@@ -71,9 +67,7 @@
       </div>
       <div class="col-md-4">
         <div class="mb-3">
-          <label appId="birthDate" class="form-label label-with-colon" for="birthDate" i18n="@@birthDate"
-            >Birth Date</label
-          >
+          <label appId="birthDate" class="form-label label-with-colon" for="birthDate" i18n="@@birthDate">Birth Date</label>
           <input class="form-control" formControlName="birthDate" id="birthDate" type="date" />
         </div>
       </div>
@@ -104,9 +98,7 @@
         class="btn btn-lg btn-primary"
         i18n="@@save"
         type="button"
-      >
-        Save
-        <output *ngIf="isSaving" aria-hidden="true" class="spinner-border" role="status"></output>
+      >Save<output *ngIf="isSaving" aria-hidden="true" class="spinner-border" role="status"></output>
       </button>
     </div>
   </form>
