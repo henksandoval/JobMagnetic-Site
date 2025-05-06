@@ -22,7 +22,7 @@ describe(RegisterComponent.name, () => {
     expect(componentInstance).toBeTruthy();
   });
 
-  it('should render the ProfileComponent with <app-profile>', () => {
+  it('should render the ProfileFormComponent with <app-profile-form>', () => {
     const profileElement = screen.getByTestId('profile-component');
     expect(profileElement).toBeTruthy();
   });

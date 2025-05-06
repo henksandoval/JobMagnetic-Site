@@ -6,11 +6,11 @@ import { ProfileService } from '../../../services/profile.service';
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-profile',
+  selector: 'app-profile-form',
   imports: [AppIdDirective, FormsModule, ReactiveFormsModule, NgIf],
-  templateUrl: './profile.component.html',
+  templateUrl: './profile-form.component.html',
 })
-export class ProfileComponent implements OnInit {
+export class ProfileFormComponent implements OnInit {
   isSaving = false;
   personalDataForm!: FormGroup;
   private readonly profileService: ProfileService = inject(ProfileService);

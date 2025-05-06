@@ -4,18 +4,18 @@ import { render } from '@testing-library/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ProfileService } from '../../../services/profile.service';
-import { ProfileComponent } from './profile.component';
+import { ProfileFormComponent } from './profile-form.component';
 
-describe(ProfileComponent.name, () => {
+describe(ProfileFormComponent.name, () => {
   let mockProfileService: Partial<ProfileService>;
-  let componentInstance: ProfileComponent;
+  let componentInstance: ProfileFormComponent;
 
   beforeEach(async () => {
     mockProfileService = {
       saveData: jest.fn().mockReturnValue(of({ success: true })),
     };
 
-    const { fixture } = await render(ProfileComponent, {
+    const { fixture } = await render(ProfileFormComponent, {
       imports: [ReactiveFormsModule, FormsModule],
       providers: [{ provide: ProfileService, useValue: mockProfileService }],
     });
