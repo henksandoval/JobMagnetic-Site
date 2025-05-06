@@ -1,5 +1,6 @@
 import { ResumeFormComponent } from './resume-form.component';
-import { render } from '@testing-library/angular';
+import { render, screen } from '@testing-library/angular';
+import translations from '../../../../../../../assets/i18n/messages.json';
 
 describe(ResumeFormComponent.name, () => {
   let component: ResumeFormComponent;
@@ -23,5 +24,25 @@ describe(ResumeFormComponent.name, () => {
     expect(component.dataForm.controls['title']).toBeDefined();
     expect(component.dataForm.controls['suffix']).toBeDefined();
     expect(component.dataForm.controls['address']).toBeDefined();
+  });
+
+  describe('Should display correct translations in the screen: ', () => {
+    const testCases = [
+      { testId: 'curriculumData', key: 'curriculumData' },
+    ];
+
+    testCases.forEach(({ testId, key }) => {
+      it(`${key}`, () => {
+        if (!(key in translations.translations)) {
+          throw new Error(`Missing translation for key: ${key}`);
+        }
+
+        const element = screen.getByTestId(testId);
+
+        const expectedTranslation = translations.translations[key as keyof typeof translations.translations];
+        expect(element).toBeInTheDocument();
+        expect(element).toHaveTextContent(expectedTranslation);
+      });
+    });
   });
 });
