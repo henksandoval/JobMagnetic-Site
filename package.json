@@ -16,7 +16,7 @@
     "lint:autofix": "run-p lint:fix prettier:write",
     "prettier:write": "prettier --write \"**/*.{ts,html,js,json,md,yml,yaml}\"",
     "validate": "run-s lint test",
-    "i18": "ng extract-i18n"
+    "i18n": "ng extract-i18n"
   },
   "private": true,
   "dependencies": {
