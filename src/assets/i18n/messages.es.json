@@ -25,6 +25,7 @@
     "profileImageUrlPlaceholder": "Escriba la URL de la imagen del perfil",
     "save": "Guardar{$START_TAG_OUTPUT}{$CLOSE_TAG_OUTPUT}",
     "headerTitle": "Vista Early Adopter",
+    "curriculumData": "Paso 2: Datos del Currículum",
     "about": "Acerca de",
     "about_description": "Retrato profesional de una persona mirando al horizonte",
     "birthday": "Fecha de nacimiento",

@@ -24,6 +24,7 @@
     "profileImageUrl": "Profile Picture URL",
     "profileImageUrlPlaceholder": "Enter your profile image URL",
     "save": "Save{$START_TAG_OUTPUT}{$CLOSE_TAG_OUTPUT}",
+    "curriculumData": "Step 2: Curriculum Data",
     "headerTitle": "Early Adopter View",
     "about": "About",
     "about_description": "This is an man looking to horizon",

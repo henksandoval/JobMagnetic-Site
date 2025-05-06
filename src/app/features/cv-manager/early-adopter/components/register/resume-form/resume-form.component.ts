@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 @Component({
   selector: 'app-resume-form',
-  imports: [],
+  imports: [ReactiveFormsModule, AppIdDirective],
   templateUrl: './resume-form.component.html',
   styles: ``,
 })
