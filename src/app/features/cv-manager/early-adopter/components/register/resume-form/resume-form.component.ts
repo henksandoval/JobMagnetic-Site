@@ -7,7 +7,7 @@ import { ApiEndpoints } from '@core/constants/api-endpoints';
 
 @Component({
   selector: 'app-resume-form',
-  imports: [ReactiveFormsModule, AppIdDirective, NgIf],
+  imports: [ReactiveFormsModule, AppIdDirective],
   templateUrl: './resume-form.component.html',
   styles: ``,
 })
