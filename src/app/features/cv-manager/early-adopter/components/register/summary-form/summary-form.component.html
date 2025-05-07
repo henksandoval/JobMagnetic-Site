@@ -1,5 +1,23 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="dataForm">
     <h2 class="mb-4" appId="curriculumData" i18n="@@curriculumData">Step 2: Curriculum Data</h2>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label appId="introductionLabel" class="form-label label-with-colon" for="introduction" i18n="@@introduction"
+          >First Name</label
+          >
+          <input
+            class="form-control"
+            formControlName="introduction"
+            i18n-placeholder="@@introductionPlaceholder"
+            id="introduction"
+            placeholder="Enter an attractive introduction about you"
+            required
+            type="text"
+          />
+        </div>
+      </div>
+    </div>
   </form>
 </div>

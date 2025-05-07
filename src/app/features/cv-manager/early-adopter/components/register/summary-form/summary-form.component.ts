@@ -18,13 +18,7 @@ export class SummaryFormComponent implements OnInit {
 
   private initializeForm(): void {
     this.dataForm = this.formBuilder.group({
-      jobTitle: [''],
-      about: [''],
-      summary: [''],
-      overview: [''],
-      title: [''],
-      suffix: [''],
-      address: [''],
+      introduction: [''],
     });
   }
 }
