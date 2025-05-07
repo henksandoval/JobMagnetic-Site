@@ -1,21 +1,21 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="dataForm">
-    <h2 class="mb-4" appId="curriculumData" i18n="@@curriculumData">Step 2: Curriculum Data</h2>
+    <h2 class="mb-4" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">Step 3: Curriculum Data</h2>
     <div class="row g-3">
-      <div class="col-md-6">
+      <div class="col-md-12">
         <div class="mb-3">
           <label appId="introductionLabel" class="form-label label-with-colon" for="introduction" i18n="@@introduction"
-          >First Name</label
+          >Introduction about you</label
           >
-          <input
+          <textarea
             class="form-control"
             formControlName="introduction"
             i18n-placeholder="@@introductionPlaceholder"
-            id="introduction"
+            appId="introductionInput"
             placeholder="Enter an attractive introduction about you"
-            required
-            type="text"
-          />
+            rows="5"
+            cols="33"
+            required></textarea>
         </div>
       </div>
     </div>

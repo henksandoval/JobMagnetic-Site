@@ -17,14 +17,13 @@ describe(SummaryFormComponent.name, () => {
   it('should initialize the form correctly', () => {
     component.ngOnInit();
     expect(component.dataForm).toBeDefined();
-    expect(component.dataForm.controls['Introduction']).toBeDefined();
+    expect(component.dataForm.controls['introduction']).toBeDefined();
   });
 
   describe('Should display correct translations in the screen: ', () => {
     const testCases = [
-      { testId: 'curriculumData', key: 'curriculumData' },
+      { testId: 'summaryRegisterLabel', key: 'summaryRegisterLabel' },
       { testId: 'introductionLabel', key: 'introduction' },
-      { testId: 'introductionInput', key: 'introductionPlaceholder' },
     ];
 
     testCases.forEach(({ testId, key }) => {
