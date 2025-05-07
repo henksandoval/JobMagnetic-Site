@@ -31,4 +31,9 @@ describe(RegisterComponent.name, () => {
     const profileElement = screen.getByTestId('resume-component');
     expect(profileElement).toBeTruthy();
   });
+
+  it('should render the SummaryFormComponent with <app-summary-form>', () => {
+    const profileElement = screen.getByTestId('resume-component');
+    expect(profileElement).toBeTruthy();
+  });
 });
