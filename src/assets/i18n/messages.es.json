@@ -52,6 +52,19 @@
     "resume": "Currículum",
     "education": "Educación",
     "workExperience": "Experiencia laboral",
-    "testimonials": "Testimonios"
+    "testimonials": "Testimonios",
+    "jobTitle": "Título profesional",
+    "jobTitlePlaceholder": "Escriba su título profesional",
+    "aboutPlaceholder": "Escriba sobre usted",
+    "summary": "Resumen",
+    "summaryPlaceholder": "Escriba un resumen de su experiencia y habilidades",
+    "overview": "Descripción general",
+    "overviewPlaceholder": "Escriba una descripción general",
+    "title": "Título",
+    "titlePlaceholder": "Escriba un título",
+    "suffix": "Sufijo",
+    "suffixPlaceholder": "Escriba un sufijo",
+    "address": "Dirección",
+    "addressPlaceholder": "Escriba su dirección"
   }
 }
