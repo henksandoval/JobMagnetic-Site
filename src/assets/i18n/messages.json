@@ -52,6 +52,20 @@
     "resume": "Resume",
     "education": "Education",
     "workExperience": "Work Experience",
-    "testimonials": "Testimonials"
+    "testimonials": "Testimonials",
+    "jobTitle": "Professional title",
+    "jobTitlePlaceholder": "Enter your professional title",
+    "about": "About",
+    "aboutPlaceholder": "Write about yourself",
+    "summary": "Summary",
+    "summaryPlaceholder": "Write a summary of your experience and skills",
+    "overview": "Overview",
+    "overviewPlaceholder": "Write an overview",
+    "title": "Title",
+    "titlePlaceholder": "Enter a title",
+    "suffix": "Suffix",
+    "suffixPlaceholder": "Enter a suffix",
+    "address": "Address",
+    "addressPlaceholder": "Enter your address"
   }
 }
