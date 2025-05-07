@@ -1,5 +1,88 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="dataForm">
     <h2 class="mb-4" appId="curriculumData" i18n="@@curriculumData">Step 2: Curriculum Data</h2>
+    <div class="row g-3">
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label for="title" appId="title" class="form-label label-with-colon" i18n="@@title">Title</label>
+          <input
+            class="form-control"
+            id="title"
+            i18n-placeholder="@@titlePlaceholder"
+            placeholder="Enter a title"
+          />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="mb-3">
+          <label for="jobTitle" appId="jobTitle" class="form-label label-with-colon" i18n="@@jobTitle">Professional
+            title</label>
+          <textarea class="form-control" id="jobTitle" name="jobTitle" i18n-placeholder="@@jobTitlePlaceholder"
+                    placeholder="Enter your professional title"></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="about" appId="about" class="form-label label-with-colon" i18n="@@about">About</label>
+          <textarea
+            class="form-control"
+            id="about"
+            i18n-placeholder="@@aboutPlaceholder"
+            placeholder="Write about yourself"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="summary" appId="summary" class="form-label label-with-colon" i18n="@@summary">Summary</label>
+          <textarea
+            class="form-control"
+            id="summary"
+            i18n-placeholder="@@summaryPlaceholder"
+            placeholder="Write a summary of your experience and skills"
+          ></textarea>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="overview" appId="overview" class="form-label label-with-colon" i18n="@@overview">Overview</label>
+          <input
+            class="form-control"
+            id="overview"
+            i18n-placeholder="@@overviewPlaceholder"
+            placeholder="Write an overview"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label for="suffix" appId="suffix" class="form-label label-with-colon" i18n="@@suffix">Suffix</label>
+          <input
+            class="form-control"
+            id="suffix"
+            i18n-placeholder="@@suffixPlaceholder"
+            placeholder="Enter a title"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="address" appId="address" class="form-label label-with-colon" i18n="@@address">Address</label>
+        <input
+          class="form-control"
+          id="address"
+          i18n-placeholder="@@addressPlaceholder"
+          placeholder="Enter your address"
+        />
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+      <button
+        (click)="saveResumeData()"
+        class="btn btn-lg btn-primary"
+        i18n="@@save"
+        type="button"
+      >Save<output aria-hidden="true" class="spinner-border" role="status"></output>
+      </button>
+    </div>
   </form>
 </div>
