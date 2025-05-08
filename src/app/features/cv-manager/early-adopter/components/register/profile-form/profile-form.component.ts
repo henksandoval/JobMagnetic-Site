@@ -4,6 +4,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { ProfileService } from '../../../services/profile.service';
 import { NgIf } from '@angular/common';
+import { RegisterComponent } from '../register.component';
 
 @Component({
   selector: 'app-profile-form',
@@ -15,6 +16,7 @@ export class ProfileFormComponent implements OnInit {
   personalDataForm!: FormGroup;
   private readonly profileService: ProfileService = inject(ProfileService);
   private readonly fb: FormBuilder = inject(FormBuilder);
+  private readonly registerComponent: RegisterComponent = inject(RegisterComponent);
 
   ngOnInit(): void {
     this.initializeForm();
@@ -32,6 +34,9 @@ export class ProfileFormComponent implements OnInit {
       this.profileService.saveData(urlEndpoint, personalData).subscribe(
         (response) => {
           console.log(response);
+          if (response.id) {
+            this.registerComponent.getProfileId(response.id);
+          }
           this.isSaving = false;
         },
         (error) => {
