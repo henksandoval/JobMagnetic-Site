@@ -10,8 +10,8 @@ describe(ResumeFormComponent.name, () => {
   beforeEach(async () => {
     const { fixture } = await render(ResumeFormComponent, {
       providers: [
-        { provide: ProfileService, useValue: {} }, // Mock del servicio
-        { provide: HttpService, useValue: {} },   // Mock del servicio
+        { provide: ProfileService, useValue: {} },
+        { provide: HttpService, useValue: {} },
       ],
     });
     component = fixture.componentInstance;
