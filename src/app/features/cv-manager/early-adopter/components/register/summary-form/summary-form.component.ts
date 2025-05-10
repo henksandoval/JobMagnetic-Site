@@ -40,6 +40,7 @@ export class SummaryFormComponent implements OnInit {
       companyName: ['', [Validators.required]],
       companyLocation: ['', [Validators.required]],
       description: [''],
+      responsibilities: [''],
       startDate: ['', [Validators.required]],
       endDate: [''],
     });

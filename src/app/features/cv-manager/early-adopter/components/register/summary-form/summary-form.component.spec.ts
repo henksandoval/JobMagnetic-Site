@@ -22,7 +22,7 @@ describe(SummaryFormComponent.name, () => {
 
   describe('Should display correct translations in the screen: ', () => {
     const testCases = [
-      { testId: 'summaryRegisterLabel', key: 'summaryRegisterLabel' },
+      { testId: 'summaryRegisterTitle', key: 'summaryRegisterTitle' },
       { testId: 'introductionLabel', key: 'introduction' },
     ];
 
@@ -31,5 +31,15 @@ describe(SummaryFormComponent.name, () => {
         testTranslation(testId, key);
       });
     });
+  });
+
+  it('should add education form group to the form array', () => {
+    component.ngOnInit();
+    component.educationForm.controls['degree'].setValue('Bachelor');
+    component.educationForm.controls['institutionName'].setValue('University');
+    component.educationForm.controls['institutionLocation'].setValue('City');
+    component.educationForm.controls['startDate'].setValue(new Date());
+    component.confirmAddEducation();
+    expect(component.educationFormArray.length).toBe(1);
   });
 });
