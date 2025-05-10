@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgForOf } from '@angular/common';
 
 @Component({
   selector: 'app-summary-form',
-  imports: [ReactiveFormsModule, AppIdDirective, DatePipe],
+  imports: [ReactiveFormsModule, AppIdDirective, DatePipe, NgForOf],
   templateUrl: './summary-form.component.html',
   styles: ``,
 })
@@ -86,7 +86,6 @@ export class SummaryFormComponent implements OnInit {
     if (this.dataForm.valid) {
       const formData = this.dataForm.value;
       console.log('Form submitted:', formData);
-
     } else {
       console.log('Form is invalid');
     }

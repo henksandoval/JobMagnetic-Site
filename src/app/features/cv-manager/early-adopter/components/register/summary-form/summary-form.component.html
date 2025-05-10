@@ -1,9 +1,13 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="dataForm">
-    <h2 class="mb-4" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">Step 3: Curriculum Data</h2>
+    <h2 class="mb-4 text-center fw-bold" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">
+      Step 3: Curriculum Data
+    </h2>
 
     <div class="mb-4">
-      <label appId="introductionLabel" class="form-label" for="introduction" i18n="@@introduction">Introduction about you</label>
+      <label appId="introductionLabel" class="form-label fw-semibold" for="introduction" i18n="@@introduction">
+        Introduction about you
+      </label>
       <textarea
         class="form-control"
         formControlName="introduction"
@@ -18,28 +22,47 @@
     <div class="row">
       <div class="col-lg-6">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="m-0" appId="educationSectionTitle" i18n="@@educationSectionTitle">Education</h4>
+          <h4 class="m-0 text-primary fw-bold" appId="educationSectionTitle" i18n="@@educationSectionTitle">
+            Education
+          </h4>
           <button
             type="button"
             class="btn btn-outline-primary btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#educationModal"
             i18n="@@insertEducationButton">
-            Insert
+            <i class="bi bi-plus-circle"></i> Insert
           </button>
         </div>
         <div *ngFor="let edu of educationFormArray.controls; let i = index" [formGroupName]="i">
-          <div class="card mb-3 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">{{ edu.value.degree }}</h5>
-              <p class="card-text">
-                <strong>Institution:</strong> {{ edu.value.institutionName }}<br />
-                <strong>Location:</strong> {{ edu.value.institutionLocation }}<br />
-                <strong>Description:</strong> {{ edu.value.description }}<br />
-                <strong>Start Date:</strong> {{ edu.value.startDate | date }}<br />
-                <strong>End Date:</strong> {{ edu.value.endDate ? (edu.value.endDate | date) : 'Present' }}
-              </p>
-              <button type="button" class="btn btn-danger btn-sm" (click)="removeEducation(i)">Remove</button>
+          <div class="card mb-3 border-0 shadow-sm">
+            <div class="card-body d-flex flex-wrap align-items-center gap-3">
+              <!-- Left Column -->
+              <div class="flex-grow-1">
+                <h5 class="text-primary fw-bold mb-1">{{ edu.value.degree }}</h5>
+                <p class="text-muted fst-italic mb-0">{{ edu.value.institutionName }}</p>
+              </div>
+              <!-- Right Column -->
+              <div class="flex-grow-1">
+                <p class="mb-1">
+                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ edu.value.institutionLocation }}
+                </p>
+                <p class="mb-1">
+                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ edu.value.description }}
+                </p>
+                <p class="mb-1">
+                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ edu.value.startDate | date }}
+                </p>
+                <p class="mb-0">
+                  <i class="bi bi-calendar-check"></i> <strong>End Date:</strong> {{ edu.value.endDate ? (edu.value.endDate | date) : 'Present' }}
+                </p>
+              </div>
+              <!-- Remove Button -->
+              <div>
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeEducation(i)">
+                  <i class="bi bi-trash"></i> Remove
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -47,37 +70,55 @@
 
       <div class="col-lg-6">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="m-0" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">Work Experience</h4>
+          <h4 class="m-0 text-success fw-bold" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">
+            Work Experience
+          </h4>
           <button
             type="button"
-            class="btn btn-outline-primary btn-sm"
+            class="btn btn-outline-success btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#workExperienceModal"
             i18n="@@insertWorkExperienceButton">
-            Insert
+            <i class="bi bi-plus-circle"></i> Insert
           </button>
         </div>
         <div *ngFor="let work of workExperienceFormArray.controls; let i = index" [formGroupName]="i">
-          <div class="card mb-3 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">{{ work.value.jobTitle }}</h5>
-              <p class="card-text">
-                <strong>Company:</strong> {{ work.value.companyName }}<br />
-                <strong>Location:</strong> {{ work.value.companyLocation }}<br />
-                <strong>Description:</strong> {{ work.value.description }}<br />
-                <strong>Start Date:</strong> {{ work.value.startDate | date }}<br />
-                <strong>End Date:</strong> {{ work.value.endDate ? (work.value.endDate | date) : 'Present' }}
-              </p>
-              <button type="button" class="btn btn-danger btn-sm" (click)="removeWorkExperience(i)">Remove</button>
+          <div class="card mb-3 border-0 shadow-sm">
+            <div class="card-body d-flex flex-wrap align-items-center gap-3">
+              <div class="flex-grow-1">
+                <h5 class="text-success fw-bold mb-1">{{ work.value.jobTitle }}</h5>
+                <p class="text-muted fst-italic mb-0">{{ work.value.companyName }}</p>
+              </div>
+              <div class="flex-grow-1">
+                <p class="mb-1">
+                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ work.value.companyLocation }}
+                </p>
+                <p class="mb-1">
+                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ work.value.description }}
+                </p>
+                <p class="mb-1">
+                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ work.value.startDate | date }}
+                </p>
+                <p class="mb-0">
+                  <i class="bi bi-calendar-check"></i> <strong>End Date:</strong> {{ work.value.endDate ? (work.value.endDate | date) : 'Present' }}
+                </p>
+              </div>
+              <div>
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeWorkExperience(i)">
+                  <i class="bi bi-trash"></i> Remove
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <button type="submit" class="btn btn-primary mt-4" i18n="@@submitButton">Submit</button>
+    <button type="submit" class="btn btn-primary mt-4 w-100 fw-bold" i18n="@@submitButton">
+      Submit
+    </button>
   </form>
 </div>
+
 <div class="modal fade" id="educationModal" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
