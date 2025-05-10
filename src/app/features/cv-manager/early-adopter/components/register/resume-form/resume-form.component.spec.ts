@@ -1,6 +1,5 @@
 import { ResumeFormComponent } from './resume-form.component';
-import { render, screen } from '@testing-library/angular';
-import translations from '../../../../../../../assets/i18n/messages.json';
+import { render } from '@testing-library/angular';
 
 describe(ResumeFormComponent.name, () => {
   let component: ResumeFormComponent;
