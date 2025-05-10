@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { DatePipe, NgForOf } from '@angular/common';
@@ -10,13 +10,16 @@ import { DatePipe, NgForOf } from '@angular/common';
   styles: ``,
 })
 export class SummaryFormComponent implements OnInit {
+  private formBuilder: FormBuilder = inject(FormBuilder);
   dataForm!: FormGroup;
   educationForm!: FormGroup;
   workExperienceForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
-
   ngOnInit(): void {
+    this.initializeForms();
+  }
+
+  private initializeForms() {
     this.dataForm = this.formBuilder.group({
       introduction: ['', [Validators.required]],
       education: this.formBuilder.array([]),
