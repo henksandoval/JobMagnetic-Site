@@ -1,23 +1,247 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="dataForm">
     <h2 class="mb-4" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">Step 3: Curriculum Data</h2>
-    <div class="row g-3">
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label appId="introductionLabel" class="form-label label-with-colon" for="introduction" i18n="@@introduction"
-          >Introduction about you</label
-          >
-          <textarea
-            class="form-control"
-            formControlName="introduction"
-            i18n-placeholder="@@introductionPlaceholder"
-            appId="introductionInput"
-            placeholder="Enter an attractive introduction about you"
-            rows="5"
-            cols="33"
-            required></textarea>
+
+    <div class="mb-4">
+      <label appId="introductionLabel" class="form-label" for="introduction" i18n="@@introduction">Introduction about you</label>
+      <textarea
+        class="form-control"
+        formControlName="introduction"
+        i18n-placeholder="@@introductionPlaceholder"
+        appId="introductionInput"
+        placeholder="Enter an attractive introduction about you"
+        rows="5"
+        required>
+      </textarea>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="m-0" appId="educationSectionTitle" i18n="@@educationSectionTitle">Education</h4>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#educationModal"
+            i18n="@@insertEducationButton">
+            Insert
+          </button>
+        </div>
+        <div *ngFor="let edu of educationFormArray.controls; let i = index" [formGroupName]="i">
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">{{ edu.value.degree }}</h5>
+              <p class="card-text">
+                <strong>Institution:</strong> {{ edu.value.institutionName }}<br />
+                <strong>Location:</strong> {{ edu.value.institutionLocation }}<br />
+                <strong>Description:</strong> {{ edu.value.description }}<br />
+                <strong>Start Date:</strong> {{ edu.value.startDate | date }}<br />
+                <strong>End Date:</strong> {{ edu.value.endDate ? (edu.value.endDate | date) : 'Present' }}
+              </p>
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeEducation(i)">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="m-0" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">Work Experience</h4>
+          <button
+            type="button"
+            class="btn btn-outline-primary btn-sm"
+            data-bs-toggle="modal"
+            data-bs-target="#workExperienceModal"
+            i18n="@@insertWorkExperienceButton">
+            Insert
+          </button>
+        </div>
+        <div *ngFor="let work of workExperienceFormArray.controls; let i = index" [formGroupName]="i">
+          <div class="card mb-3 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">{{ work.value.jobTitle }}</h5>
+              <p class="card-text">
+                <strong>Company:</strong> {{ work.value.companyName }}<br />
+                <strong>Location:</strong> {{ work.value.companyLocation }}<br />
+                <strong>Description:</strong> {{ work.value.description }}<br />
+                <strong>Start Date:</strong> {{ work.value.startDate | date }}<br />
+                <strong>End Date:</strong> {{ work.value.endDate ? (work.value.endDate | date) : 'Present' }}
+              </p>
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeWorkExperience(i)">Remove</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <button type="submit" class="btn btn-primary mt-4" i18n="@@submitButton">Submit</button>
   </form>
+</div>
+<div class="modal fade" id="educationModal" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="educationModalLabel" i18n="@@addEducationModalTitle">Insert Education</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted mb-4">Please fill in the details of your education background. All fields marked with * are required.</p>
+        <form [formGroup]="educationForm">
+          <div class="mb-4">
+            <h6 class="text-primary">Degree Information</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="degree" class="form-label" i18n="@@degreeLabel">Degree *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="degree"
+                  formControlName="degree"
+                  placeholder="e.g., Bachelor of Science"
+                  required />
+              </div>
+              <div class="col-md-6">
+                <label for="institutionName" class="form-label" i18n="@@institutionNameLabel">Institution Name *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="institutionName"
+                  formControlName="institutionName"
+                  placeholder="e.g., Harvard University"
+                  required />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-primary">Location and Description</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="institutionLocation" class="form-label" i18n="@@institutionLocationLabel">Location *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="institutionLocation"
+                  formControlName="institutionLocation"
+                  placeholder="e.g., Cambridge, MA"
+                  required />
+              </div>
+              <div class="col-md-6">
+                <label for="description" class="form-label" i18n="@@educationDescriptionLabel">Description</label>
+                <textarea
+                  class="form-control"
+                  id="description"
+                  formControlName="description"
+                  rows="3"
+                  placeholder="Provide details about your studies (optional)"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-primary">Dates</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="startDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
+                <input type="date" class="form-control" id="startDate" formControlName="startDate" required />
+              </div>
+              <div class="col-md-6">
+                <label for="endDate" class="form-label" i18n="@@endDateLabel">End Date</label>
+                <input type="date" class="form-control" id="endDate" formControlName="endDate" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAddEducation()" data-bs-dismiss="modal" i18n="@@saveButton">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="workExperienceModal" tabindex="-1" aria-labelledby="workExperienceModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="workExperienceModalLabel" i18n="@@addWorkExperienceModalTitle">Insert Work Experience</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="text-muted mb-4">Please fill in the details of your work experience. All fields marked with * are required.</p>
+        <form [formGroup]="workExperienceForm">
+          <div class="mb-4">
+            <h6 class="text-primary">Job Details</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="jobTitle" class="form-label" i18n="@@jobTitleLabel">Job Title *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="jobTitle"
+                  formControlName="jobTitle"
+                  placeholder="e.g., Software Engineer"
+                  required />
+              </div>
+              <div class="col-md-6">
+                <label for="companyName" class="form-label" i18n="@@companyNameLabel">Company Name *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="companyName"
+                  formControlName="companyName"
+                  placeholder="e.g., Google"
+                  required />
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-primary">Location and Responsibilities</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="companyLocation" class="form-label" i18n="@@companyLocationLabel">Location *</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="companyLocation"
+                  formControlName="companyLocation"
+                  placeholder="e.g., Mountain View, CA"
+                  required />
+              </div>
+              <div class="col-md-6">
+                <label for="responsibilities" class="form-label" i18n="@@responsibilitiesLabel">Responsibilities</label>
+                <textarea
+                  class="form-control"
+                  id="responsibilities"
+                  formControlName="responsibilities"
+                  rows="3"
+                  placeholder="List key responsibilities (optional)"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <h6 class="text-primary">Dates</h6>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="startDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
+                <input type="date" class="form-control" id="startDate" formControlName="startDate" required />
+              </div>
+              <div class="col-md-6">
+                <label for="endDate" class="form-label" i18n="@@endDateLabel">End Date</label>
+                <input type="date" class="form-control" id="endDate" formControlName="endDate" />
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="confirmAddWorkExperience()" data-bs-dismiss="modal" i18n="@@saveButton">Save</button>
+      </div>
+    </div>
+  </div>
 </div>
