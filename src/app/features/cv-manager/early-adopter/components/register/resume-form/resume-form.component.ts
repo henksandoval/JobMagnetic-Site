@@ -26,7 +26,6 @@ export class ResumeFormComponent implements OnInit {
   }
 
   saveResumeData(): void {
-    debugger;
     if (this.isSaving) {
       return;
     }

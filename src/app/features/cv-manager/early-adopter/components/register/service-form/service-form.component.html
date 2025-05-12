@@ -1,0 +1,175 @@
+<div class="container my-4 p-4 bg-light rounded shadow">
+  <form [formGroup]="serviceDataForm">
+    <h2 class="mb-4" appId="serviceData" i18n="@@serviceData">
+      Step 6: Service Data
+    </h2>
+    <div class="col-md-12">
+      <div class="mb-3">
+        <label
+          for="overview"
+          appId="overview"
+          class="form-label label-with-colon"
+          i18n="@@overview"
+        >
+          Overview
+        </label>
+        <textarea
+          class="form-control"
+          id="overview"
+          formControlName="overview"
+          i18n-placeholder="@@overviewPlaceholder"
+          placeholder="Write an overview"
+        ></textarea>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-2">
+        <div class="mb-3">
+          <label
+            for="position"
+            appId="position"
+            class="form-label label-with-colon"
+            i18n="@@position"
+          >
+            Position
+          </label>
+          <input
+            class="form-control"
+            id="position"
+            formControlName="position"
+            i18n-placeholder="@@positionPlaceholder"
+            placeholder="Enter your position"
+          />
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-3">
+          <label
+            for="title"
+            appId="title"
+            class="form-label label-with-colon"
+            i18n="@@titleService"
+          >
+            Title
+          </label>
+          <input
+            class="form-control"
+            id="title"
+            formControlName="title"
+            i18n-placeholder="@@titleServicePlaceholder"
+            placeholder="Write a title"
+          />
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="mb-3">
+          <label
+            for="description"
+            appId="description"
+            class="form-label label-with-colon"
+            i18n="@@description"
+          >
+            Description
+          </label>
+          <input
+            class="form-control"
+            id="description"
+            formControlName="description"
+            i18n-placeholder="@@descriptionPlaceholder"
+            placeholder="Enter a description"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label
+            for="urlLink"
+            appId="urlLink"
+            class="form-label label-with-colon"
+            i18n="@@urlLink"
+          >
+            UrlLink
+          </label>
+          <input
+            class="form-control"
+            id="urlLink"
+            formControlName="position"
+            i18n-placeholder="@@urlLinkPlaceholder"
+            placeholder="Enter a URL"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label
+            for="urlImage"
+            appId="urlImage"
+            class="form-label label-with-colon"
+            i18n="@@urlImage"
+          >
+            UrlImage
+          </label>
+          <input
+            class="form-control"
+            id="urlImage"
+            formControlName="urlImage"
+            i18n-placeholder="@@urlImagePlaceholder"
+            placeholder="Enter a URL for the image"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label
+            for="urlVideo"
+            appId="urlVideo"
+            class="form-label label-with-colon"
+            i18n="@@urlVideo"
+          >
+            UrlVideo
+          </label>
+          <input
+            class="form-control"
+            id="urlVideo"
+            formControlName="urlVideo"
+            i18n-placeholder="@@urlVideoPlaceholder"
+            placeholder="Enter a url for the video"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-3">
+          <label
+            for="type"
+            appId="type"
+            class="form-label label-with-colon"
+            i18n="@@type"
+          >
+            Type
+          </label>
+          <input
+            class="form-control"
+            id="type"
+            formControlName="type"
+            i18n-placeholder="@@typePlaceholder"
+            placeholder="Write a type"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-end mt-4">
+      <button
+        (click)="saveServiceData()"
+        class="btn btn-lg btn-primary"
+        i18n="@@save"
+        type="button"
+      >Save<output aria-hidden="true" class="spinner-border" role="status"></output>
+      </button>
+    </div>
+  </form>
+</div>
