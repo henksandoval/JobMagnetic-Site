@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } fr
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { DatePipe, NgForOf } from '@angular/common';
 import { Education } from './interfaces/education';
+import { Guid } from 'guid-typescript';
 
 @Component({
   selector: 'app-summary-form',
@@ -13,7 +14,7 @@ import { Education } from './interfaces/education';
 export class SummaryFormComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
   dataForm!: FormGroup;
-  educationArray!: Education[];
+  educationArray: Education[] = [];
   educationForm!: FormGroup;
   workExperienceForm!: FormGroup;
 
@@ -74,9 +75,8 @@ export class SummaryFormComponent implements OnInit {
     }
   }
 
-  removeEducation(index: number): void {
-    this.educationArray.removeAt(index);
-    console.log('Education removed at index:', index);
+  removeEducation(correlationId: Guid): void {
+    console.log('Education removed at index:', correlationId);
   }
 
   removeWorkExperience(index: number): void {
