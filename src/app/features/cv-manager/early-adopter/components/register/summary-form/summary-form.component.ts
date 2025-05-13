@@ -56,6 +56,7 @@ export class SummaryFormComponent implements OnInit {
   confirmAddEducation(): void {
     if (this.educationForm.valid) {
       const education = this.educationForm.value as Education;
+      education.correlationId = Guid.create();
       this.educationArray.push(education);
 
       this.educationForm.reset();
@@ -67,21 +68,16 @@ export class SummaryFormComponent implements OnInit {
   confirmAddWorkExperience(): void {
     if (this.workExperienceForm.valid) {
       this.workExperienceFormArray.push(this.formBuilder.group(this.workExperienceForm.value));
-      console.log('Work Experience added:', this.workExperienceForm.value);
-
       this.workExperienceForm.reset();
-    } else {
-      console.log('Invalid work experience form');
     }
   }
 
   removeEducation(correlationId: Guid): void {
-    console.log('Education removed at index:', correlationId);
+    this.educationArray = this.educationArray.filter((education) => education.correlationId !== correlationId);
   }
 
   removeWorkExperience(index: number): void {
     this.workExperienceFormArray.removeAt(index);
-    console.log('Work experience removed at index:', index);
   }
 
   onSubmit(): void {

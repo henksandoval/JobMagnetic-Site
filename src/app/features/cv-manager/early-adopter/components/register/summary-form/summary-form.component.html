@@ -3,7 +3,6 @@
     <h2 class="mb-4 text-center fw-bold" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">
       Step 3: Curriculum Data
     </h2>
-
     <div class="mb-4">
       <label appId="introductionLabel" class="form-label fw-semibold" for="introduction" i18n="@@introduction">
         Introduction about you
@@ -18,7 +17,6 @@
         required>
       </textarea>
     </div>
-
     <div class="row">
       <div class="col-lg-6">
         <div class="d-flex justify-content-between align-items-center mb-3">
@@ -57,7 +55,7 @@
                 </p>
               </div>
               <div>
-                <button type="button" class="btn btn-danger btn-sm" (click)="removeEducation(edu.correlationId)">
+                <button type="button" class="btn btn-danger btn-sm" (click)="removeEducation(edu.correlationId!)">
                   <i class="bi bi-trash"></i> Remove
                 </button>
               </div>
@@ -65,7 +63,6 @@
           </div>
         }
       </div>
-
       <div class="col-lg-6">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="m-0 text-primary fw-bold" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">
@@ -176,7 +173,6 @@
               </div>
             </div>
           </div>
-
           <div class="mb-4">
             <h6 class="text-primary">Dates</h6>
             <div class="row g-3">
@@ -259,7 +255,6 @@
               </div>
             </div>
           </div>
-
           <div class="mb-4">
             <h6 class="text-primary">Dates</h6>
             <div class="row g-3">
