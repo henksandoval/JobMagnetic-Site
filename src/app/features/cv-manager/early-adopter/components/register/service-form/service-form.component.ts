@@ -47,12 +47,11 @@ export class ServiceFormComponent implements OnInit {
   }
 
   saveServiceData(): void {
-    debugger
     const urlEndpoint = ApiEndpoints.profile.service;
     const formData: ServiceFormBaseModel = {
       profileId: '',
       Overview: this.formData.value.overview,
-      galleryItems: this.formData.value.galleryItems,
+      galleryItems: this.itemsOverview!.galleryItems,
     };
 
     const createService = this.transformFormDataService(formData);
@@ -64,7 +63,7 @@ export class ServiceFormComponent implements OnInit {
       serviceBase: {
         profileId: formData.profileId,
         Overview: formData.Overview,
-        galleryItems: formData.galleryItems.map((item) => ({
+        galleryItems: (formData.galleryItems || []).map((item) => ({
           position: item.position,
           title: item.title,
           description: item.description,
