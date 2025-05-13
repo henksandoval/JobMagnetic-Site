@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { DatePipe, NgForOf } from '@angular/common';
+import { Education } from './interfaces/education';
 
 @Component({
   selector: 'app-summary-form',
@@ -12,6 +13,7 @@ import { DatePipe, NgForOf } from '@angular/common';
 export class SummaryFormComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
   dataForm!: FormGroup;
+  educationArray!: Education[];
   educationForm!: FormGroup;
   workExperienceForm!: FormGroup;
 
@@ -46,18 +48,14 @@ export class SummaryFormComponent implements OnInit {
     });
   }
 
-  get educationFormArray(): FormArray {
-    return this.dataForm.get('education') as FormArray;
-  }
-
   get workExperienceFormArray(): FormArray {
     return this.dataForm.get('workExperiences') as FormArray;
   }
 
   confirmAddEducation(): void {
     if (this.educationForm.valid) {
-      this.educationFormArray.push(this.formBuilder.group(this.educationForm.value));
-      console.log('Education added:', this.educationForm.value);
+      const education = this.educationForm.value as Education;
+      this.educationArray.push(education);
 
       this.educationForm.reset();
     } else {
@@ -77,7 +75,7 @@ export class SummaryFormComponent implements OnInit {
   }
 
   removeEducation(index: number): void {
-    this.educationFormArray.removeAt(index);
+    this.educationArray.removeAt(index);
     console.log('Education removed at index:', index);
   }
 

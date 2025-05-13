@@ -50,6 +50,7 @@
     "@testing-library/angular": "^17.3.7",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/user-event": "^14.6.1",
     "@types/aos": "^3.0.7",
     "@types/jest": "^29.5.14",
     "angular-eslint": "19.3.0",

@@ -27,6 +27,7 @@
           </h4>
           <button
             type="button"
+            appId="btnInsertEducation"
             class="btn btn-outline-primary btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#educationModal"
@@ -133,21 +134,21 @@
             <h6 class="text-primary">Degree Information</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="degree" class="form-label" i18n="@@degreeLabel">Degree *</label>
+                <label for="inputDegree" class="form-label" i18n="@@degreeLabel">Degree *</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="degree"
+                  appId="inputDegree"
                   formControlName="degree"
                   placeholder="e.g., Bachelor of Science"
                   required />
               </div>
               <div class="col-md-6">
-                <label for="institutionName" class="form-label" i18n="@@institutionNameLabel">Institution Name *</label>
+                <label for="inputInstitutionName" class="form-label" i18n="@@institutionNameLabel">Institution Name *</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="institutionName"
+                  appId="inputInstitutionName"
                   formControlName="institutionName"
                   placeholder="e.g., Harvard University"
                   required />
@@ -159,20 +160,20 @@
             <h6 class="text-primary">Location and Description</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="institutionLocation" class="form-label" i18n="@@institutionLocationLabel">Location *</label>
+                <label for="inputInstitutionLocation" class="form-label" i18n="@@institutionLocationLabel">Location *</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="institutionLocation"
+                  appId="inputInstitutionLocation"
                   formControlName="institutionLocation"
                   placeholder="e.g., Cambridge, MA"
                   required />
               </div>
               <div class="col-md-6">
-                <label for="description" class="form-label" i18n="@@educationDescriptionLabel">Description</label>
+                <label for="inputDescription" class="form-label" i18n="@@educationDescriptionLabel">Description</label>
                 <textarea
                   class="form-control"
-                  id="description"
+                  appId="inputDescription"
                   formControlName="description"
                   rows="3"
                   placeholder="Provide details about your studies (optional)"></textarea>
@@ -184,12 +185,12 @@
             <h6 class="text-primary">Dates</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="startDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
-                <input type="date" class="form-control" id="startDate" formControlName="startDate" required />
+                <label for="inputStartDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
+                <input type="date" class="form-control" appId="inputStartDate" formControlName="startDate" required />
               </div>
               <div class="col-md-6">
-                <label for="endDate" class="form-label" i18n="@@endDateLabel">End Date</label>
-                <input type="date" class="form-control" id="endDate" formControlName="endDate" />
+                <label for="inputEndDate" class="form-label" i18n="@@endDateLabel">End Date</label>
+                <input type="date" class="form-control" appId="inputEndDate" formControlName="endDate" />
               </div>
             </div>
           </div>
@@ -197,7 +198,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="confirmAddEducation()" data-bs-dismiss="modal" i18n="@@saveButton">Save</button>
+        <button type="button" appId="btnAddEducation" class="btn btn-primary" (click)="confirmAddEducation()" data-bs-dismiss="modal" i18n="@@saveButton">Save</button>
       </div>
     </div>
   </div>
