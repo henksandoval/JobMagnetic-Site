@@ -1,7 +1,5 @@
 @use "variables" as vars;
 
 @forward "bootstrap/scss/bootstrap" with (
-  $theme-colors: (
-    "primary": vars.$accent-color,
-  ),
+  $theme-colors: vars.$theme-colors,
 );

@@ -23,3 +23,23 @@ $border-color_1: #fff;
 $border-top-color_1: #fff;
 $border-top-color_2: #eee;
 $border-bottom-color_1: #fff;
+
+$primary-color: #0563bb;
+$secondary-color: #6C757DFF;
+$success-color: #198754FF;
+$info-color: #0DCAF0FF;
+$warning-color: #FFC107FF;
+$danger-color: #DC3545FF;
+$light-color: #F8F9FAFF;
+$dark-color: #212529FF;
+
+$theme-colors: (
+  "primary":    $primary-color,
+  "secondary":  $secondary-color,
+  "success":    $success-color,
+  "info":       $info-color,
+  "warning":    $warning-color,
+  "danger":     $danger-color,
+  "light":      $light-color,
+  "dark":       $dark-color,
+);
