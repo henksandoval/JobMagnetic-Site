@@ -1,7 +1,7 @@
 import { Guid } from 'guid-typescript';
 
 export interface Education {
-  correlationId: Guid;
+  correlationId?: Guid;
   degree: string;
   institutionName: string;
   institutionLocation: string;
