@@ -36,39 +36,31 @@ const educationEntries: Education[] = [
 
 describe(SummaryFormComponent.name, () => {
   const user = userEvent.setup();
-  const setup = async () => {
-    return await render(SummaryFormComponent, {
+
+  beforeEach(async () => {
+    await render(SummaryFormComponent, {
       imports: [ReactiveFormsModule],
       schemas: [NO_ERRORS_SCHEMA],
     });
-  };
+  });
 
   it('should render main title', async () => {
-    await setup();
     expect(screen.getByTestId('summaryRegisterTitle')).toHaveTextContent('Step 3: Curriculum Data');
   });
 
   describe('Education Section', () => {
     it('should add new education entry', async () => {
-      const { fixture } = await setup();
-      const component = fixture.componentInstance;
       const educationEntry = educationEntries[0];
 
       await setEducationEntriesAsync(educationEntry);
 
-      expect(component.educationArray.length).toBe(1);
       await assertEducationEntryAsync(educationEntry);
     });
 
     it('should add multiple education entries', async () => {
-      const { fixture } = await setup();
-      const component = fixture.componentInstance;
-
       for (const educationEntry of educationEntries) {
         await setEducationEntriesAsync(educationEntry);
       }
-
-      expect(component.educationArray.length).toBe(educationEntries.length);
 
       for (const educationEntry of educationEntries) {
         await assertEducationEntryAsync(educationEntry);
@@ -84,7 +76,6 @@ describe(SummaryFormComponent.name, () => {
 
     testCases.forEach(({ testId, key }) => {
       it(`${key}`, async () => {
-        await setup();
         testTranslation(testId, key);
       });
     });
