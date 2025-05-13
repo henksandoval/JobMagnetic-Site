@@ -53,6 +53,10 @@ export class SummaryFormComponent implements OnInit {
     return this.dataForm.get('workExperiences') as FormArray;
   }
 
+  getButtonAppId(prefix: string, correlationId: Guid): string {
+    return `${prefix}_${correlationId}`;
+  }
+
   confirmAddEducation(): void {
     if (this.educationForm.valid) {
       const education = this.educationForm.value as Education;

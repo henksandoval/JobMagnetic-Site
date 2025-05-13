@@ -33,29 +33,30 @@
             <i class="bi bi-plus-circle"></i> Insert
           </button>
         </div>
-        @for (edu of educationArray; track edu.correlationId) {
+        @for (education of educationArray; track education.correlationId) {
           <div class="card mb-3 border-0 shadow-sm">
             <div class="card-body d-flex flex-wrap align-items-center gap-3">
               <div class="flex-grow-1">
-                <h5 class="text-primary fw-bold mb-1">{{ edu.degree }}</h5>
-                <p class="text-muted fst-italic mb-0">{{ edu.institutionName }}</p>
+                <h5 class="text-primary fw-bold mb-1">{{ education.degree }}</h5>
+                <p class="text-muted fst-italic mb-0">{{ education.institutionName }}</p>
               </div>
               <div class="flex-grow-1">
                 <p class="mb-1">
-                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ edu.institutionLocation }}
+                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ education.institutionLocation }}
                 </p>
                 <p class="mb-1">
-                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ edu.description }}
+                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ education.description }}
                 </p>
                 <p class="mb-1">
-                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ edu.startDate | date }}
+                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ education.startDate | date }}
                 </p>
                 <p class="mb-0">
-                  <i class="bi bi-calendar-check"></i> <strong>End Date:</strong> {{ edu.endDate ? (edu.endDate | date) : 'Present' }}
+                  <i class="bi bi-calendar-check"></i> <strong>End
+                  Date:</strong> {{ education.endDate ? (education.endDate | date) : 'Present' }}
                 </p>
               </div>
               <div>
-                <button type="button" class="btn btn-danger btn-sm" (click)="removeEducation(edu.correlationId!)">
+                <button [appId]="getButtonAppId('btnRemoveEducation', education.correlationId!)" type="button" class="btn btn-outline-danger btn-sm" (click)="removeEducation(education.correlationId!)">
                   <i class="bi bi-trash"></i> Remove
                 </button>
               </div>
@@ -70,7 +71,8 @@
           </h4>
           <button
             type="button"
-            class="btn btn-outline-success btn-sm"
+            appId="btnInsertWorkExperience"
+            class="btn btn-outline-primary btn-sm"
             data-bs-toggle="modal"
             data-bs-target="#workExperienceModal"
             i18n="@@insertWorkExperienceButton">
@@ -95,11 +97,12 @@
                   <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ work.value.startDate | date }}
                 </p>
                 <p class="mb-0">
-                  <i class="bi bi-calendar-check"></i> <strong>End Date:</strong> {{ work.value.endDate ? (work.value.endDate | date) : 'Present' }}
+                  <i class="bi bi-calendar-check"></i> <strong>End
+                  Date:</strong> {{ work.value.endDate ? (work.value.endDate | date) : 'Present' }}
                 </p>
               </div>
               <div>
-                <button type="button" class="btn btn-danger btn-sm" (click)="removeWorkExperience(i)">
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWorkExperience(i)">
                   <i class="bi bi-trash"></i> Remove
                 </button>
               </div>

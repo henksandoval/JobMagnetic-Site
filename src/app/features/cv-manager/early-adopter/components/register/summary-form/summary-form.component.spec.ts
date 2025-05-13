@@ -6,6 +6,8 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { testTranslation } from '@core/tests/test-utils';
 import { Education } from './interfaces/education';
 import { format } from 'date-fns';
+import { ComponentFixture } from '@angular/core/testing';
+import { Guid } from 'guid-typescript';
 
 const educationEntries: Education[] = [
   {
@@ -36,12 +38,16 @@ const educationEntries: Education[] = [
 
 describe(SummaryFormComponent.name, () => {
   const user = userEvent.setup();
+  let componentFixture: ComponentFixture<SummaryFormComponent>;
+
 
   beforeEach(async () => {
-    await render(SummaryFormComponent, {
+    const { fixture } = await render(SummaryFormComponent, {
       imports: [ReactiveFormsModule],
       schemas: [NO_ERRORS_SCHEMA],
     });
+
+    componentFixture = fixture;
   });
 
   it('should render main title', async () => {
@@ -66,6 +72,23 @@ describe(SummaryFormComponent.name, () => {
         await assertEducationEntryAsync(educationEntry);
       }
     }, 10000);
+
+    it('should remove education entry', async () => {
+      const educationEntry = educationEntries[0];
+
+      await setEducationEntriesAsync(educationEntry);
+      const component = componentFixture.componentInstance;
+
+      const itemToDelete: Guid = component.educationArray[0].correlationId!;
+      const deleteButtonId: string = component.getButtonAppId('btnRemoveEducation', itemToDelete);
+      const deleteButton = screen.getByTestId(deleteButtonId);
+      await user.click(deleteButton);
+
+      expect(screen.queryByText(educationEntry.degree)).toBeNull();
+      expect(screen.queryByText(educationEntry.institutionName)).toBeNull();
+      expect(screen.queryByText(educationEntry.institutionLocation)).toBeNull();
+      expect(screen.queryByText(educationEntry.description)).toBeNull();
+    });
   });
 
   describe('Should display correct translations in the screen: ', () => {
