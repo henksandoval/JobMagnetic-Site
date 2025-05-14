@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { ProfileService } from '../../../services/profile.service';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
-import { ResumeCreateCommand, ResumeFormData } from '../models/resumeFormData.model';
 import { NgIf } from '@angular/common';
 import { RegisterComponent } from '../register.component';
+import { ResumeCommand } from '../models/resumeCommand.model';
+import { ResumeCommandBase } from '../models/resumeData.model';
 
 @Component({
   selector: 'app-resume-form',
@@ -36,7 +37,7 @@ export class ResumeFormComponent implements OnInit {
     }
     this.isSaving = true;
     const urlEndpoint = ApiEndpoints.profile.about;
-    const formData: ResumeFormData = this.dataForm.value;
+    const formData: ResumeCommandBase = this.dataForm.value;
     const createResume = this.transformFormDataResume(formData, profileId);
 
     this.profileService.saveData(urlEndpoint, createResume).subscribe(
@@ -63,9 +64,9 @@ export class ResumeFormComponent implements OnInit {
     });
   }
 
-  private transformFormDataResume(formData: ResumeFormData, profileId: string): ResumeCreateCommand {
+  private transformFormDataResume(formData: ResumeCommandBase, profileId: string): ResumeCommand {
     return {
-      ResumeQueryData: {
+      resumeData: {
         profileId: profileId,
         jobTitle: formData.jobTitle,
         about: formData.about,
