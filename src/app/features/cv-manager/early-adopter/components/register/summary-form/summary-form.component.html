@@ -139,6 +139,7 @@
                   class="form-control"
                   appId="inputDegree"
                   formControlName="degree"
+                  i18n-placeholder="@@degreeSuggestsPlaceholder"
                   placeholder="e.g., Bachelor of Science"
                   required />
               </div>
@@ -150,6 +151,7 @@
                   class="form-control"
                   appId="inputInstitutionName"
                   formControlName="institutionName"
+                  i18n-placeholder="@@institutionNameSuggestsPlaceholder"
                   placeholder="e.g., Harvard University"
                   required />
               </div>
@@ -166,6 +168,7 @@
                   class="form-control"
                   appId="inputInstitutionLocation"
                   formControlName="institutionLocation"
+                  i18n-placeholder="@@institutionLocationSuggestsPlaceholder"
                   placeholder="e.g., Cambridge, MA"
                   required />
               </div>
@@ -177,6 +180,7 @@
                   appId="inputEducationDescription"
                   formControlName="description"
                   rows="3"
+                  i18n-placeholder="@@educationDescriptionPlaceholder"
                   placeholder="Provide details about your studies (optional)"></textarea>
               </div>
             </div>
@@ -230,6 +234,7 @@
                   appId="inputJobTitle"
                   formControlName="jobTitle"
                   placeholder="e.g., Software Engineer"
+                  i18n-placeholder="@@jobTitleSuggestsPlaceholder"
                   required />
               </div>
               <div class="col-md-6">
@@ -240,6 +245,7 @@
                   appId="inputCompanyName"
                   formControlName="companyName"
                   placeholder="e.g., Google"
+                  i18n-placeholder="@@companyNameSuggestsPlaceholder"
                   required />
               </div>
             </div>
@@ -259,24 +265,26 @@
               </div>
               <div class="col-md-6">
                 <label for="inputWorkDescription" class="form-label"
-                       i18n="@@responsibilitiesLabel">Description</label>
+                       i18n="@@workDescriptionLabel">Description</label>
                 <textarea
                   class="form-control"
                   appId="inputWorkDescription"
                   formControlName="description"
                   rows="3"
+                  i18n-placeholder="@@workDescriptionPlaceholder"
                   placeholder="Provide details about your work (optional)"></textarea>
               </div>
             </div>
             <div class="row g-3">
               <div class="col-12">
                 <label for="inputResponsibilities" class="form-label"
-                       i18n="@@workDescriptionLabel">Responsibilities</label>
+                       i18n="@@responsibilitiesLabel">Responsibilities</label>
                 <textarea
                   class="form-control"
                   appId="inputResponsibilities"
                   formControlName="responsibilities"
                   rows="3"
+                  i18n-placeholder="@@responsibilitiesPlaceholder"
                   placeholder="List key responsibilities (optional)"></textarea>
               </div>
             </div>
