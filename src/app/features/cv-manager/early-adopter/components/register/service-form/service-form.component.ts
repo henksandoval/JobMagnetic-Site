@@ -23,7 +23,6 @@ export class ServiceFormComponent implements OnInit {
   formData!: FormGroup;
   serviceDataForm!: FormGroup;
   itemsOverview: ServiceFormBaseModel | undefined;
-  galleryItemsArray: GalleryFormItems[] = [];
 
   ngOnInit(): void {
     this.initializeForm();
