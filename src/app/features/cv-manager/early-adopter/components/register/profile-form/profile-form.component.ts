@@ -5,6 +5,10 @@ import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { ProfileService } from '../../../services/profile.service';
 import { NgIf } from '@angular/common';
 import { RegisterComponent } from '../register.component';
+import { ProfileCommandModel } from '../models/profileCommand.model';
+import { ProfileDataModel } from '../models/ProfileData.model';
+import { catchError, finalize, tap, throwError } from 'rxjs';
+import { ResponseBackendModel } from '../models/responseBackend.model';
 
 @Component({
   selector: 'app-profile-form',
@@ -29,21 +33,26 @@ export class ProfileFormComponent implements OnInit {
 
     this.isSaving = true;
     const urlEndpoint = ApiEndpoints.profile.personalData;
-    const personalData = this.personalDataForm.value;
+    const profileForm: ProfileDataModel = this.personalDataForm.value;
+    const createProfile: ProfileCommandModel = this.transformFormDataProfile(profileForm);
+
     if (urlEndpoint != null) {
-      this.profileService.saveData(urlEndpoint, personalData).subscribe(
-        (response) => {
-          console.log(response);
+      this.profileService.saveData<ProfileCommandModel, ResponseBackendModel>(urlEndpoint, createProfile).pipe(
+        tap((response: ResponseBackendModel) => {
           if (response.id) {
             this.registerComponent.getProfileId(response.id);
+          } else {
+            console.warn('No se recibió un ID en la respuesta del backend.');
           }
+        }),
+        catchError((error) => {
           this.isSaving = false;
-        },
-        (error) => {
-          console.error('Error al guardar los datos:', error);
+          return throwError(() => new Error('Error al guardar los datos', error));
+        }),
+        finalize(() => {
           this.isSaving = false;
-        }
-      );
+        })
+      ).subscribe();
     }
   }
 
@@ -56,5 +65,18 @@ export class ProfileFormComponent implements OnInit {
       middleName: [''],
       secondLastName: [''],
     });
+  }
+
+  private transformFormDataProfile(formData: ProfileDataModel): ProfileCommandModel {
+    return {
+      profileData: {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        profileImageUrl: formData.profileImageUrl,
+        birthDate: formData.birthDate,
+        middleName: formData.middleName,
+        secondLastName: formData.secondLastName,
+      },
+    };
   }
 }
