@@ -8,6 +8,7 @@ import { Education } from './interfaces/education';
 import { format } from 'date-fns';
 import { ComponentFixture } from '@angular/core/testing';
 import { Guid } from 'guid-typescript';
+import { WorkExperience } from './interfaces/work-experience';
 
 const educationEntries: Education[] = [
   {
@@ -36,6 +37,26 @@ const educationEntries: Education[] = [
   },
 ];
 
+const workExperienceEntries: WorkExperience[] = [
+  {
+    jobTitle: 'Software Engineer',
+    companyName: 'Tech Company',
+    companyLocation: 'Los Angeles',
+    description: 'Software Engineer Description',
+    startDate: new Date('2022-01-01'),
+    endDate: new Date('2023-01-01'),
+    responsibilities: ['Developed software', 'Collaborated with team'],
+  },
+  {
+    jobTitle: 'Data Analyst',
+    companyName: 'Data Company',
+    companyLocation: 'Seattle',
+    description: 'Data Analyst Description',
+    startDate: new Date('2020-06-01'),
+    endDate: new Date('2022-06-01'),
+    responsibilities: ['Analyzed data', 'Created reports'],
+  },
+];
 describe(SummaryFormComponent.name, () => {
   const user = userEvent.setup();
   let componentFixture: ComponentFixture<SummaryFormComponent>;
@@ -56,27 +77,27 @@ describe(SummaryFormComponent.name, () => {
 
   describe('Education Section', () => {
     it('should add new education entry', async () => {
-      const educationEntry = educationEntries[0];
+      const education = educationEntries[0];
 
-      await setEducationEntriesAsync(educationEntry);
+      await setEducationEntriesAsync(education);
 
-      await assertEducationEntryAsync(educationEntry);
+      await assertEducationEntryAsync(education);
     });
 
     it('should add multiple education entries', async () => {
-      for (const educationEntry of educationEntries) {
-        await setEducationEntriesAsync(educationEntry);
+      for (const education of educationEntries) {
+        await setEducationEntriesAsync(education);
       }
 
-      for (const educationEntry of educationEntries) {
-        await assertEducationEntryAsync(educationEntry);
+      for (const education of educationEntries) {
+        await assertEducationEntryAsync(education);
       }
     }, 10000);
 
     it('should remove education entry', async () => {
-      const educationEntry = educationEntries[0];
+      const education = educationEntries[0];
 
-      await setEducationEntriesAsync(educationEntry);
+      await setEducationEntriesAsync(education);
       const component = componentFixture.componentInstance;
 
       const itemToDelete: Guid = component.educationArray[0].correlationId!;
@@ -84,10 +105,47 @@ describe(SummaryFormComponent.name, () => {
       const deleteButton = screen.getByTestId(deleteButtonId);
       await user.click(deleteButton);
 
-      expect(screen.queryByText(educationEntry.degree)).toBeNull();
-      expect(screen.queryByText(educationEntry.institutionName)).toBeNull();
-      expect(screen.queryByText(educationEntry.institutionLocation)).toBeNull();
-      expect(screen.queryByText(educationEntry.description)).toBeNull();
+      expect(screen.queryByText(education.degree)).toBeNull();
+      expect(screen.queryByText(education.institutionName)).toBeNull();
+      expect(screen.queryByText(education.institutionLocation)).toBeNull();
+      expect(screen.queryByText(education.description)).toBeNull();
+    });
+  });
+
+  describe('WorkExperience Section', () => {
+    it('should add new WorkExperience entry', async () => {
+      const workExperience = workExperienceEntries[0];
+
+      await setWorkExperienceEntriesAsync(workExperience);
+
+      await assertWorkExperienceEntryAsync(workExperience);
+    });
+
+    it('should add multiple WorkExperience entries', async () => {
+      for (const workExperience of workExperienceEntries) {
+        await setWorkExperienceEntriesAsync(workExperience);
+      }
+
+      for (const workExperience of workExperienceEntries) {
+        await assertWorkExperienceEntryAsync(workExperience);
+      }
+    }, 10000);
+
+    it('should remove WorkExperience entry', async () => {
+      const workExperience = workExperienceEntries[0];
+
+      await setWorkExperienceEntriesAsync(workExperience);
+      const component = componentFixture.componentInstance;
+
+      const itemToDelete: Guid = component.educationArray[0].correlationId!;
+      const deleteButtonId: string = component.getButtonAppId('btnRemoveEducation', itemToDelete);
+      const deleteButton = screen.getByTestId(deleteButtonId);
+      await user.click(deleteButton);
+
+      expect(screen.queryByText(workExperience.jobTitle)).toBeNull();
+      expect(screen.queryByText(workExperience.companyName)).toBeNull();
+      expect(screen.queryByText(workExperience.companyLocation)).toBeNull();
+      expect(screen.queryByText(workExperience.description)).toBeNull();
     });
   });
 
@@ -104,7 +162,7 @@ describe(SummaryFormComponent.name, () => {
     });
   });
 
-  const setEducationEntriesAsync = async (entry: Education) => {
+  const setEducationEntriesAsync = async (education: Education) => {
     const addButton = screen.getByTestId('btnInsertEducation');
     const saveButton = screen.getByTestId('btnAddEducation');
 
@@ -117,24 +175,60 @@ describe(SummaryFormComponent.name, () => {
     const startDateInput = screen.getByTestId('inputStartDate');
     const endDateInput = screen.getByTestId('inputEndDate');
 
-    await user.type(degreeInput, entry.degree);
-    await user.type(institutionNameInput, entry.institutionName);
-    await user.type(institutionLocationInput, entry.institutionLocation);
-    await user.type(descriptionInput, entry.description);
-    await user.type(startDateInput, entry.startDate.toISOString());
-    await user.type(endDateInput, entry.endDate!.toISOString());
+    await user.type(degreeInput, education.degree);
+    await user.type(institutionNameInput, education.institutionName);
+    await user.type(institutionLocationInput, education.institutionLocation);
+    await user.type(descriptionInput, education.description);
+    await user.type(startDateInput, education.startDate.toISOString());
+    await user.type(endDateInput, education.endDate!.toISOString());
 
     await userEvent.click(saveButton);
   };
 
-  const assertEducationEntryAsync = async (entry: Education) => {
-    const startDateFormatted = format(new Date(entry.startDate), 'MMM d, yyyy');
-    const endDateFormatted = format(new Date(entry.endDate!), 'MMM d, yyyy');
+  const assertEducationEntryAsync = async (education: Education) => {
+    const startDateFormatted = format(new Date(education.startDate), 'MMM d, yyyy');
+    const endDateFormatted = format(new Date(education.endDate!), 'MMM d, yyyy');
 
-    await screen.findByText(entry.degree);
-    await screen.findByText(entry.institutionName);
-    await screen.findByText(entry.institutionLocation);
-    await screen.findByText(entry.description);
+    await screen.findByText(education.degree);
+    await screen.findByText(education.institutionName);
+    await screen.findByText(education.institutionLocation);
+    await screen.findByText(education.description);
+    await screen.findByText(startDateFormatted);
+    await screen.findByText(endDateFormatted);
+  };
+
+  const setWorkExperienceEntriesAsync = async (workExperience: WorkExperience) => {
+    const addButton = screen.getByTestId('btnInsertWorkExperience');
+    const saveButton = screen.getByTestId('btnAddWorkExperience');
+
+    await user.click(addButton);
+
+    const degreeInput = screen.getByTestId('inputJobTitle');
+    const institutionNameInput = screen.getByTestId('inputCompanyName');
+    const institutionLocationInput = screen.getByTestId('inputCompanyLocation');
+    const descriptionInput = screen.getByTestId('inputDescription');
+    const startDateInput = screen.getByTestId('inputStartDate');
+    const endDateInput = screen.getByTestId('inputEndDate');
+
+    await user.type(degreeInput, workExperience.jobTitle);
+    await user.type(institutionNameInput, workExperience.companyName);
+    await user.type(institutionLocationInput, workExperience.companyLocation);
+    await user.type(descriptionInput, workExperience.description);
+    await user.type(startDateInput, workExperience.startDate.toISOString());
+    await user.type(endDateInput, workExperience.endDate!.toISOString());
+    await user.type(endDateInput, workExperience.endDate!.toISOString());
+
+    await userEvent.click(saveButton);
+  };
+
+  const assertWorkExperienceEntryAsync = async (workExperience: WorkExperience) => {
+    const startDateFormatted = format(new Date(workExperience.startDate), 'MMM d, yyyy');
+    const endDateFormatted = format(new Date(workExperience.endDate!), 'MMM d, yyyy');
+
+    await screen.findByText(workExperience.jobTitle);
+    await screen.findByText(workExperience.companyName);
+    await screen.findByText(workExperience.companyLocation);
+    await screen.findByText(workExperience.description);
     await screen.findByText(startDateFormatted);
     await screen.findByText(endDateFormatted);
   };
