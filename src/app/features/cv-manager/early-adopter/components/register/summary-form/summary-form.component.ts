@@ -1,13 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { DatePipe, NgForOf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { Education } from './interfaces/education';
 import { Guid } from 'guid-typescript';
+import { WorkExperience } from './interfaces/work-experience';
 
 @Component({
   selector: 'app-summary-form',
-  imports: [ReactiveFormsModule, AppIdDirective, DatePipe, NgForOf],
+  imports: [ReactiveFormsModule, AppIdDirective, DatePipe],
   templateUrl: './summary-form.component.html',
   styles: ``,
 })
@@ -15,6 +16,7 @@ export class SummaryFormComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
   dataForm!: FormGroup;
   educationArray: Education[] = [];
+  workExperienceArray: WorkExperience[] = [];
   educationForm!: FormGroup;
   workExperienceForm!: FormGroup;
 
@@ -64,14 +66,15 @@ export class SummaryFormComponent implements OnInit {
       this.educationArray.push(education);
 
       this.educationForm.reset();
-    } else {
-      console.log('Invalid education form');
     }
   }
 
   confirmAddWorkExperience(): void {
     if (this.workExperienceForm.valid) {
-      this.workExperienceFormArray.push(this.formBuilder.group(this.workExperienceForm.value));
+      const workExperience = this.workExperienceForm.value as WorkExperience;
+      workExperience.correlationId = Guid.create();
+      this.workExperienceArray.push(workExperience);
+
       this.workExperienceForm.reset();
     }
   }
@@ -80,8 +83,8 @@ export class SummaryFormComponent implements OnInit {
     this.educationArray = this.educationArray.filter((education) => education.correlationId !== correlationId);
   }
 
-  removeWorkExperience(index: number): void {
-    this.workExperienceFormArray.removeAt(index);
+  removeWorkExperience(correlationId: Guid): void {
+    this.workExperienceArray = this.workExperienceArray.filter((workExperience) => workExperience.correlationId !== correlationId);
   }
 
   onSubmit(): void {

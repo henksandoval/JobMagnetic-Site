@@ -56,7 +56,8 @@
                 </p>
               </div>
               <div>
-                <button [appId]="getButtonAppId('btnRemoveEducation', education.correlationId!)" type="button" class="btn btn-outline-danger btn-sm" (click)="removeEducation(education.correlationId!)">
+                <button [appId]="getButtonAppId('btnRemoveEducation', education.correlationId!)" type="button"
+                        class="btn btn-outline-danger btn-sm" (click)="removeEducation(education.correlationId!)">
                   <i class="bi bi-trash"></i> Remove
                 </button>
               </div>
@@ -79,36 +80,37 @@
             <i class="bi bi-plus-circle"></i> Insert
           </button>
         </div>
-        <div *ngFor="let work of workExperienceFormArray.controls; let i = index" [formGroupName]="i">
+        @for (work of workExperienceArray; track work.correlationId) {
           <div class="card mb-3 border-0 shadow-sm">
             <div class="card-body d-flex flex-wrap align-items-center gap-3">
               <div class="flex-grow-1">
-                <h5 class="text-success fw-bold mb-1">{{ work.value.jobTitle }}</h5>
-                <p class="text-muted fst-italic mb-0">{{ work.value.companyName }}</p>
+                <h5 class="text-success fw-bold mb-1">{{ work.jobTitle }}</h5>
+                <p class="text-muted fst-italic mb-0">{{ work.companyName }}</p>
               </div>
               <div class="flex-grow-1">
                 <p class="mb-1">
-                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ work.value.companyLocation }}
+                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ work.companyLocation }}
                 </p>
                 <p class="mb-1">
-                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ work.value.description }}
+                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ work.description }}
                 </p>
                 <p class="mb-1">
-                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ work.value.startDate | date }}
+                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ work.startDate | date }}
                 </p>
                 <p class="mb-0">
                   <i class="bi bi-calendar-check"></i> <strong>End
-                  Date:</strong> {{ work.value.endDate ? (work.value.endDate | date) : 'Present' }}
+                  Date:</strong> {{ work.endDate ? (work.endDate | date) : 'Present' }}
                 </p>
               </div>
               <div>
-                <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeWorkExperience(i)">
+                <button [appId]="getButtonAppId('btnRemoveWork', work.correlationId!)" type="button"
+                        class="btn btn-outline-danger btn-sm" (click)="removeWorkExperience(work.correlationId!)">
                   <i class="bi bi-trash"></i> Remove
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        }
       </div>
     </div>
     <button type="submit" class="btn btn-primary mt-4 w-100 fw-bold" i18n="@@submitButton">
@@ -124,7 +126,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="text-muted mb-4">Please fill in the details of your education background. All fields marked with * are required.</p>
+        <p class="text-muted mb-4">Please fill in the details of your education background. All fields marked with * are
+          required.</p>
         <form [formGroup]="educationForm">
           <div class="mb-4">
             <h6 class="text-primary">Degree Information</h6>
@@ -140,7 +143,8 @@
                   required />
               </div>
               <div class="col-md-6">
-                <label for="inputInstitutionName" class="form-label" i18n="@@institutionNameLabel">Institution Name *</label>
+                <label for="inputInstitutionName" class="form-label" i18n="@@institutionNameLabel">Institution Name
+                  *</label>
                 <input
                   type="text"
                   class="form-control"
@@ -151,12 +155,12 @@
               </div>
             </div>
           </div>
-
           <div class="mb-4">
             <h6 class="text-primary">Location and Description</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="inputInstitutionLocation" class="form-label" i18n="@@institutionLocationLabel">Location *</label>
+                <label for="inputInstitutionLocation" class="form-label" i18n="@@institutionLocationLabel">Location
+                  *</label>
                 <input
                   type="text"
                   class="form-control"
@@ -166,10 +170,11 @@
                   required />
               </div>
               <div class="col-md-6">
-                <label for="inputDescription" class="form-label" i18n="@@educationDescriptionLabel">Description</label>
+                <label for="inputEducationDescription" class="form-label"
+                       i18n="@@educationDescriptionLabel">Description</label>
                 <textarea
                   class="form-control"
-                  appId="inputDescription"
+                  appId="inputEducationDescription"
                   formControlName="description"
                   rows="3"
                   placeholder="Provide details about your studies (optional)"></textarea>
@@ -180,12 +185,13 @@
             <h6 class="text-primary">Dates</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="inputStartDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
-                <input type="date" class="form-control" appId="inputStartDate" formControlName="startDate" required />
+                <label for="inputEducationStartDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
+                <input type="date" class="form-control" appId="inputEducationStartDate" formControlName="startDate"
+                       required />
               </div>
               <div class="col-md-6">
-                <label for="inputEndDate" class="form-label" i18n="@@endDateLabel">End Date</label>
-                <input type="date" class="form-control" appId="inputEndDate" formControlName="endDate" />
+                <label for="inputEducationEndDate" class="form-label" i18n="@@endDateLabel">End Date</label>
+                <input type="date" class="form-control" appId="inputEducationEndDate" formControlName="endDate" />
               </div>
             </div>
           </div>
@@ -193,65 +199,82 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
-        <button type="button" appId="btnAddEducation" class="btn btn-primary" (click)="confirmAddEducation()" data-bs-dismiss="modal" i18n="@@saveButton">Save</button>
+        <button type="button" appId="btnAddEducation" class="btn btn-primary" (click)="confirmAddEducation()"
+                data-bs-dismiss="modal" i18n="@@saveButton">Save
+        </button>
       </div>
     </div>
   </div>
 </div>
-<div class="modal fade" id="workExperienceModal" tabindex="-1" aria-labelledby="workExperienceModalLabel" aria-hidden="true">
+<div class="modal fade" id="workExperienceModal" tabindex="-1" aria-labelledby="workExperienceModalLabel"
+     aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="workExperienceModalLabel" i18n="@@addWorkExperienceModalTitle">Insert Work Experience</h5>
+        <h5 class="modal-title" id="workExperienceModalLabel" i18n="@@addWorkExperienceModalTitle">Insert Work
+          Experience</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p class="text-muted mb-4">Please fill in the details of your work experience. All fields marked with * are required.</p>
+        <p class="text-muted mb-4">Please fill in the details of your work experience. All fields marked with * are
+          required.</p>
         <form [formGroup]="workExperienceForm">
           <div class="mb-4">
             <h6 class="text-primary">Job Details</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="jobTitle" class="form-label" i18n="@@jobTitleLabel">Job Title *</label>
+                <label for="inputJobTitle" class="form-label" i18n="@@jobTitleLabel">Job Title *</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="jobTitle"
+                  appId="inputJobTitle"
                   formControlName="jobTitle"
                   placeholder="e.g., Software Engineer"
                   required />
               </div>
               <div class="col-md-6">
-                <label for="companyName" class="form-label" i18n="@@companyNameLabel">Company Name *</label>
+                <label for="inputCompanyName" class="form-label" i18n="@@companyNameLabel">Company Name *</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="companyName"
+                  appId="inputCompanyName"
                   formControlName="companyName"
                   placeholder="e.g., Google"
                   required />
               </div>
             </div>
           </div>
-
           <div class="mb-4">
             <h6 class="text-primary">Location and Responsibilities</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="companyLocation" class="form-label" i18n="@@companyLocationLabel">Location *</label>
+                <label for="inputCompanyLocation" class="form-label" i18n="@@companyLocationLabel">Location *</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="companyLocation"
+                  appId="inputCompanyLocation"
                   formControlName="companyLocation"
                   placeholder="e.g., Mountain View, CA"
                   required />
               </div>
               <div class="col-md-6">
-                <label for="responsibilities" class="form-label" i18n="@@responsibilitiesLabel">Responsibilities</label>
+                <label for="inputWorkDescription" class="form-label"
+                       i18n="@@responsibilitiesLabel">Description</label>
                 <textarea
                   class="form-control"
-                  id="responsibilities"
+                  appId="inputWorkDescription"
+                  formControlName="description"
+                  rows="3"
+                  placeholder="Provide details about your work (optional)"></textarea>
+              </div>
+            </div>
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="inputResponsibilities" class="form-label"
+                       i18n="@@workDescriptionLabel">Responsibilities</label>
+                <textarea
+                  class="form-control"
+                  appId="inputResponsibilities"
                   formControlName="responsibilities"
                   rows="3"
                   placeholder="List key responsibilities (optional)"></textarea>
@@ -262,12 +285,12 @@
             <h6 class="text-primary">Dates</h6>
             <div class="row g-3">
               <div class="col-md-6">
-                <label for="startDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
-                <input type="date" class="form-control" id="startDate" formControlName="startDate" required />
+                <label for="inputWorkStartDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
+                <input type="date" class="form-control" appId="inputWorkStartDate" formControlName="startDate" required />
               </div>
               <div class="col-md-6">
-                <label for="endDate" class="form-label" i18n="@@endDateLabel">End Date</label>
-                <input type="date" class="form-control" id="endDate" formControlName="endDate" />
+                <label for="inputWorkEndDate" class="form-label" i18n="@@endDateLabel">End Date</label>
+                <input type="date" class="form-control" appId="inputWorkEndDate" formControlName="endDate" />
               </div>
             </div>
           </div>
@@ -275,7 +298,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="confirmAddWorkExperience()" data-bs-dismiss="modal" i18n="@@saveButton">Save</button>
+        <button type="button" appId="btnAddWorkExperience" class="btn btn-primary" (click)="confirmAddWorkExperience()"
+                data-bs-dismiss="modal" i18n="@@saveButton">Save
+        </button>
       </div>
     </div>
   </div>

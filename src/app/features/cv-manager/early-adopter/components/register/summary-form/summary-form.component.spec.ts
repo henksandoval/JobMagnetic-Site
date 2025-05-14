@@ -137,8 +137,8 @@ describe(SummaryFormComponent.name, () => {
       await setWorkExperienceEntriesAsync(workExperience);
       const component = componentFixture.componentInstance;
 
-      const itemToDelete: Guid = component.educationArray[0].correlationId!;
-      const deleteButtonId: string = component.getButtonAppId('btnRemoveEducation', itemToDelete);
+      const itemToDelete: Guid = component.workExperienceArray[0].correlationId!;
+      const deleteButtonId: string = component.getButtonAppId('btnRemoveWork', itemToDelete);
       const deleteButton = screen.getByTestId(deleteButtonId);
       await user.click(deleteButton);
 
@@ -171,9 +171,9 @@ describe(SummaryFormComponent.name, () => {
     const degreeInput = screen.getByTestId('inputDegree');
     const institutionNameInput = screen.getByTestId('inputInstitutionName');
     const institutionLocationInput = screen.getByTestId('inputInstitutionLocation');
-    const descriptionInput = screen.getByTestId('inputDescription');
-    const startDateInput = screen.getByTestId('inputStartDate');
-    const endDateInput = screen.getByTestId('inputEndDate');
+    const descriptionInput = screen.getByTestId('inputEducationDescription');
+    const startDateInput = screen.getByTestId('inputEducationStartDate');
+    const endDateInput = screen.getByTestId('inputEducationEndDate');
 
     await user.type(degreeInput, education.degree);
     await user.type(institutionNameInput, education.institutionName);
@@ -206,14 +206,16 @@ describe(SummaryFormComponent.name, () => {
     const degreeInput = screen.getByTestId('inputJobTitle');
     const institutionNameInput = screen.getByTestId('inputCompanyName');
     const institutionLocationInput = screen.getByTestId('inputCompanyLocation');
-    const descriptionInput = screen.getByTestId('inputDescription');
-    const startDateInput = screen.getByTestId('inputStartDate');
-    const endDateInput = screen.getByTestId('inputEndDate');
+    const descriptionInput = screen.getByTestId('inputWorkDescription');
+    // const responsabilitiesInput = screen.getByTestId('inputResponsibilities');
+    const startDateInput = screen.getByTestId('inputWorkStartDate');
+    const endDateInput = screen.getByTestId('inputWorkEndDate');
 
     await user.type(degreeInput, workExperience.jobTitle);
     await user.type(institutionNameInput, workExperience.companyName);
     await user.type(institutionLocationInput, workExperience.companyLocation);
     await user.type(descriptionInput, workExperience.description);
+    // await user.type(responsabilitiesInput, workExperience.responsibilities.join(', '));
     await user.type(startDateInput, workExperience.startDate.toISOString());
     await user.type(endDateInput, workExperience.endDate!.toISOString());
     await user.type(endDateInput, workExperience.endDate!.toISOString());
