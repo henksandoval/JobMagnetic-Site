@@ -1,6 +1,6 @@
 import { GalleryFormItems } from './galleryFormItems.model';
 
-export interface ServiceFormBaseModel {
+export interface ServiceBase {
   profileId: string;
   Overview: string;
   galleryItems: GalleryFormItems[];

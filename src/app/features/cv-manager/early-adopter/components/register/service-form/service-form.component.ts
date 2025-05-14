@@ -1,13 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { ServiceCreateCommand } from '../models/serviceFormData.model';
-import { ServiceFormBaseModel } from '../models/serviceFormBase.model';
 import { CommonModule } from '@angular/common';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { RegisterComponent } from '../register.component';
 import { ProfileService } from '../../../services/profile.service';
-import { GalleryFormItems } from '../models/galleryFormItems.model';
+import { ServiceCommand } from '../models/serviceCommand.model';
+import { ServiceBase } from '../models/serviceBase.model';
 
 @Component({
   selector: 'app-service-form',
@@ -22,7 +21,7 @@ export class ServiceFormComponent implements OnInit {
   profileId = this.registerComponent.profileIdSignal;
   formData!: FormGroup;
   serviceDataForm!: FormGroup;
-  itemsOverview: ServiceFormBaseModel | undefined;
+  itemsOverview: ServiceBase | undefined;
 
   ngOnInit(): void {
     this.initializeForm();
@@ -48,7 +47,7 @@ export class ServiceFormComponent implements OnInit {
   saveServiceData(): void {
     const urlEndpoint = ApiEndpoints.profile.service;
     const profileId = this.profileId();
-    const formData: ServiceFormBaseModel = {
+    const formData: ServiceBase = {
       profileId: '',
       Overview: this.formData.value.overview,
       galleryItems: this.itemsOverview!.galleryItems,
@@ -58,9 +57,9 @@ export class ServiceFormComponent implements OnInit {
     this.profileService.saveData(urlEndpoint, createService).subscribe();
   }
 
-  private transformFormDataService(formData: ServiceFormBaseModel, profileId: string): ServiceCreateCommand {
+  private transformFormDataService(formData: ServiceBase, profileId: string): ServiceCommand {
     return {
-      serviceBase: {
+      serviceData: {
         profileId: profileId,
         Overview: formData.Overview,
         galleryItems: (formData.galleryItems || []).map((item) => ({
