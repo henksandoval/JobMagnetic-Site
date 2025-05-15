@@ -53,6 +53,7 @@ describe(ServiceFormComponent.name, () => {
     it('Must display in data view', async () => {
       const overview = overviewEntrie;
       await setServiceEntrie(overview);
+      await setServiceGalleryItems(overview.galleryItems);
     });
   });
 
@@ -60,7 +61,13 @@ describe(ServiceFormComponent.name, () => {
     const overviewInput = screen.getByTestId('inputOverview');
     await user.type(overviewInput, serviceBase.overview);
     expect(overviewInput).toHaveValue(serviceBase.overview);
+    const addButton = screen.getByTestId('btnAddServiceData');
+    await user.click(addButton);
+  };
 
-    await user.click(screen.getByTestId('serviceDataModal'));
+  const setServiceGalleryItems = async (serviceBase: ServiceBase['galleryItems']) => {
+    const positionInput = screen.getByTestId('inputPosition');
+
+    await user.type(positionInput, serviceBase[0].position.toString());
   };
 });
