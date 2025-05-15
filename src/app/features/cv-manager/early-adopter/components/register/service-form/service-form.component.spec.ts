@@ -53,7 +53,13 @@ describe(ServiceFormComponent.name, () => {
     it('Must display in data view', async () => {
       const overview = overviewEntrie;
       await setServiceEntrie(overview);
-      await setServiceGalleryItems(overview.galleryItems);
+      await assertServiceGalleryItems(overview.galleryItems);
+    });
+
+    it('should add multiple galleryItems', async () => {
+      for (const galleryItem of overviewEntrie.galleryItems) {
+        await assertServiceGalleryItems([galleryItem]);
+      }
     });
   });
 
@@ -65,9 +71,19 @@ describe(ServiceFormComponent.name, () => {
     await user.click(addButton);
   };
 
-  const setServiceGalleryItems = async (serviceBase: ServiceBase['galleryItems']) => {
+  const assertServiceGalleryItems = async (serviceBase: ServiceBase['galleryItems']) => {
     const positionInput = screen.getByTestId('inputPosition');
+    const inputTitle = screen.getByTestId('inputTitle');
+    const inputDescription = screen.getByTestId('inputDescription');
+    const inputUrlLink = screen.getByTestId('inputUrlLink');
+    const inputUrlImage = screen.getByTestId('inputUrlImage');
+    const inputUrlVideo = screen.getByTestId('inputUrlVideo');
 
     await user.type(positionInput, serviceBase[0].position.toString());
+    await user.type(inputTitle, serviceBase[0].title);
+    await user.type(inputDescription, serviceBase[0].description);
+    await user.type(inputUrlLink, serviceBase[0].urlLink);
+    await user.type(inputUrlImage, serviceBase[0].urlImage);
+    await user.type(inputUrlVideo, serviceBase[0].urlVideo);
   };
 });
