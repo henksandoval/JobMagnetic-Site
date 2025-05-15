@@ -113,9 +113,16 @@
         }
       </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-4 w-100 fw-bold" i18n="@@submitButton">
-      Submit
-    </button>
+    <div class="d-flex justify-content-end mt-4">
+      <button
+        (click)="saveData()"
+        [disabled]="isSaving"
+        class="btn btn-lg btn-primary"
+        i18n="@@save"
+        type="button"
+      >Save<output *ngIf="isSaving" aria-hidden="true" class="spinner-border"></output>
+      </button>
+    </div>
   </form>
 </div>
 <div class="modal fade" id="educationModal" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">

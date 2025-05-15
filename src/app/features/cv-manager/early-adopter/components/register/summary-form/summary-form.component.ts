@@ -1,14 +1,14 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgIf } from '@angular/common';
 import { Education } from './interfaces/education';
 import { Guid } from 'guid-typescript';
 import { WorkExperience } from './interfaces/work-experience';
 
 @Component({
   selector: 'app-summary-form',
-  imports: [ReactiveFormsModule, AppIdDirective, DatePipe],
+  imports: [ReactiveFormsModule, AppIdDirective, DatePipe, NgIf],
   templateUrl: './summary-form.component.html',
   styles: ``,
 })
@@ -19,6 +19,7 @@ export class SummaryFormComponent implements OnInit {
   workExperienceArray: WorkExperience[] = [];
   educationForm!: FormGroup;
   workExperienceForm!: FormGroup;
+  isSaving = false;
 
   ngOnInit(): void {
     this.initializeForms();
@@ -51,10 +52,6 @@ export class SummaryFormComponent implements OnInit {
     });
   }
 
-  get workExperienceFormArray(): FormArray {
-    return this.dataForm.get('workExperiences') as FormArray;
-  }
-
   getButtonAppId(prefix: string, correlationId: Guid): string {
     return `${prefix}_${correlationId}`;
   }
@@ -64,6 +61,9 @@ export class SummaryFormComponent implements OnInit {
       const education = this.educationForm.value as Education;
       education.correlationId = Guid.create();
       this.educationArray.push(education);
+
+      const educationArray = this.dataForm.get('education') as FormArray;
+      educationArray.push(this.formBuilder.group(education));
 
       this.educationForm.reset();
     }
@@ -75,19 +75,26 @@ export class SummaryFormComponent implements OnInit {
       workExperience.correlationId = Guid.create();
       this.workExperienceArray.push(workExperience);
 
+      const workExperiencesArray = this.dataForm.get('workExperiences') as FormArray;
+      workExperiencesArray.push(this.formBuilder.group(workExperience));
+
       this.workExperienceForm.reset();
     }
   }
 
   removeEducation(correlationId: Guid): void {
-    this.educationArray = this.educationArray.filter((education) => education.correlationId !== correlationId);
+    this.educationArray = this.educationArray.filter(
+      (education) => education.correlationId !== correlationId
+    );
   }
 
   removeWorkExperience(correlationId: Guid): void {
-    this.workExperienceArray = this.workExperienceArray.filter((workExperience) => workExperience.correlationId !== correlationId);
+    this.workExperienceArray = this.workExperienceArray.filter(
+      (workExperience) => workExperience.correlationId !== correlationId
+    );
   }
 
-  onSubmit(): void {
+  saveData(): void {
     if (this.dataForm.valid) {
       const formData = this.dataForm.value;
       console.log('Form submitted:', formData);
