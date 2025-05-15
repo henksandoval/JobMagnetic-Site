@@ -3,6 +3,24 @@ import { render, screen } from '@testing-library/angular';
 import '@testing-library/jest-dom';
 import '@angular/localize/init';
 import translations from '../../../../../../../assets/i18n/messages.json';
+import { ServiceBase } from '../models/serviceBase.model';
+
+const overviewEntrie: ServiceBase = {
+  overview: 'overview',
+  profileId: '1',
+  galleryItems: [
+    {
+      position: 1,
+      title: 'Sample Title',
+      description: 'Sample Description',
+      urlLink: 'http://example.com',
+      urlImage: 'http://example.com/image.jpg',
+      urlVideo: 'http://example.com/video.mp4',
+      type: 'Sample Type',
+    },
+  ],
+};
+
 
 
 describe(ServiceFormComponent.name, () => {
