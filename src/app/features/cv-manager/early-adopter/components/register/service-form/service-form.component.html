@@ -1,24 +1,13 @@
 <div class="container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="formData">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h2 appId="serviceData" i18n="@@serviceData" class="fs-3 fw-bold text-primary"> Step 6: Service Data </h2>
-      <button
-        type="button"
-        appId="btnAddServiceData"
-        class="btn btn-outline-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#serviceDataModal"
-      >
-        Open
-      </button>
-    </div>
-
+    <h2 appId="serviceData" i18n="@@serviceData" class="mb-4 fw-bold text-center text-primary"> Step 6: Service
+      Data </h2>
     <div class="mb-4">
       <div class="col-md-12">
         <div class="mb-3">
           <label
             for="inputOverview"
-            class="form-label label-with-colon"
+            class="form-label fw-semibold"
             i18n="@@overview"
           >
             Overview
@@ -29,8 +18,27 @@
             appId="inputOverview"
             formControlName="overview"
             i18n-placeholder="@@overviewPlaceholder"
+            rows="5"
             placeholder="Write an overview"
           ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h4 class="m-0 text-primary fw-bold" appId="educationSectionTitle" i18n="@@serviceGalleryItems">
+            GalleryItems
+          </h4>
+          <button
+            type="button"
+            appId="btnAddServiceData"
+            class="btn btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#serviceDataModal"
+            i18n="@@insertButton">
+            <i class="bi bi-plus-circle"></i> insert
+          </button>
         </div>
       </div>
     </div>
@@ -67,8 +75,8 @@
     </div>
 
     <div class="d-flex justify-content-end mt-4">
-      <button (click)="saveServiceData()" class="btn btn-lg btn-primary">
-        Guardar
+      <button (click)="saveServiceData()" class="btn btn-lg btn-primary" i18n="@@saveButton">
+        Save
       </button>
     </div>
   </form>
@@ -94,7 +102,7 @@
       <div class="modal-body">
         <form [formGroup]="serviceDataForm">
           <div class="row g-3">
-            <div class="col-md-2">
+            <div class="col-md-3">
               <label
                 for="position"
                 appId="inputPosition"
@@ -129,7 +137,7 @@
                 placeholder="Write a title"
               />
             </div>
-            <div class="col-md-7">
+            <div class="col-md-6">
               <label
                 for="description"
                 appId="inputDescription"
@@ -227,8 +235,7 @@
               class="btn btn-lg btn-primary"
               type="button"
               data-bs-dismiss="modal"
-            >
-              Añadir
+              i18n="@@addButton"> Add
             </button>
           </div>
         </form>
