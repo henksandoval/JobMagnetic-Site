@@ -49,7 +49,7 @@ export class ServiceFormComponent implements OnInit {
     const profileId = this.profileId();
     const formData: ServiceBase = {
       profileId: '',
-      Overview: this.formData.value.overview,
+      overview: this.formData.value.overview,
       galleryItems: this.itemsOverview!.galleryItems,
     };
 
@@ -61,7 +61,7 @@ export class ServiceFormComponent implements OnInit {
     return {
       serviceData: {
         profileId: profileId,
-        Overview: formData.Overview,
+        overview: formData.overview,
         galleryItems: (formData.galleryItems || []).map((item) => ({
           position: item.position,
           title: item.title,
@@ -80,7 +80,7 @@ export class ServiceFormComponent implements OnInit {
     if (!this.itemsOverview) {
       this.itemsOverview = {
         profileId: '',
-        Overview: this.formData.value.overview,
+        overview: this.formData.value.overview,
         galleryItems: [],
       };
     }
