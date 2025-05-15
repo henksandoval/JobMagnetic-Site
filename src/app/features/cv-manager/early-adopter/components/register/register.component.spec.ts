@@ -36,4 +36,9 @@ describe(RegisterComponent.name, () => {
     const profileElement = screen.getByTestId('resume-component');
     expect(profileElement).toBeTruthy();
   });
+
+  it('should render the ServiceFormComponent with <app-service-form>', () => {
+    const profileElement = screen.getByTestId('service-component');
+    expect(profileElement).toBeTruthy();
+  });
 });

@@ -11,8 +11,8 @@ export class ProfileService {
   private readonly config: Config = inject(ConfigService).getConfig();
   private readonly http = inject(HttpService);
 
-  saveData<T>(urlPath: string, data: T): Observable<T> {
+  saveData<TRequest, TResponse>(urlPath: string, data: TRequest): Observable<TResponse> {
     const url = new URL(urlPath, this.config.apiUrl);
-    return this.http.post<T, T>(url, data);
+    return this.http.post<TRequest, TResponse>(url, data);
   }
 }

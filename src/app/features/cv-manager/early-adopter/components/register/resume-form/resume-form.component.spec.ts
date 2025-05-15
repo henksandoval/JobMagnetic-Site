@@ -1,11 +1,18 @@
 import { ResumeFormComponent } from './resume-form.component';
 import { render } from '@testing-library/angular';
+import { ProfileService } from '../../../services/profile.service';
+import { HttpService } from '@core/services/http/http.service';
 
 describe(ResumeFormComponent.name, () => {
   let component: ResumeFormComponent;
 
   beforeEach(async () => {
-    const { fixture } = await render(ResumeFormComponent);
+    const { fixture } = await render(ResumeFormComponent, {
+      providers: [
+        { provide: ProfileService, useValue: {} },
+        { provide: HttpService, useValue: {} },
+      ],
+    });
     component = fixture.componentInstance;
   });
 
