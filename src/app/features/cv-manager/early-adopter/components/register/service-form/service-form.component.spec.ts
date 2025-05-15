@@ -72,12 +72,14 @@ describe(ServiceFormComponent.name, () => {
   };
 
   const assertServiceGalleryItems = async (serviceBase: ServiceBase['galleryItems']) => {
+    const saveButton = screen.getByTestId('btnSaveServiceData');
     const positionInput = screen.getByTestId('inputPosition');
     const inputTitle = screen.getByTestId('inputTitle');
     const inputDescription = screen.getByTestId('inputDescription');
     const inputUrlLink = screen.getByTestId('inputUrlLink');
     const inputUrlImage = screen.getByTestId('inputUrlImage');
     const inputUrlVideo = screen.getByTestId('inputUrlVideo');
+    const inputType = screen.getByTestId('inputType');
 
     await user.type(positionInput, serviceBase[0].position.toString());
     await user.type(inputTitle, serviceBase[0].title);
@@ -85,5 +87,8 @@ describe(ServiceFormComponent.name, () => {
     await user.type(inputUrlLink, serviceBase[0].urlLink);
     await user.type(inputUrlImage, serviceBase[0].urlImage);
     await user.type(inputUrlVideo, serviceBase[0].urlVideo);
+    await user.type(inputType, serviceBase[0].type);
+
+    await userEvent.click(saveButton);
   };
 });
