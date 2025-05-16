@@ -182,7 +182,7 @@ describe(SummaryFormComponent.name, () => {
     await user.type(startDateInput, education.startDate.toISOString());
     await user.type(endDateInput, education.endDate!.toISOString());
 
-    await userEvent.click(saveButton);
+    await user.click(saveButton);
   };
 
   const assertEducationEntryAsync = async (education: Education) => {
@@ -220,7 +220,7 @@ describe(SummaryFormComponent.name, () => {
     await user.type(endDateInput, workExperience.endDate!.toISOString());
     await user.type(endDateInput, workExperience.endDate!.toISOString());
 
-    await userEvent.click(saveButton);
+    await user.click(saveButton);
   };
 
   const assertWorkExperienceEntryAsync = async (workExperience: WorkExperience) => {
