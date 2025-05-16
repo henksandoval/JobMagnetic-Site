@@ -2,15 +2,22 @@ import { ResumeFormComponent } from './resume-form.component';
 import { render } from '@testing-library/angular';
 import { ProfileService } from '../../../services/profile.service';
 import { HttpService } from '@core/services/http/http.service';
+import { RegisterComponent } from '../register.component';
 
 describe(ResumeFormComponent.name, () => {
   let component: ResumeFormComponent;
+  let mockRegisterComponent: Partial<RegisterComponent>;
 
   beforeEach(async () => {
+    mockRegisterComponent = {
+      getProfileId: jest.fn(),
+    };
+
     const { fixture } = await render(ResumeFormComponent, {
       providers: [
         { provide: ProfileService, useValue: {} },
         { provide: HttpService, useValue: {} },
+        { provide: RegisterComponent, useValue: mockRegisterComponent }
       ],
     });
     component = fixture.componentInstance;

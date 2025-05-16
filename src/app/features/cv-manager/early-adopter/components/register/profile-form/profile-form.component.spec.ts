@@ -5,9 +5,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { of } from 'rxjs';
 import { ProfileService } from '../../../services/profile.service';
 import { ProfileFormComponent } from './profile-form.component';
+import { RegisterComponent } from '../register.component';
 
 describe(ProfileFormComponent.name, () => {
   let mockProfileService: Partial<ProfileService>;
+  let mockRegisterComponent: Partial<RegisterComponent>;
   let componentInstance: ProfileFormComponent;
 
   beforeEach(async () => {
@@ -15,9 +17,16 @@ describe(ProfileFormComponent.name, () => {
       saveData: jest.fn().mockReturnValue(of({ success: true })),
     };
 
+    mockRegisterComponent = {
+      getProfileId: jest.fn(),
+    };
+
     const { fixture } = await render(ProfileFormComponent, {
       imports: [ReactiveFormsModule, FormsModule],
-      providers: [{ provide: ProfileService, useValue: mockProfileService }],
+      providers: [
+        { provide: ProfileService, useValue: mockProfileService },
+        { provide: RegisterComponent, useValue: mockRegisterComponent }
+      ],
     });
 
     componentInstance = fixture.componentInstance;
