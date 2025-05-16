@@ -1,7 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { CommandAdapter } from './command-adapter';
+import { CommandAdapter } from './command.adapter';
 import { ProfileCommandModel } from '../../components/register/models/profileCommand.model';
 import { ProfileDataModel } from '../../components/register/models/ProfileData.model';
+import { expectTypeOf } from 'expect-type';
 
 const profileData: ProfileDataModel = {
   firstName: 'John',
@@ -20,13 +21,17 @@ interface TestModel extends ProfileCommandModel {
   profileData: ProfileDataWithId;
 }
 
-interface CustomTransformedData {
+interface CustomData {
   key_01: string;
   key_02: string;
   key_03: string;
 }
 
-describe(CommandAdapter.name + 'Should', () => {
+interface CustomTransformedData {
+  profileData: CustomData;
+}
+
+describe('CommandAdapterShould', () => {
   let commandAdapter: CommandAdapter;
 
   beforeEach(() => {
@@ -37,21 +42,29 @@ describe(CommandAdapter.name + 'Should', () => {
   });
 
   it('transform data correctly', () => {
+    const result = commandAdapter.transform<ProfileDataModel, ProfileCommandModel>(
+      profileData,
+      'profileData'
+    );
+
+    expectTypeOf(result).toEqualTypeOf<ProfileCommandModel>();
     const expectedResult: ProfileCommandModel = {
       profileData: {
         ...profileData,
       },
     };
 
-    const result = commandAdapter.transform<ProfileDataModel, ProfileCommandModel>(
-      profileData,
-      'profileData'
-    );
     expect(result).toEqual(expectedResult);
   });
 
   it('transform resume data correctly and include additionalFields', () => {
     const profileId = 'profile123';
+
+    const result = commandAdapter.transform<ProfileDataModel, ProfileCommandModel>(
+      profileData,
+      'profileData',
+      { profileId } as Partial<ProfileDataModel>
+    );
 
     const expectedResult: TestModel = {
       profileData: {
@@ -60,16 +73,12 @@ describe(CommandAdapter.name + 'Should', () => {
       },
     };
 
-    const result = commandAdapter.transform<ProfileDataModel, ProfileCommandModel>(
-      profileData,
-      'profileData',
-      { profileId } as Partial<TestModel>,
-    );
+    expectTypeOf(result).toEqualTypeOf<ProfileCommandModel>();
     expect(result).toEqual(expectedResult);
   });
 
   it('transform data correctly with custom transform function', () => {
-    const customTransformMethod = (data: ProfileDataModel): CustomTransformedData => {
+    const customTransformMethod = (data: ProfileDataModel): CustomData => {
       return {
         key_01: data.firstName,
         key_02: data.lastName,
@@ -81,7 +90,7 @@ describe(CommandAdapter.name + 'Should', () => {
       profileData: {
         key_01: profileData.firstName,
         key_02: profileData.lastName,
-        key_03: profileData.profileImageUrl
+        key_03: profileData.profileImageUrl,
       },
     };
 

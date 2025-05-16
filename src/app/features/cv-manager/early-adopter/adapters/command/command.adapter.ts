@@ -6,10 +6,10 @@ import { Injectable } from '@angular/core';
 export class CommandAdapter {
   transform<TInput, TOutput>(
     data: TInput,
-    key: string,
-    additionalFields: Partial<TOutput> = {},
-    customTransformMethod?: (data: TInput) => Partial<TOutput>
-  ): Record<string, TOutput> {
+    key: keyof TOutput,
+    additionalFields: Partial<TOutput[keyof TOutput]> = {},
+    customTransformMethod?: (data: TInput) => Partial<unknown>
+  ): TOutput {
     const transformedData = customTransformMethod ? customTransformMethod(data) : { ...data };
 
     return {
@@ -17,6 +17,6 @@ export class CommandAdapter {
         ...transformedData,
         ...additionalFields
       },
-    } as Record<string, TOutput>;
+    } as TOutput;
   }
 }
