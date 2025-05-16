@@ -4,11 +4,11 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { ProfileService } from '../../../services/profile.service';
 import { NgIf } from '@angular/common';
-import { RegisterComponent } from '../register.component';
 import { ProfileCommandModel } from '../models/profileCommand.model';
 import { ProfileDataModel } from '../models/ProfileData.model';
 import { catchError, finalize, tap, throwError } from 'rxjs';
 import { ResponseBackendModel } from '../models/responseBackend.model';
+import { StateService } from '@core/services/state/state.service';
 
 @Component({
   selector: 'app-profile-form',
@@ -16,11 +16,11 @@ import { ResponseBackendModel } from '../models/responseBackend.model';
   templateUrl: './profile-form.component.html',
 })
 export class ProfileFormComponent implements OnInit {
-  isSaving = false;
-  personalDataForm!: FormGroup;
+  private readonly stateService: StateService = inject(StateService);
   private readonly profileService: ProfileService = inject(ProfileService);
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
-  private readonly registerComponent: RegisterComponent = inject(RegisterComponent);
+  isSaving = false;
+  personalDataForm!: FormGroup;
 
   ngOnInit(): void {
     this.initializeForm();
@@ -40,7 +40,7 @@ export class ProfileFormComponent implements OnInit {
       this.profileService.saveData<ProfileCommandModel, ResponseBackendModel>(urlEndpoint, createProfile).pipe(
         tap((response: ResponseBackendModel) => {
           if (response.id) {
-            this.registerComponent.setProfileId(response.id);
+            this.stateService.setProfileId(response.id);
           } else {
             console.warn('No se recibió un ID en la respuesta del backend.');
           }
