@@ -1,4 +1,4 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { ResumeFormComponent } from './resume-form/resume-form.component';
@@ -16,9 +16,4 @@ import { ServiceFormComponent } from './service-form/service-form.component';
   `,
 })
 export class RegisterComponent {
-  profileIdSignal: WritableSignal<string | null> = signal(null);
-
-  setProfileId(id: string): void {
-    this.profileIdSignal.set(id);
-  }
 }
