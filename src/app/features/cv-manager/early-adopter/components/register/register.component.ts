@@ -18,7 +18,7 @@ import { ServiceFormComponent } from './service-form/service-form.component';
 export class RegisterComponent {
   profileIdSignal: WritableSignal<string | null> = signal(null);
 
-  getProfileId(id: string): void {
+  setProfileId(id: string): void {
     this.profileIdSignal.set(id);
   }
 }

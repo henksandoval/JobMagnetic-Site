@@ -10,7 +10,7 @@ describe(ResumeFormComponent.name, () => {
 
   beforeEach(async () => {
     mockRegisterComponent = {
-      getProfileId: jest.fn(),
+      setProfileId: jest.fn(),
     };
 
     const { fixture } = await render(ResumeFormComponent, {

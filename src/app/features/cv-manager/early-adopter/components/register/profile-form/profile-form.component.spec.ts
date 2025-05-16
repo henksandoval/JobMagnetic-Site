@@ -18,7 +18,7 @@ describe(ProfileFormComponent.name, () => {
     };
 
     mockRegisterComponent = {
-      getProfileId: jest.fn(),
+      setProfileId: jest.fn(),
     };
 
     const { fixture } = await render(ProfileFormComponent, {

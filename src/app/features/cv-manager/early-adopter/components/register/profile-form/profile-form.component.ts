@@ -40,7 +40,7 @@ export class ProfileFormComponent implements OnInit {
       this.profileService.saveData<ProfileCommandModel, ResponseBackendModel>(urlEndpoint, createProfile).pipe(
         tap((response: ResponseBackendModel) => {
           if (response.id) {
-            this.registerComponent.getProfileId(response.id);
+            this.registerComponent.setProfileId(response.id);
           } else {
             console.warn('No se recibió un ID en la respuesta del backend.');
           }
