@@ -3,10 +3,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
-import { RegisterComponent } from '../register.component';
 import { ProfileService } from '../../../services/profile.service';
 import { ServiceCommand } from '../models/serviceCommand.model';
 import { ServiceBase } from '../models/serviceBase.model';
+import { StateService } from '@core/services/state/state.service';
 
 @Component({
   selector: 'app-service-form',
@@ -15,10 +15,9 @@ import { ServiceBase } from '../models/serviceBase.model';
   styles: ``,
 })
 export class ServiceFormComponent implements OnInit {
+  private readonly stateService: StateService = inject(StateService);
   private readonly profileService: ProfileService = inject(ProfileService);
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
-  private readonly registerComponent: RegisterComponent = inject(RegisterComponent);
-  profileId = this.registerComponent.profileIdSignal;
   formData!: FormGroup;
   serviceDataForm!: FormGroup;
   itemsOverview: ServiceBase | undefined;
@@ -46,7 +45,7 @@ export class ServiceFormComponent implements OnInit {
 
   saveServiceData(): void {
     const urlEndpoint = ApiEndpoints.profile.service;
-    const profileId = this.profileId();
+    const profileId = this.stateService.tryGetProfileId();
     const formData: ServiceBase = {
       profileId: '',
       overview: this.formData.value.overview,
