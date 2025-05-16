@@ -19,7 +19,7 @@ export class ProfileFormComponent implements OnInit {
   isSaving = false;
   personalDataForm!: FormGroup;
   private readonly profileService: ProfileService = inject(ProfileService);
-  private readonly fb: FormBuilder = inject(FormBuilder);
+  private readonly formBuilder: FormBuilder = inject(FormBuilder);
   private readonly registerComponent: RegisterComponent = inject(RegisterComponent);
 
   ngOnInit(): void {
@@ -57,7 +57,7 @@ export class ProfileFormComponent implements OnInit {
   }
 
   private initializeForm(): void {
-    this.personalDataForm = this.fb.group({
+    this.personalDataForm = this.formBuilder.group({
       firstName: [''],
       lastName: [''],
       profileImageUrl: [''],
