@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/angular';
 import userEvent from '@testing-library/user-event';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { testTranslation } from '@core/tests/test-utils';
+import { testTranslationByText } from '@core/tests/test-utils';
 import { Education } from './interfaces/education';
 import { format } from 'date-fns';
 import { ComponentFixture } from '@angular/core/testing';
@@ -151,13 +151,13 @@ describe(SummaryFormComponent.name, () => {
 
   describe('Should display correct translations in the screen: ', () => {
     const testCases = [
-      { testId: 'summaryRegisterTitle', key: 'summaryRegisterTitle' },
-      { testId: 'introductionLabel', key: 'introduction' },
+      { key: 'summaryRegisterTitle' },
+      { key: 'introduction' },
     ];
 
-    testCases.forEach(({ testId, key }) => {
+    testCases.forEach(({ key }) => {
       it(`${key}`, async () => {
-        testTranslation(testId, key);
+        testTranslationByText(key);
       });
     });
   });
