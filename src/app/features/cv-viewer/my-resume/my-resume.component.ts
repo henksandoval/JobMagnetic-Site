@@ -13,7 +13,7 @@ import AOS from 'aos';
   selector: 'app-my-resume',
   imports: [HeaderComponent, CoverComponent, FooterComponent, ProfileComponent, AppIdDirective],
   templateUrl: './my-resume.component.html',
-  styles: ``,
+  styleUrl: './my-resume.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class MyResumeComponent implements AfterViewInit {
