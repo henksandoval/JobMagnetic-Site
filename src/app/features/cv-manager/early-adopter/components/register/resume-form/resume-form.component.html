@@ -8,7 +8,6 @@
         <div class="mb-3">
           <label
             for="title"
-            appId="title"
             class="form-label label-with-colon"
             i18n="@@title"
           >
@@ -16,7 +15,7 @@
           </label>
           <input
             class="form-control"
-            id="title"
+            appId="title"
             formControlName="title"
             i18n-placeholder="@@titlePlaceholder"
             placeholder="Enter a title"
@@ -27,7 +26,6 @@
         <div class="mb-3">
           <label
             for="jobTitle"
-            appId="jobTitle"
             class="form-label label-with-colon"
             i18n="@@jobTitle"
           >
@@ -35,7 +33,7 @@
           </label>
           <input
             class="form-control"
-            id="jobTitle"
+            appId="jobTitle"
             formControlName="jobTitle"
             i18n-placeholder="@@jobTitlePlaceholder"
             placeholder="Enter your professional title"
@@ -46,7 +44,6 @@
         <div class="mb-3">
           <label
             for="about"
-            appId="about"
             class="form-label label-with-colon"
             i18n="@@about"
           >
@@ -54,7 +51,7 @@
           </label>
           <textarea
             class="form-control"
-            id="about"
+            appId="about"
             formControlName="about"
             i18n-placeholder="@@aboutPlaceholder"
             placeholder="Write about yourself"
@@ -65,7 +62,6 @@
         <div class="mb-3">
           <label
             for="summary"
-            appId="summary"
             class="form-label label-with-colon"
             i18n="@@summary"
           >
@@ -73,7 +69,7 @@
           </label>
           <textarea
             class="form-control"
-            id="summary"
+            appId="summary"
             formControlName="summary"
             i18n-placeholder="@@summaryPlaceholder"
             placeholder="Write a summary of your experience and skills"
@@ -84,7 +80,6 @@
         <div class="mb-3">
           <label
             for="overview"
-            appId="overview"
             class="form-label label-with-colon"
             i18n="@@overview"
           >
@@ -92,7 +87,7 @@
           </label>
           <input
             class="form-control"
-            id="overview"
+            appId="overview"
             formControlName="overview"
             i18n-placeholder="@@overviewPlaceholder"
             placeholder="Write an overview"
@@ -103,7 +98,6 @@
         <div class="mb-3">
           <label
             for="suffix"
-            appId="suffix"
             class="form-label label-with-colon"
             i18n="@@suffix"
           >
@@ -111,7 +105,7 @@
           </label>
           <input
             class="form-control"
-            id="suffix"
+            appId="suffix"
             formControlName="suffix"
             i18n-placeholder="@@suffixPlaceholder"
             placeholder="Enter a title"
@@ -121,7 +115,6 @@
       <div class="col-md-6">
         <label
           for="address"
-          appId="address"
           class="form-label label-with-colon"
           i18n="@@address"
         >
@@ -129,7 +122,7 @@
         </label>
         <input
           class="form-control"
-          id="address"
+          appId="address"
           formControlName="address"
           i18n-placeholder="@@addressPlaceholder"
           placeholder="Enter your address"
@@ -138,6 +131,7 @@
     </div>
     <div class="d-flex justify-content-end mt-4">
       <button
+        appId="saveResumeData"
         (click)="saveResumeData()"
         [disabled]="isSaving"
         class="btn btn-lg btn-primary"

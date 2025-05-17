@@ -1,12 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { ProfileService } from '../../../services/profile.service';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { NgIf } from '@angular/common';
-import { RegisterComponent } from '../register.component';
 import { ResumeCommand } from '../models/resumeCommand.model';
 import { ResumeCommandBase } from '../models/resumeData.model';
+import { CommandAdapter } from '../../../adapters/command/command.adapter';
+import { StateService } from '@core/services/state/state.service';
+import { HttpService } from '@core/services/http/http.service';
+import { Config } from '@core/services/config/interfaces/config';
+import { ConfigService } from '@core/services/config/config.service';
+import { catchError, EMPTY, finalize, tap } from 'rxjs';
 
 @Component({
   selector: 'app-resume-form',
@@ -15,11 +19,13 @@ import { ResumeCommandBase } from '../models/resumeData.model';
   styles: ``,
 })
 export class ResumeFormComponent implements OnInit {
-  private readonly profileService: ProfileService = inject(ProfileService);
+  private readonly configService: Config = inject(ConfigService).getConfig();
+  private readonly stateService: StateService = inject(StateService);
+  private readonly httpService: HttpService = inject(HttpService);
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
-  private readonly registerComponent: RegisterComponent = inject(RegisterComponent);
+  private readonly commandAdapter: CommandAdapter = inject(CommandAdapter);
+  private readonly RESUME_URL_ENDPOINT = new URL(ApiEndpoints.profile.about, this.configService.apiUrl);
   dataForm!: FormGroup;
-  profileId = this.registerComponent.profileIdSignal;
   isSaving = false;
 
   ngOnInit(): void {
@@ -30,26 +36,30 @@ export class ResumeFormComponent implements OnInit {
     if (this.isSaving) {
       return;
     }
-    const profileId = this.profileId();
-    if (!profileId) {
-      console.error('No se puede guardar el resumen: el perfil ID es nulo.');
+
+    if (this.dataForm.invalid) {
       return;
     }
-    this.isSaving = true;
-    const urlEndpoint = ApiEndpoints.profile.about;
-    const formData: ResumeCommandBase = this.dataForm.value;
-    const createResume = this.transformFormDataResume(formData, profileId);
 
-    this.profileService.saveData(urlEndpoint, createResume).subscribe(
-      (response) => {
-        console.log(response);
-        this.isSaving = false;
-      },
-      (error) => {
-        console.error('Error saving resume data:', error);
-        this.isSaving = false;
-      }
+    const resumeCommandBase: ResumeCommandBase = this.dataForm.value;
+    const createResume = this.commandAdapter.transform<ResumeCommandBase, ResumeCommand>(
+      resumeCommandBase,
+      'resumeData',
+      { profileId: this.stateService.tryGetProfileId() },
     );
+
+    this.httpService.post(this.RESUME_URL_ENDPOINT, createResume).pipe(
+      tap(() => {
+        this.isSaving = true;
+      }),
+      catchError((error) => {
+        console.error(error);
+        return EMPTY;
+      }),
+      finalize(() => {
+        this.isSaving = false;
+      })
+    ).subscribe();
   }
 
   private initializeForm(): void {
@@ -64,18 +74,7 @@ export class ResumeFormComponent implements OnInit {
     });
   }
 
-  private transformFormDataResume(formData: ResumeCommandBase, profileId: string): ResumeCommand {
-    return {
-      resumeData: {
-        profileId: profileId,
-        jobTitle: formData.jobTitle,
-        about: formData.about,
-        summary: formData.summary,
-        overview: formData.overview,
-        title: formData.title,
-        suffix: formData.suffix,
-        address: formData.address,
-      },
-    };
+  private getUrlEndpoint(): URL {
+    return new URL(ApiEndpoints.profile.about, this.configService.apiUrl);
   }
 }
