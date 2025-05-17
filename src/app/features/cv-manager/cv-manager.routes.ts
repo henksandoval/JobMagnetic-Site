@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { EarlyAdopterComponent } from './early-adopter/early-adopter.component';
-import { IndexComponent } from './early-adopter/components/index/index.component';
-import { RegisterComponent } from './early-adopter/components/register/register.component';
+import { EarlyAdopterComponent } from '../early-adopter/early-adopter.component';
+import { IndexComponent } from './components/index/index.component';
+import { RegisterComponent } from './components/register/register.component';
 
 export const cvManagerRoutes: Routes = [
   {

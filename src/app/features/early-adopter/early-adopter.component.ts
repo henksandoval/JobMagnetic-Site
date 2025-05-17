@@ -1,6 +1,6 @@
 import { RouterOutlet } from '@angular/router';
 import { Component, ViewEncapsulation } from '@angular/core';
-import { EarlyAdopterHeaderComponent } from './layouts/header/early-adopter-header.component';
+import { EarlyAdopterHeaderComponent } from '../cv-manager/layouts/header/early-adopter-header.component';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 @Component({

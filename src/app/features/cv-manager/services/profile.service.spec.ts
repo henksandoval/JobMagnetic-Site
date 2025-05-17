@@ -4,7 +4,7 @@ import { HttpService } from '@core/services/http/http.service';
 import { ConfigService } from '@core/services/config/config.service';
 import { of } from 'rxjs';
 import { Config } from '@core/services/config/interfaces/config';
-import { mockProfileContract } from '../../../cv-viewer/my-resume/components/profile/mocks/profile-contract.mock';
+import { mockProfileContract } from '../../cv-viewer/my-resume/components/profile/mocks/profile-contract.mock';
 
 class MockHttpService {
   get = jest.fn();

@@ -1,6 +1,6 @@
 import { EarlyAdopterHeaderComponent } from './early-adopter-header.component';
 import { loadTranslations } from '@angular/localize';
-import translations from '../../../../../../assets/i18n/messages.json';
+import translations from '../../../../../assets/i18n/messages.json';
 import { render, screen } from '@testing-library/angular';
 
 describe(EarlyAdopterHeaderComponent.name, () => {

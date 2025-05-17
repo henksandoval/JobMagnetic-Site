@@ -1,7 +1,7 @@
 import { loadTranslations } from '@angular/localize';
 import { render, screen } from '@testing-library/angular';
 import { IndexComponent } from './index.component';
-import translations from '../../../../../../assets/i18n/messages.json';
+import translations from '../../../../../assets/i18n/messages.json';
 
 describe(IndexComponent.name, () => {
   beforeEach(async () => {
