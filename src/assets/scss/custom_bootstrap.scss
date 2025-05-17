@@ -1,5 +1,0 @@
-@use "variables" as vars;
-
-@forward "bootstrap/scss/bootstrap" with (
-  $theme-colors: vars.$theme-colors,
-);

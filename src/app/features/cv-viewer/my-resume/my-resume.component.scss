@@ -1,8 +1,8 @@
 @use "sass:meta";
-@use "custom_bootstrap" as bs;
+@use "styles/custom_bootstrap" as bs;
 @use "ngx-owl-carousel-o/lib/styles/scss/owl.carousel" as owl;
 @use "node_modules/aos/dist/aos.css";
 @use "glightbox/dist/css/glightbox.min";
 @use "boxicons/css/boxicons.min";
 
-@use "app";
+@use "styles/app";

@@ -1,0 +1,5 @@
+@use "../../../../../assets/scss/variables" as vars;
+
+@forward "../../../../../../node_modules/bootstrap/scss/bootstrap" with (
+  $theme-colors: vars.$theme-colors,
+);
