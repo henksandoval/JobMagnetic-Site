@@ -2,8 +2,14 @@ import { render, screen } from '@testing-library/angular';
 import { RegisterComponent } from './register.component';
 import { of } from 'rxjs';
 import { ProfileService } from '../../services/profile.service';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideHttpClient } from '@angular/common/http';
+import { Config } from '@core/services/config/interfaces/config';
+import { ConfigService } from '@core/services/config/config.service';
 
+const apiUrl = 'https://api.example.com';
 describe(RegisterComponent.name, () => {
+  let mockConfigService: Partial<ConfigService>;
   let componentInstance: RegisterComponent;
 
   const mockProfileService = {
@@ -11,8 +17,22 @@ describe(RegisterComponent.name, () => {
   };
 
   beforeEach(async () => {
+    const config: Config = {
+      useAPI: true,
+      apiUrl: apiUrl,
+    };
+
+    mockConfigService = {
+      getConfig: () => config
+    };
+
     const { fixture } = await render(RegisterComponent, {
-      providers: [{ provide: ProfileService, useValue: mockProfileService }],
+      providers: [
+        { provide: ConfigService, useValue: mockConfigService },
+        { provide: ProfileService, useValue: mockProfileService },
+        provideHttpClient(),
+        provideHttpClientTesting()
+      ],
     });
 
     componentInstance = fixture.componentInstance;
