@@ -1,0 +1,28 @@
+.form-container {
+  display: block;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 columnas como Bootstrap */
+  gap: 16px; /* Espaciado entre elementos */
+}
+
+.form-item {
+  grid-column: span 6; /* Cada elemento ocupa 6 columnas por defecto */
+}
+
+.form-item.span-4 {
+  grid-column: span 4; /* Elementos que ocupan 4 columnas */
+}
+
+.form-item.span-8 {
+  grid-column: span 8; /* Elementos que ocupan 8 columnas */
+}
+
+.form-actions {
+  grid-column: span 12; /* El botón ocupa las 12 columnas */
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}

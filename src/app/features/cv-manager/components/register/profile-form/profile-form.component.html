@@ -1,104 +1,108 @@
-<div class="container my-4 p-4 bg-light rounded shadow">
-  <form [formGroup]="personalDataForm">
+<div class="form-container p-4 bg-light rounded shadow">
+  <form [formGroup]="personalDataForm" class="form-grid">
     <h2 class="mb-4" i18n="@@personalData">Step 1: Personal Data</h2>
-    <div class="row g-3">
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label appId="firstName" class="form-label label-with-colon" for="firstName" i18n="@@firstName"
-            >First Name</label
-          >
-          <input
-            class="form-control"
-            formControlName="firstName"
-            i18n-placeholder="@@firstNamePlaceholder"
-            id="firstName"
-            placeholder="Enter your first name"
-            required
-            type="text"
-          />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label appId="middleName" class="form-label label-with-colon" for="middleName" i18n="@@middleName"
-            >Middle Name</label
-          >
-          <input
-            class="form-control"
-            formControlName="middleName"
-            i18n-placeholder="@@middleNamePlaceholder"
-            id="middleName"
-            placeholder="Enter your middle name"
-            type="text"
-          />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label appId="lastName" class="form-label label-with-colon" for="lastName" i18n="@@lastName">Last Name</label>
-          <input
-            class="form-control"
-            formControlName="lastName"
-            i18n-placeholder="@@lastNamePlaceholder"
-            id="lastName"
-            placeholder="Enter your last name"
-            required
-            type="text"
-          />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label
-            appId="secondLastName"
-            class="form-label label-with-colon"
-            for="secondLastName"
-            i18n="@@secondLastName"
-          >Second Last Name</label>
-          <input
-            class="form-control"
-            formControlName="secondLastName"
-            i18n-placeholder="@@secondLastNamePlaceholder"
-            id="secondLastName"
-            placeholder="Enter your second last name"
-            type="text"
-          />
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="mb-3">
-          <label appId="birthDate" class="form-label label-with-colon" for="birthDate" i18n="@@birthDate">Birth Date</label>
-          <input class="form-control" formControlName="birthDate" id="birthDate" type="date" />
-        </div>
-      </div>
-      <div class="col-md-8">
-        <div class="mb-3">
-          <label
-            appId="profileImageUrl"
-            class="form-label label-with-colon"
-            for="profileImageUrl"
-            i18n="@@profileImageUrl"
-            >Profile Picture URL</label
-          >
-          <input
-            class="form-control"
-            formControlName="profileImageUrl"
-            i18n-placeholder="@@profileImageUrlPlaceholder"
-            id="profileImageUrl"
-            placeholder="Enter your profile image URL"
-            type="text"
-          />
-        </div>
-      </div>
+
+    <!-- First Name -->
+    <div class="form-item">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label i18n="@@firstName">First Name</mat-label>
+        <input
+          matInput
+          formControlName="firstName"
+          i18n-placeholder="@@firstNamePlaceholder"
+          placeholder="Enter your first name"
+          required
+          id="firstName"
+          type="text"
+        />
+      </mat-form-field>
     </div>
-    <div class="d-flex justify-content-end mt-4">
+
+    <!-- Middle Name -->
+    <div class="form-item">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label i18n="@@middleName">Middle Name</mat-label>
+        <input
+          matInput
+          formControlName="middleName"
+          i18n-placeholder="@@middleNamePlaceholder"
+          placeholder="Enter your middle name"
+          id="middleName"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Last Name -->
+    <div class="form-item">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label i18n="@@lastName">Last Name</mat-label>
+        <input
+          matInput
+          formControlName="lastName"
+          i18n-placeholder="@@lastNamePlaceholder"
+          placeholder="Enter your last name"
+          required
+          id="lastName"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Second Last Name -->
+    <div class="form-item">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label i18n="@@secondLastName">Second Last Name</mat-label>
+        <input
+          matInput
+          formControlName="secondLastName"
+          i18n-placeholder="@@secondLastNamePlaceholder"
+          placeholder="Enter your second last name"
+          id="secondLastName"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Birth Date -->
+    <div class="form-item span-4">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label i18n="@@birthDate">Birth Date</mat-label>
+        <input matInput formControlName="birthDate" id="birthDate" type="date" />
+      </mat-form-field>
+    </div>
+
+    <!-- Profile Picture URL -->
+    <div class="form-item span-8">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label i18n="@@profileImageUrl">Profile Picture URL</mat-label>
+        <input
+          matInput
+          formControlName="profileImageUrl"
+          i18n-placeholder="@@profileImageUrlPlaceholder"
+          placeholder="Enter your profile image URL"
+          id="profileImageUrl"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <!-- Save Button -->
+    <div class="form-actions">
       <button
+        mat-raised-button
+        color="primary"
         (click)="savePersonalData()"
         [disabled]="isSaving"
-        class="btn btn-lg btn-primary"
         i18n="@@save"
         type="button"
-      >Save<output *ngIf="isSaving" aria-hidden="true" class="spinner-border"></output>
+      >
+        Save
+        <mat-spinner
+          *ngIf="isSaving"
+          diameter="20"
+          class="ms-2"
+        ></mat-spinner>
       </button>
     </div>
   </form>
