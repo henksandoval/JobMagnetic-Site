@@ -1,0 +1,54 @@
+.landing-page {
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+
+.header ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.body {
+  padding: 20px;
+  text-align: center;
+}
+
+.hero {
+  margin: 20px 0;
+}
+
+.hero button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.hero button:hover {
+  background-color: #0056b3;
+}
+
+.footer {
+  background-color: #f8f9fa;
+  padding: 10px;
+  text-align: center;
+}

@@ -1,0 +1,213 @@
+// Variables globales (puedes moverlas a un archivo _variables.scss si lo tienes centralizado)
+$primary: #2b6cb0;
+$primary-dark: #23497c;
+$secondary: #1a202c;
+$text-gray: #4a5568;
+$text-light: #718096;
+$white: #ffffff;
+$green: #38a169;
+
+// Hero Section
+.hero-section {
+  position: relative;
+  background: linear-gradient(to bottom, $white, #f8fafc); // Gradiente de fondo
+  overflow: hidden;
+
+  // Fondo de cuadrícula
+  .bg-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('/assets/grid-pattern.svg'); // Usa tu propio patrón
+    opacity: 0.1;
+  }
+
+  // Contenedor principal
+  .section-container {
+    position: relative;
+    z-index: 10;
+    padding: 4rem 1rem 5rem; // pt-16 pb-20
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+
+    @media (min-width: 1024px) {
+      grid-template-columns: 1fr 1fr; // Layout de dos columnas
+    }
+  }
+
+  // Texto y botones
+  .text-content {
+    text-align: center;
+
+    @media (min-width: 1024px) {
+      text-align: left;
+    }
+
+    h1 {
+      font-size: 2.25rem; // text-4xl
+      font-weight: bold;
+      margin-bottom: 1.5rem; // mb-6
+
+      @media (min-width: 768px) {
+        font-size: 3rem; // text-5xl
+      }
+
+      @media (min-width: 1024px) {
+        font-size: 3.75rem; // text-6xl
+      }
+
+      .accent-gradient {
+        background: linear-gradient(to right, $primary, $primary-dark);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .description {
+      font-size: 1.125rem; // text-xl
+      color: $text-gray;
+      margin-bottom: 2rem; // mb-8
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      @media (min-width: 640px) {
+        flex-direction: row;
+      }
+
+      .cta-primary {
+        background-color: $primary;
+        color: $white;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: medium;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: $primary-dark;
+          box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      .cta-secondary {
+        color: $primary;
+        font-size: 1rem;
+        font-weight: medium;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+
+        .arrow {
+          margin-left: 0.5rem;
+          font-size: 1.25rem;
+        }
+
+        &:hover {
+          color: $primary-dark;
+        }
+      }
+    }
+  }
+
+  // Tarjeta animada
+  .card-container {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: block;
+      animation: bounce 3s infinite;
+    }
+
+    .card {
+      background-color: $white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+
+      .card-header {
+        background-color: #ebf8ff; // bg-jobmagnetic-50
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+
+        .logo-container {
+          display: flex;
+          align-items: center;
+
+          .logo-circle {
+            width: 4rem;
+            height: 4rem;
+            background-color: #bee3f8; // bg-jobmagnetic-100
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+
+            .logo-text {
+              font-size: 1.5rem;
+              font-weight: bold;
+              color: $primary;
+            }
+          }
+
+          h3 {
+            font-size: 1.25rem;
+            font-weight: bold;
+          }
+
+          p {
+            font-size: 0.875rem;
+            color: $text-light;
+          }
+        }
+      }
+
+      .card-body {
+        .feature {
+          display: flex;
+          align-items: center;
+          margin-bottom: 1rem;
+
+          .check-icon {
+            color: $green;
+            font-size: 1.25rem;
+            margin-right: 0.75rem;
+          }
+
+          p {
+            color: $text-gray;
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+  }
+
+  // Gradiente al final
+  .bottom-gradient {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background: linear-gradient(to top, $white, transparent);
+  }
+}
+
+// Animación de rebote
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

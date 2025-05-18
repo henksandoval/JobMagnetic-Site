@@ -1,0 +1,127 @@
+<header
+  class="sticky top-0 z-50 transition-all duration-300"
+  [ngClass]="{
+    'bg-white/90 shadow-sm backdrop-blur-sm': isScrolled,
+    'bg-transparent': !isScrolled
+  }"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-4 md:justify-start md:space-x-10">
+      <!-- Logo -->
+      <div class="flex justify-start lg:w-0 lg:flex-1">
+        <a href="#" class="flex items-center">
+          <span class="text-2xl font-display font-bold text-jobmagnetic-700">
+            Job<span class="text-jobmagnetic-500">Magnetic</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Botón del menú móvil -->
+      <div class="md:hidden flex items-center">
+        <button
+          class="p-2 rounded-md focus:outline-none"
+          (click)="toggleMenu()"
+          aria-label="Menu"
+        >
+          <svg
+            *ngIf="!isMenuOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+          <svg
+            *ngIf="isMenuOpen"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="h-6 w-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Enlaces del menú (desktop) -->
+      <nav class="hidden md:flex space-x-10">
+        <a
+          *ngFor="let link of navLinks"
+          [href]="link.href"
+          class="text-base font-medium text-gray-600 hover:text-jobmagnetic-600 transition-colors"
+        >
+          {{ link.name }}
+        </a>
+      </nav>
+
+      <!-- Botón de llamada a la acción (desktop) -->
+      <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+        <a
+          href="#early-access"
+          class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-6 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-jobmagnetic-600 hover:bg-jobmagnetic-700 transition-colors"
+        >
+          Acceso temprano
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menú móvil -->
+  <div
+    *ngIf="isMenuOpen"
+    class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50"
+  >
+    <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
+      <div class="pt-5 pb-6 px-5">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-2xl font-display font-bold text-jobmagnetic-700">
+              Job<span class="text-jobmagnetic-500">Magnetic</span>
+            </span>
+          </div>
+          <div class="-mr-2">
+            <button
+              class="p-2 rounded-md focus:outline-none"
+              (click)="toggleMenu()"
+              aria-label="Close menu"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div class="mt-6">
+          <nav class="grid gap-y-8">
+            <a
+              *ngFor="let link of navLinks"
+              [href]="link.href"
+              class="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 transition-colors"
+              (click)="closeMenu()"
+            >
+              <span class="text-base font-medium text-gray-900">{{ link.name }}</span>
+            </a>
+          </nav>
+        </div>
+      </div>
+      <div class="py-6 px-5">
+        <a
+          href="#early-access"
+          class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-jobmagnetic-600 hover:bg-jobmagnetic-700 transition-colors"
+          (click)="closeMenu()"
+        >
+          Acceso temprano
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
