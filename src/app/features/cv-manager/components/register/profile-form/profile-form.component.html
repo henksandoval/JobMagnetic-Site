@@ -1,90 +1,91 @@
 <div class="form-container p-4 bg-light rounded shadow">
   <form [formGroup]="personalDataForm" class="form-grid">
     <h2 class="mb-4" i18n="@@personalData">Step 1: Personal Data</h2>
+    <div class="form-row">
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@firstName">First Name</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            i18n-placeholder="@@firstNamePlaceholder"
+            placeholder="Enter your first name"
+            required
+            id="firstName"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
 
-    <!-- First Name -->
-    <div class="form-item">
-      <mat-form-field class="w-100" appearance="fill">
-        <mat-label i18n="@@firstName">First Name</mat-label>
-        <input
-          matInput
-          formControlName="firstName"
-          i18n-placeholder="@@firstNamePlaceholder"
-          placeholder="Enter your first name"
-          required
-          id="firstName"
-          type="text"
-        />
-      </mat-form-field>
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@middleName">Middle Name</mat-label>
+          <input
+            matInput
+            formControlName="middleName"
+            i18n-placeholder="@@middleNamePlaceholder"
+            placeholder="Enter your middle name"
+            id="middleName"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
     </div>
 
-    <!-- Middle Name -->
-    <div class="form-item">
-      <mat-form-field class="w-100" appearance="fill">
-        <mat-label i18n="@@middleName">Middle Name</mat-label>
-        <input
-          matInput
-          formControlName="middleName"
-          i18n-placeholder="@@middleNamePlaceholder"
-          placeholder="Enter your middle name"
-          id="middleName"
-          type="text"
-        />
-      </mat-form-field>
+    <!-- Last Name and Second Last Name -->
+    <div class="form-row">
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@lastName">Last Name</mat-label>
+          <input
+            matInput
+            formControlName="lastName"
+            i18n-placeholder="@@lastNamePlaceholder"
+            placeholder="Enter your last name"
+            required
+            id="lastName"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="form-item">
+        <mat-form-field appearance="fill">
+          <mat-label i18n="@@secondLastName">Second Last Name</mat-label>
+          <input
+            matInput
+            formControlName="secondLastName"
+            i18n-placeholder="@@secondLastNamePlaceholder"
+            placeholder="Enter your second last name"
+            id="secondLastName"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
     </div>
 
-    <!-- Last Name -->
-    <div class="form-item">
-      <mat-form-field class="w-100" appearance="fill">
-        <mat-label i18n="@@lastName">Last Name</mat-label>
-        <input
-          matInput
-          formControlName="lastName"
-          i18n-placeholder="@@lastNamePlaceholder"
-          placeholder="Enter your last name"
-          required
-          id="lastName"
-          type="text"
-        />
-      </mat-form-field>
-    </div>
+    <!-- Birth Date and Profile Picture URL -->
+    <div class="form-row">
+      <div class="form-item span-6">
+        <mat-form-field appearance="fill">
+          <mat-label i18n="@@birthDate">Birth Date</mat-label>
+          <input matInput formControlName="birthDate" id="birthDate" type="date" />
+        </mat-form-field>
+      </div>
 
-    <!-- Second Last Name -->
-    <div class="form-item">
-      <mat-form-field class="w-100" appearance="fill">
-        <mat-label i18n="@@secondLastName">Second Last Name</mat-label>
-        <input
-          matInput
-          formControlName="secondLastName"
-          i18n-placeholder="@@secondLastNamePlaceholder"
-          placeholder="Enter your second last name"
-          id="secondLastName"
-          type="text"
-        />
-      </mat-form-field>
-    </div>
-
-    <!-- Birth Date -->
-    <div class="form-item span-4">
-      <mat-form-field class="w-100" appearance="fill">
-        <mat-label i18n="@@birthDate">Birth Date</mat-label>
-        <input matInput formControlName="birthDate" id="birthDate" type="date" />
-      </mat-form-field>
-    </div>
-
-    <!-- Profile Picture URL -->
-    <div class="form-item span-8">
-      <mat-form-field class="w-100" appearance="fill">
-        <mat-label i18n="@@profileImageUrl">Profile Picture URL</mat-label>
-        <input
-          matInput
-          formControlName="profileImageUrl"
-          i18n-placeholder="@@profileImageUrlPlaceholder"
-          placeholder="Enter your profile image URL"
-          id="profileImageUrl"
-          type="text"
-        />
-      </mat-form-field>
+      <div class="form-item span-6">
+        <mat-form-field appearance="fill">
+          <mat-label i18n="@@profileImageUrl">Profile Picture URL</mat-label>
+          <input
+            matInput
+            formControlName="profileImageUrl"
+            i18n-placeholder="@@profileImageUrlPlaceholder"
+            placeholder="Enter your profile image URL"
+            id="profileImageUrl"
+            type="text"
+          />
+        </mat-form-field>
+      </div>
     </div>
 
     <!-- Save Button -->

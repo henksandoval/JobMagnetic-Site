@@ -23,7 +23,7 @@
     "birthDate": "Fecha de nacimiento",
     "profileImageUrl": "URL de la image del perfil",
     "profileImageUrlPlaceholder": "Escriba la URL de la image del perfil",
-    "save": "Guardar{$START_TAG_OUTPUT}{$CLOSE_TAG_OUTPUT}",
+    "save": "Guardar",
     "curriculumData": "Paso 2: Datos del Currículum",
     "summaryRegisterTitle": "Paso 3: Datos del Currículum",
     "introduction": "Introducción acerca de ti",

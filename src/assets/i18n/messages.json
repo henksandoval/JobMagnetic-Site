@@ -23,7 +23,7 @@
     "birthDate": "Birth Date",
     "profileImageUrl": "Profile Picture URL",
     "profileImageUrlPlaceholder": "Enter your profile image URL",
-    "save": "Save{$START_TAG_OUTPUT}{$CLOSE_TAG_OUTPUT}",
+    "save": "Save",
     "curriculumData": "Step 2: Curriculum Data",
     "summaryRegisterTitle": "Step 3: Curriculum Data",
     "introduction": "Introduction about you",

@@ -7,13 +7,15 @@ import { ServiceFormComponent } from './service-form/service-form.component';
 
 @Component({
   selector: 'app-register',
-  imports: [AppIdDirective, ProfileFormComponent, ResumeFormComponent, SummaryFormComponent, ServiceFormComponent],
+  imports: [AppIdDirective, ProfileFormComponent],
   template: `
     <app-profile-form appId="profile-component"></app-profile-form>
-    <app-resume-form appId="resume-component"></app-resume-form>
-    <app-summary-form appId="summary-component"></app-summary-form>
-    <app-service-form appId="service-component"></app-service-form>
+<!--    <app-resume-form appId="resume-component"></app-resume-form>-->
+<!--    <app-summary-form appId="summary-component"></app-summary-form>-->
+<!--    <app-service-form appId="service-component"></app-service-form>-->
   `,
 })
 export class RegisterComponent {
 }
+
+// ResumeFormComponent, SummaryFormComponent, ServiceFormComponent

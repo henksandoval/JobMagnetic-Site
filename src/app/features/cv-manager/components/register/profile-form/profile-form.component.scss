@@ -1,28 +1,38 @@
 .form-container {
   display: block;
+  text-align: center; /* Centrar el contenido del formulario */
+}
+
+h2 {
+  text-align: center; /* Centrar el título */
+  margin-bottom: 24px;
 }
 
 .form-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); /* 12 columnas como Bootstrap */
-  gap: 16px; /* Espaciado entre elementos */
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaciado entre filas */
+}
+
+.form-row {
+  display: flex;
+  gap: 16px; /* Espaciado entre columnas */
 }
 
 .form-item {
-  grid-column: span 6; /* Cada elemento ocupa 6 columnas por defecto */
+  flex: 1; /* Cada elemento ocupa el mismo espacio */
 }
 
 .form-item.span-4 {
-  grid-column: span 4; /* Elementos que ocupan 4 columnas */
+  flex: 0.31; /* Elementos que ocupan un tercio del ancho */
 }
 
 .form-item.span-8 {
-  grid-column: span 8; /* Elementos que ocupan 8 columnas */
+  flex: 0.66; /* Elementos que ocupan dos tercios del ancho */
 }
 
 .form-actions {
-  grid-column: span 12; /* El botón ocupa las 12 columnas */
-  display: flex;
-  justify-content: flex-end;
   margin-top: 16px;
+  display: flex;
+  justify-content: center; /* Centrar el botón */
 }
