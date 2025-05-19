@@ -1,144 +1,123 @@
-<div class="container my-4 p-4 bg-light rounded shadow">
-  <form [formGroup]="dataForm">
-    <h2 class="mb-4" appId="curriculumData" i18n="@@curriculumData">
-      Step 2: Curriculum Data
+<div class="form-container p-4 bg-light rounded shadow">
+  <form [formGroup]="dataForm" class="form-grid">
+    <h2 class="mb-4" appId="curriculumData" i18n="@@curriculumData">Step 2: Curriculum Data
     </h2>
-    <div class="row g-3">
-      <div class="col-md-5">
-        <div class="mb-3">
-          <label
-            for="title"
-            class="form-label label-with-colon"
-            i18n="@@title"
-          >
-            Title
-          </label>
+    <div class="form-row">
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@title"> Title </mat-label>
           <input
-            class="form-control"
-            appId="title"
+            matInput
             formControlName="title"
             i18n-placeholder="@@titlePlaceholder"
             placeholder="Enter a title"
+            appId="title"
+            type="text"
           />
-        </div>
+        </mat-form-field>
       </div>
-      <div class="col-md-5">
-        <div class="mb-3">
-          <label
-            for="jobTitle"
-            class="form-label label-with-colon"
-            i18n="@@jobTitle"
-          >
-            Professional title
-          </label>
+
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@jobTitle"> Professional Title </mat-label>
           <input
-            class="form-control"
-            appId="jobTitle"
+            matInput
             formControlName="jobTitle"
             i18n-placeholder="@@jobTitlePlaceholder"
             placeholder="Enter your professional title"
+            appId="jobTitle"
           />
-        </div>
+        </mat-form-field>
       </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label
-            for="about"
-            class="form-label label-with-colon"
-            i18n="@@about"
-          >
-            About
-          </label>
+    </div>
+
+    <div class="form-row">
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@about"> About </mat-label>
           <textarea
-            class="form-control"
-            appId="about"
+            matInput
             formControlName="about"
             i18n-placeholder="@@aboutPlaceholder"
             placeholder="Write about yourself"
+            appId="about"
           ></textarea>
-        </div>
+        </mat-form-field>
       </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label
-            for="summary"
-            class="form-label label-with-colon"
-            i18n="@@summary"
-          >
-            Summary
-          </label>
+
+      <div class="form-item span-6">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@summary"> Summary </mat-label>
           <textarea
-            class="form-control"
-            appId="summary"
+            matInput
             formControlName="summary"
             i18n-placeholder="@@summaryPlaceholder"
             placeholder="Write a summary of your experience and skills"
+            appId="summary"
           ></textarea>
-        </div>
+        </mat-form-field>
       </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label
-            for="overview"
-            class="form-label label-with-colon"
-            i18n="@@overview"
-          >
-            Overview
-          </label>
+    </div>
+
+    <div class="form-row">
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@overview"> Overview </mat-label>
           <input
-            class="form-control"
-            appId="overview"
+            matInput
             formControlName="overview"
             i18n-placeholder="@@overviewPlaceholder"
             placeholder="Write an overview"
+            appId="overview"
           />
-        </div>
+        </mat-form-field>
       </div>
-      <div class="col-md-6">
-        <div class="mb-3">
-          <label
-            for="suffix"
-            class="form-label label-with-colon"
-            i18n="@@suffix"
-          >
-            Suffix
-          </label>
+
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@suffix"> Suffix </mat-label>
           <input
-            class="form-control"
-            appId="suffix"
+            matInput
             formControlName="suffix"
             i18n-placeholder="@@suffixPlaceholder"
-            placeholder="Enter a title"
+            placeholder="Enter a suffix"
+            appId="suffix"
           />
-        </div>
-      </div>
-      <div class="col-md-6">
-        <label
-          for="address"
-          class="form-label label-with-colon"
-          i18n="@@address"
-        >
-          Address
-        </label>
-        <input
-          class="form-control"
-          appId="address"
-          formControlName="address"
-          i18n-placeholder="@@addressPlaceholder"
-          placeholder="Enter your address"
-        />
+        </mat-form-field>
       </div>
     </div>
-    <div class="d-flex justify-content-end mt-4">
-      <button
-        appId="saveResumeData"
-        (click)="saveResumeData()"
-        [disabled]="isSaving"
-        class="btn btn-lg btn-primary"
-        i18n="@@save"
-        type="button"
-      >Save<output *ngIf="isSaving" aria-hidden="true" class="spinner-border" role="status"></output>
-      </button>
+
+    <div class="form-row">
+      <div class="form-item">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label i18n="@@address"> Address </mat-label>
+          <input
+            matInput
+            formControlName="address"
+            i18n-placeholder="@@addressPlaceholder"
+            placeholder="Enter your address"
+            appId="address"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button
+          mat-raised-button
+          color="primary"
+          appId="saveResumeData"
+          (click)="saveResumeData()"
+          [disabled]="isSaving"
+          i18n="@@save"
+          type="button"
+        > Save
+          <mat-spinner
+            *ngIf="isSaving"
+            diameter="20"
+            class="ms-2"
+          ></mat-spinner>
+        </button>
+      </div>
     </div>
   </form>
 </div>

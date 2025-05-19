@@ -11,12 +11,24 @@ import { HttpService } from '@core/services/http/http.service';
 import { Config } from '@core/services/config/interfaces/config';
 import { ConfigService } from '@core/services/config/config.service';
 import { catchError, EMPTY, finalize, tap } from 'rxjs';
+import { MatButton } from '@angular/material/button';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-resume-form',
-  imports: [ReactiveFormsModule, AppIdDirective, NgIf],
+  imports: [
+    ReactiveFormsModule,
+    AppIdDirective,
+    NgIf,
+    MatProgressSpinner,
+    MatButton,
+    MatInput,
+    MatLabel,
+    MatFormField,
+  ],
   templateUrl: './resume-form.component.html',
-  styles: ``,
+  styleUrl: './resume-form.component.scss',
 })
 export class ResumeFormComponent implements OnInit {
   private readonly configService: Config = inject(ConfigService).getConfig();
@@ -45,21 +57,24 @@ export class ResumeFormComponent implements OnInit {
     const createResume = this.commandAdapter.transform<ResumeCommandBase, ResumeCommand>(
       resumeCommandBase,
       'resumeData',
-      { profileId: this.stateService.tryGetProfileId() },
+      { profileId: this.stateService.tryGetProfileId() }
     );
 
-    this.httpService.post(this.RESUME_URL_ENDPOINT, createResume).pipe(
-      tap(() => {
-        this.isSaving = true;
-      }),
-      catchError((error) => {
-        console.error(error);
-        return EMPTY;
-      }),
-      finalize(() => {
-        this.isSaving = false;
-      })
-    ).subscribe();
+    this.httpService
+      .post(this.RESUME_URL_ENDPOINT, createResume)
+      .pipe(
+        tap(() => {
+          this.isSaving = true;
+        }),
+        catchError((error) => {
+          console.error(error);
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.isSaving = false;
+        })
+      )
+      .subscribe();
   }
 
   private initializeForm(): void {
@@ -75,6 +90,7 @@ export class ResumeFormComponent implements OnInit {
   }
 
   private getUrlEndpoint(): URL {
+    debugger
     return new URL(ApiEndpoints.profile.about, this.configService.apiUrl);
   }
 }
