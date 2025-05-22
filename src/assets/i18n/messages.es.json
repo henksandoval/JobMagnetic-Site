@@ -52,6 +52,7 @@
     "companyNameLabel": "Nombre de la empresa *",
     "companyNameSuggestsPlaceholder": "Por ejemplo: Google",
     "companyLocationLabel": "Ubicación *",
+    "companyLocationPlaceholder": "Por ejemplo: Mountain View, CA",
     "workDescriptionLabel": "Descripción",
     "workDescriptionPlaceholder": "Proporcione detalles sobre su trabajo (opcional)",
     "responsibilitiesLabel": "Responsabilidades",
