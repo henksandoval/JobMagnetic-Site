@@ -12,7 +12,7 @@ export class StateService {
   }
 
   setProfileId(profileId: string): void {
-    if (profileId.trim() === '') {
+    if (!profileId) {
       throw new Error('The profileId cannot be empty.');
     }
     this._profileId.set(profileId);
