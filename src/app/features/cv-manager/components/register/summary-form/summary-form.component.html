@@ -70,16 +70,16 @@
           <h4 class="m-0 text-primary fw-bold" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">
             Work Experience
           </h4>
-<!--            (click)="openWorkExperienceDialog()"-->
           <button
-            mat-button
+            mat-flat-button
             color="primary"
             appId="btnInsertWorkExperience"
+            (click)="openWorkExperienceDialog()"
             i18n="@@insertWorkExperienceButton">
            <mat-icon>add_circle</mat-icon> Insert
            </button>
         </div>
-        <ng-container *ngFor="let work of workExperienceArray;">
+        @for (work of workExperienceArray(); track work.correlationId) {
           <mat-card class="mb-3">
             <mat-card-content>
               <h5 class="text-success fw-bold mb-1">{{ work.jobTitle }}</h5>
@@ -97,20 +97,21 @@
                 <mat-icon>event</mat-icon> <strong>End Date:</strong> {{ work.endDate ? (work.endDate | date) : 'Present' }}
               </p>
             </mat-card-content>
-            <mat-card-actions>
+            <mat-card-actions align="end">
               <button
                 mat-button
                 color="warn"
                 [appId]="getButtonAppId('btnRemoveWork', work.correlationId!)"
                 (click)="removeWorkExperience(work.correlationId!)">
-                <mat-icon>delete</mat-icon> Remove
+                <mat-icon>delete</mat-icon>
               </button>
             </mat-card-actions>
           </mat-card>
-        </ng-container>
+        } @empty {
+          <p class="text-muted fst-italic"></p>
+        }
       </div>
     </div>
-
     <div class="d-flex justify-content-end mt-4">
       <button
         mat-raised-button
@@ -119,7 +120,7 @@
         [disabled]="isSaving"
         i18n="@@save">
         Save
-        <mat-spinner *ngIf="isSaving" diameter="20"></mat-spinner>
+        <mat-progress-spinner *ngIf="isSaving" mode="indeterminate" diameter="20" class="ms-2"></mat-progress-spinner>
       </button>
     </div>
   </form>
