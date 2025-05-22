@@ -57,16 +57,30 @@
       </div>
     </div>
     <div class="row g-3 mt-3">
-      <mat-form-field class="w-100">
-        <mat-label i18n="@@responsibilitiesLabel">Responsibilities</mat-label>
-        <textarea
-          matInput
-          appId="inputResponsibilities"
-          formControlName="responsibilities"
-          rows="3"
-          i18n-placeholder="@@responsibilitiesPlaceholder"
-          placeholder="List key responsibilities (optional)"></textarea>
-      </mat-form-field>
+      <div class="col-12">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label i18n="@@responsibilitiesLabel">Responsibilities</mat-label>
+          <mat-chip-grid #chipGrid aria-label="Enter responsibilities">
+            @for (control of responsibilitiesFormArray.controls; track $index) {
+              <mat-chip-row (removed)="removeResponsibility($index)" [editable]="true">
+                {{control.value}}
+                <button matChipRemove [attr.aria-label]="'Remove ' + control.value">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            }
+            <input
+              placeholder="List key responsibilities (optional)"
+              i18n-placeholder="@@responsibilitiesPlaceholder"
+              [matChipInputFor]="chipGrid"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="true"
+              (matChipInputTokenEnd)="addResponsibility($event)"
+              appId="inputResponsibilities" />
+          </mat-chip-grid>
+<!--          <mat-hint i18n="@@responsibilitiesChipsHint">Type a responsibility and press Enter or Comma to add it.</mat-hint>-->
+        </mat-form-field>
+      </div>
     </div>
     <div class="row g-3 mt-3">
       <p class="text-primary fw-semibold" i18n="@@dates">Dates</p>
