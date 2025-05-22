@@ -34,7 +34,6 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 export class EducationDialogComponent  implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
   private dialogRef: MatDialogRef<EducationDialogComponent > = inject(MatDialogRef);
-  educationArray: Education[] = [];
   educationForm!: FormGroup;
 
   ngOnInit(): void {
@@ -56,9 +55,9 @@ export class EducationDialogComponent  implements OnInit {
     if (this.educationForm.valid) {
       const educationData: Education = {
         ...this.educationForm.value,
-        correlationId: Guid.create().toString() // Genera el ID aquí
+        correlationId: Guid.create().toString()
       };
-      this.dialogRef.close(educationData); // Cierra el diálogo y pasa los datos
+      this.dialogRef.close(educationData);
     }
   }
 }

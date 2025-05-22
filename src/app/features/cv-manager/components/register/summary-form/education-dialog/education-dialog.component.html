@@ -1,9 +1,9 @@
 <h2 mat-dialog-title i18n="@@addEducationModalTitle">Insert Education</h2>
 <mat-dialog-content>
-  <p class="text-muted mb-4">Please fill in the details of your education background. All fields marked with * are required.</p>
+  <p class="text-muted mb-4" i18n="@@educationRequiredFieldsMessage">Please fill in the details of your education background. All fields marked with * are required.</p>
   <form [formGroup]="educationForm">
     <div class="row g-3">
-      <p class="text-primary fw-semibold">Degree Information</p>
+      <p class="text-primary fw-semibold" i18n="@@degreeInformation">Degree Information</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
           <mat-label i18n="@@degreeLabel">Degree</mat-label>
@@ -29,7 +29,7 @@
       </div>
     </div>
     <div class="row g-3 mt-3">
-      <p class="text-primary fw-semibold">Location and Description</p>
+      <p class="text-primary fw-semibold" i18n="@@locationAndDescription">Location and Description</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
           <mat-label i18n="@@institutionLocationLabel">Location</mat-label>
@@ -56,7 +56,7 @@
       </div>
     </div>
     <div class="row g-3 mt-3">
-      <p class="text-primary fw-semibold">Dates</p>
+      <p class="text-primary fw-semibold" i18n="@@dates">Dates</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
           <mat-label i18n="@@startDateLabel">Start Date</mat-label>
