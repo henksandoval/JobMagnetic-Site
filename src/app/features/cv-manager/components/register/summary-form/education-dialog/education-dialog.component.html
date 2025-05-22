@@ -3,10 +3,10 @@
   <p class="text-muted mb-4">Please fill in the details of your education background. All fields marked with * are required.</p>
   <form [formGroup]="educationForm">
     <div class="row g-3">
-      <p>Degree Information</p>
+      <p class="text-primary fw-semibold">Degree Information</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label i18n="@@degreeLabel">Degree*</mat-label>
+          <mat-label i18n="@@degreeLabel">Degree</mat-label>
           <input
             matInput
             formControlName="degree"
@@ -17,7 +17,7 @@
       </div>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label i18n="@@institutionNameLabel">Institution Name*</mat-label>
+          <mat-label i18n="@@institutionNameLabel">Institution Name</mat-label>
           <input
             matInput
             formControlName="institutionName"
@@ -28,11 +28,11 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row g-3">
-      <p>Location and Description</p>
+    <div class="row g-3 mt-3">
+      <p class="text-primary fw-semibold">Location and Description</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label i18n="@@institutionLocationLabel">Location*</mat-label>
+          <mat-label i18n="@@institutionLocationLabel">Location</mat-label>
           <input
             matInput
             formControlName="institutionLocation"
@@ -55,13 +55,14 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row g-3">
-      <p>Dates</p>
+    <div class="row g-3 mt-3">
+      <p class="text-primary fw-semibold">Dates</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label i18n="@@startDateLabel">Start Date*</mat-label>
+          <mat-label i18n="@@startDateLabel">Start Date</mat-label>
           <input
             matInput
+            type="date"
             formControlName="startDate"
             appId="inputEducationStartDate"
             required />
@@ -72,6 +73,7 @@
           <mat-label i18n="@@endDateLabel">End Date</mat-label>
           <input
             matInput
+            type="date"
             formControlName="endDate"
             appId="inputEducationEndDate"
            />
@@ -82,5 +84,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
-  <button mat-raised-button color="primary" [mat-dialog-close]="educationForm.value" [disabled]="!educationForm.valid" i18n="@@saveButton">Save</button>
+  <button mat-raised-button color="primary" (click)="saveEducation()" [mat-dialog-close]="educationForm.value" [disabled]="!educationForm.valid" i18n="@@saveButton">Save</button>
 </mat-dialog-actions>

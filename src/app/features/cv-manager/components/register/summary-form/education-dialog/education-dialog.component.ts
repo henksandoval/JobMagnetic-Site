@@ -1,9 +1,9 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {
-  MatDialog,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
+  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { Education } from '../interfaces/education';
@@ -15,7 +15,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 
 
 @Component({
-  selector: 'app-education-form',
+  selector: 'app-education-dialog',
   imports: [
     MatInput,
     ReactiveFormsModule,
@@ -28,12 +28,12 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
     MatDialogClose,
     AppIdDirective,
   ],
-  templateUrl: './education-form.component.html',
-  styleUrl: './education-form.component.scss',
+  templateUrl: './education-dialog.component.html',
+  styleUrl: './education-dialog.component.scss',
 })
-export class EducationFormComponent implements OnInit {
+export class EducationDialogComponent  implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
-  private dialog: MatDialog = inject(MatDialog);
+  private dialogRef: MatDialogRef<EducationDialogComponent > = inject(MatDialogRef);
   educationArray: Education[] = [];
   educationForm!: FormGroup;
 
@@ -52,29 +52,13 @@ export class EducationFormComponent implements OnInit {
     });
   }
 
-  openEducationDialog(): void {
-    const dialogRef = this.dialog.open(EducationFormComponent, {
-      width: '800px',
-      data: {},
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.educationArray.push(result);
-      }
-    });
-  }
-
-  confirmAddEducation(): void {
+  saveEducation(): void {
     if (this.educationForm.valid) {
-      const education = this.educationForm.value as Education;
-      education.correlationId = Guid.create();
-      this.educationArray.push(education);
-
-      // const educationArray = this.dataForm.get('education') as FormArray;
-      // educationArray.push(this.formBuilder.group(education));
-
-      this.educationForm.reset();
+      const educationData: Education = {
+        ...this.educationForm.value,
+        correlationId: Guid.create().toString() // Genera el ID aquí
+      };
+      this.dialogRef.close(educationData); // Cierra el diálogo y pasa los datos
     }
   }
 }

@@ -1,21 +1,21 @@
-<div class="container my-4 p-4 bg-light rounded shadow">
+<div class="form-container my-4 p-4 bg-light rounded shadow">
   <form [formGroup]="dataForm">
     <h2 class="mb-4 text-center fw-bold" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">
       Step 3: Curriculum Data
     </h2>
     <div class="mb-4">
-      <label appId="introductionLabel" class="form-label fw-semibold" for="introduction" i18n="@@introduction">
-        Introduction about you
-      </label>
-      <textarea
-        class="form-control"
-        formControlName="introduction"
-        i18n-placeholder="@@introductionPlaceholder"
-        appId="introductionInput"
-        placeholder="Enter an attractive introduction about you"
-        rows="5"
-        required>
-      </textarea>
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label i18n="@@introduction">Introduction about you</mat-label>
+        <textarea
+          matInput
+          formControlName="introduction"
+          i18n-placeholder="@@introductionPlaceholder"
+          appId="introductionInput"
+          placeholder="Enter an attractive introduction about you"
+          rows="5"
+          required>
+        </textarea>
+      </mat-form-field>
     </div>
     <div class="row">
       <div class="col-lg-6">
@@ -24,299 +24,103 @@
             Education
           </h4>
           <button
-            type="button"
+            mat-flat-button
+            color="primary"
             appId="btnInsertEducation"
-            class="btn btn-outline-primary btn-sm"
-            data-bs-toggle="modal"
-            data-bs-target="#educationModal"
+            (click)="openEducationDialog()"
             i18n="@@insertButton">
-            <i class="bi bi-plus-circle"></i> Insert
+          <mat-icon>add_circle</mat-icon> Insert
           </button>
         </div>
-        @for (education of educationArray; track education.correlationId) {
-          <div class="card mb-3 border-0 shadow-sm">
-            <div class="card-body d-flex flex-wrap align-items-center gap-3">
-              <div class="flex-grow-1">
-                <h5 class="text-primary fw-bold mb-1">{{ education.degree }}</h5>
-                <p class="text-muted fst-italic mb-0">{{ education.institutionName }}</p>
-              </div>
-              <div class="flex-grow-1">
-                <p class="mb-1">
-                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ education.institutionLocation }}
-                </p>
-                <p class="mb-1">
-                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ education.description }}
-                </p>
-                <p class="mb-1">
-                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ education.startDate | date }}
-                </p>
-                <p class="mb-0">
-                  <i class="bi bi-calendar-check"></i> <strong>End
-                  Date:</strong> {{ education.endDate ? (education.endDate | date) : 'Present' }}
-                </p>
-              </div>
-              <div>
-                <button [appId]="getButtonAppId('btnRemoveEducation', education.correlationId!)" type="button"
-                        class="btn btn-outline-danger btn-sm" (click)="removeEducation(education.correlationId!)">
-                  <i class="bi bi-trash"></i> Remove
-                </button>
-              </div>
-            </div>
-          </div>
+        @for (education of educationArray(); track education.correlationId) {
+          <mat-card class="mb-3">
+            <mat-card-content>
+              <h5 class="text-primary fw-bold mb-1">{{ education.degree }}</h5>
+              <p class="text-muted fst-italic mb-0">{{ education.institutionName }}</p>
+              <p class="mb-1">
+                <mat-icon class="align-middle">location_on</mat-icon> <strong>Location:</strong> {{ education.institutionLocation }}
+              </p>
+              <p class="mb-1">
+                <mat-icon class="align-middle">description</mat-icon> <strong>Description:</strong> {{ education.description }}
+              </p>
+              <p class="mb-1">
+                <mat-icon class="align-middle">calendar_today</mat-icon> <strong>Start Date:</strong> {{ education.startDate | date:'mediumDate' }}
+              </p>
+              <p class="mb-0">
+                <mat-icon class="align-middle">event</mat-icon> <strong>End Date:</strong> {{ education.endDate ? (education.endDate | date:'mediumDate') : 'Present' }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-icon-button
+              color="warn"
+              [appId]="getButtonAppId('btnRemoveEducation', education.correlationId!)"
+              (click)="removeEducation(education.correlationId!)">
+              <mat-icon>delete</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        } @empty {
+          <p class="text-muted fst-italic"></p>
         }
       </div>
+
+      <!-- Work Experience Section -->
       <div class="col-lg-6">
         <div class="d-flex justify-content-between align-items-center mb-3">
           <h4 class="m-0 text-primary fw-bold" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">
             Work Experience
           </h4>
+<!--            (click)="openWorkExperienceDialog()"-->
           <button
-            type="button"
+            mat-button
+            color="primary"
             appId="btnInsertWorkExperience"
-            class="btn btn-outline-primary btn-sm"
-            data-bs-toggle="modal"
-            data-bs-target="#workExperienceModal"
             i18n="@@insertWorkExperienceButton">
-            <i class="bi bi-plus-circle"></i> Insert
-          </button>
+           <mat-icon>add_circle</mat-icon> Insert
+           </button>
         </div>
-        @for (work of workExperienceArray; track work.correlationId) {
-          <div class="card mb-3 border-0 shadow-sm">
-            <div class="card-body d-flex flex-wrap align-items-center gap-3">
-              <div class="flex-grow-1">
-                <h5 class="text-success fw-bold mb-1">{{ work.jobTitle }}</h5>
-                <p class="text-muted fst-italic mb-0">{{ work.companyName }}</p>
-              </div>
-              <div class="flex-grow-1">
-                <p class="mb-1">
-                  <i class="bi bi-geo-alt"></i> <strong>Location:</strong> {{ work.companyLocation }}
-                </p>
-                <p class="mb-1">
-                  <i class="bi bi-journal-text"></i> <strong>Description:</strong> {{ work.description }}
-                </p>
-                <p class="mb-1">
-                  <i class="bi bi-calendar"></i> <strong>Start Date:</strong> {{ work.startDate | date }}
-                </p>
-                <p class="mb-0">
-                  <i class="bi bi-calendar-check"></i> <strong>End
-                  Date:</strong> {{ work.endDate ? (work.endDate | date) : 'Present' }}
-                </p>
-              </div>
-              <div>
-                <button [appId]="getButtonAppId('btnRemoveWork', work.correlationId!)" type="button"
-                        class="btn btn-outline-danger btn-sm" (click)="removeWorkExperience(work.correlationId!)">
-                  <i class="bi bi-trash"></i> Remove
-                </button>
-              </div>
-            </div>
-          </div>
-        }
+        <ng-container *ngFor="let work of workExperienceArray;">
+          <mat-card class="mb-3">
+            <mat-card-content>
+              <h5 class="text-success fw-bold mb-1">{{ work.jobTitle }}</h5>
+              <p class="text-muted fst-italic mb-0">{{ work.companyName }}</p>
+              <p class="mb-1">
+                <mat-icon>location_on</mat-icon> <strong>Location:</strong> {{ work.companyLocation }}
+              </p>
+              <p class="mb-1">
+                <mat-icon>description</mat-icon> <strong>Description:</strong> {{ work.description }}
+              </p>
+              <p class="mb-1">
+                <mat-icon>calendar_today</mat-icon> <strong>Start Date:</strong> {{ work.startDate | date }}
+              </p>
+              <p class="mb-0">
+                <mat-icon>event</mat-icon> <strong>End Date:</strong> {{ work.endDate ? (work.endDate | date) : 'Present' }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button
+                mat-button
+                color="warn"
+                [appId]="getButtonAppId('btnRemoveWork', work.correlationId!)"
+                (click)="removeWorkExperience(work.correlationId!)">
+                <mat-icon>delete</mat-icon> Remove
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
       </div>
     </div>
+
     <div class="d-flex justify-content-end mt-4">
       <button
+        mat-raised-button
+        color="primary"
         (click)="saveData()"
         [disabled]="isSaving"
-        class="btn btn-lg btn-primary"
-        i18n="@@save"
-        type="button"
-      >Save<output *ngIf="isSaving" aria-hidden="true" class="spinner-border"></output>
+        i18n="@@save">
+        Save
+        <mat-spinner *ngIf="isSaving" diameter="20"></mat-spinner>
       </button>
     </div>
   </form>
-</div>
-<div class="modal fade" id="educationModal" tabindex="-1" aria-labelledby="educationModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="educationModalLabel" i18n="@@addEducationModalTitle">Insert Education</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="text-muted mb-4">Please fill in the details of your education background. All fields marked with * are
-          required.</p>
-        <form [formGroup]="educationForm">
-          <div class="mb-4">
-            <h6 class="text-primary">Degree Information</h6>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="inputDegree" class="form-label" i18n="@@degreeLabel">Degree *</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  appId="inputDegree"
-                  formControlName="degree"
-                  i18n-placeholder="@@degreeSuggestsPlaceholder"
-                  placeholder="e.g., Bachelor of Science"
-                  required />
-              </div>
-              <div class="col-md-6">
-                <label for="inputInstitutionName" class="form-label" i18n="@@institutionNameLabel">Institution Name
-                  *</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  appId="inputInstitutionName"
-                  formControlName="institutionName"
-                  i18n-placeholder="@@institutionNameSuggestsPlaceholder"
-                  placeholder="e.g., Harvard University"
-                  required />
-              </div>
-            </div>
-          </div>
-          <div class="mb-4">
-            <h6 class="text-primary">Location and Description</h6>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="inputInstitutionLocation" class="form-label" i18n="@@institutionLocationLabel">Location
-                  *</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  appId="inputInstitutionLocation"
-                  formControlName="institutionLocation"
-                  i18n-placeholder="@@institutionLocationSuggestsPlaceholder"
-                  placeholder="e.g., Cambridge, MA"
-                  required />
-              </div>
-              <div class="col-md-6">
-                <label for="inputEducationDescription" class="form-label"
-                       i18n="@@educationDescriptionLabel">Description</label>
-                <textarea
-                  class="form-control"
-                  appId="inputEducationDescription"
-                  formControlName="description"
-                  rows="3"
-                  i18n-placeholder="@@educationDescriptionPlaceholder"
-                  placeholder="Provide details about your studies (optional)"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="mb-4">
-            <h6 class="text-primary">Dates</h6>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="inputEducationStartDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
-                <input type="date" class="form-control" appId="inputEducationStartDate" formControlName="startDate"
-                       required />
-              </div>
-              <div class="col-md-6">
-                <label for="inputEducationEndDate" class="form-label" i18n="@@endDateLabel">End Date</label>
-                <input type="date" class="form-control" appId="inputEducationEndDate" formControlName="endDate" />
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
-        <button type="button" appId="btnAddEducation" class="btn btn-primary" (click)="confirmAddEducation()"
-                data-bs-dismiss="modal" i18n="@@saveButton">Save
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="modal fade" id="workExperienceModal" tabindex="-1" aria-labelledby="workExperienceModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="workExperienceModalLabel" i18n="@@addWorkExperienceModalTitle">Insert Work
-          Experience</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p class="text-muted mb-4">Please fill in the details of your work experience. All fields marked with * are
-          required.</p>
-        <form [formGroup]="workExperienceForm">
-          <div class="mb-4">
-            <h6 class="text-primary">Job Details</h6>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="inputJobTitle" class="form-label" i18n="@@jobTitleLabel">Job Title *</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  appId="inputJobTitle"
-                  formControlName="jobTitle"
-                  placeholder="e.g., Software Engineer"
-                  i18n-placeholder="@@jobTitleSuggestsPlaceholder"
-                  required />
-              </div>
-              <div class="col-md-6">
-                <label for="inputCompanyName" class="form-label" i18n="@@companyNameLabel">Company Name *</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  appId="inputCompanyName"
-                  formControlName="companyName"
-                  placeholder="e.g., Google"
-                  i18n-placeholder="@@companyNameSuggestsPlaceholder"
-                  required />
-              </div>
-            </div>
-          </div>
-          <div class="mb-4">
-            <h6 class="text-primary">Location and Responsibilities</h6>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="inputCompanyLocation" class="form-label" i18n="@@companyLocationLabel">Location *</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  appId="inputCompanyLocation"
-                  formControlName="companyLocation"
-                  placeholder="e.g., Mountain View, CA"
-                  required />
-              </div>
-              <div class="col-md-6">
-                <label for="inputWorkDescription" class="form-label"
-                       i18n="@@workDescriptionLabel">Description</label>
-                <textarea
-                  class="form-control"
-                  appId="inputWorkDescription"
-                  formControlName="description"
-                  rows="3"
-                  i18n-placeholder="@@workDescriptionPlaceholder"
-                  placeholder="Provide details about your work (optional)"></textarea>
-              </div>
-            </div>
-            <div class="row g-3">
-              <div class="col-12">
-                <label for="inputResponsibilities" class="form-label"
-                       i18n="@@responsibilitiesLabel">Responsibilities</label>
-                <textarea
-                  class="form-control"
-                  appId="inputResponsibilities"
-                  formControlName="responsibilities"
-                  rows="3"
-                  i18n-placeholder="@@responsibilitiesPlaceholder"
-                  placeholder="List key responsibilities (optional)"></textarea>
-              </div>
-            </div>
-          </div>
-          <div class="mb-4">
-            <h6 class="text-primary">Dates</h6>
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label for="inputWorkStartDate" class="form-label" i18n="@@startDateLabel">Start Date *</label>
-                <input type="date" class="form-control" appId="inputWorkStartDate" formControlName="startDate" required />
-              </div>
-              <div class="col-md-6">
-                <label for="inputWorkEndDate" class="form-label" i18n="@@endDateLabel">End Date</label>
-                <input type="date" class="form-control" appId="inputWorkEndDate" formControlName="endDate" />
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" i18n="@@cancelButton">Cancel</button>
-        <button type="button" appId="btnAddWorkExperience" class="btn btn-primary" (click)="confirmAddWorkExperience()"
-                data-bs-dismiss="modal" i18n="@@saveButton">Save
-        </button>
-      </div>
-    </div>
-  </div>
 </div>

@@ -1,24 +1,47 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { DatePipe, NgIf } from '@angular/common';
+import { DatePipe, NgForOf, NgIf } from '@angular/common';
 import { Education } from './interfaces/education';
 import { Guid } from 'guid-typescript';
 import { WorkExperience } from './interfaces/work-experience';
+import { MatIcon } from '@angular/material/icon';
+import { MatButton, MatIconButton } from '@angular/material/button';
+import { MatCard, MatCardActions, MatCardContent } from '@angular/material/card';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { MatDialog } from '@angular/material/dialog';
+import { EducationDialogComponent } from './education-dialog/education-dialog.component';
 
 @Component({
   selector: 'app-summary-form',
-  imports: [ReactiveFormsModule, AppIdDirective, DatePipe, NgIf],
+  imports: [
+    ReactiveFormsModule,
+    AppIdDirective,
+    DatePipe,
+    NgIf,
+    MatIcon,
+    MatButton,
+    NgForOf,
+    MatCardContent,
+    MatCardActions,
+    MatCard,
+    MatLabel,
+    MatFormField,
+    MatInput,
+    MatProgressSpinner,
+    MatIconButton,
+  ],
   templateUrl: './summary-form.component.html',
-  styles: ``,
+  styleUrl: './summary-form.component.scss',
 })
 export class SummaryFormComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private dialog: MatDialog = inject(MatDialog);
   dataForm!: FormGroup;
-  educationArray: Education[] = [];
+  private educationSignal: WritableSignal<Education[]> = signal([]);
+  public readonly educationArray: Signal<Education[]> = this.educationSignal.asReadonly();
   workExperienceArray: WorkExperience[] = [];
-  educationForm!: FormGroup;
-  workExperienceForm!: FormGroup;
   isSaving = false;
 
   ngOnInit(): void {
@@ -31,61 +54,50 @@ export class SummaryFormComponent implements OnInit {
       education: this.formBuilder.array([]),
       workExperiences: this.formBuilder.array([]),
     });
-
-    this.educationForm = this.formBuilder.group({
-      degree: ['', [Validators.required]],
-      institutionName: ['', [Validators.required]],
-      institutionLocation: ['', [Validators.required]],
-      description: [''],
-      startDate: ['', [Validators.required]],
-      endDate: [''],
-    });
-
-    this.workExperienceForm = this.formBuilder.group({
-      jobTitle: ['', [Validators.required]],
-      companyName: ['', [Validators.required]],
-      companyLocation: ['', [Validators.required]],
-      description: [''],
-      responsibilities: [''],
-      startDate: ['', [Validators.required]],
-      endDate: [''],
-    });
   }
 
   getButtonAppId(prefix: string, correlationId: Guid): string {
     return `${prefix}_${correlationId}`;
   }
 
-  confirmAddEducation(): void {
-    if (this.educationForm.valid) {
-      const education = this.educationForm.value as Education;
-      education.correlationId = Guid.create();
-      this.educationArray.push(education);
+  openEducationDialog(): void {
+    const dialogRef = this.dialog.open(EducationDialogComponent, {
+      width: '800px',
+      disableClose: true,
+    });
 
-      const educationArray = this.dataForm.get('education') as FormArray;
-      educationArray.push(this.formBuilder.group(education));
+    dialogRef.afterClosed().subscribe((result: Education | null) => {
+      if (result) {
+        this.educationSignal.update((currentArray) => [...currentArray, result]);
 
-      this.educationForm.reset();
-    }
+        const educationFA = this.dataForm.get('education') as FormArray;
+        educationFA.push(this.createEducationFormGroup(result));
+      }
+    });
   }
 
-  confirmAddWorkExperience(): void {
-    if (this.workExperienceForm.valid) {
-      const workExperience = this.workExperienceForm.value as WorkExperience;
-      workExperience.correlationId = Guid.create();
-      this.workExperienceArray.push(workExperience);
-
-      const workExperiencesArray = this.dataForm.get('workExperiences') as FormArray;
-      workExperiencesArray.push(this.formBuilder.group(workExperience));
-
-      this.workExperienceForm.reset();
-    }
+  private createEducationFormGroup(education: Education): FormGroup {
+    return this.formBuilder.group({
+      correlationId: [education.correlationId],
+      degree: [education.degree, Validators.required],
+      institutionName: [education.institutionName, Validators.required],
+      institutionLocation: [education.institutionLocation, Validators.required],
+      description: [education.description],
+      startDate: [education.startDate, Validators.required],
+      endDate: [education.endDate],
+    });
   }
 
-  removeEducation(correlationId: Guid): void {
-    this.educationArray = this.educationArray.filter(
-      (education) => education.correlationId !== correlationId
+  removeEducation(correlationIdToRemove: Guid): void {
+    this.educationSignal.update((currentArray) =>
+      currentArray.filter((edu) => edu.correlationId !== correlationIdToRemove)
     );
+
+    // const educationFA = this.dataForm.get('education') as FormArray;
+    // const indexToRemove = educationFA.controls.findIndex(control => control.value.correlationId === correlationIdToRemove);
+    // if (indexToRemove > -1) {
+    //   educationFA.removeAt(indexToRemove);
+    // }
   }
 
   removeWorkExperience(correlationId: Guid): void {
