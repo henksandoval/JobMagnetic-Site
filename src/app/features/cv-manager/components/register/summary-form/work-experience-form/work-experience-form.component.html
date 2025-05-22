@@ -1,0 +1,100 @@
+<h2 mat-dialog-title i18n="@@addWorkExperienceModalTitle">Insert Work Experience</h2>
+<mat-dialog-content>
+  <p class="text-muted mb-4">Please fill in the details of your work experience. All fields marked with * are
+    required.</p>
+  <form [formGroup]="workExperienceForm">
+    <div class="row g-3">
+      <p>Job Details</p>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label  i18n="@@jobTitleLabel">Job Title*</mat-label>
+          <input
+            matInput
+            appId="inputJobTitle"
+            formControlName="jobTitle"
+            placeholder="e.g., Software Engineer"
+            i18n-placeholder="@@jobTitleSuggestsPlaceholder"
+            required />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label  i18n="@@companyNameLabel">Company Name*</mat-label>
+          <input
+            matInput
+            appId="inputCompanyName"
+            formControlName="companyName"
+            placeholder="e.g., Google"
+            i18n-placeholder="@@companyNameSuggestsPlaceholder"
+            required />
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row g-3">
+      <p>Location and Responsibilities</p>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label i18n="@@companyLocationLabel">Location*</mat-label>
+          <input
+            matInput
+            appId="inputCompanyLocation"
+            formControlName="companyLocation"
+            i18n-placeholder="@@companyLocationPlaceholder"
+            placeholder="e.g., Mountain View, CA"
+            required />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label i18n="@@workDescriptionLabel">Description</mat-label>
+          <textarea
+            matInput
+            appId="inputWorkDescription"
+            formControlName="description"
+            rows="3"
+            i18n-placeholder="@@workDescriptionPlaceholder"
+            placeholder="Provide details about your work (optional)"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row g-3">
+      <mat-form-field class="w-100">
+        <mat-label i18n="@@responsibilitiesLabel">Responsibilities</mat-label>
+        <textarea
+          matInput
+          appId="inputResponsibilities"
+          formControlName="responsibilities"
+          rows="3"
+          i18n-placeholder="@@responsibilitiesPlaceholder"
+          placeholder="List key responsibilities (optional)"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="row g-3">
+      <p>Dates</p>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label i18n="@@startDateLabel">Start Date*</mat-label>
+          <input
+            matInput
+            appId="inputWorkStartDate"
+            formControlName="startDate"
+            required />
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field class="w-100">
+          <mat-label i18n="@@endDateLabel">End Date</mat-label>
+          <input
+            matInput
+            appId="inputWorkEndDate"
+            formControlName="endDate"
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
+  <button mat-raised-button color="primary" (click)="confirmAddWorkExperience()" [mat-dialog-close]="workExperienceForm.value" [disabled]="!workExperienceForm.valid" i18n="@@saveButton">Save</button>
+</mat-dialog-actions>
