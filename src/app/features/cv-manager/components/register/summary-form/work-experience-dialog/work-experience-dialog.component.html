@@ -1,13 +1,12 @@
 <h2 mat-dialog-title i18n="@@addWorkExperienceModalTitle">Insert Work Experience</h2>
 <mat-dialog-content>
-  <p class="text-muted mb-4">Please fill in the details of your work experience. All fields marked with * are
-    required.</p>
+  <p class="text-muted mb-4" i18n="@@workRequiredFieldsMessage">Please fill in the details of your work experience. All fields marked with * are required.</p>
   <form [formGroup]="workExperienceForm">
     <div class="row g-3">
-      <p>Job Details</p>
+      <p class="text-primary fw-semibold" i18n="@@jobDetails">Job Details</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label  i18n="@@jobTitleLabel">Job Title*</mat-label>
+          <mat-label i18n="@@jobTitleLabel">Job Title</mat-label>
           <input
             matInput
             appId="inputJobTitle"
@@ -19,7 +18,7 @@
       </div>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label  i18n="@@companyNameLabel">Company Name*</mat-label>
+          <mat-label i18n="@@companyNameLabel">Company Name</mat-label>
           <input
             matInput
             appId="inputCompanyName"
@@ -30,11 +29,11 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row g-3">
-      <p>Location and Responsibilities</p>
+    <div class="row g-3 mt-3">
+      <p class="text-primary fw-semibold" i18n="@@locationAndResponsibilities">Location and Responsibilities</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label i18n="@@companyLocationLabel">Location*</mat-label>
+          <mat-label i18n="@@companyLocationLabel">Location</mat-label>
           <input
             matInput
             appId="inputCompanyLocation"
@@ -57,7 +56,7 @@
         </mat-form-field>
       </div>
     </div>
-    <div class="row g-3">
+    <div class="row g-3 mt-3">
       <mat-form-field class="w-100">
         <mat-label i18n="@@responsibilitiesLabel">Responsibilities</mat-label>
         <textarea
@@ -69,13 +68,14 @@
           placeholder="List key responsibilities (optional)"></textarea>
       </mat-form-field>
     </div>
-    <div class="row g-3">
-      <p>Dates</p>
+    <div class="row g-3 mt-3">
+      <p class="text-primary fw-semibold" i18n="@@dates">Dates</p>
       <div class="col-md-6">
         <mat-form-field class="w-100">
-          <mat-label i18n="@@startDateLabel">Start Date*</mat-label>
+          <mat-label i18n="@@startDateLabel">Start Date</mat-label>
           <input
             matInput
+            type="date"
             appId="inputWorkStartDate"
             formControlName="startDate"
             required />
@@ -86,6 +86,7 @@
           <mat-label i18n="@@endDateLabel">End Date</mat-label>
           <input
             matInput
+            type="date"
             appId="inputWorkEndDate"
             formControlName="endDate"
           />
@@ -96,5 +97,5 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
-  <button mat-raised-button color="primary" (click)="confirmAddWorkExperience()" [mat-dialog-close]="workExperienceForm.value" [disabled]="!workExperienceForm.valid" i18n="@@saveButton">Save</button>
+  <button mat-raised-button color="primary" (click)="saveWorkExperience()" [mat-dialog-close]="workExperienceForm.value" [disabled]="!workExperienceForm.valid" i18n="@@saveButton">Save</button>
 </mat-dialog-actions>

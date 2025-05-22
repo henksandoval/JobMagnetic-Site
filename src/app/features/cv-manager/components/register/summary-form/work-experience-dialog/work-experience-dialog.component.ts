@@ -1,12 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {
-  MatDialog,
   MatDialogActions,
   MatDialogClose,
-  MatDialogContent,
+  MatDialogContent, MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WorkExperience } from '../interfaces/work-experience';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { MatButton } from '@angular/material/button';
@@ -14,7 +13,7 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { Guid } from 'guid-typescript';
 
 @Component({
-  selector: 'app-work-experience-form',
+  selector: 'app-work-experience-dialog',
   imports: [
     AppIdDirective,
     MatButton,
@@ -28,13 +27,12 @@ import { Guid } from 'guid-typescript';
     MatFormField,
     MatDialogClose,
   ],
-  templateUrl: './work-experience-form.component.html',
-  styleUrl: './work-experience-form.component.scss',
+  templateUrl: './work-experience-dialog.component.html',
+  styleUrl: './work-experience-dialog.component.scss',
 })
-export class WorkExperienceFormComponent implements OnInit {
+export class WorkExperienceDialogComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
-  private dialog: MatDialog = inject(MatDialog);
-  workExperienceArray: WorkExperience[] = [];
+  private dialogRef: MatDialogRef<WorkExperienceDialogComponent > = inject(MatDialogRef);
   workExperienceForm!: FormGroup;
 
   ngOnInit(): void {
@@ -53,29 +51,13 @@ export class WorkExperienceFormComponent implements OnInit {
     });
   }
 
-  openWorkExperienceDialog(): void {
-    const dialogRef = this.dialog.open(WorkExperienceFormComponent, {
-      width: '800px',
-      data: {},
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.workExperienceArray.push(result);
-      }
-    });
-  }
-
-  confirmAddWorkExperience(): void {
+  saveWorkExperience(): void {
     if (this.workExperienceForm.valid) {
-      const workExperience = this.workExperienceForm.value as WorkExperience;
-      workExperience.correlationId = Guid.create();
-      this.workExperienceArray.push(workExperience);
-
-      // const workExperiencesArray = this.dataForm.get('workExperiences') as FormArray;
-      // workExperiencesArray.push(this.formBuilder.group(workExperience));
-
-      this.workExperienceForm.reset();
+      const workExperienceData: WorkExperience = {
+        ...this.workExperienceForm.value,
+        correlationId: Guid.create().toString()
+      };
+      this.dialogRef.close(workExperienceData);
     }
   }
 }
