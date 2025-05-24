@@ -3,14 +3,14 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { ProfileService } from '../../../services/profile.service';
 import { NgIf } from '@angular/common';
-import { ProfileCommandModel } from '../models/profileCommand.model';
-import { ProfileDataModel } from '../models/ProfileData.model';
 import { catchError, finalize, tap, throwError } from 'rxjs';
-import { ResponseBackendModel } from '../models/responseBackend.model';
 import { StateService } from '@core/services/state/state.service';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { ProfileCommandModel } from './interfaces/profileCommand';
+import { ResponseBackendModel } from './interfaces/responseBackend';
+import { ProfileDataModel } from './interfaces/ProfileData';
 
 @Component({
   selector: 'app-profile-form',
