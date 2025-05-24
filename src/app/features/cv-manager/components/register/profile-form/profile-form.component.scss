@@ -1,38 +1,54 @@
-.form-container {
-  display: block;
-  text-align: center; /* Centrar el contenido del formulario */
+
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-h2 {
-  text-align: center; /* Centrar el título */
-  margin-bottom: 24px;
+.personal-data-form-card {
+  background-color: white;
+  padding: 28px 32px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  max-width: 750px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.form-grid {
+.personal-data-form-content {
   display: flex;
   flex-direction: column;
-  gap: 16px; /* Espaciado entre filas */
+  gap: 28px;
+}
+
+.form-main-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
 }
 
 .form-row {
-  display: flex;
-  gap: 16px; /* Espaciado entre columnas */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
 }
 
 .form-item {
-  flex: 1; /* Cada elemento ocupa el mismo espacio */
+  mat-form-field {
+    width: 100%;
+  }
 }
 
-.form-item.span-4 {
-  flex: 0.31; /* Elementos que ocupan un tercio del ancho */
-}
-
-.form-item.span-8 {
-  flex: 0.66; /* Elementos que ocupan dos tercios del ancho */
-}
-
-.form-actions {
-  margin-top: 16px;
+.form-actions-centered {
   display: flex;
-  justify-content: center; /* Centrar el botón */
+  justify-content: center;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.button-spinner-suffix {
+  margin-left: 10px;
 }
