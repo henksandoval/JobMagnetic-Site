@@ -1,245 +1,84 @@
-<div class="container my-4 p-4 bg-light rounded shadow">
-  <form [formGroup]="formData">
-    <h2 appId="serviceData" i18n="@@serviceData" class="mb-4 fw-bold text-center text-primary"> Step 6: Service
-      Data </h2>
-    <div class="mb-4">
-      <div class="col-md-12">
-        <div class="mb-3">
-          <label
-            for="inputOverview"
-            class="form-label fw-semibold"
-            i18n="@@overview"
-          >
-            Overview
-          </label>
+<div class="service-data-container">
+  <mat-card class="service-data-card">
+    <mat-card-content class="service-card-content-centered">
+      <form [formGroup]="formData">
+        <h2 appId="serviceData" i18n="@@serviceRegisterTitle" class="service-data-card-title">
+          Step 6: Service Data
+        </h2>
+        <mat-form-field appearance="outline" class="form-field-custom-width">
+          <mat-label i18n="@@overview">Overview</mat-label>
           <textarea
-            class="form-control"
-            id="inputOverview"
-            appId="inputOverview"
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="5"
+            cdkAutosizeMaxRows="20"
+            appId="overview"
             formControlName="overview"
             i18n-placeholder="@@overviewPlaceholder"
-            rows="5"
-            placeholder="Write an overview"
-          ></textarea>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-6">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-          <h4 class="m-0 text-primary fw-bold" appId="educationSectionTitle" i18n="@@serviceGalleryItems">
+            placeholder="Write an overview">
+          </textarea>
+        </mat-form-field>
+        <div class="section-header-actions">
+          <h4 class="gallery-section-title" appId="educationSectionTitle" i18n="@@galleryItemsModalLabel">
             GalleryItems
           </h4>
-          <button
-            type="button"
-            appId="btnAddServiceData"
-            class="btn btn-outline-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#serviceDataModal"
-            i18n="@@insertButton">
-            <i class="bi bi-plus-circle"></i> insert
+          <button mat-stroked-button color="primary" type="button" appId="btnAddServiceData" (click)="addGalleryItem()" i18n="@@insertButton">
+            <mat-icon>add_circle_outline</mat-icon> insert
           </button>
         </div>
-      </div>
-    </div>
+        <mat-accordion multi="true" id="serviceAccordion" class="accordion-custom-width">
+          @for (item of galleryItemsArray(); track item.position; let i = $index) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header id="heading{{ i }}">
+                <mat-panel-title>
+                  {{ item.title }} (Posición: {{ item.position }})
+                </mat-panel-title>
+              </mat-expansion-panel-header>
 
-    <div class="accordion" id="serviceAccordion">
-      <div *ngFor="let item of itemsOverview?.galleryItems; let i = index" class="accordion-item">
-        <h2 class="accordion-header" id="heading{{ i }}">
+              <mat-card-content class="expansion-panel-body-content">
+                <h5 class="item-position-title">{{ item.position }}</h5>
+                <p class="item-title-detail">{{ item.title }}</p>
+                <p class="item-detail">
+                  <mat-icon>location_on</mat-icon> <strong>Location:</strong> {{ item.description }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.urlLink }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.urlImage }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.urlVideo }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.type }}
+                </p>
+              </mat-card-content>
+            </mat-expansion-panel>
+          } @empty {
+            <!-- <div class="no-gallery-items-message" i18n="@@noGalleryItems">
+                   No hay ítems en la galería para mostrar.
+                 </div> -->
+          }
+        </mat-accordion>
+        <div class="form-actions-container">
           <button
-            class="accordion-button"
-            type="button"
-            data-bs-toggle="collapse"
-            [attr.data-bs-target]="'#collapse' + i"
-            [attr.aria-expanded]="i === 0"
-            [attr.aria-controls]="'collapse' + i"
-          >
-            {{ item.title }} (Posición: {{ item.position }})
+            mat-raised-button
+            color="primary"
+            (click)="saveServiceData()"
+            [disabled]="isSaving"
+            class="large-action-button"
+            i18n="@@save">
+            Save
+            <mat-spinner
+              *ngIf="isSaving"
+              diameter="20"
+              class="ms-2"
+            ></mat-spinner>
           </button>
-        </h2>
-        <div
-          [id]="'collapse' + i"
-          class="accordion-collapse collapse"
-          [class.show]="i === 0"
-          [attr.aria-labelledby]="'heading' + i"
-          data-bs-parent="#serviceAccordion"
-        >
-          <div class="accordion-body">
-            <p><strong>Descripción:</strong> {{ item.description }}</p>
-            <p><strong>Enlace:</strong> <a [href]="item.urlLink" target="_blank">{{ item.urlLink }}</a></p>
-            <p><strong>Video:</strong> <a [href]="item.urlVideo" target="_blank">{{ item.urlVideo }}</a></p>
-            <p><strong>Tipo:</strong> {{ item.type }}</p>
-          </div>
         </div>
-      </div>
-    </div>
-
-    <div class="d-flex justify-content-end mt-4">
-      <button (click)="saveServiceData()" class="btn btn-lg btn-primary" i18n="@@saveButton">
-        Save
-      </button>
-    </div>
-  </form>
-</div>
-
-<div
-  class="modal fade"
-  id="serviceDataModal"
-  tabindex="-1"
-  aria-labelledby="serviceDataModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-      <div class="modal-body">
-        <form [formGroup]="serviceDataForm">
-          <div class="row g-3">
-            <div class="col-md-3">
-              <label
-                for="position"
-                appId="inputPosition"
-                class="form-label label-with-colon"
-                i18n="@@position"
-              >
-                Position
-              </label>
-              <input
-                class="form-control"
-                id="position"
-                formControlName="position"
-                i18n-placeholder="@@positionPlaceholder"
-                placeholder="Enter your position"
-                type="number"
-              />
-            </div>
-            <div class="col-md-3">
-              <label
-                for="title"
-                appId="inputTitle"
-                class="form-label label-with-colon"
-                i18n="@@titleService"
-              >
-                Title
-              </label>
-              <input
-                class="form-control"
-                id="title"
-                formControlName="title"
-                i18n-placeholder="@@titleServicePlaceholder"
-                placeholder="Write a title"
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="description"
-                appId="inputDescription"
-                class="form-label label-with-colon"
-                i18n="@@description"
-              >
-                Description
-              </label>
-              <input
-                class="form-control"
-                id="description"
-                formControlName="description"
-                i18n-placeholder="@@descriptionPlaceholder"
-                placeholder="Enter a description"
-              />
-            </div>
-          </div>
-          <div class="row g-3 mt-3">
-            <div class="col-md-6">
-              <label
-                for="urlLink"
-                appId="inputUrlLink"
-                class="form-label label-with-colon"
-                i18n="@@urlLink"
-              >
-                UrlLink
-              </label>
-              <input
-                class="form-control"
-                id="urlLink"
-                formControlName="urlLink"
-                i18n-placeholder="@@urlLinkPlaceholder"
-                placeholder="Enter a URL"
-                type="text"
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="urlImage"
-                appId="inputUrlImage"
-                class="form-label label-with-colon"
-                i18n="@@urlImage"
-              >
-                UrlImage
-              </label>
-              <input
-                class="form-control"
-                id="urlImage"
-                formControlName="urlImage"
-                i18n-placeholder="@@urlImagePlaceholder"
-                placeholder="Enter a URL for the image"
-                type="text"
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="urlVideo"
-                appId="inputUrlVideo"
-                class="form-label label-with-colon"
-                i18n="@@urlVideo"
-              >
-                UrlVideo
-              </label>
-              <input
-                class="form-control"
-                id="urlVideo"
-                formControlName="urlVideo"
-                i18n-placeholder="@@urlVideoPlaceholder"
-                placeholder="Enter a url for the video"
-                type="text"
-              />
-            </div>
-            <div class="col-md-6">
-              <label
-                for="type"
-                appId="inputType"
-                class="form-label label-with-colon"
-                i18n="@@type"
-              >
-                Type
-              </label>
-              <input
-                class="form-control"
-                id="type"
-                formControlName="type"
-                i18n-placeholder="@@typePlaceholder"
-                placeholder="Write a type"
-              />
-            </div>
-          </div>
-          <div class="d-flex justify-content-end mt-4">
-            <button
-              (click)="addServiceData()"
-              appId="btnSaveServiceData"
-              class="btn btn-lg btn-primary"
-              type="button"
-              data-bs-dismiss="modal"
-              i18n="@@addButton"> Add
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>

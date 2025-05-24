@@ -31,7 +31,6 @@ const overviewEntrie: ServiceBase = {
 
 describe(ServiceFormComponent.name, () => {
   const user = userEvent.setup();
-  // let componentFixture: ComponentFixture<ServiceFormComponent>;
 
   beforeEach(async () => {
     const { fixture } = await render(ServiceFormComponent, {
