@@ -33,8 +33,7 @@ import { MatHint } from '@angular/material/select';
     MatIcon,
     MatChipRow,
     MatChipGrid,
-    MatChipInput,
-    MatHint
+    MatChipInput
   ],
   templateUrl: './work-experience-dialog.component.html',
   styleUrl: './work-experience-dialog.component.scss',
