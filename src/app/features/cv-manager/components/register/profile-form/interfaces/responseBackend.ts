@@ -1,4 +1,4 @@
-import { ProfileDataModel } from './ProfileData.model';
+import { ProfileDataModel } from './ProfileData';
 
 export interface ResponseBackendModel {
   id: string;
