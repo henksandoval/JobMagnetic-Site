@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 import { CommandAdapter } from './command.adapter';
-import { ProfileCommandModel } from '../../components/register/models/profileCommand.model';
-import { ProfileDataModel } from '../../components/register/models/ProfileData.model';
 import { expectTypeOf } from 'expect-type';
+import { ProfileDataModel } from '../../components/register/profile-form/interfaces/ProfileData';
+import { ProfileCommandModel } from '../../components/register/profile-form/interfaces/profileCommand';
 
 const profileData: ProfileDataModel = {
   firstName: 'John',
