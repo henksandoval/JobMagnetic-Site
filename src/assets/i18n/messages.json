@@ -73,7 +73,7 @@
     "companyLocationPlaceholder": "e.g., Mountain View, CA",
     "workDescriptionLabel": "Description",
     "workDescriptionPlaceholder": "Provide details about your work (optional)",
-    "responsibilitiesLabel": "Responsibilities",
+    "responsibilities": "Responsibilities",
     "responsibilitiesPlaceholder": "List key responsibilities (optional)",
     "about_description": "This is an man looking to horizon",
     "birthday": "Birthday:",

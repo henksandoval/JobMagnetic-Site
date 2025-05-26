@@ -72,7 +72,7 @@
     "companyLocationPlaceholder": "Ej.: Mountain View, CA",
     "workDescriptionLabel": "Descripción",
     "workDescriptionPlaceholder": "Proporciona detalles sobre tu trabajo (opcional)",
-    "responsibilitiesLabel": "Responsabilidades",
+    "responsibilities": "Responsabilidades",
     "responsibilitiesPlaceholder": "Enumera las responsabilidades clave (opcional)",
     "about_description": "Este es un hombre mirando al horizonte",
     "birthday": "Cumpleaños:",
