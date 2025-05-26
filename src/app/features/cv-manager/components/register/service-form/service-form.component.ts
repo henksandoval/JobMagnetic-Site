@@ -16,7 +16,7 @@ import { GalleryItemsDialogComponent } from './gallery-items-dialog/gallery-item
 import { catchError, EMPTY, finalize, tap } from 'rxjs';
 import { Config } from '@core/services/config/interfaces/config';
 import { ConfigService } from '@core/services/config/config.service';
-import { MatCard, MatCardContent, MatCardHeader, MatCardTitle } from '@angular/material/card';
+import { MatCard, MatCardContent } from '@angular/material/card';
 import { MatButton } from '@angular/material/button';
 import {
   MatAccordion,
@@ -35,8 +35,6 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
     ReactiveFormsModule,
     AppIdDirective,
     CommonModule,
-    MatCardTitle,
-    MatCardHeader,
     MatCardContent,
     MatLabel,
     MatButton,
