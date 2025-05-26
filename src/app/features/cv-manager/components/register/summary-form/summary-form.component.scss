@@ -1,37 +1,148 @@
-.form-container {
-  display: block;
-  text-align: center;
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 24px;
+.form-card {
+  background-color: white;
+  padding: 28px 32px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
 }
 
-.form-grid {
+.form-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 32px;
+}
+
+.form-main-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
 }
 
 .form-row {
-  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &.full-width-row {
+    .form-item.full-width-item {
+      mat-form-field {
+        width: 100%;
+      }
+    }
+  }
+
+  &.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
 }
 
 .form-item {
-  flex: 1;
+  mat-form-field {
+    width: 100%;
+  }
 }
 
-.form-item.span-4 {
-  flex: 0.31;
+.form-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.form-item.span-8 {
-  flex: 0.66;
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.form-actions {
-  margin-top: 16px;
+.section-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--mat-primary-main-color, #3f51b5);
+}
+
+.item-card {
+  border: 1px solid #eee;
+
+  .item-main-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+
+    &.education-title {
+      color: var(--mat-primary-main-color, #3f51b5);
+    }
+    &.work-title {
+      color: #28a745;
+    }
+  }
+
+  .item-subtitle {
+    font-size: 0.95rem;
+    color: #555;
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .item-detail-row {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #333;
+    margin-bottom: 6px;
+
+    mat-icon {
+      margin-right: 10px;
+      font-size: 18px;
+      color: #777;
+    }
+
+    span {
+      strong {
+        font-weight: 500;
+      }
+    }
+
+    &.last-detail {
+      margin-bottom: 0;
+    }
+  }
+
+  mat-card-actions {
+    padding-top: 0;
+  }
+}
+
+.empty-list-message {
+  font-style: italic;
+  color: #757575;
+  padding: 16px;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+  border: 1px dashed #ddd;
+}
+
+.form-actions-centered {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.button-spinner-suffix {
+  margin-left: 10px;
 }
