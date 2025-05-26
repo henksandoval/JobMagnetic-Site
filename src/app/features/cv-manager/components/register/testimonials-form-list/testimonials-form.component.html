@@ -1,0 +1,58 @@
+<div class="page-container">
+  <div class="form-card">
+    <h2 class="form-main-title" appId="testimonialsRegisterTitle" i18n="@@testimonialsRegisterTitle">Step 7: Testimony data</h2>
+    <button mat-flat-button color="primary" (click)="openTestimonialDialog()" class="add-testimonial-button">
+      <mat-icon>add_circle_outline</mat-icon>Agregar Testimonio
+    </button>
+
+    <div class="list-section">
+      <h3 class="testimonials-section-title">Testimonios Agregados</h3>
+      <div class="testimonial-list-cards-container">
+        @for (testimonial of testimonialsArray(); track testimonial.name; let i = $index) {
+          <mat-card class="testimonial-card">
+            <div class="card-inner-content">
+              <div class="avatar-container">
+                <ng-container *ngIf="testimonial.photoUrl && testimonial.photoUrl.trim() !== ''; else initialsAvatar">
+                  <img [src]="testimonial.photoUrl" [alt]="'Foto de ' + testimonial.name"
+                       class="testimonial-avatar-image">
+                </ng-container>
+                <ng-template #initialsAvatar>
+                  <div class="testimonial-avatar-placeholder">
+                    {{ getInitials(testimonial.name) }}
+                  </div>
+                </ng-template>
+              </div>
+
+              <div class="info-container">
+                <h4 class="testimonial-name">{{ testimonial.name }}</h4>
+                <p class="testimonial-job-title">{{ testimonial.jobTitle }}</p>
+              </div>
+
+              <div class="actions-container">
+                <button mat-icon-button color="warn" (click)="onDelete(i)" aria-label="Eliminar testimonio">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </div>
+          </mat-card>
+        }
+      </div>
+    </div>
+
+    <div class="form-actions-container">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="saveAllTestimonials()"
+        [disabled]="isSaving"
+        class="large-action-button"
+        i18n="@@save">
+        <mat-spinner
+          *ngIf="isSaving"
+          diameter="20"
+          class="ms-2"
+        ></mat-spinner>
+      </button>
+    </div>
+  </div>
+</div>
