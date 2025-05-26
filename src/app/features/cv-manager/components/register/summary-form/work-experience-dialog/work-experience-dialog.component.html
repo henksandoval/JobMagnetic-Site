@@ -9,7 +9,7 @@
       <h3 class="form-section-title" i18n="@@jobDetails">Job Details</h3>
       <div class="dialog-form-row">
         <div class="dialog-form-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@jobTitleLabel">Job Title</mat-label>
             <input
               matInput
@@ -21,7 +21,7 @@
           </mat-form-field>
         </div>
         <div class="dialog-form-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@companyNameLabel">Company Name</mat-label>
             <input
               matInput
@@ -39,7 +39,7 @@
       <h3 class="form-section-title" i18n="@@locationAndResponsibilities">Location and Responsibilities</h3>
       <div class="dialog-form-row">
         <div class="dialog-form-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@companyLocationLabel">Location</mat-label>
             <input
               matInput
@@ -51,7 +51,7 @@
           </mat-form-field>
         </div>
         <div class="dialog-form-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@workDescriptionLabel">Description</mat-label>
             <textarea
               matInput
@@ -69,7 +69,7 @@
       <h3 class="form-section-title" i18n="@@responsibilities">Responsibilities</h3>
       <div class="dialog-form-row full-width-row">
         <div class="dialog-form-item full-width-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@responsibilities">Responsibilities</mat-label>
             <mat-chip-grid #chipGrid aria-label="Enter responsibilities" class="responsibilities-chip-grid">
               @for (control of responsibilitiesFormArray.controls; track $index) {
@@ -99,7 +99,7 @@
       <h3 class="form-section-title" i18n="@@dates">Dates</h3>
       <div class="dialog-form-row">
         <div class="dialog-form-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@startDateLabel">Start Date</mat-label>
             <input
               matInput
@@ -110,7 +110,7 @@
           </mat-form-field>
         </div>
         <div class="dialog-form-item">
-          <mat-form-field appearance="outline">
+          <mat-form-field appearance="fill">
             <mat-label i18n="@@endDateLabel">End Date</mat-label>
             <input
               matInput
