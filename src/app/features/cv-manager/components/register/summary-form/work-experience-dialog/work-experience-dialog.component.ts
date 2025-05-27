@@ -14,7 +14,7 @@ import { Guid } from 'guid-typescript';
 import { ENTER } from '@angular/cdk/keycodes';
 import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRow } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
-import { MatHint } from '@angular/material/select';
+
 
 @Component({
   selector: 'app-work-experience-dialog',
