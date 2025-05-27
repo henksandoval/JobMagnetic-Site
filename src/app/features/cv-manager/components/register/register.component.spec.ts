@@ -61,4 +61,9 @@ describe(RegisterComponent.name, () => {
     const profileElement = screen.getByTestId('service-component');
     expect(profileElement).toBeTruthy();
   });
+
+  it('should render the TestimonialsFormComponent with <app-testimonials-form-list>', () => {
+    const profileElement = screen.getByTestId('testimonials-component');
+    expect(profileElement).toBeTruthy();
+  });
 });
