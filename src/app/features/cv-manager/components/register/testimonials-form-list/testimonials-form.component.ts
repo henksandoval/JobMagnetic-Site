@@ -1,14 +1,21 @@
-import { Component, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, effect, inject, Signal, signal, WritableSignal } from '@angular/core';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { TestimonialData } from './interfaces/TestimonialData';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { MatButton, MatIconButton } from '@angular/material/button';
 import { MatCard } from '@angular/material/card';
 import { MatIcon } from '@angular/material/icon';
 import { NgIf } from '@angular/common';
 import { DialogTestimonialComponent } from './dialog-testimonial/dialog-testimonial.component';
+import { TestimonialCommand } from './interfaces/testimonialCommand';
+import { catchError, EMPTY, finalize, tap } from 'rxjs';
+import { Config } from '@core/services/config/interfaces/config';
+import { ConfigService } from '@core/services/config/config.service';
+import { StateService } from '@core/services/state/state.service';
+import { HttpService } from '@core/services/http/http.service';
+import { ApiEndpoints } from '@core/constants/api-endpoints';
+import { TestimonialStateService } from './services/testimonial-state.service';
 
 @Component({
   selector: 'app-testimonials-form-list',
@@ -26,35 +33,35 @@ import { DialogTestimonialComponent } from './dialog-testimonial/dialog-testimon
   styleUrl: './testimonials-form.component.scss',
 })
 export class TestimonialsFormComponent {
-  private formBuilder: FormBuilder = inject(FormBuilder);
+  private readonly configService: Config = inject(ConfigService).getConfig();
+  private readonly stateService: StateService = inject(StateService);
+  private readonly httpService: HttpService = inject(HttpService);
+  private readonly testimonialStateService: TestimonialStateService = inject(TestimonialStateService);
+  private readonly TESTIMONIAL_URL_ENDPOINT = new URL(ApiEndpoints.profile.testimonial, this.configService.apiUrl);
   private dialog: MatDialog = inject(MatDialog);
-  private testimonialsSignal: WritableSignal<TestimonialData[]> = signal([]);
-  public readonly testimonialsArray: Signal<TestimonialData[]> = this.testimonialsSignal.asReadonly();
+  private testimonialsSignal: WritableSignal<TestimonialCommand[]> = signal([]);
 
-  isSaving = false;
+  public readonly testimonialsArray: Signal<TestimonialCommand[]> = this.testimonialsSignal.asReadonly();
+  public isSaving = false;
 
-  openTestimonialDialog(): void {
-    const dialogRef = this.dialog.open(DialogTestimonialComponent, {
-      width: '800px',
-      disableClose: true,
-    });
+  constructor() {
+    this.subscribeToTestimonials();
+  }
 
-    dialogRef.afterClosed().subscribe((results: TestimonialData) => {
-      if (results) {
-        this.testimonialsSignal.update((currentArray) => {
-          return [...currentArray, results];
-        });
-        this.addTestimonialToFormArray(results);
+  private subscribeToTestimonials() {
+    effect(() => {
+      const newCommand = this.testimonialStateService.testimonialCommand();
+      if (newCommand && newCommand.testimonialData) {
+        this.testimonialsSignal.update((currentArray) => [...currentArray, newCommand]);
+        this.testimonialStateService.clearTestimonialCommand();
       }
     });
   }
 
-  private addTestimonialToFormArray(testimonial: TestimonialData): FormGroup {
-    return this.formBuilder.group({
-      name: [testimonial.name],
-      jobTitle: [testimonial.jobTitle],
-      photoUrl: [testimonial.photoUrl],
-      feedback: [testimonial.feedback],
+  openTestimonialDialog(): void {
+    this.dialog.open(DialogTestimonialComponent, {
+      width: '800px',
+      disableClose: true,
     });
   }
 
@@ -73,12 +80,33 @@ export class TestimonialsFormComponent {
     this.testimonialsSignal.update((currentTestimonials) =>
       currentTestimonials.filter((_, index) => index !== indexToDelete)
     );
-    // if (indexToDelete >= 0 && indexToDelete < this.testimonialsSignal.length) {
-    //   this.testimonialsSignal.(indexToDelete);
-    // }
   }
 
   saveAllTestimonials(): void {
+    if (this.isSaving) {
+      return;
+    }
     this.isSaving = true;
+    const currentProfileId = this.stateService.tryGetProfileId();
+    if (!currentProfileId) {
+      this.isSaving = false;
+      return;
+    }
+
+    this.httpService
+      .post(this.TESTIMONIAL_URL_ENDPOINT, this.testimonialsArray())
+      .pipe(
+        tap(() => {
+          this.isSaving = true;
+        }),
+        catchError((error) => {
+          console.error(error);
+          return EMPTY;
+        }),
+        finalize(() => {
+          this.isSaving = false;
+        })
+      )
+      .subscribe();
   }
 }

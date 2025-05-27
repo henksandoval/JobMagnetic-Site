@@ -9,6 +9,11 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { TestimonialBase } from '../interfaces/TestimonialBase';
+import { TestimonialCommand } from '../interfaces/testimonialCommand';
+import { CommandAdapter } from '../../../../adapters/command/command.adapter';
+import { StateService } from '@core/services/state/state.service';
+import { TestimonialStateService } from '../services/testimonial-state.service';
 
 @Component({
   selector: 'app-dialog-testimonial',
@@ -30,6 +35,9 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 })
 export class DialogTestimonialComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private stateService = inject(StateService);
+  private testimonialStateService = inject(TestimonialStateService);
+  private commandAdapter = inject(CommandAdapter);
   private dialogRef: MatDialogRef<DialogTestimonialComponent> = inject(MatDialogRef);
   testimonialsDialogForm!: FormGroup;
 
@@ -39,6 +47,7 @@ export class DialogTestimonialComponent implements OnInit {
 
   private initializeForms() {
     this.testimonialsDialogForm = this.formBuilder.group({
+      profileId: [''],
       name: [''],
       jobTitle: [''],
       photoUrl: [''],
@@ -47,9 +56,18 @@ export class DialogTestimonialComponent implements OnInit {
   }
 
   onAddTestimonials(): void {
-    const newTestimonials = this.testimonialsDialogForm.value;
     if (this.testimonialsDialogForm.valid) {
-      this.dialogRef.close(newTestimonials);
+      const currentProfileId = this.stateService.tryGetProfileId();
+      const testimonialBaseData: TestimonialBase = this.testimonialsDialogForm.value;
+
+      const testimonialCommand = this.commandAdapter.transform<TestimonialBase, TestimonialCommand>(
+        testimonialBaseData,
+        'testimonialData',
+        { profileId: currentProfileId }
+      );
+
+      this.testimonialStateService.setTestimonialCommand(testimonialCommand);
+      this.dialogRef.close(true);
     }
   }
 }

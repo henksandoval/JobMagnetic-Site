@@ -1,5 +1,5 @@
-import { TestimonialData } from './TestimonialData';
+import { TestimonialBase } from './TestimonialBase';
 
 export interface TestimonialCommand {
-  testimonialData: TestimonialData[]
+  testimonialData: TestimonialBase
 }

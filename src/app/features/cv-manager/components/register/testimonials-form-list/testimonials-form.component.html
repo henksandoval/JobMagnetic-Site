@@ -10,24 +10,24 @@
     <div class="list-section">
       <h3 class="testimonials-section-title">Testimonios Agregados</h3>
       <div class="testimonial-list-cards-container">
-        @for (testimonial of testimonialsArray(); track testimonial.name; let i = $index) {
+        @for (testimonial of testimonialsArray(); track testimonial.testimonialData.name; let i = $index) {
           <mat-card class="testimonial-card">
             <div class="card-inner-content">
               <div class="avatar-container">
-                <ng-container *ngIf="testimonial.photoUrl && testimonial.photoUrl.trim() !== ''; else initialsAvatar">
-                  <img [src]="testimonial.photoUrl" [alt]="'Foto de ' + testimonial.name"
+                <ng-container *ngIf="testimonial.testimonialData.photoUrl && testimonial.testimonialData.photoUrl.trim() !== ''; else initialsAvatar">
+                  <img [src]="testimonial.testimonialData.photoUrl" [alt]="'Foto de ' + testimonial.testimonialData.name"
                        class="testimonial-avatar-image">
                 </ng-container>
                 <ng-template #initialsAvatar>
                   <div class="testimonial-avatar-placeholder">
-                    {{ getInitials(testimonial.name) }}
+                    {{ getInitials(testimonial.testimonialData.name) }}
                   </div>
                 </ng-template>
               </div>
 
               <div class="info-container">
-                <h4 class="testimonial-name">{{ testimonial.name }}</h4>
-                <p class="testimonial-job-title">{{ testimonial.jobTitle }}</p>
+                <h4 class="testimonial-name">{{ testimonial.testimonialData.name }}</h4>
+                <p class="testimonial-job-title">{{ testimonial.testimonialData.jobTitle }}</p>
               </div>
 
               <div class="actions-container">

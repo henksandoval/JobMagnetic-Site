@@ -117,6 +117,13 @@
     "resume": "Resume",
     "education": "Education",
     "workExperience": "Work Experience",
-    "testimonials": "Testimonials"
+    "testimonials": "Testimonials",
+    "testimonialsRegisterTitle": "Step 7: Testimony data",
+    "name": "Name",
+    "namePlaceholder": "Enter a name",
+    "photoUrl": "photoUrl",
+    "photoUrlPlaceholder": "Enter the photo url",
+    "testimonial": "Testimonial",
+    "testimonialPlaceholder": "Enter a testimonial"
   }
 }

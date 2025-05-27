@@ -1,4 +1,5 @@
-export interface Testimonial {
+export interface TestimonialBase {
+  profileId: string;
   name: string;
   jobTitle: string;
   photoUrl: string;

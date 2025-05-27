@@ -6,5 +6,6 @@ export const ApiEndpoints = {
     service: '/api/v1/service',
     skillSet: 'v1/profile/skillSet',
     portfolio: 'v1/profile/portfolio',
+    testimonial: '/api/v1/testimonial/bulk',
   },
 };

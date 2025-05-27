@@ -117,6 +117,13 @@
     "resume": "Currículum",
     "education": "Educación",
     "workExperience": "Experiencia Laboral",
-    "testimonials": "Testimonios"
+    "testimonials": "Testimonios",
+    "testimonialsRegisterTitle": "Paso 7: Datos del testimonio",
+    "name": "Nombre",
+    "namePlaceholder": "Introduzca un nombre",
+    "photoUrl": "URL de la foto",
+    "photoUrlPlaceholder": "Introduzca la url de la foto",
+    "testimonial": "Testimonial",
+    "testimonialPlaceholder": "Introduzca un testimonio"
   }
 }

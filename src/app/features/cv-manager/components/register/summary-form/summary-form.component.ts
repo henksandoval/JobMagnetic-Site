@@ -153,7 +153,6 @@ export class SummaryFormComponent implements OnInit {
       return;
     }
     if (this.dataForm.valid) {
-      debugger;
       const summaryData: SummaryBase = this.dataForm.value;
       const createSummary = this.commandAdapter.transform<SummaryBase, SummaryCommand>(
         summaryData,
