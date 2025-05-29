@@ -14,6 +14,8 @@ import { Guid } from 'guid-typescript';
 import { ENTER } from '@angular/cdk/keycodes';
 import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRow } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
+import { Education } from '../interfaces/education';
+import { SummaryStateService } from '../services/summary-state.service';
 
 
 @Component({
@@ -40,6 +42,7 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class WorkExperienceDialogComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private readonly summaryStateService: SummaryStateService = inject(SummaryStateService);
   private dialogRef: MatDialogRef<WorkExperienceDialogComponent> = inject(MatDialogRef);
   readonly separatorKeysCodes: number[] = [ENTER];
   workExperienceForm!: FormGroup;
@@ -81,11 +84,10 @@ export class WorkExperienceDialogComponent implements OnInit {
 
   saveWorkExperience(): void {
     if (this.workExperienceForm.valid) {
-      const workExperienceData: WorkExperience = {
-        ...this.workExperienceForm.value,
-        correlationId: Guid.create().toString(),
-      };
-      this.dialogRef.close(workExperienceData);
+      const workExperience: WorkExperience = this.workExperienceForm.value;
+
+      this.summaryStateService.setWorkExperience(workExperience);
+      this.dialogRef.close(true);
     }
   }
 }

@@ -76,6 +76,17 @@ export class SummaryFormComponent implements OnInit {
         this.summaryStateService.clearEducation();
       }
     });
+
+    effect(() => {
+      const workExperiencesCommand = this.summaryStateService.workExperienceCommand();
+      if (workExperiencesCommand) {
+        this.workExperienceSignal.update((currentArray) => [...currentArray, workExperiencesCommand]);
+        const workExperienceArray = this.dataForm.get('workExperiences') as FormArray;
+        const newWorkExperienceGroup = this.createWorkExperienceFormGroup(workExperiencesCommand);
+        workExperienceArray.push(newWorkExperienceGroup);
+        this.summaryStateService.clearWorkExperience();
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -102,16 +113,9 @@ export class SummaryFormComponent implements OnInit {
   }
 
   openWorkExperienceDialog(): void {
-    const dialogRef = this.dialog.open(WorkExperienceDialogComponent, {
+    this.dialog.open(WorkExperienceDialogComponent, {
       width: '800px',
       disableClose: true,
-    });
-    dialogRef.afterClosed().subscribe((result: WorkExperience) => {
-      if (result) {
-        this.workExperienceSignal.update((currentArray) => [...currentArray, result]);
-        const workFA = this.dataForm.get('workExperiences') as FormArray;
-        workFA.push(this.createWorkExperienceFormGroup(result));
-      }
     });
   }
 
