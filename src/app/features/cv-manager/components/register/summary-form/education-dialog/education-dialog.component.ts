@@ -6,13 +6,14 @@ import {
   MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
-import { Education } from '../interfaces/education';
-import { Guid } from 'guid-typescript';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-
+import { SummaryStateService } from '../services/summary-state.service';
+import { CommandAdapter } from '../../../../adapters/command/command.adapter';
+import { StateService } from '@core/services/state/state.service';
+import { Education } from '../interfaces/education';
 
 @Component({
   selector: 'app-education-dialog',
@@ -33,6 +34,8 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 })
 export class EducationDialogComponent  implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
+  private stateService = inject(StateService);
+  private readonly summaryStateService: SummaryStateService = inject(SummaryStateService);
   private dialogRef: MatDialogRef<EducationDialogComponent > = inject(MatDialogRef);
   educationForm!: FormGroup;
 
@@ -53,11 +56,10 @@ export class EducationDialogComponent  implements OnInit {
 
   saveEducation(): void {
     if (this.educationForm.valid) {
-      const educationData: Education = {
-        ...this.educationForm.value,
-        correlationId: Guid.create().toString()
-      };
-      this.dialogRef.close(educationData);
+     const education: Education = this.educationForm.value;
+
+      this.summaryStateService.setEducation(education);
+      this.dialogRef.close(true);
     }
   }
 }

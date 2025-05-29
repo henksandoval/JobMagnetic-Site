@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, effect, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormArray } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { DatePipe, NgIf } from '@angular/common';
@@ -17,11 +17,12 @@ import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { SummaryBase } from './interfaces/summaryBase';
 import { SummaryCommand } from './interfaces/summaryCommand';
 import { StateService } from '@core/services/state/state.service';
-import { CommandAdapter } from '../../../adapters/command/command.adapter';
 import { Config } from '@core/services/config/interfaces/config';
 import { ConfigService } from '@core/services/config/config.service';
 import { HttpService } from '@core/services/http/http.service';
 import { catchError, EMPTY, finalize, tap } from 'rxjs';
+import { SummaryStateService } from './services/summary-state.service';
+import { CommandAdapter } from '../../../adapters/command/command.adapter';
 
 @Component({
   selector: 'app-summary-form',
@@ -48,7 +49,8 @@ export class SummaryFormComponent implements OnInit {
   private readonly configService: Config = inject(ConfigService).getConfig();
   private readonly stateService: StateService = inject(StateService);
   private readonly httpService: HttpService = inject(HttpService);
-  private readonly commandAdapter: CommandAdapter = inject(CommandAdapter);
+  private readonly summaryStateService: SummaryStateService = inject(SummaryStateService);
+  private commandAdapter = inject(CommandAdapter);
   private formBuilder: FormBuilder = inject(FormBuilder);
   private dialog: MatDialog = inject(MatDialog);
   dataForm!: FormGroup;
@@ -58,6 +60,23 @@ export class SummaryFormComponent implements OnInit {
   public readonly workExperienceArray: Signal<WorkExperience[]> = this.workExperienceSignal.asReadonly();
   private readonly SUMMARY_URL_ENDPOINT = new URL(ApiEndpoints.profile.summary, this.configService.apiUrl);
   isSaving = false;
+
+  constructor() {
+    this.subscribeToSummary();
+  }
+
+  private subscribeToSummary() {
+    effect(() => {
+      const receivedCommand = this.summaryStateService.educationCommand();
+      if (receivedCommand) {
+        this.educationSignal.update((currentArray) => [...currentArray, receivedCommand]);
+        const educationArray = this.dataForm.get('education') as FormArray;
+        const newEducationGroup = this.createEducationFormGroup(receivedCommand);
+        educationArray.push(newEducationGroup);
+        this.summaryStateService.clearEducation();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.initializeForms();
@@ -76,30 +95,9 @@ export class SummaryFormComponent implements OnInit {
   }
 
   openEducationDialog(): void {
-    const dialogRef = this.dialog.open(EducationDialogComponent, {
+    this.dialog.open(EducationDialogComponent, {
       width: '800px',
       disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result: Education | null) => {
-      if (result) {
-        this.educationSignal.update((currentArray) => [...currentArray, result]);
-
-        const educationFA = this.dataForm.get('education') as FormArray;
-        educationFA.push(this.createEducationFormGroup(result));
-      }
-    });
-  }
-
-  private createEducationFormGroup(education: Education): FormGroup {
-    return this.formBuilder.group({
-      correlationId: [education.correlationId],
-      degree: [education.degree, Validators.required],
-      institutionName: [education.institutionName, Validators.required],
-      institutionLocation: [education.institutionLocation, Validators.required],
-      description: [education.description],
-      startDate: [education.startDate, Validators.required],
-      endDate: [education.endDate],
     });
   }
 
@@ -114,19 +112,6 @@ export class SummaryFormComponent implements OnInit {
         const workFA = this.dataForm.get('workExperiences') as FormArray;
         workFA.push(this.createWorkExperienceFormGroup(result));
       }
-    });
-  }
-
-  private createWorkExperienceFormGroup(work: WorkExperience): FormGroup {
-    return this.formBuilder.group({
-      correlationId: [work.correlationId],
-      jobTitle: [work.jobTitle, Validators.required],
-      companyName: [work.companyName, Validators.required],
-      companyLocation: [work.companyLocation, Validators.required],
-      description: [work.description],
-      responsibilities: [work.responsibilities],
-      startDate: [work.startDate, Validators.required],
-      endDate: [work.endDate],
     });
   }
 
@@ -147,20 +132,22 @@ export class SummaryFormComponent implements OnInit {
       return;
     }
     this.isSaving = true;
-    const currentProfileId = this.stateService.tryGetProfileId();
-    if (!currentProfileId) {
-      this.isSaving = false;
-      return;
-    }
     if (this.dataForm.valid) {
+      const currentProfileId = this.stateService.tryGetProfileId();
+      if (!currentProfileId) {
+        this.isSaving = false;
+        return;
+      }
+
       const summaryData: SummaryBase = this.dataForm.value;
-      const createSummary = this.commandAdapter.transform<SummaryBase, SummaryCommand>(
+      const summaryCommand = this.commandAdapter.transform<SummaryBase, SummaryCommand>(
         summaryData,
         'summaryData',
         { profileId: currentProfileId }
       );
+
       this.httpService
-        .post(this.SUMMARY_URL_ENDPOINT, createSummary)
+        .post(this.SUMMARY_URL_ENDPOINT, summaryCommand)
         .pipe(
           tap(() => {
             this.isSaving = true;
@@ -177,5 +164,30 @@ export class SummaryFormComponent implements OnInit {
     } else {
       console.log('Form is invalid');
     }
+  }
+
+  private createEducationFormGroup(education: Education): FormGroup {
+    return this.formBuilder.group({
+      correlationId: [education.correlationId],
+      degree: [education.degree],
+      institutionName: [education.institutionName],
+      institutionLocation: [education.institutionLocation],
+      description: [education.description],
+      startDate: [education.startDate],
+      endDate: [education.endDate],
+    });
+  }
+
+  private createWorkExperienceFormGroup(work: WorkExperience): FormGroup {
+    return this.formBuilder.group({
+      correlationId: [work.correlationId],
+      jobTitle: [work.jobTitle, Validators.required],
+      companyName: [work.companyName, Validators.required],
+      companyLocation: [work.companyLocation, Validators.required],
+      description: [work.description],
+      responsibilities: [work.responsibilities],
+      startDate: [work.startDate, Validators.required],
+      endDate: [work.endDate],
+    });
   }
 }
