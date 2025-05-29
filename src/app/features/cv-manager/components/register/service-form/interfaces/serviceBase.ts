@@ -1,4 +1,5 @@
-import { GalleryFormItems } from './galleryFormItems.model';
+import { GalleryFormItems } from './galleryFormItems';
+
 
 export interface ServiceBase {
   profileId: string;

@@ -11,7 +11,7 @@ export class TestimonialStateService {
     return this._testimonialCommand.asReadonly();
   }
 
-  setTestimonialCommand(command: TestimonialCommand): void {
+  setTestimonial(command: TestimonialCommand): void {
     if (!command) {
       throw new Error('The Command cannot be empty.');
     }

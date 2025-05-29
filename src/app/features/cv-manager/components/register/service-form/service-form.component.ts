@@ -1,17 +1,14 @@
-import { Component, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
+import { Component, effect, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
-import { ServiceCommand } from '../models/serviceCommand.model';
-import { ServiceBase } from '../models/serviceBase.model';
 import { StateService } from '@core/services/state/state.service';
 import {
   MatDialog,
 } from '@angular/material/dialog';
 import { HttpService } from '@core/services/http/http.service';
 import { CommandAdapter } from '../../../adapters/command/command.adapter';
-import { GalleryFormItems } from '../models/galleryFormItems.model';
 import { GalleryItemsDialogComponent } from './gallery-items-dialog/gallery-items-dialog.component';
 import { catchError, EMPTY, finalize, tap } from 'rxjs';
 import { Config } from '@core/services/config/interfaces/config';
@@ -28,6 +25,10 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatIcon } from '@angular/material/icon';
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { MatProgressSpinner } from '@angular/material/progress-spinner';
+import { GalleryFormItems } from './interfaces/galleryFormItems';
+import { ServiceBase } from './interfaces/serviceBase';
+import { ServiceCommand } from './interfaces/serviceCommand';
+import { ServiceStateService } from './services/service-state.service';
 
 @Component({
   selector: 'app-service-form',
@@ -56,6 +57,7 @@ export class ServiceFormComponent implements OnInit {
   private readonly configService: Config = inject(ConfigService).getConfig();
   private readonly httpService: HttpService = inject(HttpService);
   private readonly stateService: StateService = inject(StateService);
+  private serviceStateService = inject(ServiceStateService);
   private readonly commandAdapter: CommandAdapter = inject(CommandAdapter);
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
   private galleryItemsSignal: WritableSignal<GalleryFormItems[]> = signal([]);
@@ -64,6 +66,23 @@ export class ServiceFormComponent implements OnInit {
   private dialog: MatDialog = inject(MatDialog);
   formData!: FormGroup;
   isSaving = false;
+
+  constructor() {
+    this.subscribeToTestimonials();
+  }
+
+  private subscribeToTestimonials() {
+    effect(() => {
+      const receivedGalleryItems = this.serviceStateService.serviceCommand();
+      if (receivedGalleryItems) {
+        this.galleryItemsSignal.update((currentArray) => [...currentArray, receivedGalleryItems]);
+        const galleryItemsArray = this.formData.get('galleryItems') as FormArray;
+        const newGalleryItemsGroup = this.createGalleryItemsFormGroup(receivedGalleryItems);
+        galleryItemsArray.push(newGalleryItemsGroup);
+        this.serviceStateService.clearServiceCommand();
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.initializeForm();
@@ -77,22 +96,13 @@ export class ServiceFormComponent implements OnInit {
   }
 
   addGalleryItem(): void {
-    const dialogRef = this.dialog.open(GalleryItemsDialogComponent, {
+    this.dialog.open(GalleryItemsDialogComponent, {
       width: '800px',
       disableClose: true,
-    });
-
-    dialogRef.afterClosed().subscribe((result: GalleryFormItems | null) => {
-      if (result) {
-        this.galleryItemsSignal.update((items) => [...items, result]);
-        const educationFA = this.formData.get('galleryItems') as FormArray;
-        educationFA.push(this.createGalleryItemsFormGroup(result));
-      }
     });
   }
 
   saveServiceData(): void {
-    debugger;
     if (this.isSaving) {
       return;
     }

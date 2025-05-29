@@ -66,7 +66,7 @@ export class DialogTestimonialComponent implements OnInit {
         { profileId: currentProfileId }
       );
 
-      this.testimonialStateService.setTestimonialCommand(testimonialCommand);
+      this.testimonialStateService.setTestimonial(testimonialCommand);
       this.dialogRef.close(true);
     }
   }

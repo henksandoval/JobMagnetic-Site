@@ -1,4 +1,4 @@
-import { ServiceBase } from './serviceBase.model';
+import { ServiceBase } from './serviceBase';
 
 
 export interface ServiceCommand {

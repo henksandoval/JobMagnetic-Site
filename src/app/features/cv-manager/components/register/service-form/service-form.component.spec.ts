@@ -2,7 +2,7 @@ import { ServiceFormComponent } from './service-form.component';
 import { render, screen } from '@testing-library/angular';
 import '@testing-library/jest-dom';
 import '@angular/localize/init';
-import { ServiceBase } from '../models/serviceBase.model';
+import { ServiceBase } from './interfaces/serviceBase.model';
 import userEvent from '@testing-library/user-event';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NO_ERRORS_SCHEMA } from '@angular/core';

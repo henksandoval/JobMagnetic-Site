@@ -10,6 +10,8 @@ import {
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
+import { ServiceStateService } from '../services/service-state.service';
+import { GalleryFormItems } from '../interfaces/galleryFormItems';
 
 @Component({
   selector: 'app-gallery-items-dialog',
@@ -30,6 +32,7 @@ import { MatButton } from '@angular/material/button';
 })
 export class GalleryItemsDialogComponent implements OnInit {
   private readonly formBuilder: FormBuilder = inject(FormBuilder);
+  private serviceStateService = inject(ServiceStateService);
   private dialogRef: MatDialogRef<GalleryItemsDialogComponent> = inject(MatDialogRef);
   galleryItemsForm!: FormGroup;
 
@@ -50,22 +53,11 @@ export class GalleryItemsDialogComponent implements OnInit {
   }
 
   addGalleryItemsData(): void {
-    const newGalleryItems = this.galleryItemsForm.value;
     if (this.galleryItemsForm.valid) {
-      this.dialogRef.close(newGalleryItems);
+      const galleryItems: GalleryFormItems = this.galleryItemsForm.value;
+
+      this.serviceStateService.setServiceCommand(galleryItems);
+      this.dialogRef.close(true);
     }
   }
-
-  // addServiceData(): void {
-  //   const newServiceItem = this.galleryItemsForm.value;
-  //   if (!this.itemsOverview) {
-  //     this.itemsOverview = {
-  //       profileId: '',
-  //       overview: this.formData.value.overview,
-  //       galleryItems: [],
-  //     };
-  //   }
-  //   this.itemsOverview?.galleryItems.push(newServiceItem);
-  //   this.serviceDataForm.reset();
-  // }
 }
