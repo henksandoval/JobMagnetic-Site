@@ -1,5 +1,46 @@
 <div class="page-container">
   <div class="form-card">
     <h2 class="form-main-title" appId="skillsRegisterTitle" i18n="@@skillsRegisterTitle">Step 5: Skills data</h2>
+    <button mat-stroked-button color="primary" i18n="@@insertButton"
+            (click)="openSkillsDialog()">
+      <mat-icon>add_circle_outline</mat-icon>
+      Insert
+    </button>
+    <div class="skills-container-visual">
+      <h2>HABILIDADES</h2>
+      <mat-grid-list cols="4" rowHeight="1:1" gutterSize="16px">
+        @for (skillItem of skillItemBaseArray(); track skillItem.name) {
+          <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <div class="skill-tile">
+              <img [src]="skillItem.iconUrl"
+                   [alt]="skillItem.name + 'logo'"
+                   class="skill-logo">
+              <p class="skill-name">{{ skillItem.name }}</p>
+            </div>
+          </mat-grid-tile>
+        }
+        @if (skillItemBaseArray().length === 0) {
+          <mat-grid-tile [colspan]="4" [rowspan]="1" class="no-skills-tile-placeholder">
+            <div class="no-skills-message">
+              <p i18n="@@noRegistration">No skills have been added yet.</p>
+               <mat-icon>sentiment_dissatisfied</mat-icon>
+            </div>
+          </mat-grid-tile>
+        }
+      </mat-grid-list>
+    </div>
+    <div class="form-actions-centered">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="saveSkills()"
+        [disabled]="isSaving"
+        i18n="@@save"
+        class="save-action-button">
+        Save
+        <mat-progress-spinner *ngIf="isSaving" mode="indeterminate" diameter="20"
+                              class="button-spinner"></mat-progress-spinner>
+      </button>
+    </div>
   </div>
 </div>
