@@ -3,7 +3,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { MatGridList, MatGridTile } from '@angular/material/grid-list';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Config } from '@core/services/config/interfaces/config';
 import { ConfigService } from '@core/services/config/config.service';
@@ -11,7 +11,6 @@ import { StateService } from '@core/services/state/state.service';
 import { HttpService } from '@core/services/http/http.service';
 import { CommandAdapter } from '../../../adapters/command/command.adapter';
 import { SkillCommand } from './interfaces/skillCommand';
-import { SkillBase } from './interfaces/skillBase';
 import { catchError, EMPTY, finalize, tap } from 'rxjs';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { NgIf } from '@angular/common';
@@ -19,10 +18,26 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { SkillItemBase } from './interfaces/SkillItemBase';
 import { DialogSkillItemComponent } from './dialog-skill-item/dialog-skill-item.component';
 import { SkillStateService } from './services/skill-state.service';
+import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { SkillData } from './interfaces/skillBase';
 
 @Component({
   selector: 'app-skills-form',
-  imports: [AppIdDirective, MatGridList, MatButton, MatIcon, MatProgressSpinner, NgIf, MatGridTile],
+  imports: [
+    AppIdDirective,
+    MatGridList,
+    MatButton,
+    MatIcon,
+    MatProgressSpinner,
+    NgIf,
+    MatGridTile,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    ReactiveFormsModule,
+    CdkTextareaAutosize,
+  ],
   templateUrl: './skills-form.component.html',
   styleUrl: './skills-form.component.scss',
 })
@@ -63,7 +78,8 @@ export class SkillsFormComponent implements OnInit {
 
   private initializeForms() {
     this.dataForm = this.formBuilder.group({
-      overview: [''],
+      profileId: [''],
+      overview: ['', [Validators.required]],
       skillDetails: this.formBuilder.array([]),
     });
   }
@@ -76,7 +92,6 @@ export class SkillsFormComponent implements OnInit {
   }
 
   saveSkills(): void {
-    debugger
     if (this.isSaving) {
       return;
     }
@@ -87,8 +102,8 @@ export class SkillsFormComponent implements OnInit {
       return;
     }
 
-    const skillData: SkillBase = this.dataForm.value;
-    const skillsCommand = this.commandAdapter.transform<SkillBase, SkillCommand>(skillData, 'skillData', {
+    const skillData: SkillData = this.dataForm.value;
+    const skillsCommand = this.commandAdapter.transform<SkillData, SkillCommand>(skillData, 'SkillBase', {
       profileId: currentProfileId,
     });
     this.httpService

@@ -1,5 +1,6 @@
-import { SkillBase } from './skillBase';
+import { SkillData } from './skillBase';
+
 
 export interface SkillCommand {
-  skillData: SkillBase;
+  SkillBase: SkillData;
 }

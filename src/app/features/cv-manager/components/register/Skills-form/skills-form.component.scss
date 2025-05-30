@@ -20,10 +20,23 @@
   font-size: 1.8rem;
   font-weight: 500;
   color: #2c3e50;
-  margin: 0 0 8px 0;
+  margin: 0 0 16px 0;
 }
 
-/* styles.scss o el archivo .scss de tu SkillsFormComponent */
+.form-field-custom-width {
+  width: 100%;
+  display: block;
+}
+
+.overview-section {
+  margin-bottom: 16px;
+}
+
+.insert-button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
 
 .skills-container-visual {
   text-align: center;
@@ -31,7 +44,7 @@
   background-color: #f8f9fa;
   border-radius: 8px;
   margin-top: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 
   h2 {
     font-size: 1.8em;

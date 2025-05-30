@@ -1,6 +1,6 @@
 import { SkillItemBase } from './SkillItemBase';
 
-export interface SkillBase{
+export interface SkillData{
   profileId: string;
   overview: string;
   skillDetails: SkillItemBase[];
