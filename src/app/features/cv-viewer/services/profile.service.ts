@@ -67,7 +67,7 @@ export class ProfileService {
   }
 
   private loadProfile(userName: string): Observable<Profile> {
-    const queryParams = { name: userName };
+    const queryParams = { profileSlug: userName };
     let url: string;
 
     if (this.config.useAPI) {
