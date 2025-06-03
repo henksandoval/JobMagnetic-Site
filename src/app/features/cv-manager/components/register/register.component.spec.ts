@@ -66,4 +66,9 @@ describe(RegisterComponent.name, () => {
     const profileElement = screen.getByTestId('testimonials-component');
     expect(profileElement).toBeTruthy();
   });
+
+  it('should render the SkillsFormComponent with <app-skills-form>', () => {
+    const profileElement = screen.getByTestId('skills-component');
+    expect(profileElement).toBeTruthy();
+  });
 });
