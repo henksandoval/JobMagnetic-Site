@@ -4,7 +4,7 @@ import { Injectable, Signal, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class StateService {
-  userName = signal<string>('');
+  slug = signal<string>('');
   private readonly _profileId = signal<string | null>(null);
 
   get profileId(): Signal<string | null> {
