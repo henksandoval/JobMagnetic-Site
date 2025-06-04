@@ -23,8 +23,8 @@ export class MyResumeComponent implements AfterViewInit {
 
   constructor() {
     this.activatedRoute.paramMap.subscribe((params) => {
-      const userName = params.get('username')!;
-      this.stateService.userName.set(userName);
+      const slug = params.get('slug')!;
+      this.stateService.slug.set(slug);
     });
   }
 
