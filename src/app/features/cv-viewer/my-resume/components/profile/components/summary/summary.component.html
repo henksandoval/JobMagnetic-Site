@@ -15,7 +15,7 @@
               @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
                 <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
-                <h5 [appId]="'startDate-date' + dataIndex">{{ edu.startDate }}</h5>
+                <h5 [appId]="'startDate-date' + dataIndex">{{ edu.startdate }}</h5>
                 <p [appId]="'academy-formation' + dataIndex">
                   <em>{{ edu.Academy }}</em>
                 </p>
