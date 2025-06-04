@@ -8,8 +8,12 @@ export const routes: Routes = [
     loadChildren: () => import('./features/cv-manager/cv-manager.routes').then((m) => m.cvManagerRoutes),
   },
   {
-    path: ':username',
+    path: ':slug',
     component: MyResumeComponent,
+  },
+  {
+    path: 'cv-viewer',
+    loadChildren: () => import('./features/cv-viewer/cv-viewer.routes').then((m) => m.cvViewerRoutes),
   },
   {
     path: '',
