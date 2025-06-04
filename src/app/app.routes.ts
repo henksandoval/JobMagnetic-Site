@@ -12,12 +12,8 @@ export const routes: Routes = [
     component: MyResumeComponent,
   },
   {
-    path: 'cv-viewer',
-    loadChildren: () => import('./features/cv-viewer/cv-viewer.routes').then((m) => m.cvViewerRoutes),
-  },
-  {
     path: '',
-    redirectTo: 'cv-manager',
+    redirectTo: 'cv-manager/register',
     pathMatch: 'full',
   },
   {
