@@ -26,7 +26,7 @@ describe(SummaryComponent.name, () => {
       (academicBackground: AcademicBackground, index: number) => {
         const id: string = (++index).toString().padStart(2, '0');
         expect(screen.getByTestId('experience_' + id)).toHaveTextContent(academicBackground.experience);
-        expect(screen.getByTestId('startDate-date' + id)).toHaveTextContent(academicBackground.startDate);
+        expect(screen.getByTestId('startDate-date' + id)).toHaveTextContent(academicBackground.startdate);
         expect(screen.getByTestId('academy-formation' + id)).toHaveTextContent(academicBackground.Academy);
         expect(screen.getByTestId('description_' + id)).toHaveTextContent(academicBackground.description);
       }
