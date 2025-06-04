@@ -30,25 +30,16 @@
             @for (work of workExperience.position; track work.specialist) {
               @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
-                <h4 [appId]="'specialist_' + dataIndex">
-                  {{ work.specialist }}
-                </h4>
+                <h4 [appId]="'specialist_' + dataIndex">{{ work.specialist }}</h4>
                 <h5 [appId]="'startDate_' + dataIndex">{{ work.startDate }}</h5>
-                <p [appId]="'location_' + dataIndex">
-                  <em>{{ work.location }}</em>
-                </p>
-                <ul>
-                  <li [appId]="'communicationDesignLeadership_' + dataIndex">
-                    {{ work.communicationDesignLeadership }}
-                  </li>
-                  <li [appId]="'teamLeadership_' + dataIndex">
-                    {{ work.teamLeadership }}
-                  </li>
-                  <li [appId]="'designQualityAssurance_' + dataIndex">
-                    {{ work.designQualityAssurance }}
-                  </li>
-                  <li [appId]="'expertiseArea_' + dataIndex">{{ work.expertiseArea }}</li>
-                </ul>
+                <p [appId]="'location_' + dataIndex"><em>{{ work.location }}</em></p>
+                <p [appId]="'description_' + dataIndex">{{ work.description }}</p>
+                @for (responsibility of work.responsibilities; track responsibility) {
+                  @let dataIndex = ($index + 1).toString().padStart(2, '0');
+                  <ul>
+                    <li [appId]="'responsibility_' + dataIndex">{{ responsibility }}</li>
+                  </ul>
+                }
               </div>
             }
           }
