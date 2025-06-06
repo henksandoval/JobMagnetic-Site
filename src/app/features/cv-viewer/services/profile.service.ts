@@ -23,7 +23,7 @@ export class ProfileService {
   private readonly stateService = inject(StateService);
   private readonly urlBuilder = inject(UrlBuilderService);
 
-  profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
+  profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.slug()));
 
   transformData(data: ProfileContract): Profile {
     const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
