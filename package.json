@@ -55,7 +55,7 @@
     "@testing-library/user-event": "^14.6.1",
     "@types/aos": "^3.0.7",
     "@types/jest": "^29.5.14",
-    "angular-eslint": "19.3.0",
+    "angular-eslint": "19.7.1",
     "date-fns": "^4.1.0",
     "eslint": "^9.26.0",
     "expect-type": "^1.2.1",
