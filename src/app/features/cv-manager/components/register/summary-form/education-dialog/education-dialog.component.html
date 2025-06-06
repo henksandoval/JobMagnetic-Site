@@ -1,0 +1,99 @@
+<h2 mat-dialog-title i18n="@@addEducationModalTitle">Insert Education</h2>
+<mat-dialog-content class="education-dialog-content">
+  <p class="dialog-intro-text" i18n="@@educationRequiredFieldsMessage">
+    Please fill in the details of your education background. All fields marked with * are required.
+  </p>
+  <form [formGroup]="educationForm" class="education-dialog-form">
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@degreeInformation">Degree Information</h3>
+      <div class="dialog-form-row">
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@degreeLabel">Degree</mat-label>
+            <input
+              matInput
+              formControlName="degree"
+              appId="inputDegree" i18n-placeholder="@@degreeSuggestsPlaceholder"
+              placeholder="e.g., Bachelor of Science"
+              required />
+          </mat-form-field>
+        </div>
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@institutionNameLabel">Institution Name</mat-label>
+            <input
+              matInput
+              formControlName="institutionName"
+              appId="inputInstitutionName"
+              i18n-placeholder="@@institutionNameSuggestsPlaceholder"
+              placeholder="e.g., Harvard University"
+              required />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@locationAndDescription">Location and Description</h3>
+      <div class="dialog-form-row">
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@institutionLocationLabel">Location</mat-label>
+            <input
+              matInput
+              formControlName="institutionLocation"
+              appId="inputInstitutionLocation"
+              i18n-placeholder="@@institutionLocationSuggestsPlaceholder"
+              placeholder="e.g., Cambridge, MA"
+              required />
+          </mat-form-field>
+        </div>
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@educationDescriptionLabel">Description</mat-label>
+            <textarea
+              matInput
+              formControlName="description"
+              appId="inputEducationDescription"
+              rows="3"
+              i18n-placeholder="@@educationDescriptionPlaceholder"
+              placeholder="Provide details about your studies (optional)"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@dates">Dates</h3>
+      <div class="dialog-form-row">
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@startDateLabel">Start Date</mat-label>
+            <input
+              matInput
+              type="date"
+              formControlName="startDate"
+              appId="inputEducationStartDate"
+              required />
+          </mat-form-field>
+        </div>
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@endDateLabel">End Date</mat-label>
+            <input
+              matInput
+              type="date"
+              formControlName="endDate"
+              appId="inputEducationEndDate"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
+  <button mat-raised-button color="primary" (click)="saveEducation()" [mat-dialog-close]="educationForm.value" [disabled]="!educationForm.valid" i18n="@@save">Save</button>
+</mat-dialog-actions>

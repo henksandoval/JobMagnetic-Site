@@ -41,15 +41,13 @@
               }
             ],
             "styles": [
-              "node_modules/aos/dist/aos.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": ["node_modules", "src/assets/scss"]
             },
             "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js", "src/assets/js/main.js"],
-            "allowedCommonJsDependencies": ["glightbox", "aos"]
+            "allowedCommonJsDependencies": ["glightbox", "aos", "guid-typescript"]
           },
           "configurations": {
             "production": {
@@ -61,8 +59,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "5kB"
+                  "maximumWarning": "200kB",
+                  "maximumError": "400kB"
                 }
               ],
               "outputHashing": "all"

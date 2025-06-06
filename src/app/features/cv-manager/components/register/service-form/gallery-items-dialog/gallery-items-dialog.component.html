@@ -1,0 +1,82 @@
+<h2 mat-dialog-title appId="galleryItemsModalLabel" i18n="@@galleryItemsModalLabel">Gallery Item</h2>
+<form [formGroup]="galleryItemsForm">
+  <mat-dialog-content class="mat-typography">
+    <div class="dialog-flex-row">
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-3">
+        <mat-label appId="inputPosition" class="label-with-colon" i18n="@@position">Position</mat-label>
+        <input
+          matInput
+          formControlName="position"
+          i18n-placeholder="@@positionPlaceholder"
+          placeholder="Enter your position"
+          type="number"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-3">
+        <mat-label appId="inputTitle" class="label-with-colon" i18n="@@titlePosition">Title</mat-label>
+        <input
+          matInput
+          formControlName="title"
+          i18n-placeholder="@@titlePositionPlaceholder"
+          placeholder="Enter a title"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
+        <mat-label appId="inputDescription" class="label-with-colon" i18n="@@description">Description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          i18n-placeholder="@@descriptionPlaceholder"
+          placeholder="Enter a description"/>
+      </mat-form-field>
+    </div>
+
+    <div class="dialog-flex-row mt-1">
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
+        <mat-label appId="inputUrlLink" class="label-with-colon" i18n="@@urlLink">UrlLink</mat-label>
+        <input
+          matInput
+          formControlName="urlLink"
+          i18n-placeholder="@@urlLinkPlaceholder"
+          placeholder="Enter a link URL"
+          type="text"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
+        <mat-label appId="UrlImage" class="label-with-colon" i18n="@@urlImage">UrlImagen</mat-label>
+        <input
+          matInput
+          formControlName="urlImage"
+          i18n-placeholder="@@urlImagePlaceholder"
+          placeholder="Enter a URL for the image"
+          type="text"/>
+      </mat-form-field>
+    </div>
+
+    <div class="dialog-flex-row">
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
+        <mat-label appId="inputUrlVideo" class="label-with-colon" i18n="@@urlVideo">UrlVideo</mat-label>
+        <input
+          matInput
+          formControlName="urlVideo"
+          i18n-placeholder="@@urlVideoPlaceholder"
+          placeholder="Enter the URL of the video"
+          type="text"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
+        <mat-label appId="inputType" class="label-with-colon" i18n="@@type">Type</mat-label>
+        <input
+          matInput
+          formControlName="type"
+          i18n-placeholder="@@typePlaceholder"
+          placeholder="Enter a type"/>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end" class="dialog-actions-custom">
+    <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
+    <button mat-raised-button color="primary" (click)="addGalleryItemsData()" [mat-dialog-close]="galleryItemsForm.value" [disabled]="!galleryItemsForm.valid" i18n="@@save">Save</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,113 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.form-card {
+  max-width: 1000px;
+  width: 100%;
+  background-color: white;
+  padding: 28px 32px;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+  box-sizing: border-box;
+}
+
+.form-main-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #2c3e50;
+  margin: 0 0 16px 0;
+}
+
+.form-field-custom-width {
+  width: 100%;
+  display: block;
+}
+
+.overview-section {
+  margin-bottom: 16px;
+}
+
+.insert-button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 8px;
+}
+
+.skills-container-visual {
+  text-align: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 1.8em;
+    color: #343a40;
+    margin-bottom: 25px;
+    font-weight: 600;
+    border-bottom: 3px solid #007bff;
+    display: inline-block;
+    padding-bottom: 8px;
+  }
+}
+
+.skill-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.skill-logo {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.skill-name {
+  font-size: 0.9em;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  margin-top: 0;
+  word-break: break-word;
+}
+
+.no-skills-message {
+  width: 100%;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 30px 10px;
+  color: #757575;
+  font-style: italic;
+  margin-top: 20px;
+}
+
+.mat-grid-list .no-skills-message-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+}

@@ -23,7 +23,7 @@ export class ProfileService {
   private readonly stateService = inject(StateService);
   private readonly urlBuilder = inject(UrlBuilderService);
 
-  profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.userName()));
+  profile$: Signal<Profile | undefined> = toSignal(this.loadProfile(this.stateService.slug()));
 
   transformData(data: ProfileContract): Profile {
     const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
@@ -66,14 +66,14 @@ export class ProfileService {
     };
   }
 
-  private loadProfile(userName: string): Observable<Profile> {
-    const queryParams = { name: userName };
+  private loadProfile(slug: string): Observable<Profile> {
+    const queryParams = { profileSlug: slug };
     let url: string;
 
     if (this.config.useAPI) {
       url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
     } else {
-      url = `stubs/data.${userName || 'john'}.json`;
+      url = `stubs/data.${slug || 'john'}.json`;
     }
 
     return this.http.get<ProfileContract>(url).pipe(

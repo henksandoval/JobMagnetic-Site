@@ -28,7 +28,7 @@ describe(MyResumeComponent.name, () => {
         },
         {
           provide: StateService,
-          useValue: { userName: { set: jest.fn() } },
+          useValue: { slug: { set: jest.fn() } },
         },
       ]);
   });
@@ -43,8 +43,8 @@ describe(MyResumeComponent.name, () => {
     expect(fixture.point.componentInstance).toBeTruthy();
   });
 
-  it('should set the username from the route', () => {
+  it('should set the slug from the route', () => {
     const stateService = fixture.point.injector.get(StateService);
-    expect(stateService.userName.set).toHaveBeenCalledWith('testUser');
+    expect(stateService.slug.set).toHaveBeenCalledWith('testUser');
   });
 });

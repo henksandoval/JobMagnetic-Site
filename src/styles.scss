@@ -1,7 +1,3 @@
-@use "sass:meta";
-@use "custom_bootstrap" as bs;
-@use "ngx-owl-carousel-o/lib/styles/scss/owl.carousel" as owl;
-@use "app";
 
-@include meta.load-css("glightbox/dist/css/glightbox.min");
-@include meta.load-css("boxicons/css/boxicons.min");
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

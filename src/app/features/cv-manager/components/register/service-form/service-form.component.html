@@ -1,0 +1,84 @@
+<div class="service-data-container">
+  <mat-card class="form-card">
+    <mat-card-content class="service-card-content-centered">
+      <form [formGroup]="formData">
+        <h2 appId="serviceData" i18n="@@serviceRegisterTitle" class="service-data-card-title">
+          Step 6: Service Data
+        </h2>
+        <mat-form-field appearance="fill" class="form-field-custom-width">
+          <mat-label i18n="@@overview">Overview</mat-label>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="5"
+            cdkAutosizeMaxRows="20"
+            appId="overview"
+            formControlName="overview"
+            i18n-placeholder="@@overviewPlaceholder"
+            placeholder="Write an overview">
+          </textarea>
+        </mat-form-field>
+        <div class="section-header-actions">
+          <h4 class="gallery-section-title" appId="educationSectionTitle" i18n="@@galleryItemsModalLabel">
+            GalleryItems
+          </h4>
+          <button mat-stroked-button color="primary" type="button" appId="btnAddServiceData" (click)="addGalleryItem()" i18n="@@insertButton">
+            <mat-icon>add_circle_outline</mat-icon> insert
+          </button>
+        </div>
+        <mat-accordion multi="true" id="serviceAccordion" class="accordion-custom-width">
+          @for (item of galleryItemsArray(); track item.position; let i = $index) {
+            <mat-expansion-panel>
+              <mat-expansion-panel-header id="heading{{ i }}">
+                <mat-panel-title>
+                  {{ item.title }} (Posición: {{ item.position }})
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+
+              <mat-card-content class="expansion-panel-body-content">
+                <h5 class="item-position-title">{{ item.position }}</h5>
+                <p class="item-title-detail">{{ item.title }}</p>
+                <p class="item-detail">
+                  <mat-icon>location_on</mat-icon> <strong>Location:</strong> {{ item.description }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.urlLink }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.urlImage }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.urlVideo }}
+                </p>
+                <p class="item-detail">
+                  <mat-icon>description</mat-icon> <strong>Description:</strong> {{ item.type }}
+                </p>
+              </mat-card-content>
+            </mat-expansion-panel>
+          } @empty {
+            <!-- <div class="no-gallery-items-message" i18n="@@noGalleryItems">
+                   No hay ítems en la galería para mostrar.
+                 </div> -->
+          }
+        </mat-accordion>
+        <div class="form-actions-container">
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="saveServiceData()"
+            [disabled]="isSaving"
+            class="large-action-button"
+            i18n="@@save">
+            Save
+            <mat-spinner
+              *ngIf="isSaving"
+              diameter="20"
+              class="ms-2"
+            ></mat-spinner>
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -13,7 +13,7 @@ import AOS from 'aos';
   selector: 'app-my-resume',
   imports: [HeaderComponent, CoverComponent, FooterComponent, ProfileComponent, AppIdDirective],
   templateUrl: './my-resume.component.html',
-  styles: ``,
+  styleUrl: './my-resume.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class MyResumeComponent implements AfterViewInit {
@@ -23,8 +23,8 @@ export class MyResumeComponent implements AfterViewInit {
 
   constructor() {
     this.activatedRoute.paramMap.subscribe((params) => {
-      const userName = params.get('username')!;
-      this.stateService.userName.set(userName);
+      const slug = params.get('slug')!;
+      this.stateService.slug.set(slug);
     });
   }
 

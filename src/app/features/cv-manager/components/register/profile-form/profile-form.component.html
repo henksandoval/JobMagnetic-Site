@@ -1,0 +1,112 @@
+<div class="page-container">
+  <div class="form-card">
+    <form [formGroup]="personalDataForm" class="personal-data-form-content">
+      <h2 class="form-main-title" i18n="@@personalData">Step 1: Personal Data</h2>
+
+      <div class="form-row">
+        <div class="form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@firstName">First Name</mat-label>
+            <input
+              matInput
+              formControlName="firstName"
+              i18n-placeholder="@@firstNamePlaceholder"
+              placeholder="Enter your first name"
+              required
+              id="firstName"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@middleName">Middle Name</mat-label>
+            <input
+              matInput
+              formControlName="middleName"
+              i18n-placeholder="@@middleNamePlaceholder"
+              placeholder="Enter your middle name"
+              id="middleName"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@lastName">Last Name</mat-label>
+            <input
+              matInput
+              formControlName="lastName"
+              i18n-placeholder="@@lastNamePlaceholder"
+              placeholder="Enter your last name"
+              required
+              id="lastName"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@secondLastName">Second Last Name</mat-label>
+            <input
+              matInput
+              formControlName="secondLastName"
+              i18n-placeholder="@@secondLastNamePlaceholder"
+              placeholder="Enter your second last name"
+              id="secondLastName"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@birthDate">Birth Date</mat-label>
+            <input matInput formControlName="birthDate" id="birthDate" type="date" />
+            <!-- Para un datepicker de Angular Material, usarías [matDatepicker] y <mat-datepicker-toggle> -->
+          </mat-form-field>
+        </div>
+
+        <div class="form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@profileImageUrl">Profile Picture URL</mat-label>
+            <input
+              matInput
+              formControlName="profileImageUrl"
+              i18n-placeholder="@@profileImageUrlPlaceholder"
+              placeholder="Enter your profile image URL"
+              id="profileImageUrl"
+              type="text"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-actions-centered">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="savePersonalData()"
+          [disabled]="isSaving"
+          i18n="@@save"
+          type="button"
+          class="save-action-button"
+        >
+          Save
+          <mat-spinner
+            *ngIf="isSaving"
+            diameter="20"
+            class="button-spinner-suffix"
+          ></mat-spinner>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

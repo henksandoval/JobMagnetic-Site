@@ -1,0 +1,34 @@
+.dialog-flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 1rem;
+
+  &.mt-1 {
+    margin-top: 1rem;
+  }
+}
+
+.form-field-col-3 {
+  flex: 1 1 calc(25% - 12px);
+  min-width: 150px;
+}
+
+.form-field-col-6 {
+  flex: 1 1 calc(50% - 8px);
+  min-width: 200px;
+}
+
+.dialog-actions-custom {
+  margin-top: 1.5rem;
+}
+
+.dialog-save-button-large {
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+}
+
+.label-with-colon::after {
+  content: ":";
+  padding-left: 2px;
+}

@@ -1,0 +1,130 @@
+<h2 mat-dialog-title i18n="@@addWorkExperienceModalTitle">Insert Work Experience</h2>
+<mat-dialog-content class="work-experience-dialog-content">
+  <p class="dialog-intro-text" i18n="@@workRequiredFieldsMessage">
+    Please fill in the details of your work experience. All fields marked with * are required.
+  </p>
+  <form [formGroup]="workExperienceForm" class="work-experience-dialog-form">
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@jobDetails">Job Details</h3>
+      <div class="dialog-form-row">
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@jobTitleLabel">Job Title</mat-label>
+            <input
+              matInput
+              appId="inputJobTitle"
+              formControlName="jobTitle"
+              placeholder="e.g., Software Engineer"
+              i18n-placeholder="@@jobTitleSuggestsPlaceholder"
+              required />
+          </mat-form-field>
+        </div>
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@companyNameLabel">Company Name</mat-label>
+            <input
+              matInput
+              appId="inputCompanyName"
+              formControlName="companyName"
+              placeholder="e.g., Google"
+              i18n-placeholder="@@companyNameSuggestsPlaceholder"
+              required />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@locationAndResponsibilities">Location and Responsibilities</h3>
+      <div class="dialog-form-row">
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@companyLocationLabel">Location</mat-label>
+            <input
+              matInput
+              appId="inputCompanyLocation"
+              formControlName="companyLocation"
+              i18n-placeholder="@@companyLocationPlaceholder"
+              placeholder="e.g., Mountain View, CA"
+              required />
+          </mat-form-field>
+        </div>
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@workDescriptionLabel">Description</mat-label>
+            <textarea
+              matInput
+              appId="inputWorkDescription"
+              formControlName="description"
+              rows="3"
+              i18n-placeholder="@@workDescriptionPlaceholder"
+              placeholder="Provide details about your work (optional)"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@responsibilities">Responsibilities</h3>
+      <div class="dialog-form-row full-width-row">
+        <div class="dialog-form-item full-width-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@responsibilities">Responsibilities</mat-label>
+            <mat-chip-grid #chipGrid aria-label="Enter responsibilities" class="responsibilities-chip-grid">
+              @for (control of responsibilitiesFormArray.controls; track $index) {
+                <mat-chip-row (removed)="removeResponsibility($index)" [editable]="true">
+                  {{control.value}}
+                  <button matChipRemove [attr.aria-label]="'Remove ' + control.value">
+                    <mat-icon>cancel</mat-icon>
+                  </button>
+                </mat-chip-row>
+              }
+              <input
+                placeholder="List key responsibilities (optional)"
+                i18n-placeholder="@@responsibilitiesPlaceholder"
+                [matChipInputFor]="chipGrid"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="true"
+                (matChipInputTokenEnd)="addResponsibility($event)"
+                appId="inputResponsibilities" />
+            </mat-chip-grid>
+            <!-- <mat-hint i18n="@@responsibilitiesChipsHint">Type a responsibility and press Enter or Comma to add it.</mat-hint> -->
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <h3 class="form-section-title" i18n="@@dates">Dates</h3>
+      <div class="dialog-form-row">
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@startDateLabel">Start Date</mat-label>
+            <input
+              matInput
+              type="date"
+              appId="inputWorkStartDate"
+              formControlName="startDate"
+              required />
+          </mat-form-field>
+        </div>
+        <div class="dialog-form-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@endDateLabel">End Date</mat-label>
+            <input
+              matInput
+              type="date"
+              appId="inputWorkEndDate"
+              formControlName="endDate"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </form>
+  </mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
+  <button mat-raised-button color="primary" (click)="saveWorkExperience()" [mat-dialog-close]="workExperienceForm.value" [disabled]="!workExperienceForm.valid" i18n="@@save">Save</button>
+</mat-dialog-actions>

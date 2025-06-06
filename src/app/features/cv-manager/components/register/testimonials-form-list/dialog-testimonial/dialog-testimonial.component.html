@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Agregar Nuevo Testimonio</h2>
+<form [formGroup]="testimonialsDialogForm">
+  <mat-dialog-content class="mat-typography">
+    <div class="dialog-flex-row">
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-3">
+        <mat-label appId="name" class="label-with-colon" i18n="@@name">Name</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          i18n-placeholder="@@namePlaceholder"
+          placeholder="Enter a name"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-3">
+        <mat-label i18n="@@jobTitle" class="label-with-colon">JobTitle</mat-label>
+        <input
+          matInput
+          formControlName="jobTitle"
+          i18n-placeholder="@@jobTitlePlaceholder"
+          placeholder="Enter your professional title"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-5">
+        <mat-label i18n="@@photoUrl">PhotoUrl</mat-label>
+        <input
+          matInput
+          formControlName="photoUrl"
+          i18n-placeholder="@@photoUrlPlaceholder"
+          placeholder="Enter the photo url"
+        />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
+        <mat-label i18n="@@testimonial" class="label-with-colon">Feedback</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="5"
+          cdkAutosizeMaxRows="20"
+          formControlName="feedback"
+          i18n-placeholder="@@testimonialPlaceholder"
+          appId="feedback"
+          placeholder="Enter a testimonial"
+          required
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+</form>
+<mat-dialog-actions align="end" class="dialog-actions-custom">
+  <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onAddTestimonials()" [mat-dialog-close]="testimonialsDialogForm.value"
+          [disabled]="!testimonialsDialogForm.valid" i18n="@@save">Save
+  </button>
+</mat-dialog-actions>

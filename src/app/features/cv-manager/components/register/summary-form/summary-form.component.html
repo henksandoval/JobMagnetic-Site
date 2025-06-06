@@ -1,0 +1,131 @@
+<div class="page-container">
+  <div class="form-card">
+    <form [formGroup]="dataForm" class="form-content">
+      <h2 class="form-main-title" appId="summaryRegisterTitle" i18n="@@summaryRegisterTitle">Step 3: Curriculum Data</h2>
+      <div class="form-row full-width-row">
+        <div class="form-item full-width-item">
+          <mat-form-field appearance="fill">
+            <mat-label i18n="@@introduction">Introduction about you</mat-label>
+            <textarea
+              matInput
+              formControlName="introduction"
+              i18n-placeholder="@@introductionPlaceholder"
+              appId="introductionInput"
+              placeholder="Enter an attractive introduction about you"
+              rows="5"
+              required>
+            </textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row two-column-layout">
+        <div class="form-column">
+          <div class="section-header">
+            <h4 class="section-title" appId="educationSectionTitle" i18n="@@educationSectionTitle">
+              Education
+            </h4>
+            <button
+              mat-stroked-button
+              color="primary"
+              appId="btnInsertEducation"
+              (click)="openEducationDialog()"
+              i18n="@@insertButton">
+              <mat-icon>add_circle_outline</mat-icon> Insert
+            </button>
+          </div>
+
+          @for (education of educationArray(); track education.correlationId) {
+            <mat-card class="item-card">
+              <mat-card-content>
+                <h5 class="item-main-title education-title">{{ education.degree }}</h5>
+                <p class="item-subtitle">{{ education.institutionName }}</p>
+                <p class="item-detail-row">
+                  <mat-icon>location_on</mat-icon> <span><strong>Location:</strong> {{ education.institutionLocation }}</span>
+                </p>
+                <p class="item-detail-row">
+                  <mat-icon>description</mat-icon> <span><strong>Description:</strong> {{ education.description }}</span>
+                </p>
+                <p class="item-detail-row">
+                  <mat-icon>calendar_today</mat-icon> <span><strong>Start Date:</strong> {{ education.startDate | date:'mediumDate' }}</span>
+                </p>
+                <p class="item-detail-row last-detail">
+                  <mat-icon>event</mat-icon> <span><strong>End Date:</strong> {{ education.endDate ? (education.endDate | date:'mediumDate') : 'Present' }}</span>
+                </p>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button mat-icon-button
+                        color="warn"
+                        [appId]="getButtonAppId('btnRemoveEducation', education.correlationId!)"
+                        (click)="removeEducation(education.correlationId!)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          } @empty {
+<!--            <p class="empty-list-message" i18n="@@noEducationMessage">No education records to display.</p>-->
+          }
+        </div>
+        <div class="form-column">
+          <div class="section-header">
+            <h4 class="section-title" appId="workExperienceSectionTitle" i18n="@@workExperienceSectionTitle">
+              Work Experience
+            </h4>
+            <button
+              mat-stroked-button
+              color="primary"
+              appId="btnInsertWorkExperience"
+              (click)="openWorkExperienceDialog()"
+              i18n="@@insertWorkExperienceButton">
+              <mat-icon>add_circle_outline</mat-icon> Insert
+            </button>
+          </div>
+          @for (work of workExperienceArray(); track work.correlationId) {
+            <mat-card class="item-card">
+              <mat-card-content>
+                <h5 class="item-main-title work-title">{{ work.jobTitle }}</h5>
+                <p class="item-subtitle">{{ work.companyName }}</p>
+                <p class="item-detail-row">
+                  <mat-icon>location_on</mat-icon> <span><strong>Location:</strong> {{ work.companyLocation }}</span>
+                </p>
+                <p class="item-detail-row">
+                  <mat-icon>description</mat-icon> <span><strong>Description:</strong> {{ work.description }}</span>
+                </p>
+                <p class="item-detail-row">
+                  <mat-icon>calendar_today</mat-icon> <span><strong>Start Date:</strong> {{ work.startDate | date }}</span>
+                </p>
+                <p class="item-detail-row last-detail">
+                  <mat-icon>event</mat-icon> <span><strong>End Date:</strong> {{ work.endDate ? (work.endDate | date) : 'Present' }}</span>
+                </p>
+              </mat-card-content>
+              <mat-card-actions align="end">
+                <button
+                mat-icon-button
+                color="warn"
+                [appId]="getButtonAppId('btnRemoveWork', work.correlationId!)"
+                (click)="removeWorkExperience(work.correlationId!)">
+                <mat-icon>delete</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          } @empty {
+<!--            <p class="empty-list-message" i18n="@@noWorkExperienceMessage">No work experience records to display.</p>-->
+          }
+        </div>
+      </div>
+
+      <div class="form-actions-centered">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="saveData()"
+          [disabled]="isSaving"
+          i18n="@@save"
+          class="save-action-button">
+          Save
+          <mat-progress-spinner *ngIf="isSaving" mode="indeterminate" diameter="20" class="button-spinner-suffix"></mat-progress-spinner>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

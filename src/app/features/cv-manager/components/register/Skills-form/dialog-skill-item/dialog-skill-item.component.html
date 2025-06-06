@@ -1,0 +1,67 @@
+<h2 mat-dialog-title i18n="@@addSkillsModalTitle">Insert Skills</h2>
+<form [formGroup]="skillItemDialogForm">
+  <mat-dialog-content class="mat-typography">
+    <p class="dialog-intro-text" i18n="@@skillsRequiredFieldsMessage">Please fill in the details of your skills. All
+      fields marked with * are required.
+    </p>
+    <h3 class="form-section-title" i18n="@@skillDetails">Skill details</h3>
+    <div class="dialog-flex-row">
+      <mat-form-field appearance="fill" class="form-field-col-3">
+        <mat-label i18n="@@proficiencyLevelLabel" class="label-with-colon">Proficiency Level</mat-label>
+        <input
+          matInput
+          appId="proficiencyLevel"
+          formControlName="proficiencyLevel"
+          placeholder="Enter a proficiency level"
+          i18n-placeholder="@@proficiencyLevelPlaceholder"
+          required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-field-col-3">
+        <mat-label i18n="@@rankLabel" class="label-with-colon">Rank</mat-label>
+        <input
+          matInput
+          appId="rank"
+          formControlName="rank"
+          placeholder="Enter a rank"
+          i18n-placeholder="@@rankPlaceholder"
+          required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-field-col-3">
+        <mat-label i18n="@@name" class="label-with-colon">Name</mat-label>
+        <input
+          matInput
+          appId="name"
+          formControlName="name"
+          placeholder="Enter a name"
+          i18n-placeholder="@@namePlaceholder"
+          required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-field-col-3">
+        <mat-label i18n="@@category" class="label-with-colon">Category</mat-label>
+        <input
+          matInput
+          appId="category"
+          formControlName="category"
+          placeholder="Enter a category"
+          i18n-placeholder="@@categoryPlaceholder"
+          required />
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="form-field-col-5">
+        <mat-label i18n="@@iconUrl" class="label-with-colon">Icon URL</mat-label>
+        <input
+          matInput
+          appId="iconUrl"
+          formControlName="iconUrl"
+          placeholder="Enter the icon URL"
+          i18n-placeholder="@@iconUrlPlaceholder"
+          required />
+      </mat-form-field>
+    </div>
+  </mat-dialog-content>
+</form>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onAddSkillItem()" [mat-dialog-close]="skillItemDialogForm.value"
+          [disabled]="!skillItemDialogForm.valid" i18n="@@save">Save
+  </button>
+</mat-dialog-actions>
