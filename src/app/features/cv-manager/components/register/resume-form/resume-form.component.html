@@ -121,12 +121,9 @@
           i18n="@@save"
           type="button"
           class="save-action-button"
-        > Save
-          <mat-spinner
-            *ngIf="isSaving"
-            diameter="20"
-            class="button-spinner-suffix"
-          ></mat-spinner>
+        >
+          Save
+          <mat-spinner *ngIf="isSaving" diameter="20" class="button-spinner-suffix"></mat-spinner>
         </button>
       </div>
     </form>

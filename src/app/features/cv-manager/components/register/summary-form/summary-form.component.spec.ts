@@ -153,44 +153,41 @@ describe(SummaryFormComponent.name, () => {
     },
   ];
 
-  describe.each(dialogTestCases)(
-    '$sectionName Section (Integration with Dialogue)',
-    (testCase) => {
-      const {
-        addButtonTestId,
-        entryData,
-        getComponentArray,
-        assertEntryDisplayedFn,
-        keyPropertyForAbsenceCheck,
-        sectionName,
-      } = testCase;
-      xit(`Should open the ${sectionName.toLowerCase()} dialog and add an entry when the dialog returns data`, async () => {
-        matDialogSpy.mockReturnValue({ afterClosed: () => of(entryData) });
-        const addButton = screen.getByTestId(addButtonTestId);
-        await user.click(addButton);
-        expect(matDialogSpy).toHaveBeenCalledTimes(1);
-        componentFixture.detectChanges();
+  describe.each(dialogTestCases)('$sectionName Section (Integration with Dialogue)', (testCase) => {
+    const {
+      addButtonTestId,
+      entryData,
+      getComponentArray,
+      assertEntryDisplayedFn,
+      keyPropertyForAbsenceCheck,
+      sectionName,
+    } = testCase;
+    xit(`Should open the ${sectionName.toLowerCase()} dialog and add an entry when the dialog returns data`, async () => {
+      matDialogSpy.mockReturnValue({ afterClosed: () => of(entryData) });
+      const addButton = screen.getByTestId(addButtonTestId);
+      await user.click(addButton);
+      expect(matDialogSpy).toHaveBeenCalledTimes(1);
+      componentFixture.detectChanges();
 
-        await (assertEntryDisplayedFn as (data: Education | WorkExperience) => Promise<void>)(entryData);
+      await (assertEntryDisplayedFn as (data: Education | WorkExperience) => Promise<void>)(entryData);
 
-        const currentArrayValue = getComponentArray();
-        expect(currentArrayValue).toContainEqual(entryData);
-      });
+      const currentArrayValue = getComponentArray();
+      expect(currentArrayValue).toContainEqual(entryData);
+    });
 
-      it(`Should not add data if the ${sectionName.toLowerCase()} dialog is canceled (returns null)`, async () => {
-        matDialogSpy.mockReturnValue({ afterClosed: () => of(null) });
-        const initialLength = getComponentArray().length;
-        const addButton = screen.getByTestId(addButtonTestId);
-        await user.click(addButton);
-        expect(matDialogSpy).toHaveBeenCalledTimes(1);
-        componentFixture.detectChanges();
-        const currentArrayValue = getComponentArray();
-        expect(currentArrayValue.length).toBe(initialLength);
-        const uniqueTextFromEntry = (entryData as any)[keyPropertyForAbsenceCheck];
-        expect(screen.queryByText(uniqueTextFromEntry)).toBeNull();
-      });
-    }
-  );
+    it(`Should not add data if the ${sectionName.toLowerCase()} dialog is canceled (returns null)`, async () => {
+      matDialogSpy.mockReturnValue({ afterClosed: () => of(null) });
+      const initialLength = getComponentArray().length;
+      const addButton = screen.getByTestId(addButtonTestId);
+      await user.click(addButton);
+      expect(matDialogSpy).toHaveBeenCalledTimes(1);
+      componentFixture.detectChanges();
+      const currentArrayValue = getComponentArray();
+      expect(currentArrayValue.length).toBe(initialLength);
+      const uniqueTextFromEntry = (entryData as never)[keyPropertyForAbsenceCheck];
+      expect(screen.queryByText(uniqueTextFromEntry)).toBeNull();
+    });
+  });
 
   describe('Should display correct translations in the screen: ', () => {
     const translationTestCases = [{ key: 'summaryRegisterTitle' }, { key: 'introduction' }];

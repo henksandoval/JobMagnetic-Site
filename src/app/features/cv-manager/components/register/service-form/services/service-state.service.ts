@@ -1,7 +1,6 @@
 import { Injectable, Signal, signal } from '@angular/core';
 import { GalleryFormItems } from '../interfaces/galleryFormItems';
 
-
 @Injectable({
   providedIn: 'root',
 })

@@ -90,7 +90,6 @@ export class ResumeFormComponent implements OnInit {
   }
 
   private getUrlEndpoint(): URL {
-    debugger
     return new URL(ApiEndpoints.profile.about, this.configService.apiUrl);
   }
 }

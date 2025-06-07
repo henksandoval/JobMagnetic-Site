@@ -8,8 +8,8 @@ export const cvManagerRoutes: Routes = [
     path: '',
     component: CvManagerComponent,
     children: [
-      { path: 'index', component: IndexComponent, },
+      { path: 'index', component: IndexComponent },
       { path: 'register', component: RegisterComponent },
-    ]
+    ],
   },
 ];

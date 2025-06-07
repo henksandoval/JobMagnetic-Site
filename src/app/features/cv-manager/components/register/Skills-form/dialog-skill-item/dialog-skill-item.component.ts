@@ -11,7 +11,6 @@ import {
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SkillItemBase } from '../interfaces/SkillItemBase';
-import { SummaryStateService } from '../../summary-form/services/summary-state.service';
 import { SkillStateService } from '../services/skill-state.service';
 
 @Component({

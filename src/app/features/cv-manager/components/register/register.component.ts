@@ -28,4 +28,3 @@ import { SkillsFormComponent } from './Skills-form/skills-form.component';
   `,
 })
 export class RegisterComponent {}
-

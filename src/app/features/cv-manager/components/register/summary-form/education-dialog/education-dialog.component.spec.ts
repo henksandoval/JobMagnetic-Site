@@ -45,8 +45,8 @@ describe('EducationDialogComponent', () => {
         {
           provide: MatDialogRef,
           useValue: {
-            close: closeDialogSpy
-          }
+            close: closeDialogSpy,
+          },
         },
         { provide: MAT_DIALOG_DATA, useValue: {} },
       ],
@@ -93,9 +93,7 @@ describe('EducationDialogComponent', () => {
       startDate: formatDateForInput(mockEducationData.startDate!),
       endDate: formatDateForInput(mockEducationData.endDate!),
     };
-    expect(closeDialogSpy).toHaveBeenCalledWith(
-      expect.objectContaining(expectedData)
-    );
+    expect(closeDialogSpy).toHaveBeenCalledWith(expect.objectContaining(expectedData));
     expect(closeDialogSpy).toHaveBeenCalledWith(
       expect.objectContaining({
         correlationId: expect.any(String),

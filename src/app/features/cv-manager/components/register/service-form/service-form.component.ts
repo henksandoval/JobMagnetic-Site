@@ -4,9 +4,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { CommonModule } from '@angular/common';
 import { ApiEndpoints } from '@core/constants/api-endpoints';
 import { StateService } from '@core/services/state/state.service';
-import {
-  MatDialog,
-} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { HttpService } from '@core/services/http/http.service';
 import { CommandAdapter } from '../../../adapters/command/command.adapter';
 import { GalleryItemsDialogComponent } from './gallery-items-dialog/gallery-items-dialog.component';
@@ -48,7 +46,7 @@ import { ServiceStateService } from './services/service-state.service';
     MatFormField,
     MatCard,
     CdkTextareaAutosize,
-    MatProgressSpinner
+    MatProgressSpinner,
   ],
   templateUrl: 'service-form.component.html',
   styleUrl: 'service-form.component.scss',

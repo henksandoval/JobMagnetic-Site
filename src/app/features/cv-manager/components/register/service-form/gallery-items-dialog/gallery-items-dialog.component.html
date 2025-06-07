@@ -9,7 +9,8 @@
           formControlName="position"
           i18n-placeholder="@@positionPlaceholder"
           placeholder="Enter your position"
-          type="number"/>
+          type="number"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="dialog-form-field form-field-col-3">
@@ -18,16 +19,20 @@
           matInput
           formControlName="title"
           i18n-placeholder="@@titlePositionPlaceholder"
-          placeholder="Enter a title"/>
+          placeholder="Enter a title"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
-        <mat-label appId="inputDescription" class="label-with-colon" i18n="@@description">Description</mat-label>
+        <mat-label appId="inputDescription" class="label-with-colon" i18n="@@description"
+          >Description</mat-label
+        >
         <input
           matInput
           formControlName="description"
           i18n-placeholder="@@descriptionPlaceholder"
-          placeholder="Enter a description"/>
+          placeholder="Enter a description"
+        />
       </mat-form-field>
     </div>
 
@@ -39,7 +44,8 @@
           formControlName="urlLink"
           i18n-placeholder="@@urlLinkPlaceholder"
           placeholder="Enter a link URL"
-          type="text"/>
+          type="text"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
@@ -49,7 +55,8 @@
           formControlName="urlImage"
           i18n-placeholder="@@urlImagePlaceholder"
           placeholder="Enter a URL for the image"
-          type="text"/>
+          type="text"
+        />
       </mat-form-field>
     </div>
 
@@ -61,7 +68,8 @@
           formControlName="urlVideo"
           i18n-placeholder="@@urlVideoPlaceholder"
           placeholder="Enter the URL of the video"
-          type="text"/>
+          type="text"
+        />
       </mat-form-field>
 
       <mat-form-field appearance="fill" class="dialog-form-field form-field-col-6">
@@ -70,13 +78,23 @@
           matInput
           formControlName="type"
           i18n-placeholder="@@typePlaceholder"
-          placeholder="Enter a type"/>
+          placeholder="Enter a type"
+        />
       </mat-form-field>
     </div>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end" class="dialog-actions-custom">
     <button mat-button [mat-dialog-close]="null" color="warn" i18n="@@cancelButton">Cancel</button>
-    <button mat-raised-button color="primary" (click)="addGalleryItemsData()" [mat-dialog-close]="galleryItemsForm.value" [disabled]="!galleryItemsForm.valid" i18n="@@save">Save</button>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="addGalleryItemsData()"
+      [mat-dialog-close]="galleryItemsForm.value"
+      [disabled]="!galleryItemsForm.valid"
+      i18n="@@save"
+    >
+      Save
+    </button>
   </mat-dialog-actions>
 </form>

@@ -23,7 +23,7 @@ describe(RegisterComponent.name, () => {
     };
 
     mockConfigService = {
-      getConfig: () => config
+      getConfig: () => config,
     };
 
     const { fixture } = await render(RegisterComponent, {
@@ -31,7 +31,7 @@ describe(RegisterComponent.name, () => {
         { provide: ConfigService, useValue: mockConfigService },
         { provide: ProfileService, useValue: mockProfileService },
         provideHttpClient(),
-        provideHttpClientTesting()
+        provideHttpClientTesting(),
       ],
     });
 

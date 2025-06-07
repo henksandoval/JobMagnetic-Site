@@ -1,9 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import {
   MatDialogActions,
-  MatDialogClose, MatDialogContent,
-  MatDialogRef, MatDialogTitle,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
 } from '@angular/material/dialog';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';

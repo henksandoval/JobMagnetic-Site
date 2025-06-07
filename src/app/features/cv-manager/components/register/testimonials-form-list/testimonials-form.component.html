@@ -1,7 +1,8 @@
 <div class="page-container">
   <div class="form-card">
-    <h2 class="form-main-title" appId="testimonialsRegisterTitle" i18n="@@testimonialsRegisterTitle">Step 7: Testimony
-      data</h2>
+    <h2 class="form-main-title" appId="testimonialsRegisterTitle" i18n="@@testimonialsRegisterTitle">
+      Step 7: Testimony data
+    </h2>
     <button mat-stroked-button color="primary" (click)="openTestimonialDialog()">
       <mat-icon>add_circle_outline</mat-icon>
       Agregar Testimonio
@@ -14,9 +15,18 @@
           <mat-card class="testimonial-card">
             <div class="card-inner-content">
               <div class="avatar-container">
-                <ng-container *ngIf="testimonial.testimonialData.photoUrl && testimonial.testimonialData.photoUrl.trim() !== ''; else initialsAvatar">
-                  <img [src]="testimonial.testimonialData.photoUrl" [alt]="'Foto de ' + testimonial.testimonialData.name"
-                       class="testimonial-avatar-image">
+                <ng-container
+                  *ngIf="
+                    testimonial.testimonialData.photoUrl &&
+                      testimonial.testimonialData.photoUrl.trim() !== '';
+                    else initialsAvatar
+                  "
+                >
+                  <img
+                    [src]="testimonial.testimonialData.photoUrl"
+                    [alt]="'Foto de ' + testimonial.testimonialData.name"
+                    class="testimonial-avatar-image"
+                  />
                 </ng-container>
                 <ng-template #initialsAvatar>
                   <div class="testimonial-avatar-placeholder">
@@ -48,12 +58,9 @@
         (click)="saveAllTestimonials()"
         [disabled]="isSaving"
         class="large-action-button"
-        i18n="@@save">
-        <mat-spinner
-          *ngIf="isSaving"
-          diameter="20"
-          class="ms-2"
-        ></mat-spinner>
+        i18n="@@save"
+      >
+        <mat-spinner *ngIf="isSaving" diameter="20" class="ms-2"></mat-spinner>
       </button>
     </div>
   </div>
