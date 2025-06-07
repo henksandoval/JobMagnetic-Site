@@ -2,7 +2,14 @@
 
 languages="es en"
 
+USE_API_VALUE="${USE_API:-false}"
+API_URL_VALUE="${API_URL:-https://default-api.com/api/}"
+
 echo "Generating config.json for each language..."
+echo "Configuration to be applied:"
+echo "  - useAPI: ${USE_API_VALUE}"
+echo "  - apiUrl: ${API_URL_VALUE}"
+echo "---"
 
 for lang in $languages; do
   config_path="/usr/share/nginx/html/$lang/config/config.json"
@@ -11,7 +18,8 @@ for lang in $languages; do
 
   cat <<EOF > $config_path
 {
-  "apiUrl": "${API_URL:-https://default-api.com}"
+  "useAPI": ${USE_API_VALUE},
+  "apiUrl": "${API_URL_VALUE}"
 }
 EOF
 
