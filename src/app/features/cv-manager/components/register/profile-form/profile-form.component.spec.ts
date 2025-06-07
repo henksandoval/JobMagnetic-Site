@@ -25,7 +25,7 @@ describe(ProfileFormComponent.name, () => {
       imports: [ReactiveFormsModule, FormsModule],
       providers: [
         { provide: ProfileService, useValue: mockProfileService },
-        { provide: StateService, useValue: mockStateService }
+        { provide: StateService, useValue: mockStateService },
       ],
     });
 

@@ -21,22 +21,22 @@ describe('ResumeFormComponentShould', () => {
     };
 
     mockConfigService = {
-      getConfig: () => config
+      getConfig: () => config,
     };
 
     mockStateService = {
-      tryGetProfileId: () => "12345",
+      tryGetProfileId: () => '12345',
     };
 
     mockHttpService = {
-      post: jest.fn().mockReturnValue(of({ success: true }))
+      post: jest.fn().mockReturnValue(of({ success: true })),
     };
 
     const { fixture } = await render(ResumeFormComponent, {
       providers: [
         { provide: ConfigService, useValue: mockConfigService },
         { provide: HttpService, useValue: mockHttpService },
-        { provide: StateService, useValue: mockStateService }
+        { provide: StateService, useValue: mockStateService },
       ],
     });
     component = fixture.componentInstance;
