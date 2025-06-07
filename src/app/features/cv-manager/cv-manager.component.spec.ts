@@ -7,9 +7,8 @@ describe('CvManagerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CvManagerComponent]
-    })
-    .compileComponents();
+      imports: [CvManagerComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(CvManagerComponent);
     component = fixture.componentInstance;
