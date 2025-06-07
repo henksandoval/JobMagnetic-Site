@@ -1,7 +1,9 @@
 <div class="page-container">
   <div class="form-card">
     <form [formGroup]="dataForm" class="form-content">
-      <h2 class="form-main-title" appId="skillsRegisterTitle" i18n="@@skillsRegisterTitle">Step 5: Skills data</h2>
+      <h2 class="form-main-title" appId="skillsRegisterTitle" i18n="@@skillsRegisterTitle">
+        Step 5: Skills data
+      </h2>
       <div class="overview-section">
         <mat-form-field appearance="fill" class="form-field-custom-width">
           <mat-label i18n="@@overview">Overview</mat-label>
@@ -18,8 +20,7 @@
           ></textarea>
         </mat-form-field>
         <div class="insert-button-container">
-          <button mat-stroked-button color="primary" i18n="@@insertButton"
-                  (click)="openSkillsDialog()">
+          <button mat-stroked-button color="primary" i18n="@@insertButton" (click)="openSkillsDialog()">
             <mat-icon>add_circle_outline</mat-icon>
             Insert
           </button>
@@ -31,9 +32,7 @@
           @for (skillItem of skillItemBaseArray(); track skillItem.id) {
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <div class="skill-tile">
-                <img [src]="skillItem.iconUrl"
-                     [alt]="skillItem.name + 'logo'"
-                     class="skill-logo">
+                <img [src]="skillItem.iconUrl" [alt]="skillItem.name + 'logo'" class="skill-logo" />
                 <p class="skill-name">{{ skillItem.name }}</p>
               </div>
             </mat-grid-tile>
@@ -55,10 +54,15 @@
           (click)="saveSkills()"
           [disabled]="isSaving"
           i18n="@@save"
-          class="save-action-button">
+          class="save-action-button"
+        >
           Save
-          <mat-progress-spinner *ngIf="isSaving" mode="indeterminate" diameter="20"
-                                class="button-spinner"></mat-progress-spinner>
+          <mat-progress-spinner
+            *ngIf="isSaving"
+            mode="indeterminate"
+            diameter="20"
+            class="button-spinner"
+          ></mat-progress-spinner>
         </button>
       </div>
     </form>

@@ -37,7 +37,10 @@ export class TestimonialsFormComponent {
   private readonly stateService: StateService = inject(StateService);
   private readonly httpService: HttpService = inject(HttpService);
   private readonly testimonialStateService: TestimonialStateService = inject(TestimonialStateService);
-  private readonly TESTIMONIAL_URL_ENDPOINT = new URL(ApiEndpoints.profile.testimonial, this.configService.apiUrl);
+  private readonly TESTIMONIAL_URL_ENDPOINT = new URL(
+    ApiEndpoints.profile.testimonial,
+    this.configService.apiUrl
+  );
   private dialog: MatDialog = inject(MatDialog);
   private testimonialsSignal: WritableSignal<TestimonialCommand[]> = signal([]);
 

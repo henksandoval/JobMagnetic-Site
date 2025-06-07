@@ -16,14 +16,22 @@
             appId="overview"
             formControlName="overview"
             i18n-placeholder="@@overviewPlaceholder"
-            placeholder="Write an overview">
+            placeholder="Write an overview"
+          >
           </textarea>
         </mat-form-field>
         <div class="section-header-actions">
           <h4 class="gallery-section-title" appId="educationSectionTitle" i18n="@@galleryItemsModalLabel">
             GalleryItems
           </h4>
-          <button mat-stroked-button color="primary" type="button" appId="btnAddServiceData" (click)="addGalleryItem()" i18n="@@insertButton">
+          <button
+            mat-stroked-button
+            color="primary"
+            type="button"
+            appId="btnAddServiceData"
+            (click)="addGalleryItem()"
+            i18n="@@insertButton"
+          >
             <mat-icon>add_circle_outline</mat-icon> insert
           </button>
         </div>
@@ -31,9 +39,7 @@
           @for (item of galleryItemsArray(); track item.position; let i = $index) {
             <mat-expansion-panel>
               <mat-expansion-panel-header id="heading{{ i }}">
-                <mat-panel-title>
-                  {{ item.title }} (Posición: {{ item.position }})
-                </mat-panel-title>
+                <mat-panel-title> {{ item.title }} (Posición: {{ item.position }}) </mat-panel-title>
               </mat-expansion-panel-header>
 
               <mat-card-content class="expansion-panel-body-content">
@@ -69,13 +75,10 @@
             (click)="saveServiceData()"
             [disabled]="isSaving"
             class="large-action-button"
-            i18n="@@save">
+            i18n="@@save"
+          >
             Save
-            <mat-spinner
-              *ngIf="isSaving"
-              diameter="20"
-              class="ms-2"
-            ></mat-spinner>
+            <mat-spinner *ngIf="isSaving" diameter="20" class="ms-2"></mat-spinner>
           </button>
         </div>
       </form>

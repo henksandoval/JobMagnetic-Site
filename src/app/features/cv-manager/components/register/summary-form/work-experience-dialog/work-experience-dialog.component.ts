@@ -2,7 +2,8 @@ import { Component, inject, OnInit } from '@angular/core';
 import {
   MatDialogActions,
   MatDialogClose,
-  MatDialogContent, MatDialogRef,
+  MatDialogContent,
+  MatDialogRef,
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -10,13 +11,10 @@ import { WorkExperience } from '../interfaces/work-experience';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { MatButton } from '@angular/material/button';
 import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
-import { Guid } from 'guid-typescript';
 import { ENTER } from '@angular/cdk/keycodes';
 import { MatChipGrid, MatChipInput, MatChipInputEvent, MatChipRow } from '@angular/material/chips';
 import { MatIcon } from '@angular/material/icon';
-import { Education } from '../interfaces/education';
 import { SummaryStateService } from '../services/summary-state.service';
-
 
 @Component({
   selector: 'app-work-experience-dialog',
@@ -35,7 +33,7 @@ import { SummaryStateService } from '../services/summary-state.service';
     MatIcon,
     MatChipRow,
     MatChipGrid,
-    MatChipInput
+    MatChipInput,
   ],
   templateUrl: './work-experience-dialog.component.html',
   styleUrl: './work-experience-dialog.component.scss',
@@ -46,7 +44,6 @@ export class WorkExperienceDialogComponent implements OnInit {
   private dialogRef: MatDialogRef<WorkExperienceDialogComponent> = inject(MatDialogRef);
   readonly separatorKeysCodes: number[] = [ENTER];
   workExperienceForm!: FormGroup;
-
 
   ngOnInit(): void {
     this.initializeForms();

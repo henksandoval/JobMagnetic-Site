@@ -32,7 +32,9 @@
               <div class="resume-item">
                 <h4 [appId]="'specialist_' + dataIndex">{{ work.specialist }}</h4>
                 <h5 [appId]="'startDate_' + dataIndex">{{ work.startDate }}</h5>
-                <p [appId]="'location_' + dataIndex"><em>{{ work.location }}</em></p>
+                <p [appId]="'location_' + dataIndex">
+                  <em>{{ work.location }}</em>
+                </p>
                 <p [appId]="'description_' + dataIndex">{{ work.description }}</p>
                 @for (responsibility of work.responsibilities; track responsibility) {
                   @let dataIndex = ($index + 1).toString().padStart(2, '0');

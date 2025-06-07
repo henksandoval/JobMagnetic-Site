@@ -15,7 +15,7 @@ export class CommandAdapter {
     return {
       [key]: {
         ...transformedData,
-        ...additionalFields
+        ...additionalFields,
       },
     } as TOutput;
   }

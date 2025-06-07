@@ -1,7 +1,6 @@
 import { Injectable, Signal, signal } from '@angular/core';
 import { SkillItemBase } from '../interfaces/SkillItemBase';
 
-
 @Injectable({
   providedIn: 'root',
 })
