@@ -1,6 +1,6 @@
 branches:
   main:
-    mode: ContinuousDeployment
+    mode: ContinuousDelivery
     label: ''
     increment: Patch
     prevent-increment:
@@ -12,7 +12,7 @@ branches:
     is-main-branch: true
     pre-release-weight: 55000
   develop:
-    mode: ContinuousDelivery
+    mode: ContinuousDeployment
     label: 'alpha'
     increment: Minor
     prevent-increment:
