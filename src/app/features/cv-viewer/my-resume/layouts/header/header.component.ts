@@ -4,6 +4,7 @@ import { DOCUMENT, NgClass } from '@angular/common';
 import { MenuSection } from './interfaces/menu-section';
 import { SCROLL_DELAY_MS } from './constants';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
+import { UiService } from '../../services/UiService.service';
 
 @Component({
   selector: 'app-header',
@@ -14,6 +15,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 export class HeaderComponent {
   sections = model<Map<string, MenuSection>>();
   activeSectionId = 'hero';
+  public isMobileMenuVisible = false;
 
   private readonly pageScrollService: PageScrollService = inject(PageScrollService);
   private readonly document: Document = inject(DOCUMENT);
@@ -22,6 +24,10 @@ export class HeaderComponent {
     this.deactivateAllSections();
     section.isActive = true;
     setTimeout(() => this.scrollTo(section.target), SCROLL_DELAY_MS);
+
+    if (this.isMobileMenuVisible) {
+      this.isMobileMenuVisible = false;
+    }
   }
 
   scrollTo(target: string): void {
@@ -33,5 +39,9 @@ export class HeaderComponent {
     this.sections()?.forEach((section) => {
       section.isActive = false;
     });
+  }
+
+  public toggleMobileMenu(): void {
+    this.isMobileMenuVisible = !this.isMobileMenuVisible;
   }
 }
