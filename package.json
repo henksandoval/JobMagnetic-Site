@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start:en": "ng serve --configuration=en",
-    "start:es": "ng serve --configuration=es",
+    "start:en": "ng serve --configuration=en --port 5081",
+    "start:es": "ng serve --configuration=es --port 5081",
     "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration=development",
     "test": "jest",
