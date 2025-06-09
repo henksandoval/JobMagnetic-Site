@@ -121,7 +121,7 @@
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 614px) {
   .nav-menu {
     button {
       width: 56px;
@@ -143,5 +143,14 @@
   }
   #hero {
     padding-left: 160px;
+  }
+}
+
+@media (max-width: 1199px) {
+  #header {
+    background-color: var(--background-color);
+    border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    width: 300px;
+    left: -100%;
   }
 }
