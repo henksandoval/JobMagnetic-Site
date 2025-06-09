@@ -1,4 +1,4 @@
 {
   "useAPI": true,
-  "apiUrl": "https://localhost:7109/api/"
+  "apiUrl": "https://localhost:7490/api/"
 }
