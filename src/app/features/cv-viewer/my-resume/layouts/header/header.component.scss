@@ -15,18 +15,8 @@
   padding: 0;
   display: block;
 
-  * {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  > ul {
-    > li {
-      position: relative;
-      white-space: nowrap;
-    }
-  }
+  * { margin: 0; padding: 0; list-style: none; }
+  > ul > li { position: relative; white-space: nowrap; }
 
   button {
     display: flex;
@@ -121,7 +111,7 @@
   }
 }
 
-@media (min-width: 614px) {
+@media (width >= 1118px) {
   .nav-menu {
     button {
       width: 56px;
@@ -146,9 +136,8 @@
   }
 }
 
-@media (max-width: 1199px) {
+@media (width <= 1594px) {
   #header {
-    background-color: var(--background-color);
     border-right: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
     width: 300px;
     left: -100%;
