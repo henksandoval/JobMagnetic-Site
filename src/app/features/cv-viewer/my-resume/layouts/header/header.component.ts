@@ -4,7 +4,6 @@ import { DOCUMENT, NgClass } from '@angular/common';
 import { MenuSection } from './interfaces/menu-section';
 import { SCROLL_DELAY_MS } from './constants';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { UiService } from '../../services/UiService.service';
 
 @Component({
   selector: 'app-header',
