@@ -18,20 +18,20 @@ export class AboutComponent {
     if (!aboutData) return [];
 
     const detailsMap = [
-      { key: 'birthday',    label: 'Cumpleaños:',       i18n: '@@birthday' },
-      { key: 'website',     label: 'Sitio Web:',        i18n: '@@webSite' },
-      { key: 'phoneNumber', label: 'Teléfono:',         i18n: '@@phone' },
-      { key: 'city',        label: 'Ciudad:',           i18n: '@@city' },
-      { key: 'age',         label: 'Edad:',             i18n: '@@age' },
-      { key: 'degree',      label: 'Título:',           i18n: '@@degree' },
-      { key: 'email',       label: 'Correo Electrónico:', i18n: '@@email' },
+      { key: 'birthday', label: $localize`:@@birthdayLabel:Birthday:` },
+      { key: 'website', label: $localize`:@@websiteLabel:Website:` },
+      { key: 'phoneNumber', label: $localize`:@@phoneLabel:Phone:` },
+      { key: 'city', label: $localize`:@@cityLabel:City:` },
+      { key: 'age', label: $localize`:@@ageLabel:Age:` },
+      { key: 'degree', label: $localize`:@@degreeLabel:Degree:` },
+      { key: 'email', label: $localize`:@@emailLabel:Email:` },
     ];
 
     return detailsMap
-      .map(item => ({
+      .map((item) => ({
         ...item,
-        value: aboutData[item.key as keyof About]
+        value: aboutData[item.key as keyof About],
       }))
-      .filter(item => item.value && item.value.toString().trim() !== '');
+      .filter((item) => item.value && item.value.toString().trim() !== '');
   });
 }
