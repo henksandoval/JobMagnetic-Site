@@ -1,52 +1,47 @@
-@let summary = summarySet();
-
-<section appId="summary" class="resume" id="summary">
-  @if (summary) {
+@if (summary(); as summaryData) {
+  <section appId="summary" class="resume" id="summary">
     <div class="container" data-aos="fade-up">
       <div class="section-title">
         <h2 i18n="@@resume">Resume</h2>
-        <p appId="introduction">{{ summary.introduction }}</p>
+        <p appId="introduction">{{ summaryData.introduction }}</p>
       </div>
       <div class="row">
-        <div class="col-6">
-          @if (summary.education; as education) {
+        @if (hasEducation()) {
+          <div class="col-12" [class.col-lg-6]="hasWorkExperience()">
             <h3 i18n="@@education" class="resume-title">Education</h3>
-            @for (edu of education.academicBackground; track edu.experience) {
-              @let dataIndex = ($index + 1).toString().padStart(2, '0');
+            @for (edu of education()!; track edu.experience) {
               <div class="resume-item">
-                <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
-                <h5 [appId]="'startDate-date' + dataIndex">{{ edu.startdate }}</h5>
-                <p [appId]="'academy-formation' + dataIndex">
+                <h4 [appId]="'experience_' + $index">{{ edu.experience }}</h4>
+                <h5 [appId]="'startDate-date' + $index">{{ edu.startdate | date:'longDate' }}</h5>
+                <p [appId]="'academy-formation' + $index">
                   <em>{{ edu.academy }}</em>
                 </p>
-                <p [appId]="'description_' + dataIndex">{{ edu.description }}</p>
+                <p [appId]="'description_' + $index">{{ edu.description }}</p>
               </div>
             }
-          }
-        </div>
-        <div class="col-6">
-          @if (summary.workExperience; as workExperience) {
+          </div>
+        }
+        @if (hasWorkExperience()) {
+          <div class="col-12" [class.col-lg-6]="hasEducation()">
             <h3 i18n="@@workExperience" class="resume-title">Work Experience</h3>
-            @for (work of workExperience.position; track work.specialist) {
-              @let dataIndex = ($index + 1).toString().padStart(2, '0');
+            @for (work of workExperience()!; track work.specialist) {
               <div class="resume-item">
-                <h4 [appId]="'specialist_' + dataIndex">{{ work.specialist }}</h4>
-                <h5 [appId]="'startDate_' + dataIndex">{{ work.startDate }}</h5>
-                <p [appId]="'location_' + dataIndex">
+                <h4 [appId]="'specialist_' + $index">{{ work.specialist }}</h4>
+                <h5 [appId]="'startDate_' + $index">{{ work.startDate | date:'longDate' }}</h5>
+                <p [appId]="'location_' + $index">
                   <em>{{ work.location }}</em>
                 </p>
-                <p [appId]="'description_' + dataIndex">{{ work.description }}</p>
+                <p [appId]="'description_' + $index">{{ work.description }}</p>
                 @for (responsibility of work.responsibilities; track responsibility) {
-                  @let dataIndex = ($index + 1).toString().padStart(2, '0');
                   <ul>
-                    <li [appId]="'responsibility_' + dataIndex">{{ responsibility }}</li>
+                    <li [appId]="'responsibility_' + $index + '_' + $index">{{ responsibility }}</li>
                   </ul>
                 }
               </div>
             }
-          }
-        </div>
+          </div>
+        }
       </div>
     </div>
-  }
-</section>
+  </section>
+}
