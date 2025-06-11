@@ -35,5 +35,32 @@
         margin-bottom: 0;
       }
     }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 20px;
+      margin-top: 20px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .detail-item i {
+      margin-right: 8px;
+      color: #149ddd;
+    }
+
+    .detail-item strong {
+      margin-right: 5px;
+    }
+
+    @media (max-width: 768px) {
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
   }
 }
