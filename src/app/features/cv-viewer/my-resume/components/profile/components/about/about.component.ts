@@ -18,13 +18,13 @@ export class AboutComponent {
     if (!aboutData) return [];
 
     const detailsMap = [
-      { key: 'birthday', label: $localize`:@@birthdayLabel:Birthday:` },
-      { key: 'website', label: $localize`:@@websiteLabel:Website:` },
-      { key: 'phoneNumber', label: $localize`:@@phoneLabel:Phone:` },
-      { key: 'city', label: $localize`:@@cityLabel:City:` },
-      { key: 'age', label: $localize`:@@ageLabel:Age:` },
-      { key: 'degree', label: $localize`:@@degreeLabel:Degree:` },
-      { key: 'email', label: $localize`:@@emailLabel:Email:` },
+      { key: 'birthday', label: $localize`:@@birthday:Birthday:` },
+      { key: 'website', label: $localize`:@@website:Website:` },
+      { key: 'phoneNumber', label: $localize`:@@phone:Phone:` },
+      { key: 'city', label: $localize`:@@city:City:` },
+      { key: 'age', label: $localize`:@@age:Age:` },
+      { key: 'degree', label: $localize`:@@degree:Degree:` },
+      { key: 'email', label: $localize`:@@email:Email:` },
     ];
 
     return detailsMap
