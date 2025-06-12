@@ -1,12 +1,15 @@
-$hero-bg-url: "https://bootstrapmade.com/content/demo/Kelly/assets/img/hero-bg.jpg";
+$hero-bg-url: "src/assets/img/The_image_1_.jpeg";
 @use './variables' as vars;
 
 #hero {
   width: 100%;
   height: 100vh;
-  background: url($hero-bg-url) top right no-repeat;
+  background: url($hero-bg-url);
+  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   position: relative;
+
 
   &:before {
     content: "";
