@@ -1,4 +1,4 @@
 {
   "useAPI": true,
-  "apiUrl": "https://localhost:7490/api/"
+  "apiUrl": "https://api-dev.jobmagnetic.com/api/"
 }
