@@ -12,11 +12,12 @@
           <img
             i18n
             i18n-alt="@@about_description"
-            alt="This is an man looking to horizon"
-            [ngSrc]="about.imageUrl"
+            alt="Profile picture"
+            [ngSrc]="displayImageUrl()"
             width="415"
             height="415"
             class="img-fluid"
+            priority="true"
           />
         </div>
         <div class="col-lg-8 pt-4 pt-lg-0 content">
@@ -26,7 +27,7 @@
             @for (detail of allDetails(); track detail.key) {
               <div class="detail-item">
                 <i class='bx bx-chevron-right'></i>
-                <strong>{{detail.icon}}{{ detail.label }}</strong>
+                <strong>{{ detail.label }}</strong>
                 <span>{{ detail.value }}</span>
               </div>
             }
