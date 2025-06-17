@@ -1,4 +1,4 @@
-import { inject, Injectable, Signal } from '@angular/core';
+import { inject, Injectable, signal, Signal } from '@angular/core';
 import { catchError, EMPTY, filter, map, Observable, switchMap } from 'rxjs';
 import { Profile } from '../my-resume/components/profile/interfaces/profile';
 import { ProfileContract } from '../my-resume/components/profile/contracts/profile-contract';
@@ -22,13 +22,25 @@ export class ProfileService {
   private readonly http = inject(HttpService);
   private readonly stateService = inject(StateService);
   private readonly urlBuilder = inject(UrlBuilderService);
+  private readonly _profileData = signal<Profile | undefined>(undefined);
 
-  profile$: Signal<Profile | undefined> = toSignal(
-    toObservable(this.stateService.slug).pipe(
-      filter(slug => !!slug),
-      switchMap(slug => this.loadProfile(slug))
-    )
-  );
+  readonly profile$ = this._profileData.asReadonly();
+
+  loadProfileBySlug(slug: string): void {
+    if (!slug) {
+      return;
+    }
+
+    this.loadProfile(slug).subscribe({
+      next: (profileData) => {
+        this._profileData.set(profileData);
+      },
+      error: (err) => {
+        console.error('Error al cargar el perfil:', err);
+        this._profileData.set(undefined);
+      }
+    });
+  }
 
   transformData(data: ProfileContract): Profile {
     const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
