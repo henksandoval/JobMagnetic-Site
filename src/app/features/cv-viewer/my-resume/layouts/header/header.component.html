@@ -1,10 +1,12 @@
 <header appId="header" class="header d-flex flex-column justify-content-center" [class.header-show]="isMobileMenuVisible">
-  <i
-    class="header-toggle d-xl-none bx"
-  [class.bx-menu]="!isMobileMenuVisible"
-  [class.bx-x]="isMobileMenuVisible"
-  (click)="toggleMobileMenu()">
-  </i>
+  <button
+    type="button"
+    class="header-toggle d-xl-none"
+    aria-label="Toggle navigation menu"
+    (click)="toggleMobileMenu()">
+    <i class="bx" [class.bx-menu]="!isMobileMenuVisible" [class.bx-x]="isMobileMenuVisible"></i>
+  </button>
+
   <nav appId="navbar" class="navbar nav-menu">
     <ul>
       @for (section of sections()?.values(); track $index) {
@@ -12,7 +14,6 @@
           <button
             [appId]="'a_' + section.target"
             (click)="setActive(section)"
-            [class.active]="section.isActive"
             class="nav-link"
           >
             <i class="bx" [ngClass]="section.icon"></i>
