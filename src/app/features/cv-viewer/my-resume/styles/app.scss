@@ -39,27 +39,7 @@ a {
   }
 }
 
-h1 {
-  font-family: vars.$font-family_2;
-}
-
-h2 {
-  font-family: vars.$font-family_2;
-}
-
-h3 {
-  font-family: vars.$font-family_2;
-}
-
-h4 {
-  font-family: vars.$font-family_2;
-}
-
-h5 {
-  font-family: vars.$font-family_2;
-}
-
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-family: vars.$font-family_2;
 }
 
@@ -197,14 +177,14 @@ section {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (width <= 768px) {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
 }
 
-@media (max-width: 991px) {
-  #header {
+@media (width <= 991px) {
+  #header{
     width: 300px;
     background: #fff;
     border-right: 1px solid #e6e9ec;
@@ -212,13 +192,25 @@ section {
   }
 }
 
-@media (min-width: 991px) {
+@media (1200px <= width <= 1600px) {
+  #header #cover {
+    margin-left: 160px;
+  }
+
+  .header #cover .hero {
+    margin-left: -160px;
+    width: 100vw;
+  }
+}
+
+
+@media (width >= 991px) {
   #main {
     margin-left: 100px;
   }
 }
 
-@media (min-width: 992px) {
+@media (width >= 992px) {
   #hero {
     padding-left: 160px;
   }
@@ -231,7 +223,7 @@ section {
   }
 }
 
-@media (max-width: 992px) {
+@media (width <= 992px) {
   #hero {
     text-align: center;
 

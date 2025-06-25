@@ -1,4 +1,10 @@
-<header appId="header" class="d-flex flex-column justify-content-center">
+<header appId="header" class="header d-flex flex-column justify-content-center" [class.header-show]="isMobileMenuVisible">
+  <i
+    class="header-toggle d-xl-none bx"
+  [class.bx-menu]="!isMobileMenuVisible"
+  [class.bx-x]="isMobileMenuVisible"
+  (click)="toggleMobileMenu()">
+  </i>
   <nav appId="navbar" class="navbar nav-menu">
     <ul>
       @for (section of sections()?.values(); track $index) {
