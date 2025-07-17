@@ -121,13 +121,11 @@
 
         span {
           display: none;
-          color: vars.$color_4;
         }
       }
 
       span {
         display: none;
-        color: vars.$color_4;
       }
     }
   }
@@ -165,4 +163,5 @@
   right: 15px;
   z-index: 9999;
   transition: background-color 0.3s;
+  border: none;
 }

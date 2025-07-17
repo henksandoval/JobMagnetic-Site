@@ -36,14 +36,20 @@
 }
 
 .skills_container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid; // 1. Usamos CSS Grid, la mejor herramienta para este trabajo.
+
+  // 2. Esta es la línea más importante. Crea una grilla responsive automáticamente.
+  //    - repeat: Crea columnas repetitivas.
+  //    - auto-fit: Llena el espacio con tantas columnas como quepan.
+  //    - minmax(120px, 1fr): Cada columna tendrá un mínimo de 120px,
+  //      pero puede crecer para ocupar el espacio disponible (1fr).
+  //    Esto hace que se ajusten solas en cualquier pantalla.
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+
+  gap: 2rem;
 }
 
 .skill_item {
-  width: 12rem;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -54,14 +60,14 @@
 }
 
 .skill_icon {
-  width: 8.5rem;
-  height: 8.5rem;
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
 }
 
 .skill_text {
   color: #45505b;
-  font-size: 2rem;
+  font-size: 1rem;
+  font-weight: 500;
   letter-spacing: .05rem;
-  text-align: center;
-  position: relative;
 }

@@ -27,7 +27,7 @@
 
     .img-fluid img {
       width: 100%;
-      height: 100%;
+      height: 200px;
       object-fit: cover;
     }
 
@@ -51,11 +51,21 @@
     &:hover {
       border-color: vars.$border-color_1;
       box-shadow: 0 0 35px 0 rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
     }
 
   }
 
-  .fase {
-    gap: 80px;
+  .icon-box-text {
+    padding: 20px;
+  }
+
+  @media (width <= 991.98px) {
+    .icon-box {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      padding: 20px;
+    }
   }
 }
