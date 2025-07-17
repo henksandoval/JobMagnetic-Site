@@ -42,7 +42,6 @@ export class ProfileService {
   }
 
   transformData(data: ProfileContract): Profile {
-    debugger
     const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
     return {
       personalData: personalData,
@@ -50,7 +49,7 @@ export class ProfileService {
       service: data.service,
       birthday: data.birthday,
       contact: data.contact,
-      portfolioGallery: data.project,
+      project: data.project,
       skillSet: data.skillSet,
       summary: data.summary,
       testimonials: data.testimonials,
