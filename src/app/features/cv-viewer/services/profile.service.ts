@@ -1,9 +1,8 @@
-import { inject, Injectable, signal, Signal } from '@angular/core';
-import { catchError, EMPTY, filter, map, Observable, switchMap } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { Profile } from '../my-resume/components/profile/interfaces/profile';
 import { ProfileContract } from '../my-resume/components/profile/contracts/profile-contract';
 import { HttpService } from '@core/services/http/http.service';
-import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { StateService } from '@core/services/state/state.service';
 import { UserPersonalData } from '../my-resume/components/cover/interfaces/user-personal-data';
 import { SocialNetworkTypes } from '@core/constants/social-network-def';
@@ -43,6 +42,7 @@ export class ProfileService {
   }
 
   transformData(data: ProfileContract): Profile {
+    debugger
     const personalData: UserPersonalData = this.transformPersonaData(data.personalData);
     return {
       personalData: personalData,
@@ -50,7 +50,7 @@ export class ProfileService {
       service: data.service,
       birthday: data.birthday,
       contact: data.contact,
-      portfolioGallery: data.portfolioGallery,
+      portfolioGallery: data.project,
       skillSet: data.skillSet,
       summary: data.summary,
       testimonials: data.testimonials,

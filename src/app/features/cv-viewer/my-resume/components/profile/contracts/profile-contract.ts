@@ -15,6 +15,6 @@ export interface ProfileContract {
   skillSet?: SkillSet;
   summary?: Summary;
   testimonials?: Testimonial[];
-  portfolioGallery: Gallery[];
+  project: Gallery[];
   service?: Service;
 }
