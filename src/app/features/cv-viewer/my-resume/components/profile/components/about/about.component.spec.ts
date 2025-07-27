@@ -2,72 +2,56 @@ import { render, screen } from '@testing-library/angular';
 import { AboutComponent } from './about.component';
 import { mockAbout } from './mocks/about.mock';
 
-const renderComponent = async () => {
-  await render(AboutComponent, {
-    inputs: {
-      aboutSet: mockAbout,
-    },
-  });
-};
-
 describe(AboutComponent.name, () => {
-  beforeEach(async () => {
-    await renderComponent();
+  const renderComponent = async (aboutInput: typeof mockAbout | undefined = mockAbout) => {
+    await render(AboutComponent, {
+      inputs: { aboutSet: aboutInput },
+    });
+  };
+
+  describe('with valid about input', () => {
+    beforeEach(async () => {
+      await renderComponent();
+    });
+
+    it('should render description, text, hobbies, and work experience', () => {
+      expect(screen.getByTestId('description')).toHaveTextContent(mockAbout.description);
+      expect(screen.getByTestId('about-tittle')).toHaveTextContent(mockAbout.text);
+      expect(screen.getByTestId('hobbies')).toHaveTextContent(mockAbout.hobbies);
+      expect(screen.getByTestId('workExperience')).toHaveTextContent(mockAbout.workExperience);
+    });
+
+    it('should display all valid details from about object', () => {
+      const expectedDetails = [
+        { testId: 'birthday', value: mockAbout.birthday },
+        { testId: 'website', value: mockAbout.website },
+        { testId: 'phoneNumber', value: mockAbout.phoneNumber.toString() },
+        { testId: 'city', value: mockAbout.city },
+        { testId: 'age', value: mockAbout.age.toString() },
+        { testId: 'degree', value: mockAbout.degree },
+        { testId: 'email', value: mockAbout.email },
+      ];
+
+      expectedDetails.forEach(({ testId, value }) => {
+        expect(screen.getByTestId(testId)).toHaveTextContent(value);
+      });
+    });
   });
 
-  it('should display profile description', () => {
-    expect(screen.getByTestId('description')).toHaveTextContent(mockAbout.description);
-  });
+  it('should display the default image if no imageUrl is provided', async () => {
+    const defaultImage = '/img/profile_picture.jpg';
 
-  it('should display profile text', () => {
-    expect(screen.getByTestId('about-tittle')).toHaveTextContent(mockAbout.text);
-  });
+    const mockAboutWithoutImage: typeof mockAbout = {
+      ...mockAbout,
+      imageUrl: '',
+    };
 
-  it('should display profile hobbies', () => {
-    expect(screen.getByTestId('hobbies')).toHaveTextContent(mockAbout.hobbies);
-  });
-
-  it('should display profile birthday', () => {
-    expect(screen.getByTestId('birthday')).toHaveTextContent(mockAbout.birthday);
-  });
-
-  it('should display profile website', () => {
-    expect(screen.getByTestId('website')).toHaveTextContent(mockAbout.website);
-  });
-
-  it('should display profile phone number', () => {
-    expect(screen.getByTestId('phoneNumber')).toHaveTextContent(mockAbout.phoneNumber.toString());
-  });
-
-  it('should display profile city', () => {
-    expect(screen.getByTestId('city')).toHaveTextContent(mockAbout.city);
-  });
-
-  it('should display profile age', () => {
-    expect(screen.getByTestId('age')).toHaveTextContent(mockAbout.age.toString());
-  });
-
-  it('should display profile degree', () => {
-    expect(screen.getByTestId('degree')).toHaveTextContent(mockAbout.degree);
-  });
-
-  it('should display profile email', () => {
-    expect(screen.getByTestId('email')).toHaveTextContent(mockAbout.email);
-  });
-
-  it('should display profile work experience', () => {
-    expect(screen.getByTestId('workExperience')).toHaveTextContent(mockAbout.workExperience);
-  });
-});
-
-describe(AboutComponent.name, () => {
-  it('handles undefined correctly', async () => {
     await render(AboutComponent, {
       inputs: {
-        aboutSet: undefined,
+        aboutSet: mockAboutWithoutImage,
       },
     });
 
-    expect(screen.getByTestId('about')).toBeEmptyDOMElement();
+    expect(screen.getByTestId('profilePicture')).toHaveAttribute('src', defaultImage);
   });
 });
