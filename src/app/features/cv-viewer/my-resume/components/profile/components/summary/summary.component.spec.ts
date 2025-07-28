@@ -21,13 +21,14 @@ describe(SummaryComponent.name, () => {
     expect(screen.getByTestId('introduction')).toHaveTextContent(mockSummary.introduction);
   });
 
-  xit('should get all the records about education.', () => {
+  it('should get all the records about education.', () => {
+    screen.debug();
     mockSummary.education.academicBackground.forEach(
       (academicBackground: AcademicBackground, index: number) => {
         const id: string = (++index).toString().padStart(2, '0');
         expect(screen.getByTestId('experience_' + id)).toHaveTextContent(academicBackground.experience);
-        expect(screen.getByTestId('startDate-date' + id)).toHaveTextContent(academicBackground.startdate);
-        expect(screen.getByTestId('academy-formation' + id)).toHaveTextContent(academicBackground.academy);
+        expect(screen.getByTestId('startDate_' + id)).toHaveTextContent(academicBackground.rangeDate);
+        expect(screen.getByTestId('academy_' + id)).toHaveTextContent(academicBackground.academy);
         expect(screen.getByTestId('description_' + id)).toHaveTextContent(academicBackground.description);
       }
     );

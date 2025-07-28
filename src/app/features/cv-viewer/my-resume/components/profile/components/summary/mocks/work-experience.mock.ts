@@ -5,30 +5,36 @@ export const mockPosition1: Position = {
   specialist: 'Senior UX Designer',
   startDate: '2020-05-01',
   location: 'San Francisco, CA',
-  communicationDesignLeadership: 'Led cross-functional design reviews',
-  teamLeadership: 'Managed a team of 5 designers',
-  designQualityAssurance: 'Implemented QA processes for design consistency',
-  expertiseArea: 'User Experience Design',
+  description: 'Led design projects for various clients',
+  responsibilities: [
+    'Conducted user research',
+    'Created wireframes and prototypes',
+    'Collaborated with developers',
+  ]
 };
 
 export const mockPosition2: Position = {
   specialist: 'Product Designer',
   startDate: '2018-09-15',
   location: 'New York, NY',
-  communicationDesignLeadership: 'Facilitated workshops with stakeholders',
-  teamLeadership: 'Coached junior designers',
-  designQualityAssurance: 'Conducted usability testing sessions',
-  expertiseArea: 'Product Design',
+  description: 'Designed user interfaces for web applications',
+  responsibilities: [
+    'Developed design systems',
+    'Worked closely with product managers',
+    'Ensured design consistency across products',
+  ]
 };
 
 export const mockPosition3: Position = {
   specialist: 'Graphic Designer',
   startDate: '2016-03-20',
   location: 'Austin, TX',
-  communicationDesignLeadership: 'Developed branding guidelines',
-  teamLeadership: 'Collaborated with marketing teams',
-  designQualityAssurance: 'Reviewed design assets for branding compliance',
-  expertiseArea: 'Graphic Design',
+  description: 'Created visual content for marketing campaigns',
+  responsibilities: [
+    'Designed logos and branding materials',
+    'Collaborated with marketing teams',
+    'Reviewed design assets for branding compliance',
+  ]
 };
 
 export const mockWorkExperience: WorkExperience = {

@@ -10,13 +10,14 @@
           <div class="col-12" [class.col-lg-6]="hasWorkExperience()">
             <h3 i18n="@@education" class="resume-title">Education</h3>
             @for (edu of education()!; track edu.experience) {
+              @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
-                <h4 [appId]="'experience_' + $index">{{ edu.experience }}</h4>
-                <h5 [appId]="'startDate-date' + $index">{{ edu.startdate | date:'longDate' }}</h5>
-                <p [appId]="'academy-formation' + $index">
+                <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
+                <h5 [appId]="'startDate_' + dataIndex">{{ edu.rangeDate }}</h5>
+                <p [appId]="'academy_' + dataIndex">
                   <em>{{ edu.academy }}</em>
                 </p>
-                <p [appId]="'description_' + $index">{{ edu.description }}</p>
+                <p [appId]="'description_' + dataIndex">{{ edu.description }}</p>
               </div>
             }
           </div>
