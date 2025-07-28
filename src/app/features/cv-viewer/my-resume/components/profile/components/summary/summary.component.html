@@ -13,11 +13,11 @@
               @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
                 <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
-                <h5 [appId]="'startDate_' + dataIndex">{{ edu.rangeDate }}</h5>
+                <h5 [appId]="'academyRangeDate_' + dataIndex">{{ edu.rangeDate }}</h5>
                 <p [appId]="'academy_' + dataIndex">
                   <em>{{ edu.academy }}</em>
                 </p>
-                <p [appId]="'description_' + dataIndex">{{ edu.description }}</p>
+                <p [appId]="'academyDescription_' + dataIndex">{{ edu.description }}</p>
               </div>
             }
           </div>
@@ -26,13 +26,14 @@
           <div class="col-12" [class.col-lg-6]="hasEducation()">
             <h3 i18n="@@workExperience" class="resume-title">Work Experience</h3>
             @for (work of workExperience()!; track work.specialist) {
+              @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
-                <h4 [appId]="'specialist_' + $index">{{ work.specialist }}</h4>
-                <h5 [appId]="'startDate_' + $index">{{ work.startDate | date:'longDate' }}</h5>
-                <p [appId]="'location_' + $index">
+                <h4 [appId]="'specialist_' + dataIndex">{{ work.specialist }}</h4>
+                <h5 [appId]="'workRangeDate_' + dataIndex">{{ work.rangeDate }}</h5>
+                <p [appId]="'location_' + dataIndex">
                   <em>{{ work.location }}</em>
                 </p>
-                <p [appId]="'description_' + $index">{{ work.description }}</p>
+                <p [appId]="'workDescription_' + dataIndex">{{ work.description }}</p>
                 @for (responsibility of work.responsibilities; track responsibility) {
                   <ul>
                     <li [appId]="'responsibility_' + $index + '_' + $index">{{ responsibility }}</li>

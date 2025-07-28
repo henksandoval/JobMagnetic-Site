@@ -22,14 +22,13 @@ describe(SummaryComponent.name, () => {
   });
 
   it('should get all the records about education.', () => {
-    screen.debug();
     mockSummary.education.academicBackground.forEach(
       (academicBackground: AcademicBackground, index: number) => {
         const id: string = (++index).toString().padStart(2, '0');
         expect(screen.getByTestId('experience_' + id)).toHaveTextContent(academicBackground.experience);
-        expect(screen.getByTestId('startDate_' + id)).toHaveTextContent(academicBackground.rangeDate);
+        expect(screen.getByTestId('academyRangeDate_' + id)).toHaveTextContent(academicBackground.rangeDate);
         expect(screen.getByTestId('academy_' + id)).toHaveTextContent(academicBackground.academy);
-        expect(screen.getByTestId('description_' + id)).toHaveTextContent(academicBackground.description);
+        expect(screen.getByTestId('academyDescription_' + id)).toHaveTextContent(academicBackground.description);
       }
     );
   });
@@ -38,7 +37,8 @@ describe(SummaryComponent.name, () => {
     mockSummary.workExperience.position.forEach((position: Position, index: number) => {
       const id: string = (++index).toString().padStart(2, '0');
       expect(screen.getByTestId('specialist_' + id)).toHaveTextContent(position.specialist);
-      expect(screen.getByTestId('startDate_' + id)).toHaveTextContent(position.startDate);
+      expect(screen.getByTestId('workRangeDate_' + id)).toHaveTextContent(position.rangeDate);
+      expect(screen.getByTestId('workDescription_' + id)).toHaveTextContent(position.description);
       expect(screen.getByTestId('location_' + id)).toHaveTextContent(position.location);
     });
   });

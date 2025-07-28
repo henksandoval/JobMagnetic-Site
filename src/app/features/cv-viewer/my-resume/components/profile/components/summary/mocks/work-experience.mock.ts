@@ -3,7 +3,7 @@ import { WorkExperience } from '../interfaces/work-experience';
 
 export const mockPosition1: Position = {
   specialist: 'Senior UX Designer',
-  startDate: '2020-05-01',
+  rangeDate: '2020-2022',
   location: 'San Francisco, CA',
   description: 'Led design projects for various clients',
   responsibilities: [
@@ -15,7 +15,7 @@ export const mockPosition1: Position = {
 
 export const mockPosition2: Position = {
   specialist: 'Product Designer',
-  startDate: '2018-09-15',
+  rangeDate: '2018-2020',
   location: 'New York, NY',
   description: 'Designed user interfaces for web applications',
   responsibilities: [
@@ -27,7 +27,7 @@ export const mockPosition2: Position = {
 
 export const mockPosition3: Position = {
   specialist: 'Graphic Designer',
-  startDate: '2016-03-20',
+  rangeDate: '2016-2019',
   location: 'Austin, TX',
   description: 'Created visual content for marketing campaigns',
   responsibilities: [
