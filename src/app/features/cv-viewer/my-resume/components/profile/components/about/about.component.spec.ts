@@ -8,6 +8,8 @@ const renderComponent = async () => {
       aboutSet: mockAbout,
     },
   });
+  const items = await screen.findAllByTestId(/detail-item-/);
+  expect(items.length).toBe(7);
 };
 
 describe(AboutComponent.name, () => {
@@ -27,32 +29,14 @@ describe(AboutComponent.name, () => {
     expect(screen.getByTestId('hobbies')).toHaveTextContent(mockAbout.hobbies);
   });
 
-  it('should display profile birthday', () => {
-    expect(screen.getByTestId('birthday')).toHaveTextContent(mockAbout.birthday);
-  });
-
-  it('should display profile website', () => {
-    expect(screen.getByTestId('website')).toHaveTextContent(mockAbout.website);
-  });
-
-  it('should display profile phone number', () => {
-    expect(screen.getByTestId('phoneNumber')).toHaveTextContent(mockAbout.phoneNumber.toString());
-  });
-
-  it('should display profile city', () => {
-    expect(screen.getByTestId('city')).toHaveTextContent(mockAbout.city);
-  });
-
-  it('should display profile age', () => {
-    expect(screen.getByTestId('age')).toHaveTextContent(mockAbout.age.toString());
-  });
-
-  it('should display profile degree', () => {
-    expect(screen.getByTestId('degree')).toHaveTextContent(mockAbout.degree);
-  });
-
-  it('should display profile email', () => {
-    expect(screen.getByTestId('email')).toHaveTextContent(mockAbout.email);
+  it('should render all detail items correctly', () => {
+    expect(screen.getByTestId('detail-item-birthday')).toHaveTextContent(mockAbout.birthday);
+    expect(screen.getByTestId('detail-item-website')).toHaveTextContent(mockAbout.website);
+    expect(screen.getByTestId('detail-item-phoneNumber')).toHaveTextContent(mockAbout.phoneNumber.toString());
+    expect(screen.getByTestId('detail-item-city')).toHaveTextContent(mockAbout.city);
+    expect(screen.getByTestId('detail-item-age')).toHaveTextContent(mockAbout.age.toString());
+    expect(screen.getByTestId('detail-item-degree')).toHaveTextContent(mockAbout.degree);
+    expect(screen.getByTestId('detail-item-email')).toHaveTextContent(mockAbout.email);
   });
 
   it('should display profile work experience', () => {
