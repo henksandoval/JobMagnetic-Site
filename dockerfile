@@ -1,6 +1,6 @@
 FROM node:22.14.0-alpine AS build
 WORKDIR /src
-COPY package.json package-lock.json ./
+COPY package*.json ./
 
 RUN npm install
 
