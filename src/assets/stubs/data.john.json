@@ -186,7 +186,8 @@
       "position": [
         {
           "specialist": "Senior graphic design specialist",
-          "StartDate": "2019 - Present",
+          "StartDate": "2019",
+          "endDate": "Present",
           "location": "Experion, New York, NY",
           "communicationDesignLeadership": "Lead in the design, development, and implementation of the graphic, layout, and production communication materials",
           "teamLeadership": "Delegate tasks to the 7 members of the design team and provide counsel on all aspects of the project.",
@@ -195,7 +196,8 @@
         },
         {
           "specialist": "Graphic design specialist",
-          "StartDate": "2017 - 2018",
+          "StartDate": "2017",
+          "endDate": "2018",
           "location": "Stepping Stone Advertising, New York, NY",
           "communicationDesignLeadership": "Developed numerous marketing programs (logos, brochures,infographics, presentations, and advertisements).",
           "teamLeadership": "Managed up to 5 projects or tasks at a given time while under pressure",

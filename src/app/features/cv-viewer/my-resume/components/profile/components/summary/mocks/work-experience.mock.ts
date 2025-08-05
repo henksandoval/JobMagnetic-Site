@@ -3,32 +3,50 @@ import { WorkExperience } from '../interfaces/work-experience';
 
 export const mockPosition1: Position = {
   specialist: 'Senior UX Designer',
-  startDate: '2020-05-01',
+  startDate: 'May 1, 2020',
+  endDate: '',
   location: 'San Francisco, CA',
-  communicationDesignLeadership: 'Led cross-functional design reviews',
-  teamLeadership: 'Managed a team of 5 designers',
-  designQualityAssurance: 'Implemented QA processes for design consistency',
-  expertiseArea: 'User Experience Design',
+  description: 'Led design initiatives for a major product overhaul',
+  responsibilities: [
+    'Conducted user research to gather insights',
+    'Designed user interfaces for web and mobile applications',
+    'Collaborated with product managers to define project scope',
+    'Created high-fidelity prototypes for stakeholder review',
+    'Led design sprints to rapidly iterate on concepts',
+    'Ensured accessibility standards were met in all designs',
+    'Provided feedback to developers during implementation',
+    'Maintained design documentation and style guides',
+  ],
 };
 
 export const mockPosition2: Position = {
   specialist: 'Product Designer',
-  startDate: '2018-09-15',
+  startDate: 'September 15, 2018',
+  endDate: 'April 30, 2020',
   location: 'New York, NY',
-  communicationDesignLeadership: 'Facilitated workshops with stakeholders',
-  teamLeadership: 'Coached junior designers',
-  designQualityAssurance: 'Conducted usability testing sessions',
-  expertiseArea: 'Product Design',
+  description: 'Worked on a cross-functional team to enhance user experience',
+  responsibilities: [
+    'Led design workshops with cross-functional teams',
+    'Created wireframes and prototypes for new features',
+    'Collaborated with developers to ensure design feasibility',
+    'Analyzed user feedback to improve product usability',
+    'Mentored junior designers on best practices',
+  ],
 };
 
 export const mockPosition3: Position = {
   specialist: 'Graphic Designer',
-  startDate: '2016-03-20',
+  startDate: 'March 20, 2016',
+  endDate: 'August 30, 2018',
   location: 'Austin, TX',
-  communicationDesignLeadership: 'Developed branding guidelines',
-  teamLeadership: 'Collaborated with marketing teams',
-  designQualityAssurance: 'Reviewed design assets for branding compliance',
-  expertiseArea: 'Graphic Design',
+  description: 'Designed visual assets for marketing and branding',
+  responsibilities: [
+    'Developed visual concepts for marketing campaigns',
+    'Designed print materials such as brochures and flyers',
+    'Worked with clients to understand their design needs',
+    'Managed multiple projects under tight deadlines',
+    'Created style guides to maintain brand consistency',
+  ],
 };
 
 export const mockWorkExperience: WorkExperience = {
