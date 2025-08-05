@@ -21,7 +21,7 @@ describe(ServicesComponent.name, () => {
     expect(screen.getByTestId('overview')).toHaveTextContent(mockProfile.service!.overview);
   });
 
-  it('It should show the list of services', () => {
+  it('It should show the list of services', async () => {
     mockProfile.service!.serviceDetails.forEach((serviceDetails: ServiceDetails, index: number) => {
       const id: string = (++index).toString().padStart(2, '0');
       expect(screen.getByTestId('name_' + id)).toHaveTextContent(serviceDetails.name);
