@@ -1,6 +1,7 @@
 export interface Position {
   specialist: string;
-  rangeDate: string;
+  startDate: string;
+  endDate: string;
   location: string;
   description: string;
   responsibilities: string[];

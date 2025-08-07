@@ -18,7 +18,7 @@ describe(PortfolioComponent.name, () => {
   });
 
   it('I should filter by type', () => {
-    mockProfile.portfolioGallery.forEach((webPage) => {
+    mockProfile.project.forEach((webPage) => {
       expect(screen.getByTestId('filter_' + webPage.type)).toHaveTextContent(webPage.type);
       expect(screen.getByTestId('filter_' + webPage.type)).toHaveAttribute(
         'data-filter',
@@ -28,7 +28,7 @@ describe(PortfolioComponent.name, () => {
   });
 
   it('Should submit all records regarding the portfolio.', () => {
-    mockProfile.portfolioGallery.forEach((gallery: Gallery, index: number) => {
+    mockProfile.project.forEach((gallery: Gallery, index: number) => {
       const id: string = (++index).toString().padStart(2, '0');
 
       expect(screen.getByTestId('image-src_' + id)).toHaveAttribute('src', gallery.image);

@@ -13,11 +13,17 @@
               @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
                 <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
-                <h5 [appId]="'academyRangeDate_' + dataIndex">{{ edu.rangeDate }}</h5>
-                <p [appId]="'academy_' + dataIndex">
+                <h5>
+                  <i class='bx bx-calendar'></i>
+                  <span [appId]="'startDate-date' + dataIndex">{{ edu.startDate | date:'y, MMMM'}}</span>
+                  @if (edu.endDate) {
+                    - <span [appId]="'endDate-date' + dataIndex">{{ edu.endDate | date:'y, MMMM' }}</span>
+                  }
+                </h5>
+                <p [appId]="'academy-formation' + dataIndex">
                   <em>{{ edu.academy }}</em>
                 </p>
-                <p [appId]="'academyDescription_' + dataIndex">{{ edu.description }}</p>
+                <p [appId]="'edu_description_' + dataIndex">{{ edu.description }}</p>
               </div>
             }
           </div>
@@ -29,16 +35,23 @@
               @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
                 <h4 [appId]="'specialist_' + dataIndex">{{ work.specialist }}</h4>
-                <h5 [appId]="'workRangeDate_' + dataIndex">{{ work.rangeDate }}</h5>
+                <h5>
+                  <i class='bx bx-calendar'></i>
+                  <span [appId]="'startDate_' + dataIndex">{{ work.startDate | date:'y, MMMM' }}</span>
+                  @if (work.endDate) {
+                    - <span [appId]="'endDate_' + dataIndex">{{ work.endDate | date:'y, MMMM' }}</span>
+                  }
+                </h5>
                 <p [appId]="'location_' + dataIndex">
                   <em>{{ work.location }}</em>
                 </p>
-                <p [appId]="'workDescription_' + dataIndex">{{ work.description }}</p>
-                @for (responsibility of work.responsibilities; track responsibility) {
-                  <ul>
-                    <li [appId]="'responsibility_' + $index + '_' + $index">{{ responsibility }}</li>
-                  </ul>
-                }
+                <p [appId]="'description_' + dataIndex">{{ work.description }}</p>
+                <ul>
+                  @for (responsibility of work.responsibilities; track responsibility; let respIndex = $index) {
+                    @let respId = (respIndex + 1).toString().padStart(2, '0');
+                    <li [appId]="'responsibility_' + dataIndex + '_' + respId">{{ responsibility }}</li>
+                  }
+                </ul>
               </div>
             }
           </div>

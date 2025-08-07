@@ -10,18 +10,19 @@
       @if (service.serviceDetails; as serviceDetails) {
         <div class="row">
           @for (serviceDetail of serviceDetails; track serviceDetail.name) {
+            @let dataIndex = ($index + 1).toString().padStart(2, '0');
             <div class="col-lg-3 col-md-6 col-12 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
 
               <div class="icon-box">
                 <div class="img-fluid">
-                  <img [appId]="'backgroundUrl_' + ($index + 1)" [src]="serviceDetail.backgroundUrl" alt="" />
+                  <img [appId]="'backgroundUrl_' + dataIndex" [src]="serviceDetail.backgroundUrl" alt="" />
                 </div>
 
                 <div class="icon-box-text">
-                  <h4 [appId]="'name_' + ($index + 1)">
+                  <h4 [appId]="'name_' + dataIndex">
                     <a href="">{{ serviceDetail.name }}</a>
                   </h4>
-                  <p [appId]="'description_' + ($index + 1)">{{ serviceDetail.description }}</p>
+                  <p [appId]="'description_' + dataIndex">{{ serviceDetail.description }}</p>
                 </div>
               </div>
             </div>

@@ -26,7 +26,7 @@
           <p class="fst-italic" appId="hobbies">{{ about.hobbies }}</p>
           <div appId="about-details" class="details-grid">
             @for (detail of allDetails(); track detail.key) {
-              <div class="detail-item">
+              <div class="detail-item" appId="detail-item-{{ detail.key }}">
                 <i class='bx bx-chevron-right'></i>
                 <strong>{{ detail.label }}</strong>
                 <span [attr.data-testid]="detail.key">{{ detail.value }}</span>

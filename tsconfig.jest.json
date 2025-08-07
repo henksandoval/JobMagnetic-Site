@@ -2,6 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "baseUrl": "./",
+    "isolatedModules": true,
     "paths": {
       "@core/*": ["src/app/core/*"],
       "@homeComponent/*": ["src/app/useCases/home/components/*"],

@@ -3,38 +3,50 @@ import { WorkExperience } from '../interfaces/work-experience';
 
 export const mockPosition1: Position = {
   specialist: 'Senior UX Designer',
-  rangeDate: '2020-2022',
+  startDate: '2020, May',
+  endDate: '',
   location: 'San Francisco, CA',
-  description: 'Led design projects for various clients',
+  description: 'Led design initiatives for a major product overhaul',
   responsibilities: [
-    'Conducted user research',
-    'Created wireframes and prototypes',
-    'Collaborated with developers',
-  ]
+    'Conducted user research to gather insights',
+    'Designed user interfaces for web and mobile applications',
+    'Collaborated with product managers to define project scope',
+    'Created high-fidelity prototypes for stakeholder review',
+    'Led design sprints to rapidly iterate on concepts',
+    'Ensured accessibility standards were met in all designs',
+    'Provided feedback to developers during implementation',
+    'Maintained design documentation and style guides',
+  ],
 };
 
 export const mockPosition2: Position = {
   specialist: 'Product Designer',
-  rangeDate: '2018-2020',
+  startDate: '2018, September',
+  endDate: '2020, April',
   location: 'New York, NY',
-  description: 'Designed user interfaces for web applications',
+  description: 'Worked on a cross-functional team to enhance user experience',
   responsibilities: [
-    'Developed design systems',
-    'Worked closely with product managers',
-    'Ensured design consistency across products',
-  ]
+    'Led design workshops with cross-functional teams',
+    'Created wireframes and prototypes for new features',
+    'Collaborated with developers to ensure design feasibility',
+    'Analyzed user feedback to improve product usability',
+    'Mentored junior designers on best practices',
+  ],
 };
 
 export const mockPosition3: Position = {
   specialist: 'Graphic Designer',
-  rangeDate: '2016-2019',
+  startDate: '2016, March',
+  endDate: '2018, August',
   location: 'Austin, TX',
-  description: 'Created visual content for marketing campaigns',
+  description: 'Designed visual assets for marketing and branding',
   responsibilities: [
-    'Designed logos and branding materials',
-    'Collaborated with marketing teams',
-    'Reviewed design assets for branding compliance',
-  ]
+    'Developed visual concepts for marketing campaigns',
+    'Designed print materials such as brochures and flyers',
+    'Worked with clients to understand their design needs',
+    'Managed multiple projects under tight deadlines',
+    'Created style guides to maintain brand consistency',
+  ],
 };
 
 export const mockWorkExperience: WorkExperience = {
