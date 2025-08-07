@@ -63,7 +63,7 @@ describe('EducationDialogComponent', () => {
     expect(screen.getByLabelText('End Date')).toBeInTheDocument();
   });
 
-  xit('Should enable the save button and call dialogRef.close with the data when saving', async () => {
+  it('Should enable the save button and call dialogRef.close with the data when saving', async () => {
     const degreeInput = screen.getByLabelText('Degree');
     const institutionNameInput = screen.getByLabelText('Institution Name');
     const institutionLocationInput = screen.getByLabelText('Location');

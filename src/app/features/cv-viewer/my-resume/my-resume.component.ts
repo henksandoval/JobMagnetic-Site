@@ -24,11 +24,10 @@ export class MyResumeComponent implements AfterViewInit {
   private profileService = inject(ProfileService);
 
   constructor() {
-    const slug = this.activatedRoute.snapshot.paramMap.get('slug');
-    if (slug) {
+    this.activatedRoute.paramMap.subscribe((params) => {
+      const slug = params.get('slug')!;
       this.stateService.slug.set(slug);
-      this.profileService.loadProfileBySlug(slug);
-    }
+    });
   }
 
   sections = computed(() => {

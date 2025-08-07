@@ -12,6 +12,7 @@
           <img
             i18n
             i18n-alt="@@about_description"
+            appId="profilePicture"
             alt="Profile picture"
             [ngSrc]="displayImageUrl()"
             width="415"
@@ -23,12 +24,12 @@
         <div class="col-lg-8 pt-4 pt-lg-0 content">
           <h3 appId="about-tittle">{{ about.text }}</h3>
           <p class="fst-italic" appId="hobbies">{{ about.hobbies }}</p>
-          <div class="details-grid">
+          <div appId="about-details" class="details-grid">
             @for (detail of allDetails(); track detail.key) {
               <div class="detail-item" appId="detail-item-{{ detail.key }}">
                 <i class='bx bx-chevron-right'></i>
                 <strong>{{ detail.label }}</strong>
-                <span>{{ detail.value }}</span>
+                <span [attr.data-testid]="detail.key">{{ detail.value }}</span>
               </div>
             }
           </div>

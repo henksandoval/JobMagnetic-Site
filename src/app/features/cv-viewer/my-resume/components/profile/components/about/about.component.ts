@@ -13,7 +13,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 export class AboutComponent {
   aboutSet = input<About>();
 
-  private readonly defaultImage  = "/img/profile_picture_.jpg";
+  private readonly defaultImage  = "assets/img/profile_picture.jpg";
 
   public readonly displayImageUrl = computed(() => {
     return this.aboutSet()?.imageUrl || this.defaultImage;

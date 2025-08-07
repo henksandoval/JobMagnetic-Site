@@ -1,5 +1,5 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { catchError, EMPTY, map, Observable } from 'rxjs';
+import { inject, Injectable, Signal } from '@angular/core';
+import { catchError, EMPTY, filter, map, Observable, switchMap } from 'rxjs';
 import { Profile } from '../my-resume/components/profile/interfaces/profile';
 import { ProfileContract } from '../my-resume/components/profile/contracts/profile-contract';
 import { HttpService } from '@core/services/http/http.service';
@@ -12,6 +12,7 @@ import { Config } from '@core/services/config/interfaces/config';
 import { UrlBuilderService } from '@core/services/url-builder/url-builder.service';
 import { UserPersonalDataContract } from '../my-resume/components/cover/contracts/user-personal-data-contract';
 import { SocialNetworkInfo } from '@core/interfaces/social-network-info';
+import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
@@ -21,24 +22,31 @@ export class ProfileService {
   private readonly http = inject(HttpService);
   private readonly stateService = inject(StateService);
   private readonly urlBuilder = inject(UrlBuilderService);
-  private readonly _profileData = signal<Profile | undefined>(undefined);
 
-  readonly profile$ = this._profileData.asReadonly();
+  profile$: Signal<Profile | undefined> = toSignal(
+    toObservable(this.stateService.slug).pipe(
+      filter(slug => !!slug),
+      switchMap(slug => this.loadProfile(slug))
+    )
+  );
 
-  loadProfileBySlug(slug: string): void {
-    if (!slug) {
-      return;
+  private loadProfile(slug: string): Observable<Profile> {
+    const queryParams = { profileSlug: slug };
+    let url: string;
+
+    if (this.config.useAPI) {
+      url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
+    } else {
+      url = `stubs/data.${slug || 'john'}.json`;
     }
 
-    this.loadProfile(slug).subscribe({
-      next: (profileData) => {
-        this._profileData.set(profileData);
-      },
-      error: (err) => {
-        console.error('Error al cargar el perfil:', err);
-        this._profileData.set(undefined);
-      }
-    });
+    return this.http.get<ProfileContract>(url).pipe(
+      map(this.transformData.bind(this)),
+      catchError((error) => {
+        console.error(error);
+        return EMPTY;
+      })
+    );
   }
 
   transformData(data: ProfileContract): Profile {
@@ -80,24 +88,5 @@ export class ProfileService {
         return accumulator;
       }, [] as UserSocialNetwork[]),
     };
-  }
-
-  private loadProfile(slug: string): Observable<Profile> {
-    const queryParams = { profileSlug: slug };
-    let url: string;
-
-    if (this.config.useAPI) {
-      url = this.urlBuilder.buildUrl(this.config.apiUrl, 'v1/profile', queryParams);
-    } else {
-      url = `stubs/data.${slug || 'john'}.json`;
-    }
-
-    return this.http.get<ProfileContract>(url).pipe(
-      map(this.transformData.bind(this)),
-      catchError((error) => {
-        console.error(error);
-        return EMPTY;
-      })
-    );
   }
 }
