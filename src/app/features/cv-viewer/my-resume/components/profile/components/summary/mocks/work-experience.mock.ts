@@ -3,7 +3,7 @@ import { WorkExperience } from '../interfaces/work-experience';
 
 export const mockPosition1: Position = {
   specialist: 'Senior UX Designer',
-  startDate: 'May 1, 2020',
+  startDate: '2020, May',
   endDate: '',
   location: 'San Francisco, CA',
   description: 'Led design initiatives for a major product overhaul',
@@ -21,8 +21,8 @@ export const mockPosition1: Position = {
 
 export const mockPosition2: Position = {
   specialist: 'Product Designer',
-  startDate: 'September 15, 2018',
-  endDate: 'April 30, 2020',
+  startDate: '2018, September',
+  endDate: '2020, April',
   location: 'New York, NY',
   description: 'Worked on a cross-functional team to enhance user experience',
   responsibilities: [
@@ -36,8 +36,8 @@ export const mockPosition2: Position = {
 
 export const mockPosition3: Position = {
   specialist: 'Graphic Designer',
-  startDate: 'March 20, 2016',
-  endDate: 'August 30, 2018',
+  startDate: '2016, March',
+  endDate: '2018, August',
   location: 'Austin, TX',
   description: 'Designed visual assets for marketing and branding',
   responsibilities: [

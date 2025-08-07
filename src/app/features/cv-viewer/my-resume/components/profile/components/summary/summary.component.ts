@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { Summary } from './interfaces/summary';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
-import { DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.component.html',
   styleUrl: './summary.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AppIdDirective, DatePipe],
+  imports: [AppIdDirective, CommonModule],
 })
 export class SummaryComponent {
   summarySet = input<Summary>();
