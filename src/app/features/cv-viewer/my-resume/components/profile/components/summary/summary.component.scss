@@ -32,6 +32,11 @@
       display: inline-block;
       font-weight: 600;
       margin-bottom: 10px;
+       i {
+         font-size: 16px;
+         color: #149ddd;
+         margin-right: 5px;
+       }
     }
 
     ul {
@@ -58,4 +63,5 @@
       border: 2px solid vars.$accent-color;
     }
   }
+
 }

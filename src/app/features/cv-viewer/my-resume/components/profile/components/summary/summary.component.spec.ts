@@ -21,14 +21,19 @@ describe(SummaryComponent.name, () => {
     expect(screen.getByTestId('introduction')).toHaveTextContent(mockSummary.introduction);
   });
 
-  xit('should get all the records about education.', () => {
+  it('should get all the records about education.', () => {
     mockSummary.education.academicBackground.forEach(
       (academicBackground: AcademicBackground, index: number) => {
         const id: string = (++index).toString().padStart(2, '0');
         expect(screen.getByTestId('experience_' + id)).toHaveTextContent(academicBackground.experience);
-        expect(screen.getByTestId('startDate-date' + id)).toHaveTextContent(academicBackground.startdate);
+        expect(screen.getByTestId('startDate-date' + id)).toHaveTextContent(academicBackground.startDate);
         expect(screen.getByTestId('academy-formation' + id)).toHaveTextContent(academicBackground.academy);
-        expect(screen.getByTestId('description_' + id)).toHaveTextContent(academicBackground.description);
+        expect(screen.getByTestId('edu_description_' + id)).toHaveTextContent(academicBackground.description);
+        if (academicBackground.endDate) {
+          expect(screen.getByTestId('endDate-date' + id)).toHaveTextContent(academicBackground.endDate);
+        } else {
+          expect(screen.queryByTestId('endDate-date' + id)).toBeNull();
+        }
       }
     );
   });
@@ -39,6 +44,17 @@ describe(SummaryComponent.name, () => {
       expect(screen.getByTestId('specialist_' + id)).toHaveTextContent(position.specialist);
       expect(screen.getByTestId('startDate_' + id)).toHaveTextContent(position.startDate);
       expect(screen.getByTestId('location_' + id)).toHaveTextContent(position.location);
+      expect(screen.getByTestId('description_' + id)).toHaveTextContent(position.description);
+      if (position.endDate) {
+        expect(screen.getByTestId('endDate_' + id)).toHaveTextContent(position.endDate);
+      } else {
+        expect(screen.queryByTestId('endDate_' + id)).toBeNull();
+      }
+      position.responsibilities.forEach((responsibility: string, respIndex: number) => {
+        const respId: string = (respIndex + 1).toString().padStart(2, '0');
+        const ResponsibilityId = `responsibility_${id}_${respId}`;
+        expect(screen.getByTestId(ResponsibilityId)).toHaveTextContent(responsibility);
+      });
     });
   });
 });

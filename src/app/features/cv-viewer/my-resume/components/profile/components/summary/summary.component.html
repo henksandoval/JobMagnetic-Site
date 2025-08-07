@@ -10,13 +10,20 @@
           <div class="col-12" [class.col-lg-6]="hasWorkExperience()">
             <h3 i18n="@@education" class="resume-title">Education</h3>
             @for (edu of education()!; track edu.experience) {
+              @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
-                <h4 [appId]="'experience_' + $index">{{ edu.experience }}</h4>
-                <h5 [appId]="'startDate-date' + $index">{{ edu.startdate | date:'longDate' }}</h5>
-                <p [appId]="'academy-formation' + $index">
+                <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
+                <h5>
+                  <i class='bx bx-calendar'></i>
+                  <span [appId]="'startDate-date' + dataIndex">{{ edu.startDate | date:'y, MMMM'}}</span>
+                  @if (edu.endDate) {
+                    - <span [appId]="'endDate-date' + dataIndex">{{ edu.endDate | date:'y, MMMM' }}</span>
+                  }
+                </h5>
+                <p [appId]="'academy-formation' + dataIndex">
                   <em>{{ edu.academy }}</em>
                 </p>
-                <p [appId]="'description_' + $index">{{ edu.description }}</p>
+                <p [appId]="'edu_description_' + dataIndex">{{ edu.description }}</p>
               </div>
             }
           </div>
@@ -25,18 +32,26 @@
           <div class="col-12" [class.col-lg-6]="hasEducation()">
             <h3 i18n="@@workExperience" class="resume-title">Work Experience</h3>
             @for (work of workExperience()!; track work.specialist) {
+              @let dataIndex = ($index + 1).toString().padStart(2, '0');
               <div class="resume-item">
-                <h4 [appId]="'specialist_' + $index">{{ work.specialist }}</h4>
-                <h5 [appId]="'startDate_' + $index">{{ work.startDate | date:'longDate' }}</h5>
-                <p [appId]="'location_' + $index">
+                <h4 [appId]="'specialist_' + dataIndex">{{ work.specialist }}</h4>
+                <h5>
+                  <i class='bx bx-calendar'></i>
+                  <span [appId]="'startDate_' + dataIndex">{{ work.startDate | date:'y, MMMM' }}</span>
+                  @if (work.endDate) {
+                    - <span [appId]="'endDate_' + dataIndex">{{ work.endDate | date:'y, MMMM' }}</span>
+                  }
+                </h5>
+                <p [appId]="'location_' + dataIndex">
                   <em>{{ work.location }}</em>
                 </p>
-                <p [appId]="'description_' + $index">{{ work.description }}</p>
-                @for (responsibility of work.responsibilities; track responsibility) {
-                  <ul>
-                    <li [appId]="'responsibility_' + $index + '_' + $index">{{ responsibility }}</li>
-                  </ul>
-                }
+                <p [appId]="'description_' + dataIndex">{{ work.description }}</p>
+                <ul>
+                  @for (responsibility of work.responsibilities; track responsibility; let respIndex = $index) {
+                    @let respId = (respIndex + 1).toString().padStart(2, '0');
+                    <li [appId]="'responsibility_' + dataIndex + '_' + respId">{{ responsibility }}</li>
+                  }
+                </ul>
               </div>
             }
           </div>
