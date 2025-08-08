@@ -14,27 +14,31 @@
     padding: 2px 15px;
 
     li {
-      cursor: pointer;
       display: inline-block;
+      margin-bottom: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
       padding: 10px 15px;
       font-size: 14px;
       font-weight: 600;
       line-height: 1;
       text-transform: uppercase;
       color: vars.$default-color;
-      margin-bottom: 5px;
       transition: all 0.3s ease-in-out;
 
       &:hover {
         color: vars.$accent-color;
       }
-
-      &:last-child {
-        margin-right: 0;
-      }
     }
 
-    li.filter-active {
+    button.filter-active {
       color: vars.$accent-color;
     }
   }

@@ -13,15 +13,20 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PortfolioComponent implements AfterViewInit {
+  filteredPages: Gallery[] = [];
+  public activeFilter = '*';
   portfolioSet = input.required<PortfolioOverview, Gallery[]>({
     transform: this.toPortfolioOverview.bind(this),
   });
 
+
   toPortfolioOverview(galleries: Gallery[]): PortfolioOverview {
-    return {
+    const overview = {
       pagesByType: this.groupWebPagesByType(galleries),
       sortedPages: this.sortWebPages(galleries),
     };
+    this.filteredPages = overview.sortedPages;
+    return overview;
   }
 
   ngAfterViewInit() {
@@ -34,6 +39,19 @@ export class PortfolioComponent implements AfterViewInit {
 
   private groupWebPagesByType(webPages: Gallery[]): string[] {
     return Array.from(new Set(webPages.map((webPage) => webPage.type)));
+  }
+
+  public filterPortfolio(type: string): void {
+    this.activeFilter = type;
+
+    const allPages = this.portfolioSet()?.sortedPages;
+    if (!allPages) return;
+
+    if (type === '*') {
+      this.filteredPages = allPages;
+    } else {
+      this.filteredPages = allPages.filter(page => page.type === type);
+    }
   }
 
   private initializeGLightbox(): void {
