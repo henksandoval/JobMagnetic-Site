@@ -1,6 +1,7 @@
 export interface AcademicBackground {
   experience: string;
-  startdate: string;
+  startDate: string;
+  endDate: string;
   academy: string;
   description: string;
 }
