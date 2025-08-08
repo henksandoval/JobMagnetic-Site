@@ -15,10 +15,7 @@
                 <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
                 <h5>
                   <i class='bx bx-calendar'></i>
-                  <span [appId]="'startDate-date' + dataIndex">{{ edu.startDate | date:'y, MMMM'}}</span>
-                  @if (edu.endDate) {
-                    - <span [appId]="'endDate-date' + dataIndex">{{ edu.endDate | date:'y, MMMM' }}</span>
-                  }
+                  <span [appId]="'startDate-date' + dataIndex">{{ edu.startdate | date:'y, MMMM'}}</span>
                 </h5>
                 <p [appId]="'academy-formation' + dataIndex">
                   <em>{{ edu.academy }}</em>
@@ -38,9 +35,6 @@
                 <h5>
                   <i class='bx bx-calendar'></i>
                   <span [appId]="'startDate_' + dataIndex">{{ work.startDate | date:'y, MMMM' }}</span>
-                  @if (work.endDate) {
-                    - <span [appId]="'endDate_' + dataIndex">{{ work.endDate | date:'y, MMMM' }}</span>
-                  }
                 </h5>
                 <p [appId]="'location_' + dataIndex">
                   <em>{{ work.location }}</em>
