@@ -15,7 +15,7 @@
                 <h4 [appId]="'experience_' + dataIndex">{{ edu.experience }}</h4>
                 <h5>
                   <i class='bx bx-calendar'></i>
-                  <span [appId]="'startDate-date' + dataIndex">{{ edu.startDate | date:'y, MMMM' }}</span>
+                  <span [appId]="'edu-endDate-date' + dataIndex">{{ edu.startDate | date:'y, MMMM' }}</span>
                 </h5>
                 <h5 *ngIf="edu.endDate">
                   <i class='bx bx-calendar'></i>
