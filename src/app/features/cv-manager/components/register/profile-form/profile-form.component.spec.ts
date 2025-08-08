@@ -48,7 +48,9 @@ describe(ProfileFormComponent.name, () => {
   });
 
   it('should call savePersonalData without errors', () => {
+    const consoleErrorSpy = jest.spyOn(console, 'warn').mockImplementation();
     componentInstance.savePersonalData();
     expect(mockProfileService.saveData).toHaveBeenCalled();
+    consoleErrorSpy.mockRestore();
   });
 });

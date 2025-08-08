@@ -7,7 +7,7 @@
       "@core/*": ["src/app/core/*"]
     },
     "outDir": "./out-tsc/spec",
-    "types": ["jest", "@angular/localize"]
+    "types": ["jest", "@angular/localize", "@testing-library/jest-dom"]
   },
-  "include": ["src/**/*.spec.ts", "src/**/*.d.ts"]
+  "include": ["src/**/*.spec.ts", "src/**/*.d.ts", "jest.setup.ts"]
 }
