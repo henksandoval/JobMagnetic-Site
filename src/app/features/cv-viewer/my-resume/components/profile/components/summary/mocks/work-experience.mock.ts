@@ -1,10 +1,10 @@
 import { Position } from '../interfaces/position';
 import { WorkExperience } from '../interfaces/work-experience';
 
+  // endDate: '',
 export const mockPosition1: Position = {
   specialist: 'Senior UX Designer',
   startDate: '2020, May',
-  endDate: '',
   location: 'San Francisco, CA',
   description: 'Led design initiatives for a major product overhaul',
   responsibilities: [
@@ -19,10 +19,10 @@ export const mockPosition1: Position = {
   ],
 };
 
+  // endDate: '2020, April',
 export const mockPosition2: Position = {
   specialist: 'Product Designer',
   startDate: '2018, September',
-  endDate: '2020, April',
   location: 'New York, NY',
   description: 'Worked on a cross-functional team to enhance user experience',
   responsibilities: [
@@ -34,10 +34,10 @@ export const mockPosition2: Position = {
   ],
 };
 
+  // endDate: '2018, August',
 export const mockPosition3: Position = {
   specialist: 'Graphic Designer',
   startDate: '2016, March',
-  endDate: '2018, August',
   location: 'Austin, TX',
   description: 'Designed visual assets for marketing and branding',
   responsibilities: [

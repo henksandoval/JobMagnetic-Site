@@ -40,6 +40,10 @@
                   <i class='bx bx-calendar'></i>
                   <span [appId]="'startDate_' + dataIndex">{{ work.startDate | date:'y, MMMM' }}</span>
                 </h5>
+                <h5 *ngIf="work.endDate">
+                  <i class='bx bx-calendar'></i>
+                  <span [appId]="'endDate_' + dataIndex">{{ work.endDate | date:'y, MMMM' }}</span>
+                </h5>
                 <p [appId]="'location_' + dataIndex">
                   <em>{{ work.location }}</em>
                 </p>

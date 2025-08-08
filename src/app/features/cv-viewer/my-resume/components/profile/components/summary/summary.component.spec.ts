@@ -39,6 +39,7 @@ describe(SummaryComponent.name, () => {
       const id: string = (++index).toString().padStart(2, '0');
       expect(screen.getByTestId('specialist_' + id)).toHaveTextContent(position.specialist);
       expect(screen.getByTestId('startDate_' + id)).toHaveTextContent(position.startDate);
+      expect(screen.getByTestId('endDate_' + id)).toHaveTextContent(position.endDate);
       expect(screen.getByTestId('location_' + id)).toHaveTextContent(position.location);
       expect(screen.getByTestId('description_' + id)).toHaveTextContent(position.description);
       position.responsibilities.forEach((responsibility: string, respIndex: number) => {
