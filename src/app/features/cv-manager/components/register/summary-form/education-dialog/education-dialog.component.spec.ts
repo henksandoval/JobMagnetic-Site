@@ -94,11 +94,6 @@ describe('EducationDialogComponent', () => {
       endDate: formatDateForInput(mockEducationData.endDate!),
     };
     expect(closeDialogSpy).toHaveBeenCalledWith(expect.objectContaining(expectedData));
-    expect(closeDialogSpy).toHaveBeenCalledWith(
-      expect.objectContaining({
-        correlationId: expect.any(String),
-      })
-    );
   });
 
   it('Should keep the save button disabled if required fields are missing', async () => {

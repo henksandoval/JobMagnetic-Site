@@ -11,7 +11,6 @@ import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
 import { SummaryStateService } from '../services/summary-state.service';
-import { StateService } from '@core/services/state/state.service';
 import { Education } from '../interfaces/education';
 
 @Component({
@@ -33,7 +32,6 @@ import { Education } from '../interfaces/education';
 })
 export class EducationDialogComponent implements OnInit {
   private formBuilder: FormBuilder = inject(FormBuilder);
-  private stateService = inject(StateService);
   private readonly summaryStateService: SummaryStateService = inject(SummaryStateService);
   private dialogRef: MatDialogRef<EducationDialogComponent> = inject(MatDialogRef);
   educationForm!: FormGroup;
