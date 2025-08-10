@@ -9,11 +9,22 @@
       <div class="row">
         <div class="col-lg-12 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
           <div>
-            <ul appId="portfolio-filters">
-              <li i18n="@@all" appId="filter_all" data-filter="*" class="filter-active">All</li>
+            <ul appId="portfolio-filters" class="portfolio-filters">
+              <li>
+                <button i18n="@@all"
+                        appId="filter_all"
+                        (click)="filterPortfolio('*')"
+                        [class.filter-active]="activeFilter === '*'">
+                  All
+                </button>
+              </li>
               @for (pageType of portfolio.pagesByType; track pageType) {
-                <li [appId]="'filter_' + pageType" [attr.data-filter]="'.filter-' + pageType">
-                  {{ pageType }}
+                <li>
+                  <button [appId]="'filter_' + pageType"
+                          (click)="filterPortfolio(pageType)"
+                          [class.filter-active]="activeFilter === pageType">
+                    {{ pageType }}
+                  </button>
                 </li>
               }
             </ul>
@@ -21,7 +32,7 @@
         </div>
       </div>
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-        @for (page of portfolio.sortedPages; track page) {
+        @for (page of filteredPages; track page) {
           @let dataIndex = ($index + 1).toString().padStart(2, '0');
           <div class="col-lg-4 col-md-6 portfolio-item" [ngClass]="'filter-' + page.type">
             <div class="portfolio-wrap">
