@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { AfterViewInit, ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, input, signal } from '@angular/core';
 import GLightbox from 'glightbox';
 import { Gallery } from './interfaces/gallery';
 import { PortfolioOverview } from './interfaces/portfolio-overview';
@@ -13,7 +13,7 @@ import { AppIdDirective } from '@core/directives/app-id/app-id.directive';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PortfolioComponent implements AfterViewInit {
-  filteredPages: Gallery[] = [];
+  filteredPages = signal<Gallery[]>([]);
   public activeFilter = '*';
   portfolioSet = input.required<PortfolioOverview, Gallery[]>({
     transform: this.toPortfolioOverview.bind(this),
@@ -25,7 +25,7 @@ export class PortfolioComponent implements AfterViewInit {
       pagesByType: this.groupWebPagesByType(galleries),
       sortedPages: this.sortWebPages(galleries),
     };
-    this.filteredPages = overview.sortedPages;
+    this.filteredPages.set(overview.sortedPages);
     return overview;
   }
 
@@ -44,13 +44,14 @@ export class PortfolioComponent implements AfterViewInit {
   public filterPortfolio(type: string): void {
     this.activeFilter = type;
 
+    debugger;
     const allPages = this.portfolioSet()?.sortedPages;
     if (!allPages) return;
 
     if (type === '*') {
-      this.filteredPages = allPages;
+      this.filteredPages.set(allPages);
     } else {
-      this.filteredPages = allPages.filter(page => page.type === type);
+      this.filteredPages.set(allPages.filter(page => page.type === type));
     }
   }
 
