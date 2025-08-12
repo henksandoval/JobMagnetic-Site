@@ -32,9 +32,9 @@
         </div>
       </div>
       <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-        @for (page of filteredPages; track page) {
+        @for (page of filteredPages(); track page.position) {
           @let dataIndex = ($index + 1).toString().padStart(2, '0');
-          <div class="col-lg-4 col-md-6 portfolio-item" [ngClass]="'filter-' + page.type">
+          <div class="col-lg-4 col-md-6 portfolio-item" [ngClass]="'filter-' + page.type" [appId]="'portfolio-item-' + page.position">
             <div class="portfolio-wrap">
               <img [appId]="'image-src_' + dataIndex" [src]="page.image" class="img-fluid" alt="" />
               <div class="portfolio-info">
